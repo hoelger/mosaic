@@ -6995,9 +6995,9 @@
     </edge>
 
     <tlLogic id="10840350429" type="static" programID="0" offset="0">
-        <phase duration="82" state="GgGg"/>
-        <phase duration="3"  state="yyyy"/>
-        <phase duration="5"  state="rrrr"/>
+        <phase duration="14" state="GgGg"/>
+        <phase duration="1"  state="yyyy"/>
+        <phase duration="30"  state="rrrr"/>
     </tlLogic>
     <tlLogic id="10840350430" type="static" programID="0" offset="0">
         <phase duration="82" state="GgGg"/>
@@ -7015,9 +7015,9 @@
         <phase duration="6"  state="rrryyyyyrrrrrr"/>
     </tlLogic>
     <tlLogic id="6687013226" type="static" programID="0" offset="0">
-        <phase duration="82" state="GgGg"/>
-        <phase duration="3"  state="yyyy"/>
-        <phase duration="5"  state="rrrr"/>
+        <phase duration="14" state="GgGg"/>
+        <phase duration="1"  state="yyyy"/>
+        <phase duration="30"  state="rrrr"/>
     </tlLogic>
     <tlLogic id="6687013228" type="static" programID="0" offset="0">
         <phase duration="82" state="GgGg"/>
