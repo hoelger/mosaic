@@ -28,9 +28,9 @@
     {
       "startingTime": "5 s",
       "maxTime": "700 s",
-      "targetFlow": 2000.0,
+      "targetFlow": 1800.0,
       "spawningMode": "CONSTANT",
-      "maxNumberVehicles": 1000,
+      "maxNumberVehicles": 100,
       "laneSelectionMode": "BEST",
       "departSpeed": "0.0 m/s",
       "departSpeedMode": "MAXIMUM",
