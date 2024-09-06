@@ -148,6 +148,11 @@
             <artifactId>weather-warning</artifactId>
             <version>${mosaic.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.mosaic.app</groupId>
+            <artifactId>jam-reroute</artifactId>
+            <version>${mosaic.version}</version>
+        </dependency>
 
 
         <!-- Dependencies -->

@@ -36,6 +36,7 @@
       "departSpeedMode": "MAXIMUM",
       "types": [
         {
+          "applications": [ "org.eclipse.mosaic.app.playground.JamRerouteApp" ],
           "name": "Car",
           "weight": 1.0
         }

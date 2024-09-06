@@ -44,6 +44,12 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.mosaic.app</groupId>
+            <artifactId>jam-reroute</artifactId>
+            <version>${mosaic.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.mosaic.app</groupId>
             <artifactId>traffic-light-communication</artifactId>
             <version>${mosaic.version}</version>
             <scope>test</scope>

@@ -119,6 +119,12 @@
         </dependency>
         <dependency>
             <groupId>org.eclipse.mosaic.app</groupId>
+            <artifactId>jam-reroute</artifactId>
+            <version>${mosaic.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.mosaic.app</groupId>
             <artifactId>highway-management</artifactId>
             <version>${mosaic.version}</version>
             <scope>runtime</scope>

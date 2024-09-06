@@ -77,6 +77,12 @@
             </includes>
         </dependencySet>
         <dependencySet>
+            <outputDirectory>scenarios/Autolingen/application</outputDirectory>
+            <includes>
+                <include>org.eclipse.mosaic.app:jam-reroute</include>
+            </includes>
+        </dependencySet>
+        <dependencySet>
             <outputDirectory>scenarios/Tiergarten/application</outputDirectory>
             <includes>
                 <include>org.eclipse.mosaic.app:traffic-light-communication</include>
