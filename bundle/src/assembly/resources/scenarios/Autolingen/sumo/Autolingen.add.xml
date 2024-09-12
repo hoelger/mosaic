@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
     <e1Detector id="detector_0" lane="56982684_6687013229_6687013226_0" pos="20" freq="100.00" file="detectors.txt" friendlyPos="0"/>
+    <laneAreaDetector id="lane_detector_0" lanes="56982684_6687013229_6687013226_0" pos="20" endPos="70" friendlyPos="0" period="1" file="la_detectors.txt"/>
 </additional>

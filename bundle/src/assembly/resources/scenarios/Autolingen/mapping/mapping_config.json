@@ -34,7 +34,9 @@
       "inductionLoops": [
         "detector_0"
       ],
-      "laneAreaDetectors": []
+      "laneAreaDetectors": [
+        "lane_detector_0"
+      ]
     }
   ],
   "vehicles": [

@@ -117,7 +117,21 @@ public class RoadMonitoringServer extends AbstractApplication<TrafficManagementC
     @Override
     public void onLaneAreaDetectorUpdated(Collection<LaneAreaDetector> updatedLaneAreaDetectors) {
         for (LaneAreaDetector item : getOs().getLaneAreaDetectors()) {
-            getLog().infoSimTime(this, "Segment '{}': average speed: {} m/s, traffic density: {} veh/km", item.getId(), item.getMeanSpeed(), item.getTrafficDensity());
+            getLog().infoSimTime(this,
+                    "Segment '{}': average speed: {} m/s, traffic density: {} veh/km, vehicles: {} vs {}",
+                    item.getId(),
+                    item.getMeanSpeed(),
+                    item.getTrafficDensity(),
+                    item.getAmountOfVehiclesOnSegment(),
+                    item.getAmountOfHaltingVehiclesOnSegment()
+            );
+//            item.meanVehicleNumber(),
+//            item.jamLengthInVehiclesSum(),
+//            item.jamLengthInMetersSum()
+
+            if (item.getTrafficDensity() >=120 || item.getAmountOfVehiclesOnSegment() >= 7){
+                sendJamAlarm((float) item.getMeanSpeed());
+            }
         }
     }
 
