@@ -175,7 +175,6 @@ public class JamRerouteApp extends AbstractApplication<VehicleOperatingSystem> i
 
                     // is this somewhere stored, or what if the circumnavigation of the second closed road then switches back to the first (closed) one.
                     circumnavigateAffectedRoad(denm, affectedConnectionId);
-                    routeChanged = true;
                     return;
                 }
             }
@@ -191,7 +190,7 @@ public class JamRerouteApp extends AbstractApplication<VehicleOperatingSystem> i
         CandidateRoute newRoute = response.getBestRoute();
         if (newRoute != null) {
             getLog().infoSimTime(this, "Sending Change Route Command at position: {}", getOs().getPosition());
-            navigationModule.switchRoute(newRoute);
+            routeChanged = navigationModule.switchRoute(newRoute);
         }
     }
 
