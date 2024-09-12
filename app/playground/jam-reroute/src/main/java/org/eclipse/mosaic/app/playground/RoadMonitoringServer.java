@@ -70,7 +70,7 @@ public class RoadMonitoringServer extends AbstractApplication<TrafficManagementC
                 double lastAvgSpeedMs_AVG = lastAvgSpeedMs.stream().mapToDouble(Double::doubleValue).sum() / lastAvgSpeedMs.size();
                 getLog().infoSimTime(this, "lastAvgSpeedMs_AVG {}", lastAvgSpeedMs_AVG);
                 if (!startup && lastAvgSpeedMs_AVG < JAM_THRESHOLD) {
-                    sendJamAlarm((float)(lastAvgSpeedMs_AVG)); // m/s
+                    sendJamAlarm(1f); // m/s
                 }
             }
         }
