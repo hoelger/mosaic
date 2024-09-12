@@ -58,6 +58,7 @@ public class RoadMonitoringServer extends AbstractApplication<TrafficManagementC
 
     @Override
     public void onInductionLoopUpdated(Collection<InductionLoop> updatedInductionLoops) {
+        if (true) return;
         for (InductionLoop item : getOs().getInductionLoops()) {
             if (item.getAverageSpeedMs() != 0.0) {
                 getLog().infoSimTime(this, "Detector '{}': average speed: {} m/s, traffic flow: {} veh/h", item.getId(), item.getAverageSpeedMs(), item.getTrafficFlowVehPerHour());
