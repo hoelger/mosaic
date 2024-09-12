@@ -81,6 +81,8 @@ public class JamRerouteApp extends AbstractApplication<VehicleOperatingSystem> i
             return;
         }
 
+        if(true) return; // DO NOT detect jam via vehicle data
+
         double previous = 0;
         if (Objects.nonNull(previousVehicleData)) {
              previous = previousVehicleData.getDistanceDriven();
