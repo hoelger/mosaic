@@ -59,7 +59,6 @@ public class RoadMonitoringServer extends AbstractApplication<TrafficManagementC
     @Override
     public void onInductionLoopUpdated(Collection<InductionLoop> updatedInductionLoops) {
         for (InductionLoop item : getOs().getInductionLoops()) {
-
             if (item.getAverageSpeedMs() != 0.0) {
                 getLog().infoSimTime(this, "Detector '{}': average speed: {} m/s, traffic flow: {} veh/h", item.getId(), item.getAverageSpeedMs(), item.getTrafficFlowVehPerHour());
                 lastAvgSpeedMs.add(item.getAverageSpeedMs());
@@ -76,9 +75,7 @@ public class RoadMonitoringServer extends AbstractApplication<TrafficManagementC
         }
     }
 
-
     private void sendJamAlarm(float causedSpeed) {
-
         getLog().infoSimTime(this, "Traffic jam detected");
 
         GeoCircle dest = new GeoCircle(LOCATION_DETECTOR_0, 3000);
@@ -104,7 +101,7 @@ public class RoadMonitoringServer extends AbstractApplication<TrafficManagementC
     public void onMessageReceived(ReceivedV2xMessage receivedV2xMessage) {
     }
 
-        @Override
+    @Override
     public void onCamBuilding(CamBuilder camBuilder) {
     }
 
