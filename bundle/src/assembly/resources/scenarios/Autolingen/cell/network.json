@@ -39,5 +39,29 @@
       "capacity": "42200 kbps"
     }
   },
-  "servers": []
+  "servers": [
+    {
+        "id": "RoadMonitor",
+        "uplink": {
+            "delay": {
+                "type": "ConstantDelay",
+                "delay": "200 ms"
+            },
+            "transmission": {
+                "lossProbability": 0.0
+            }
+        },
+        "downlink": {
+            "unicast": {
+                "delay": {
+                    "type": "ConstantDelay",
+                    "delay": "200 ms"
+                },
+                "transmission": {
+                    "lossProbability": 0.0
+                }
+            }
+        }
+    }
+  ]
 }

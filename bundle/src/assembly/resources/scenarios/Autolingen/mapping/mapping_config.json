@@ -27,6 +27,7 @@
   "tmcs": [
     {
       "name": "RoadMonitor",
+      "group": "RoadMonitor",
       "applications": [
         "org.eclipse.mosaic.app.playground.RoadMonitoringServer"
       ],
