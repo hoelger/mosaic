@@ -24,6 +24,18 @@
       }
     }
   ],
+  "tmcs": [
+    {
+      "name": "RoadMonitor",
+      "applications": [
+        "org.eclipse.mosaic.app.playground.RoadMonitoringServer"
+      ],
+      "inductionLoops": [
+        "detector_0"
+      ],
+      "laneAreaDetectors": []
+    }
+  ],
   "vehicles": [
     {
       "startingTime": "5 s",

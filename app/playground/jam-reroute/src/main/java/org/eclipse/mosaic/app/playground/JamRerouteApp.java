@@ -68,6 +68,8 @@ public class JamRerouteApp extends AbstractApplication<VehicleOperatingSystem> i
                 .power(50.)
                 .create());
         getLog().infoSimTime(this, "Activated AdHoc Module");
+        getOs().getCellModule().enable();
+        getLog().infoSimTime(this, "Activated Cell Module");
     }
 
     @Override
@@ -188,7 +190,7 @@ public class JamRerouteApp extends AbstractApplication<VehicleOperatingSystem> i
         RoutingResponse response = navigationModule.calculateRoutes(new RoutingPosition(navigationModule.getTargetPosition()), routingParameters);
         CandidateRoute newRoute = response.getBestRoute();
         if (newRoute != null) {
-            getLog().infoSimTime(this, "Sending Change Route Command at position: {}", denm.getSenderPosition());
+            getLog().infoSimTime(this, "Sending Change Route Command at position: {}", getOs().getPosition());
             navigationModule.switchRoute(newRoute);
         }
     }
