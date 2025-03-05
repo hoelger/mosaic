@@ -18,11 +18,14 @@ package org.eclipse.mosaic.fed.application.ambassador.simulation.perception.inde
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.PerceptionModel;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.SpatialObjectAdapter;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.TrafficLightObject;
+import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightGroup;
+import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightGroupInfo;
 import org.eclipse.mosaic.lib.spatial.KdTree;
 import org.eclipse.mosaic.lib.spatial.SpatialTreeTraverser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * {@link TrafficLightIndex} using a KD-Tree to store traffic lights.
@@ -35,29 +38,41 @@ public class TrafficLightTree extends TrafficLightIndex {
 
     private SpatialTreeTraverser.InRadius<TrafficLightObject> treeTraverser;
 
+    private boolean triggerNewTree = false;
+
     public TrafficLightTree(int bucketSize) {
         this.bucketSize = bucketSize;
     }
 
     @Override
     public List<TrafficLightObject> getTrafficLightsInRange(PerceptionModel perceptionModel) {
+        if (triggerNewTree) {
+            rebuildTree();
+        }
         treeTraverser.setup(perceptionModel.getBoundingBox().center,
                 perceptionModel.getBoundingBox().center.distanceSqrTo(perceptionModel.getBoundingBox().min)); // overestimating distance
         treeTraverser.traverse(trafficLightTree);
         return treeTraverser.getResult().stream().filter(perceptionModel::isInRange).toList();
     }
 
-    @Override
-    public void onTrafficLightsUpdate() {
-        if (trafficLightTree == null) { // initialize before first update is called
-            List<TrafficLightObject> allTrafficLights = new ArrayList<>(indexedTrafficLights.values());
-            trafficLightTree = new KdTree<>(new SpatialObjectAdapter<>(), allTrafficLights, bucketSize);
-            treeTraverser = new SpatialTreeTraverser.InRadius<>();
-        }
+    private void rebuildTree() {
+        List<TrafficLightObject> allTrafficLights = new ArrayList<>(indexedTrafficLights.values());
+        trafficLightTree = new KdTree<>(new SpatialObjectAdapter<>(), allTrafficLights, bucketSize);
+        treeTraverser = new SpatialTreeTraverser.InRadius<>();
+        triggerNewTree = false;
     }
 
     @Override
     public int getNumberOfTrafficLights() {
+        if (triggerNewTree) {
+            rebuildTree();
+        }
         return trafficLightTree.getRoot().size();
+    }
+
+    @Override
+    public void addTrafficLight(TrafficLightGroup trafficLightGroup) {
+        triggerNewTree = true;
+        super.addTrafficLight(trafficLightGroup);
     }
 }
