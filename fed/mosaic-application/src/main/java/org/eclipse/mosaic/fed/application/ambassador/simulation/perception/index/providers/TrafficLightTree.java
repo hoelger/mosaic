@@ -40,11 +40,6 @@ public class TrafficLightTree extends TrafficLightIndex {
     }
 
     @Override
-    public void initialize() {
-        // initialization at first update
-    }
-
-    @Override
     public List<TrafficLightObject> getTrafficLightsInRange(PerceptionModel perceptionModel) {
         treeTraverser.setup(perceptionModel.getBoundingBox().center,
                 perceptionModel.getBoundingBox().center.distanceSqrTo(perceptionModel.getBoundingBox().min)); // overestimating distance

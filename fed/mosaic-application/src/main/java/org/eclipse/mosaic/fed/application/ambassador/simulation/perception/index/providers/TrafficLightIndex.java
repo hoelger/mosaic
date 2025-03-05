@@ -44,11 +44,6 @@ public abstract class TrafficLightIndex {
     }
 
     /**
-     * Method called to initialize index after configuration has been read.
-     */
-    public abstract void initialize();
-
-    /**
      * Queries the {@link TrafficObjectIndex} and returns all traffic lights inside the {@link PerceptionModel}.
      */
     public abstract List<TrafficLightObject> getTrafficLightsInRange(PerceptionModel perceptionModel);
