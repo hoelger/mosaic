@@ -18,6 +18,11 @@ package org.eclipse.mosaic.fed.application.app.api.os;
 import org.eclipse.mosaic.fed.application.app.api.os.modules.CellCommunicative;
 import org.eclipse.mosaic.fed.application.app.api.os.modules.Routable;
 
+import org.eclipse.mosaic.lib.geo.GeoCircle;
+import org.eclipse.mosaic.lib.objects.electricity.ChargingStationData;
+
+import java.util.List;
+
 /**
  * Note: This interface is empty for now and currently only functions as a marker-interface. Future extensions
  * might add features.
@@ -25,4 +30,10 @@ import org.eclipse.mosaic.fed.application.app.api.os.modules.Routable;
 public interface ServerOperatingSystem
         extends OperatingSystem, Routable, CellCommunicative {
 
+    /**
+     * Locate all charging stations in the provided area.
+     *
+     * @param searchArea The area where the charging stations are searched
+     */
+    List<ChargingStationData> getChargingStationsInArea(GeoCircle searchArea);
 }

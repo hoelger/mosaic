@@ -15,13 +15,19 @@
 
 package org.eclipse.mosaic.fed.application.ambassador.simulation;
 
+import org.eclipse.mosaic.fed.application.ambassador.SimulationKernel;
 import org.eclipse.mosaic.fed.application.ambassador.ErrorRegister;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.CamBuilder;
+import org.eclipse.mosaic.fed.application.ambassador.simulation.electric.objects.ChargingStationObject;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.navigation.RoutingNavigationModule;
 import org.eclipse.mosaic.fed.application.app.api.navigation.RoutingModule;
 import org.eclipse.mosaic.fed.application.app.api.os.ServerOperatingSystem;
+import org.eclipse.mosaic.lib.geo.GeoCircle;
+import org.eclipse.mosaic.lib.objects.electricity.ChargingStationData;
 import org.eclipse.mosaic.lib.objects.mapping.ServerMapping;
 import org.eclipse.mosaic.lib.util.scheduling.Event;
+
+import java.util.List;
 
 /**
  * This class represents a Server in the application simulator.
@@ -82,5 +88,11 @@ public class ServerUnit extends AbstractSimulationUnit implements ServerOperatin
 
         getOsLog().error("Unknown event resource: {}", event);
         throw new RuntimeException(ErrorRegister.SERVER_UnknownEvent.toString());
+    }
+
+    public List<ChargingStationData> getChargingStationsInArea(GeoCircle searchArea) {
+        return SimulationKernel.SimulationKernel.getChargingStationIndex().getChargingStationsInCircle(searchArea)
+                .stream().map(ChargingStationObject::getChargingStationData)
+                .toList();
     }
 }
