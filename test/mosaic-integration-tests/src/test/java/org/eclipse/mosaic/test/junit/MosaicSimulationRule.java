@@ -247,12 +247,12 @@ public class MosaicSimulationRule extends TemporaryFolder {
             final MosaicSimulation.SimulationResult result = timeout(
                     () -> simulationToRun.runSimulation(scenarioExecutionDirectory, scenarioConfiguration)
             );
-            return logResult(simulation.getLogger(), result);
+            return logResult(simulation != null && simulation.getLogger() != null ? simulation.getLogger() : LOG, result);
         } catch (Throwable e) {
             MosaicSimulation.SimulationResult result = new MosaicSimulation.SimulationResult();
             result.exception = e;
             result.success = false;
-            return logResult(simulation != null ? simulation.getLogger() : LOG, result);
+            return logResult(simulation != null && simulation.getLogger() != null ? simulation.getLogger() : LOG, result);
         } finally {
             resetSingletons();
         }
