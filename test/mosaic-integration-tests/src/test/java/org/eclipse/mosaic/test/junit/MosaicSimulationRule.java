@@ -196,9 +196,12 @@ public class MosaicSimulationRule extends TemporaryFolder {
 
     public MosaicSimulation.SimulationResult executeSimulation(Path scenarioDirectory, String config) {
         try {
+            File f = scenarioDirectory.resolve(config).toFile();
+            if (!f.exists() || !f.isFile()) {
+                throw new InstantiationException("Scenario config file not found.");
+            }
             return executeSimulation(scenarioDirectory,
-                    new ObjectInstantiation<>(CScenario.class)
-                            .readFile(scenarioDirectory.resolve(config).toFile())
+                    new ObjectInstantiation<>(CScenario.class).readFile(f)
             );
         } catch (InstantiationException e) {
             LOG.error("", e);
@@ -290,7 +293,6 @@ public class MosaicSimulationRule extends TemporaryFolder {
         return logConfiguration;
     }
 
-
     protected void resetSingletons() {
         TestUtils.setPrivateField(GeoProjection.class, "instance", null);
         TestUtils.setPrivateField(IpResolver.class, "singleton", null);
@@ -305,8 +307,6 @@ public class MosaicSimulationRule extends TemporaryFolder {
         TestUtils.setPrivateField(SimulationKernel.SimulationKernel, "configuration", null);
         TestUtils.setPrivateField(SimulationKernel.SimulationKernel, "configurationPath", null);
     }
-
-
 
     /**
      * Executes the given {@link Callable} and throws an {@link AssertionError} if
