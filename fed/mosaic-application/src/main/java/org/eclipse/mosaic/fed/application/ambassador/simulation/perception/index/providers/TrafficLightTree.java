@@ -18,6 +18,7 @@ package org.eclipse.mosaic.fed.application.ambassador.simulation.perception.inde
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.PerceptionModel;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.SpatialObjectAdapter;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.TrafficLightObject;
+import org.eclipse.mosaic.lib.geo.GeoCircle;
 import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightGroup;
 import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightGroupInfo;
 import org.eclipse.mosaic.lib.spatial.KdTree;
@@ -42,23 +43,31 @@ public class TrafficLightTree extends TrafficLightIndex {
 
     public TrafficLightTree(int bucketSize) {
         this.bucketSize = bucketSize;
+        this.treeTraverser = new SpatialTreeTraverser.InRadius<>();
     }
 
     @Override
     public List<TrafficLightObject> getTrafficLightsInRange(PerceptionModel perceptionModel) {
+        GeoCircle c = new GeoCircle(
+                perceptionModel.getBoundingBox().center.toGeo(),
+                perceptionModel.getBoundingBox().center.distanceSqrTo(perceptionModel.getBoundingBox().min)
+        );
+        return this.getTrafficLightsInCircle(c).stream().filter(perceptionModel::isInRange).toList();
+    }
+
+    @Override
+    public List<TrafficLightObject> getTrafficLightsInCircle(GeoCircle circle) {
         if (triggerNewTree) {
             rebuildTree();
         }
-        treeTraverser.setup(perceptionModel.getBoundingBox().center,
-                perceptionModel.getBoundingBox().center.distanceSqrTo(perceptionModel.getBoundingBox().min)); // overestimating distance
+        treeTraverser.setup(circle.getCenter().toVector3d(), circle.getRadius());
         treeTraverser.traverse(trafficLightTree);
-        return treeTraverser.getResult().stream().filter(perceptionModel::isInRange).toList();
+        return treeTraverser.getResult();
     }
 
     private void rebuildTree() {
         List<TrafficLightObject> allTrafficLights = new ArrayList<>(indexedTrafficLights.values());
         trafficLightTree = new KdTree<>(new SpatialObjectAdapter<>(), allTrafficLights, bucketSize);
-        treeTraverser = new SpatialTreeTraverser.InRadius<>();
         triggerNewTree = false;
     }
 
