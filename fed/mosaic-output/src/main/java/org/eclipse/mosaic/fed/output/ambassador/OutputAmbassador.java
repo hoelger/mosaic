@@ -35,6 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -154,6 +155,8 @@ public class OutputAmbassador extends AbstractFederateAmbassador {
 
             // do not yet create output generators. This is done when the ambassadors initialize method is called
             return generatorLoader.values();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("Configuration file not found. Consider turning off the output ambassador in scenario_config.json", e);
         } catch (InternalFederateException | IllegalArgumentException | IllegalStateException | IOException e) {
             throw new RuntimeException(e);
         } catch (Exception ex) {
