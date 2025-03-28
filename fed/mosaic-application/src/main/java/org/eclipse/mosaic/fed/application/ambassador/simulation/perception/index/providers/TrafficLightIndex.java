@@ -19,6 +19,7 @@ import org.eclipse.mosaic.fed.application.ambassador.SimulationKernel;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.PerceptionModel;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.TrafficObjectIndex;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.TrafficLightObject;
+import org.eclipse.mosaic.lib.geo.GeoCircle;
 import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightGroup;
 import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightGroupInfo;
 import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightState;
@@ -47,6 +48,11 @@ public abstract class TrafficLightIndex {
      * Queries the {@link TrafficObjectIndex} and returns all traffic lights inside the {@link PerceptionModel}.
      */
     public abstract List<TrafficLightObject> getTrafficLightsInRange(PerceptionModel perceptionModel);
+
+    /**
+     * Queries the {@link TrafficObjectIndex} and returns all traffic lights inside the {@link org.eclipse.mosaic.lib.geo.GeoCircle}.
+     */
+    public abstract List<TrafficLightObject> getTrafficLightsInCircle(GeoCircle circle);
 
     /**
      * Adds traffic lights to the spatial index, as their positions are static it is sufficient
