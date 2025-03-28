@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -196,11 +197,15 @@ public class MosaicSimulationRule extends TemporaryFolder {
 
     public MosaicSimulation.SimulationResult executeSimulation(Path scenarioDirectory, String config) {
         try {
-            return executeSimulation(scenarioDirectory,
-                    new ObjectInstantiation<>(CScenario.class)
-                            .readFile(scenarioDirectory.resolve(config).toFile())
+            File f = scenarioDirectory.resolve(config).toFile();
+            if (!f.exists() || !f.isFile()) {
+                throw new FileNotFoundException("Scenario config file not found.");
+            }
+            return executeSimulation(
+                    scenarioDirectory,
+                    new ObjectInstantiation<>(CScenario.class).readFile(f)
             );
-        } catch (InstantiationException e) {
+        } catch (InstantiationException | FileNotFoundException e) {
             LOG.error("", e);
 
             MosaicSimulation.SimulationResult result = new MosaicSimulation.SimulationResult();
@@ -244,12 +249,12 @@ public class MosaicSimulationRule extends TemporaryFolder {
             final MosaicSimulation.SimulationResult result = timeout(
                     () -> simulationToRun.runSimulation(scenarioExecutionDirectory, scenarioConfiguration)
             );
-            return logResult(simulation.getLogger(), result);
+            return logResult(simulation != null && simulation.getLogger() != null ? simulation.getLogger() : LOG, result);
         } catch (Throwable e) {
             MosaicSimulation.SimulationResult result = new MosaicSimulation.SimulationResult();
             result.exception = e;
             result.success = false;
-            return logResult(simulation != null ? simulation.getLogger() : LOG, result);
+            return logResult(simulation != null && simulation.getLogger() != null ? simulation.getLogger() : LOG, result);
         } finally {
             resetSingletons();
         }
@@ -290,7 +295,6 @@ public class MosaicSimulationRule extends TemporaryFolder {
         return logConfiguration;
     }
 
-
     protected void resetSingletons() {
         TestUtils.setPrivateField(GeoProjection.class, "instance", null);
         TestUtils.setPrivateField(IpResolver.class, "singleton", null);
@@ -305,8 +309,6 @@ public class MosaicSimulationRule extends TemporaryFolder {
         TestUtils.setPrivateField(SimulationKernel.SimulationKernel, "configuration", null);
         TestUtils.setPrivateField(SimulationKernel.SimulationKernel, "configurationPath", null);
     }
-
-
 
     /**
      * Executes the given {@link Callable} and throws an {@link AssertionError} if
