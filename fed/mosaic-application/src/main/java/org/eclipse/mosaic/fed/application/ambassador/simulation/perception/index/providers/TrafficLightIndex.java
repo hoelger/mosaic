@@ -49,12 +49,6 @@ public abstract class TrafficLightIndex {
     public abstract List<TrafficLightObject> getTrafficLightsInRange(PerceptionModel perceptionModel);
 
     /**
-     * Abstract method to be implemented by the specific traffic light indexes.
-     * Shall contain functionality to be called before traffic lights are updated.
-     */
-    public abstract void onTrafficLightsUpdate();
-
-    /**
      * Adds traffic lights to the spatial index, as their positions are static it is sufficient
      * to store positional information only once.
      *
@@ -85,7 +79,6 @@ public abstract class TrafficLightIndex {
      * @param trafficLightGroupsToUpdate a list of information packages transmitted by the traffic simulator
      */
     public void updateTrafficLights(Map<String, TrafficLightGroupInfo> trafficLightGroupsToUpdate) {
-        onTrafficLightsUpdate();
         trafficLightGroupsToUpdate.forEach(
                 (trafficLightGroupId, trafficLightGroupInfo) -> {
                     List<TrafficLightState> trafficLightStates = trafficLightGroupInfo.getCurrentState();
