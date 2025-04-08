@@ -47,17 +47,13 @@ public class ChargingStationIndex {
 
     private boolean needsTreeUpdate = false;
 
-    public ChargingStationIndex(int bucketSize) {
-        this.bucketSize = bucketSize;
-        this.treeTraverser = new SpatialTreeTraverser.InRadius<>();
-    }
-
     /**
      * Inits a {@link ChargingStationIndex} with default bucket size of 20.
      * Bucket size describes the item capacity of one tree node.
      */
     public ChargingStationIndex() {
-        this(20);
+        this.bucketSize = 20;
+        this.treeTraverser = new SpatialTreeTraverser.InRadius<>();
     }
 
     /**
