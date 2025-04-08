@@ -228,7 +228,6 @@ public class SimplePerceptionModuleTest {
     @Test
     public void trafficLightsCanBePerceived() {
         setupTrafficLights(new MutableCartesianPoint(110, 100, 0));
-        trafficObjectIndex.updateTrafficLights(mock(Map.class)); // update needs to be called to initialize tree
 
         assertEquals(1, simplePerceptionModule.getTrafficLightsInRange().size());
         assertEquals(TrafficLightState.GREEN, simplePerceptionModule.getTrafficLightsInRange().get(0).getTrafficLightState());
