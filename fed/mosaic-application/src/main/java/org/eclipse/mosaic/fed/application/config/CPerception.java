@@ -17,7 +17,6 @@ package org.eclipse.mosaic.fed.application.config;
 
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.SumoIndex;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.TrafficLightIndex;
-import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.TrafficLightTree;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.VehicleGrid;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.VehicleIndex;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.VehicleTree;
@@ -132,7 +131,7 @@ public class CPerception implements Serializable {
         public int bucketSize = 20;
 
         public TrafficLightIndex create() {
-            return enabled ? new TrafficLightTree(bucketSize) : null;
+            return enabled ? new TrafficLightIndex(bucketSize) : null;
         }
     }
 

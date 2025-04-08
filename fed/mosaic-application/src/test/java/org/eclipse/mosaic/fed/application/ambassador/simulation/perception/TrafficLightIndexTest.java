@@ -23,7 +23,6 @@ import org.eclipse.mosaic.fed.application.ambassador.SimulationKernelRule;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.navigation.CentralNavigationComponent;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.TrafficLightObject;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.TrafficLightIndex;
-import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.TrafficLightTree;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
 import org.eclipse.mosaic.lib.geo.CartesianRectangle;
 import org.eclipse.mosaic.lib.geo.GeoCircle;
@@ -64,7 +63,7 @@ public class TrafficLightIndexTest {
     @Before
     public void before() {
         int BUCKET_SIZE = 20;
-        trafficLightIndex = new TrafficLightTree(BUCKET_SIZE);
+        trafficLightIndex = new TrafficLightIndex(BUCKET_SIZE);
         when(cpcMock.getScenarioBounds())
                 .thenReturn(new CartesianRectangle(new MutableCartesianPoint(0, 0, 0), new MutableCartesianPoint(1000, 1000, 0)));
     }
