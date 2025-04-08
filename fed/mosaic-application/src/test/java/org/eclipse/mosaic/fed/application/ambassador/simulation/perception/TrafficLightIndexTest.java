@@ -50,12 +50,10 @@ public class TrafficLightIndexTest {
 
     private TrafficLightIndex trafficLightIndex;
 
-    private final EventManager eventManagerMock = mock(EventManager.class);
     private final CentralPerceptionComponent cpcMock = mock(CentralPerceptionComponent.class);
-    private final CentralNavigationComponent cncMock = mock(CentralNavigationComponent.class);
 
     @Rule
-    public SimulationKernelRule simulationKernelRule = new SimulationKernelRule(eventManagerMock, null, cncMock, cpcMock);
+    public SimulationKernelRule simulationKernelRule = new SimulationKernelRule(null, null, null, cpcMock);
 
     @Rule
     public GeoProjectionRule projectionRule = new GeoProjectionRule(GeoPoint.latLon(52.5, 13.4));
