@@ -136,10 +136,6 @@ public class TrafficLightIndex {
      * @return the number of TLs
      */
     public int getNumberOfTrafficLights() {
-        if (triggerNewTree) {
-            rebuildTree();
-        }
-        return trafficLightTree.getRoot().size();
-        // return indexedTrafficLights.size();
+        return indexedTrafficLights.size();
     }
 }
