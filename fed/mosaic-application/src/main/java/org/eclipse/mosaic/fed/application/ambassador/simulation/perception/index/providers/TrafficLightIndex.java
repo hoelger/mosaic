@@ -18,46 +18,62 @@ package org.eclipse.mosaic.fed.application.ambassador.simulation.perception.inde
 import org.eclipse.mosaic.fed.application.ambassador.SimulationKernel;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.PerceptionModel;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.TrafficObjectIndex;
+import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.SpatialObjectAdapter;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.TrafficLightObject;
+import org.eclipse.mosaic.lib.geo.GeoCircle;
 import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightGroup;
 import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightGroupInfo;
 import org.eclipse.mosaic.lib.objects.trafficlight.TrafficLightState;
+import org.eclipse.mosaic.lib.spatial.KdTree;
+import org.eclipse.mosaic.lib.spatial.SpatialTreeTraverser;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class TrafficLightIndex {
+public class TrafficLightIndex {
 
     /**
      * Stores {@link TrafficLightObject}s for fast removal and position update.
      */
     final Map<String, TrafficLightObject> indexedTrafficLights = new HashMap<>();
 
-    /**
-     * Returns the number of TLs in the simulation.
-     *
-     * @return the number of TLs
-     */
-    public int getNumberOfTrafficLights() {
-        return indexedTrafficLights.size();
-    }
+    private final int bucketSize;
 
-    /**
-     * Method called to initialize index after configuration has been read.
-     */
-    public abstract void initialize();
+    private KdTree<TrafficLightObject> trafficLightTree;
+
+    private SpatialTreeTraverser.InRadius<TrafficLightObject> treeTraverser;
+
+    private boolean triggerNewTree = false;
+
+    public TrafficLightIndex(int bucketSize) {
+        this.bucketSize = bucketSize;
+        this.treeTraverser = new SpatialTreeTraverser.InRadius<>();
+    }
 
     /**
      * Queries the {@link TrafficObjectIndex} and returns all traffic lights inside the {@link PerceptionModel}.
      */
-    public abstract List<TrafficLightObject> getTrafficLightsInRange(PerceptionModel perceptionModel);
+    public List<TrafficLightObject> getTrafficLightsInRange(PerceptionModel perceptionModel) {
+        GeoCircle c = new GeoCircle(
+                perceptionModel.getBoundingBox().center.toGeo(),
+                perceptionModel.getBoundingBox().center.distanceSqrTo(perceptionModel.getBoundingBox().min)
+        );
+        return this.getTrafficLightsInCircle(c).stream().filter(perceptionModel::isInRange).toList();
+    }
 
     /**
-     * Abstract method to be implemented by the specific traffic light indexes.
-     * Shall contain functionality to be called before traffic lights are updated.
+     * Queries the {@link TrafficObjectIndex} and returns all traffic lights inside the {@link org.eclipse.mosaic.lib.geo.GeoCircle}.
      */
-    public abstract void onTrafficLightsUpdate();
+    public List<TrafficLightObject> getTrafficLightsInCircle(GeoCircle circle) {
+        if (triggerNewTree) {
+            rebuildTree();
+        }
+        treeTraverser.setup(circle.getCenter().toVector3d(), circle.getRadius());
+        treeTraverser.traverse(trafficLightTree);
+        return treeTraverser.getResult();
+    }
 
     /**
      * Adds traffic lights to the spatial index, as their positions are static it is sufficient
@@ -66,6 +82,7 @@ public abstract class TrafficLightIndex {
      * @param trafficLightGroup the registration interaction
      */
     public void addTrafficLight(TrafficLightGroup trafficLightGroup) {
+        triggerNewTree = true;
         String trafficLightGroupId = trafficLightGroup.getGroupId();
         trafficLightGroup.getTrafficLights().forEach(
                 (trafficLight) -> {
@@ -90,7 +107,6 @@ public abstract class TrafficLightIndex {
      * @param trafficLightGroupsToUpdate a list of information packages transmitted by the traffic simulator
      */
     public void updateTrafficLights(Map<String, TrafficLightGroupInfo> trafficLightGroupsToUpdate) {
-        onTrafficLightsUpdate();
         trafficLightGroupsToUpdate.forEach(
                 (trafficLightGroupId, trafficLightGroupInfo) -> {
                     List<TrafficLightState> trafficLightStates = trafficLightGroupInfo.getCurrentState();
@@ -106,5 +122,20 @@ public abstract class TrafficLightIndex {
 
     private String calculateTrafficLightId(String trafficLightGroupId, int trafficLightIndex) {
         return trafficLightGroupId + "_" + trafficLightIndex;
+    }
+
+    private void rebuildTree() {
+        List<TrafficLightObject> allTrafficLights = new ArrayList<>(indexedTrafficLights.values());
+        trafficLightTree = new KdTree<>(new SpatialObjectAdapter<>(), allTrafficLights, bucketSize);
+        triggerNewTree = false;
+    }
+
+    /**
+     * Returns the number of TLs in the simulation.
+     *
+     * @return the number of TLs
+     */
+    public int getNumberOfTrafficLights() {
+        return indexedTrafficLights.size();
     }
 }

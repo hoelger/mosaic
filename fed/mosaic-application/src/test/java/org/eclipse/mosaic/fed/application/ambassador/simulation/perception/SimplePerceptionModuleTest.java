@@ -28,7 +28,7 @@ import org.eclipse.mosaic.fed.application.ambassador.simulation.VehicleUnit;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.navigation.CentralNavigationComponent;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.TrafficObjectIndex;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.objects.VehicleObject;
-import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.TrafficLightTree;
+import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.TrafficLightIndex;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.VehicleGrid;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.VehicleIndex;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.index.providers.VehicleTree;
@@ -122,7 +122,7 @@ public class SimplePerceptionModuleTest {
 
         trafficObjectIndex = new TrafficObjectIndex.Builder(mock((Logger.class)))
                 .withVehicleIndex(vehicleIndex)
-                .withTrafficLightIndex(new TrafficLightTree(20))
+                .withTrafficLightIndex(new TrafficLightIndex(20))
                 .build();
         // setup cpc
         when(cpcMock.getTrafficObjectIndex()).thenReturn(trafficObjectIndex);
@@ -228,7 +228,6 @@ public class SimplePerceptionModuleTest {
     @Test
     public void trafficLightsCanBePerceived() {
         setupTrafficLights(new MutableCartesianPoint(110, 100, 0));
-        trafficObjectIndex.updateTrafficLights(mock(Map.class)); // update needs to be called to initialize tree
 
         assertEquals(1, simplePerceptionModule.getTrafficLightsInRange().size());
         assertEquals(TrafficLightState.GREEN, simplePerceptionModule.getTrafficLightsInRange().get(0).getTrafficLightState());

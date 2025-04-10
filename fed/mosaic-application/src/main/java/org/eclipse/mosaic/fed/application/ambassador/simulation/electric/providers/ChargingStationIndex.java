@@ -47,16 +47,13 @@ public class ChargingStationIndex {
 
     private boolean needsTreeUpdate = false;
 
-    public ChargingStationIndex(int bucketSize) {
-        this.bucketSize = bucketSize;
-    }
-
     /**
      * Inits a {@link ChargingStationIndex} with default bucket size of 20.
      * Bucket size describes the item capacity of one tree node.
      */
     public ChargingStationIndex() {
         this.bucketSize = 20;
+        this.treeTraverser = new SpatialTreeTraverser.InRadius<>();
     }
 
     /**
@@ -96,7 +93,6 @@ public class ChargingStationIndex {
 
         List<ChargingStationObject> allChargingStations = new ArrayList<>(indexedChargingStations.values());
         chargingStationTree = new KdTree<>(new SpatialObjectAdapter<>(), allChargingStations, bucketSize);
-        treeTraverser = new SpatialTreeTraverser.InRadius<>();
         needsTreeUpdate = false;
     }
 
