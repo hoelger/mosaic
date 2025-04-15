@@ -371,41 +371,6 @@ public class Database {
     }
 
     /**
-     * This function is looking for nodes at the map borders
-     * (all from_nodes from connections which appear only in one entry).
-     *
-     * @return List of node IDs, referring to Nodes which are the starting point of only one way.
-     */
-    @Nonnull
-    public List<String> getBorderNodeIds() {
-
-        // only build if not already done
-        if (borderNodes == null) {
-
-            borderNodes = new ArrayList<>();
-
-            // group all items according to their from node for counting
-            HashMap<String, Integer> groupMap = new HashMap<>();
-            for (Connection conn : connections.values()) {
-                // make sure there is an entry in the map
-                groupMap.put(
-                        conn.getFrom().getId(),
-                        groupMap.getOrDefault(conn.getFrom().getId(), 0) + 1
-                );
-            }
-
-            // and return all groups with size 1
-            for (Map.Entry<String, Integer> nodeEntry : groupMap.entrySet()) {
-                if (nodeEntry.getValue() == 1) {
-                    borderNodes.add(nodeEntry.getKey());
-                }
-            }
-        }
-
-        return borderNodes;
-    }
-
-    /**
      * Builder class for simple generation for a new {@link Database}.
      */
     public static class Builder {
