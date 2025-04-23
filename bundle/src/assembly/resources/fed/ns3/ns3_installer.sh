@@ -54,7 +54,7 @@ required_libraries=( "libprotobuf-dev >= 3.7.0" "libxml2-dev" "libsqlite3-dev" )
 ns3_version="3.36.1"
 
 ####### automated parameters #############
-premake5_url="https://github.com/premake/premake-core/releases/download/v5.0.0-alpha15/premake-5.0.0-alpha15-linux.tar.gz"
+premake5_url="https://github.com/premake/premake-core/releases/download/v5.0.0-beta1/premake-5.0.0-beta1-linux.tar.gz"
 premake5_tar="$(basename "$premake5_url")"
 premake5_autoconf_url="https://github.com/Blizzard/premake-autoconf/archive/master.zip"
 premake5_autoconf_zip="$(basename "$premake5_autoconf_url")"
