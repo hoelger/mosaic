@@ -50,7 +50,7 @@ omnet_federate_url="https://github.com/mosaic-addons/omnetpp-federate/archive/re
 omnet_src_url="https://github.com/omnetpp/omnetpp/releases/download/omnetpp-5.5.1/omnetpp-5.5.1-src-linux.tgz"
 inet_src_url="https://github.com/inet-framework/inet/releases/download/v4.1.1/inet-4.1.1-src.tgz"
 
-premake5_url="https://github.com/premake/premake-core/releases/download/v5.0.0-alpha15/premake-5.0.0-alpha15-linux.tar.gz"
+premake5_url="https://github.com/premake/premake-core/releases/download/v5.0.0-beta1/premake-5.0.0-beta1-linux.tar.gz"
 premake5_tar="$(basename "$premake5_url")"
 premake5_autoconf_url="https://github.com/Blizzard/premake-autoconf/archive/master.zip"
 premake5_autoconf_zip="$(basename "$premake5_autoconf_url")"
