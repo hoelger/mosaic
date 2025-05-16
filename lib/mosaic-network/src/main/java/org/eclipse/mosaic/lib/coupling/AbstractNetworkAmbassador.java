@@ -608,7 +608,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             );
             // Write the message onto the channel and to the federate
             // Then wait for ack
-            int ack;
+            int ack = CMD.UNDEF;
             if (dac.getType() == RoutingType.AD_HOC_TOPOCAST) {
                 if (dac.getAddress().isBroadcast()) {
                     ack = ambassadorFederateChannel.writeSendMessage(
