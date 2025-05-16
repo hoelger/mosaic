@@ -15,10 +15,6 @@ public final class ClientServerChannelProtos {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   /**
-   * <pre>
-   *--&gt; Communication
-   * </pre>
-   *
    * Protobuf enum {@code ClientServerChannelSpace.RadioChannel}
    */
   public enum RadioChannel
@@ -185,8 +181,7 @@ public final class ClientServerChannelProtos {
   }
   /**
    * <pre>
-   *--&gt; Commands
-   *TODO: tag numbers from 1 to 15 take only one byte in protobuf. maybe optimize here?
+   * Optional: tag numbers from 1 to 15 would take only one byte in protobuf. maybe optimize here?
    * </pre>
    *
    * Protobuf type {@code ClientServerChannelSpace.CommandMessage}
@@ -289,10 +284,6 @@ public final class ClientServerChannelProtos {
        */
       UNDEF(-1),
       /**
-       * <pre>
-       *--&gt; Federation management
-       * </pre>
-       *
        * <code>INIT = 1;</code>
        */
       INIT(1),
@@ -301,10 +292,6 @@ public final class ClientServerChannelProtos {
        */
       SHUT_DOWN(2),
       /**
-       * <pre>
-       *--&gt; Update messages
-       * </pre>
-       *
        * <code>UPDATE_NODE = 10;</code>
        */
       UPDATE_NODE(10),
@@ -313,10 +300,6 @@ public final class ClientServerChannelProtos {
        */
       REMOVE_NODE(11),
       /**
-       * <pre>
-       *--&gt; Advance Time
-       * </pre>
-       *
        * <code>ADVANCE_TIME = 20;</code>
        */
       ADVANCE_TIME(20),
@@ -329,10 +312,6 @@ public final class ClientServerChannelProtos {
        */
       MSG_RECV(22),
       /**
-       * <pre>
-       *--&gt; Communication
-       * </pre>
-       *
        * <code>MSG_SEND = 30;</code>
        */
       MSG_SEND(30),
@@ -341,10 +320,6 @@ public final class ClientServerChannelProtos {
        */
       CONF_RADIO(31),
       /**
-       * <pre>
-       *--&gt; General
-       * </pre>
-       *
        * <code>END = 40;</code>
        */
       END(40),
@@ -359,10 +334,6 @@ public final class ClientServerChannelProtos {
        */
       public static final int UNDEF_VALUE = -1;
       /**
-       * <pre>
-       *--&gt; Federation management
-       * </pre>
-       *
        * <code>INIT = 1;</code>
        */
       public static final int INIT_VALUE = 1;
@@ -371,10 +342,6 @@ public final class ClientServerChannelProtos {
        */
       public static final int SHUT_DOWN_VALUE = 2;
       /**
-       * <pre>
-       *--&gt; Update messages
-       * </pre>
-       *
        * <code>UPDATE_NODE = 10;</code>
        */
       public static final int UPDATE_NODE_VALUE = 10;
@@ -383,10 +350,6 @@ public final class ClientServerChannelProtos {
        */
       public static final int REMOVE_NODE_VALUE = 11;
       /**
-       * <pre>
-       *--&gt; Advance Time
-       * </pre>
-       *
        * <code>ADVANCE_TIME = 20;</code>
        */
       public static final int ADVANCE_TIME_VALUE = 20;
@@ -399,10 +362,6 @@ public final class ClientServerChannelProtos {
        */
       public static final int MSG_RECV_VALUE = 22;
       /**
-       * <pre>
-       *--&gt; Communication
-       * </pre>
-       *
        * <code>MSG_SEND = 30;</code>
        */
       public static final int MSG_SEND_VALUE = 30;
@@ -411,10 +370,6 @@ public final class ClientServerChannelProtos {
        */
       public static final int CONF_RADIO_VALUE = 31;
       /**
-       * <pre>
-       *--&gt; General
-       * </pre>
-       *
        * <code>END = 40;</code>
        */
       public static final int END_VALUE = 40;
@@ -690,8 +645,7 @@ public final class ClientServerChannelProtos {
     }
     /**
      * <pre>
-     *--&gt; Commands
-     *TODO: tag numbers from 1 to 15 take only one byte in protobuf. maybe optimize here?
+     * Optional: tag numbers from 1 to 15 would take only one byte in protobuf. maybe optimize here?
      * </pre>
      *
      * Protobuf type {@code ClientServerChannelSpace.CommandMessage}
@@ -996,10 +950,6 @@ public final class ClientServerChannelProtos {
         int index);
   }
   /**
-   * <pre>
-   *--&gt; Update messages
-   * </pre>
-   *
    * Protobuf type {@code ClientServerChannelSpace.UpdateNode}
    */
   public static final class UpdateNode extends
@@ -2251,10 +2201,6 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
-     * <pre>
-     *--&gt; Update messages
-     * </pre>
-     *
      * Protobuf type {@code ClientServerChannelSpace.UpdateNode}
      */
     public static final class Builder extends
@@ -2871,10 +2817,6 @@ public final class ClientServerChannelProtos {
     long getEndTime();
   }
   /**
-   * <pre>
-   *--&gt; Initialization process
-   * </pre>
-   *
    * Protobuf type {@code ClientServerChannelSpace.InitMessage}
    */
   public static final class InitMessage extends
@@ -3188,10 +3130,6 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
-     * <pre>
-     *--&gt; Initialization process
-     * </pre>
-     *
      * Protobuf type {@code ClientServerChannelSpace.InitMessage}
      */
     public static final class Builder extends
@@ -4036,10 +3974,6 @@ public final class ClientServerChannelProtos {
     long getTime();
   }
   /**
-   * <pre>
-   *--&gt; Time advance
-   * </pre>
-   *
    * Protobuf type {@code ClientServerChannelSpace.TimeMessage}
    */
   public static final class TimeMessage extends
@@ -4308,10 +4242,6 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
-     * <pre>
-     *--&gt; Time advance
-     * </pre>
-     *
      * Protobuf type {@code ClientServerChannelSpace.TimeMessage}
      */
     public static final class Builder extends
