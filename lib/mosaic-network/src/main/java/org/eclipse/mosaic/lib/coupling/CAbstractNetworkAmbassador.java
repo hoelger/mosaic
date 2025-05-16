@@ -65,7 +65,7 @@ public final class CAbstractNetworkAmbassador {
 
     static class CMessages {
 
-        private CDestinationAdress destinationAddress = new CDestinationAdress();
+        private CDestinationAddress destinationAddress = new CDestinationAddress();
         private Map<DestinationType, Boolean> routingType = new HashMap<>();
         private Map<ProtocolType, Boolean> protocolType = new HashMap<>();
 
@@ -82,7 +82,7 @@ public final class CAbstractNetworkAmbassador {
     }
 
     @SuppressWarnings("FieldCanBeLocal")
-    static class CDestinationAdress {
+    static class CDestinationAddress {
         private boolean ipv4UnicastAddress = false;
         private boolean ipv4BroadcastAddress = true;
         private boolean ipv4AnycastAddress = false;
