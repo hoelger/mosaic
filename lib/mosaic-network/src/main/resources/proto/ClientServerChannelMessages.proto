@@ -19,21 +19,28 @@ option java_package = "org.eclipse.mosaic.lib.coupling";
 option java_outer_classname = "ClientServerChannelProtos";
 
 // Optional: tag numbers from 1 to 15 would take only one byte in protobuf. maybe optimize here?
+// Attention: After refactoring we keep the now non-sequential numbers, for backwards compatibility.
 message CommandMessage {
     enum CommandType {
         UNDEF = -1;
-        INIT = 1;
-        SHUT_DOWN = 2;
-        UPDATE_NODE = 10;
-        REMOVE_NODE = 11;
-        ADVANCE_TIME = 20;
+        INIT = 1;               // once at start up
+        SHUT_DOWN = 2;          // once at shut down
+        SUCCESS = 41;           // used as 'cmd ack'
         NEXT_EVENT = 21;
-        MSG_RECV = 22;
-        MSG_SEND = 30;
+        ADVANCE_TIME = 20;
+        END = 40;               // used as 'time advance done'
+
+        /* Entities... */
+        UPDATE_NODE = 10;
+
+        /* Communication... */
         CONF_RADIO = 31;
-        END = 40;
-        SUCCESS = 41;
-    }   
+        MSG_SEND = 30;
+        MSG_RECV = 22;
+
+        /* Deprecated... */
+        DEPRECATED_REMOVE_NODE = 11; // Use UpdateType.REMOVE_NODE instead
+    }
     required CommandType command_type = 1;
 }
 
