@@ -80,19 +80,9 @@ public class ClientServerChannel {
         public final static int SHUT_DOWN = 4;
 
         /**
-         * Update node properties.
+         * Success message, returned by federate upon successful execution of command.
          */
-        public static final int UPDATE_NODE = 10;
-
-        /**
-         * Delete network nodes.
-         */
-        public static final int REMOVE_NODE = 11;
-
-        /**
-         * Advance simulation time.
-         */
-        public final static int ADVANCE_TIME = 20;
+        public final static int SUCCESS = 41;
 
         /**
          * Scheduling request at the next event time.
@@ -100,19 +90,9 @@ public class ClientServerChannel {
         public final static int NEXT_EVENT = 21;
 
         /**
-         * A virtual node has received a message.
+         * Advance simulation time.
          */
-        public final static int MSG_RECV = 22;
-
-        /**
-         * A virtual node has sent a message.
-         */
-        public static final int MSG_SEND = 30;
-
-        /**
-         * Configure radio.
-         */
-        public static final int CONF_RADIO = 31;
+        public final static int ADVANCE_TIME = 20;
 
         /**
          * Termination of steps or lists.
@@ -120,9 +100,29 @@ public class ClientServerChannel {
         public static final int END = 40;
 
         /**
-         * Success message, returned by federate upon successful execution of command.
+         * Update node properties.
          */
-        public final static int SUCCESS = 41;
+        public static final int UPDATE_NODE = 10;
+
+        /**
+         * Configure radio.
+         */
+        public static final int CONF_RADIO = 31;
+
+        /**
+         * A virtual node has sent a message.
+         */
+        public static final int MSG_SEND = 30;
+
+        /**
+         * A virtual node has received a message.
+         */
+        public final static int MSG_RECV = 22;
+
+        /**
+         * Deprecated: Delete network nodes.
+         */
+        public static final int DEPRECATED_REMOVE_NODE = 11;
     }
 
     /**
@@ -521,15 +521,15 @@ public class ClientServerChannel {
         return switch (protoCmd) {
             case INIT -> CMD.INIT;
             case SHUT_DOWN -> CMD.SHUT_DOWN;
-            case UPDATE_NODE -> CMD.UPDATE_NODE;
-            case REMOVE_NODE -> CMD.REMOVE_NODE;
-            case ADVANCE_TIME -> CMD.ADVANCE_TIME;
-            case NEXT_EVENT -> CMD.NEXT_EVENT;
-            case MSG_RECV -> CMD.MSG_RECV;
-            case MSG_SEND -> CMD.MSG_SEND;
-            case CONF_RADIO -> CMD.CONF_RADIO;
-            case END -> CMD.END;
             case SUCCESS -> CMD.SUCCESS;
+            case NEXT_EVENT -> CMD.NEXT_EVENT;
+            case ADVANCE_TIME -> CMD.ADVANCE_TIME;
+            case END -> CMD.END;
+            case UPDATE_NODE -> CMD.UPDATE_NODE;
+            case CONF_RADIO -> CMD.CONF_RADIO;
+            case MSG_SEND -> CMD.MSG_SEND;
+            case MSG_RECV -> CMD.MSG_RECV;
+            case DEPRECATED_REMOVE_NODE -> CMD.DEPRECATED_REMOVE_NODE;
             default -> CMD.UNDEF;
         };
     }
@@ -538,15 +538,15 @@ public class ClientServerChannel {
         return switch (cmd) {
             case CMD.INIT -> CommandType.INIT;
             case CMD.SHUT_DOWN -> CommandType.SHUT_DOWN;
-            case CMD.UPDATE_NODE -> CommandType.UPDATE_NODE;
-            case CMD.REMOVE_NODE -> CommandType.REMOVE_NODE;
-            case CMD.ADVANCE_TIME -> CommandType.ADVANCE_TIME;
-            case CMD.NEXT_EVENT -> CommandType.NEXT_EVENT;
-            case CMD.MSG_RECV -> CommandType.MSG_RECV;
-            case CMD.MSG_SEND -> CommandType.MSG_SEND;
-            case CMD.CONF_RADIO -> CommandType.CONF_RADIO;
-            case CMD.END -> CommandType.END;
             case CMD.SUCCESS -> CommandType.SUCCESS;
+            case CMD.NEXT_EVENT -> CommandType.NEXT_EVENT;
+            case CMD.ADVANCE_TIME -> CommandType.ADVANCE_TIME;
+            case CMD.END -> CommandType.END;
+            case CMD.UPDATE_NODE -> CommandType.UPDATE_NODE;
+            case CMD.CONF_RADIO -> CommandType.CONF_RADIO;
+            case CMD.MSG_SEND -> CommandType.MSG_SEND;
+            case CMD.MSG_RECV -> CommandType.MSG_RECV;
+            case CMD.DEPRECATED_REMOVE_NODE -> CommandType.DEPRECATED_REMOVE_NODE;
             default -> CommandType.UNDEF;
         };
     }
