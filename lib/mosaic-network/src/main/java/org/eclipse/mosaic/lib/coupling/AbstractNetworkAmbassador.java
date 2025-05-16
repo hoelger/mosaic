@@ -25,6 +25,7 @@ import org.eclipse.mosaic.interactions.traffic.VehicleUpdates;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.CMD;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.NodeDataContainer;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.ReceiveMessageContainer;
+import org.eclipse.mosaic.lib.enums.RoutingType;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
 import org.eclipse.mosaic.lib.geo.GeoPoint;
 import org.eclipse.mosaic.lib.objects.UnitData;
@@ -607,13 +608,38 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             );
             // Write the message onto the channel and to the federate
             // Then wait for ack
-            int ack = ambassadorFederateChannel.writeSendMessage(
-                    interaction.getTime(),
-                    sourceId,
-                    interaction.getMessage().getId(),
-                    interaction.getMessage().getPayload().getEffectiveLength(),
-                    dac
-            );
+            int ack;
+            if (dac.getType() == RoutingType.AD_HOC_TOPOCAST) {
+                if (dac.getAddress().isBroadcast()) {
+                    ack = ambassadorFederateChannel.writeSendMessage(
+                            interaction.getTime(),
+                            sourceId,
+                            interaction.getMessage().getId(),
+                            interaction.getMessage().getPayload().getEffectiveLength(),
+                            dac
+                    );
+                } else {
+                    throw new InternalFederateException(
+                        String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
+                    );
+                }
+            }
+            else if (dac.getType() == RoutingType.CELL_TOPOCAST) {
+                if (dac.getAddress().isUnicast()) {
+                    // TODO NOW
+                } else {
+                    throw new InternalFederateException(
+                        String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
+                    );
+                }
+            }
+            else {
+                // Enable for fail hard and early
+                throw new InternalFederateException(
+                    String.format("This V2XMessage requires a destination type (%s) currently not supported by this network simulator.", dac.getType())
+                );
+            }
+
             if (CMD.SUCCESS != ack) {
                 log.error(
                         "Could not insert V2X message into network: {}",
