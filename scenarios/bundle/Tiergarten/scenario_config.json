@@ -1,7 +1,7 @@
 {
     "simulation": {
         "id": "Tiergarten",
-        "duration": "180s",
+        "duration": "3s",
         "randomSeed": 268965854,
         "projection": {
             "centerCoordinates": {
@@ -27,8 +27,8 @@
         "application": true,
         "cell": false,
         "environment": true,
-        "sns": true,
-        "ns3": false,
+        "sns": false,
+        "ns3": true,
         "omnetpp": false,
         "output": true,
         "sumo": true
