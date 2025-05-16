@@ -18,7 +18,7 @@ package org.eclipse.mosaic.lib.enums;
 /**
  * Enumeration of destination types.
  */
-public enum DestinationType {
+public enum RoutingType {
     // ad hoc types
     AD_HOC_GEOCAST,
     AD_HOC_TOPOCAST,
