@@ -389,7 +389,7 @@ deploy_ns3_federate()
     log "Deploy ns3-federate"
     cd $ns3_installation_path
     mv ./federate/bin/ns3-federate .
-    cp -f ./federate/run_from_ns3installer.sh ./run.sh
+    cp -f ./federate/run_from_mosaic.sh ./run.sh
     chmod +x ./run.sh
 }
 
