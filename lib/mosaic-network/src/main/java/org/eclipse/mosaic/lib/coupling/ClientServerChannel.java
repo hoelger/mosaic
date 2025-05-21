@@ -59,10 +59,6 @@ import java.util.List;
  */
 public class ClientServerChannel {
 
-    public String getLastStatusMessage() {
-        return lastStatusMessage;
-    }
-
     public static final class CMD {
         /**
          * Undefined Message.
@@ -166,11 +162,6 @@ public class ClientServerChannel {
      * Logger (not yet used).
      *///TODO: implement usage
     final private Logger log;
-
-    /**
-     * Last message from the federate.
-     */  //TODO: implement usage
-    private String lastStatusMessage = "";
 
     /**
      * Constructor.

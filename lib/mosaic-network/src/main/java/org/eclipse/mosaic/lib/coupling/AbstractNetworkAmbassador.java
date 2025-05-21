@@ -308,9 +308,9 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         try {
             // 1st Handshake: (1) Ambassador sends INIT (2) Ambassador sends times, (3) Federate sends SUCCESS
             if (CMD.SUCCESS != ambassadorFederateChannel.writeInitBody(startTime, endTime)) {
-                log.error("Could not initialize: " + federateAmbassadorChannel.getLastStatusMessage());
+                log.error("Could not initialize.");
                 throw new InternalFederateException(
-                        "Error in " + federateName + ": " + federateAmbassadorChannel.getLastStatusMessage()
+                        "Error in " + federateName + ": Could not initialize"
                 );
             }
             log.info("Init simulation with startTime={}, stopTime={}", TIME.format(startTime), TIME.format(endTime));
@@ -537,10 +537,8 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     }
                 }
                 if (CMD.SUCCESS != ambassadorFederateChannel.writeUpdatePositionsMessage(time, nodesToUpdate)) {
-                    LoggerFactory.getLogger(this.getClass()).error(
-                            "Could not update nodes: " + federateAmbassadorChannel.getLastStatusMessage()
-                    );
-                    throw new InternalFederateException("Could not update nodes: " + federateAmbassadorChannel.getLastStatusMessage());
+                    LoggerFactory.getLogger(this.getClass()).error("Could not update nodes.");
+                    throw new InternalFederateException("Error in " + federateName + ": Could not update nodes");
                 }
             }
         } catch (IOException | InternalFederateException e) {
@@ -620,33 +618,31 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     );
                 } else {
                     throw new InternalFederateException(
-                        String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
+                            String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
                     );
                 }
-            }
-            else if (dac.getType() == RoutingType.CELL_TOPOCAST) {
+            } else if (dac.getType() == RoutingType.CELL_TOPOCAST) {
                 if (dac.getAddress().isUnicast()) {
                     // TODO NOW
                 } else {
                     throw new InternalFederateException(
-                        String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
+                            String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
                     );
                 }
-            }
-            else {
+            } else {
                 // Enable for fail hard and early
                 throw new InternalFederateException(
-                    String.format("This V2XMessage requires a destination type (%s) currently not supported by this network simulator.", dac.getType())
+                        String.format("This V2XMessage requires a destination type (%s) currently not supported by this network simulator.", dac.getType())
                 );
             }
 
             if (CMD.SUCCESS != ack) {
                 log.error(
-                        "Could not insert V2X message into network: {}",
-                        federateAmbassadorChannel.getLastStatusMessage()
+                        "Could not insert V2X message into network. Return status: {}",
+                        ack
                 );
                 throw new InternalFederateException(
-                        "Error in " + federateName + federateAmbassadorChannel.getLastStatusMessage()
+                        "Error in " + federateName + ": Could not insert V2X message into network"
                 );
             }
         } catch (IOException | InternalFederateException e) {
@@ -691,9 +687,8 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
 
         try {
             if (CMD.SUCCESS != ambassadorFederateChannel.writeRemoveNodesMessage(time, Lists.newArrayList(nodeToRemove))) {
-                throw new InternalFederateException(
-                        "Could not remove nodes: " + federateAmbassadorChannel.getLastStatusMessage()
-                );
+                log.error("Could not remove nodes.");
+                throw new InternalFederateException("Error in " + federateName + ": Could not remove nodes");
             }
         } catch (IOException | InternalFederateException e) {
             log.error("{}, time={}", e.getMessage(), TIME.format(interaction.getTime()));
@@ -750,10 +745,8 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 nodesToAdd.add(new NodeDataContainer(id, virtualNode.position));  // Add TL to the list
                 // Let channel send list and get an acknowledgement
                 if (CMD.SUCCESS != ambassadorFederateChannel.writeAddRsuNodeMessage(time, nodesToAdd)) {
-                    log.error("Could not add new RSU: {}", federateAmbassadorChannel.getLastStatusMessage());
-                    throw new InternalFederateException(
-                            "Error in " + federateName + ": " + federateAmbassadorChannel.getLastStatusMessage()
-                    );
+                    log.error("Could not add new RSU.");
+                    throw new InternalFederateException("Error in " + federateName + ": Could not add new RSU");
                 }
                 log.info(
                         "Added RSU ID[int={}, ext={}] at projected position={} time={}",
@@ -777,9 +770,9 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 int id = simulatedNodes.toExternalId(nodeId);
                 nodesToAdd.add(new NodeDataContainer(id, registeredNode.position));
                 if (CMD.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, nodesToAdd)) {
-                    log.error("Could not add new vehicles: {}", federateAmbassadorChannel.getLastStatusMessage());
+                    log.error("Could not add new vehicles.");
                     throw new InternalFederateException(
-                            "Error in " + federateName + ": " + federateAmbassadorChannel.getLastStatusMessage()
+                            "Error in " + federateName + ": Could not add new vehicles."
                     );
                 }
                 log.info(
@@ -852,12 +845,11 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 // actually write the data to the federate
                 if (CMD.SUCCESS != ambassadorFederateChannel.writeConfigMessage(time, interactionId, externalId, configuration)) {
                     LoggerFactory.getLogger(this.getClass()).error(
-                            "Could not configure node {}s radio: {}",
-                            configuration.getNodeId(),
-                            federateAmbassadorChannel.getLastStatusMessage()
+                            "Could not configure node {}s radio",
+                            configuration.getNodeId()
                     );
                     throw new InternalFederateException(
-                            "Error in " + federateName + federateAmbassadorChannel.getLastStatusMessage()
+                            "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
                     );
                 }
             } else {
