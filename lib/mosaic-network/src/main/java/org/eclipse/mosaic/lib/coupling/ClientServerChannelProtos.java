@@ -8570,12 +8570,12 @@ public final class ClientServerChannelProtos {
       int getIpAddress();
 
       /**
-       * <code>required uint32 ttl = 2;</code>
+       * <code>optional uint32 ttl = 2;</code>
        * @return Whether the ttl field is set.
        */
       boolean hasTtl();
       /**
-       * <code>required uint32 ttl = 2;</code>
+       * <code>optional uint32 ttl = 2;</code>
        * @return The ttl.
        */
       int getTtl();
@@ -8691,7 +8691,7 @@ public final class ClientServerChannelProtos {
       public static final int TTL_FIELD_NUMBER = 2;
       private int ttl_;
       /**
-       * <code>required uint32 ttl = 2;</code>
+       * <code>optional uint32 ttl = 2;</code>
        * @return Whether the ttl field is set.
        */
       @java.lang.Override
@@ -8699,7 +8699,7 @@ public final class ClientServerChannelProtos {
         return ((bitField0_ & 0x00000002) != 0);
       }
       /**
-       * <code>required uint32 ttl = 2;</code>
+       * <code>optional uint32 ttl = 2;</code>
        * @return The ttl.
        */
       @java.lang.Override
@@ -8715,10 +8715,6 @@ public final class ClientServerChannelProtos {
         if (isInitialized == 0) return false;
 
         if (!hasIpAddress()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        if (!hasTtl()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -9034,9 +9030,6 @@ public final class ClientServerChannelProtos {
           if (!hasIpAddress()) {
             return false;
           }
-          if (!hasTtl()) {
-            return false;
-          }
           return true;
         }
 
@@ -9101,7 +9094,7 @@ public final class ClientServerChannelProtos {
 
         private int ttl_ ;
         /**
-         * <code>required uint32 ttl = 2;</code>
+         * <code>optional uint32 ttl = 2;</code>
          * @return Whether the ttl field is set.
          */
         @java.lang.Override
@@ -9109,7 +9102,7 @@ public final class ClientServerChannelProtos {
           return ((bitField0_ & 0x00000002) != 0);
         }
         /**
-         * <code>required uint32 ttl = 2;</code>
+         * <code>optional uint32 ttl = 2;</code>
          * @return The ttl.
          */
         @java.lang.Override
@@ -9117,7 +9110,7 @@ public final class ClientServerChannelProtos {
           return ttl_;
         }
         /**
-         * <code>required uint32 ttl = 2;</code>
+         * <code>optional uint32 ttl = 2;</code>
          * @param value The ttl to set.
          * @return This builder for chaining.
          */
@@ -9128,7 +9121,7 @@ public final class ClientServerChannelProtos {
           return this;
         }
         /**
-         * <code>required uint32 ttl = 2;</code>
+         * <code>optional uint32 ttl = 2;</code>
          * @return This builder for chaining.
          */
         public Builder clearTtl() {
@@ -12634,7 +12627,7 @@ public final class ClientServerChannelProtos {
       "tangleAddressH\000\022W\n\016circle_address\030\010 \001(\0132" +
       "=.ClientServerChannelSpace.SendMessageMe" +
       "ssage.GeoCircleAddressH\000\032.\n\013TopoAddress\022" +
-      "\022\n\nip_address\030\001 \002(\r\022\013\n\003ttl\030\002 \002(\r\032]\n\023GeoR" +
+      "\022\n\nip_address\030\001 \002(\r\022\013\n\003ttl\030\002 \001(\r\032]\n\023GeoR" +
       "ectangleAddress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003a" +
       "_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n\003b_X\030\004 \002(\001\022\013\n\003b_" +
       "Y\030\005 \002(\001\032Z\n\020GeoCircleAddress\022\022\n\nip_addres" +
