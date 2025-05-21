@@ -35,4 +35,12 @@ public enum RoutingType {
         return this == CELL_GEOCAST || this == CELL_GEOCAST_MBMS || this == CELL_TOPOCAST;
     }
 
+    public boolean isGeocast() {
+        return this == CELL_GEOCAST || this == CELL_GEOCAST_MBMS || this == AD_HOC_GEOCAST;
+    }
+
+    public boolean isTopocast() {
+        return this == AD_HOC_TOPOCAST || this == CELL_TOPOCAST;
+    }
+
 }
