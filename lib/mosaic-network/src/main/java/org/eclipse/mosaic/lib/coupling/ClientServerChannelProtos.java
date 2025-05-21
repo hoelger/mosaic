@@ -51,6 +51,10 @@ public final class ClientServerChannelProtos {
      * <code>PROTO_UNDEF = 7;</code>
      */
     PROTO_UNDEF(7),
+    /**
+     * <code>PROTO_CELL = 8;</code>
+     */
+    PROTO_CELL(8),
     ;
 
     /**
@@ -85,6 +89,10 @@ public final class ClientServerChannelProtos {
      * <code>PROTO_UNDEF = 7;</code>
      */
     public static final int PROTO_UNDEF_VALUE = 7;
+    /**
+     * <code>PROTO_CELL = 8;</code>
+     */
+    public static final int PROTO_CELL_VALUE = 8;
 
 
     public final int getNumber() {
@@ -115,6 +123,7 @@ public final class ClientServerChannelProtos {
         case 5: return PROTO_SCH5;
         case 6: return PROTO_SCH6;
         case 7: return PROTO_UNDEF;
+        case 8: return PROTO_CELL;
         default: return null;
       }
     }
@@ -5542,11 +5551,19 @@ public final class ClientServerChannelProtos {
     int getMessageId();
 
     /**
+     * <pre>
+     * = node_id
+     * </pre>
+     *
      * <code>required uint32 external_id = 3;</code>
      * @return Whether the externalId field is set.
      */
     boolean hasExternalId();
     /**
+     * <pre>
+     * = node_id
+     * </pre>
+     *
      * <code>required uint32 external_id = 3;</code>
      * @return The externalId.
      */
@@ -5594,6 +5611,11 @@ public final class ClientServerChannelProtos {
     org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder getSecondaryRadioConfigurationOrBuilder();
   }
   /**
+   * <pre>
+   *
+   * in ns3: currently only time, external_id, radio_number, primary_radio.tx_power are used
+   * </pre>
+   *
    * Protobuf type {@code ClientServerChannelSpace.ConfigureRadioMessage}
    */
   public static final class ConfigureRadioMessage extends
@@ -7195,6 +7217,10 @@ public final class ClientServerChannelProtos {
     public static final int EXTERNAL_ID_FIELD_NUMBER = 3;
     private int externalId_;
     /**
+     * <pre>
+     * = node_id
+     * </pre>
+     *
      * <code>required uint32 external_id = 3;</code>
      * @return Whether the externalId field is set.
      */
@@ -7203,6 +7229,10 @@ public final class ClientServerChannelProtos {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
+     * <pre>
+     * = node_id
+     * </pre>
+     *
      * <code>required uint32 external_id = 3;</code>
      * @return The externalId.
      */
@@ -7553,6 +7583,11 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
+     * <pre>
+     *
+     * in ns3: currently only time, external_id, radio_number, primary_radio.tx_power are used
+     * </pre>
+     *
      * Protobuf type {@code ClientServerChannelSpace.ConfigureRadioMessage}
      */
     public static final class Builder extends
@@ -7872,6 +7907,10 @@ public final class ClientServerChannelProtos {
 
       private int externalId_ ;
       /**
+       * <pre>
+       * = node_id
+       * </pre>
+       *
        * <code>required uint32 external_id = 3;</code>
        * @return Whether the externalId field is set.
        */
@@ -7880,6 +7919,10 @@ public final class ClientServerChannelProtos {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
+       * <pre>
+       * = node_id
+       * </pre>
+       *
        * <code>required uint32 external_id = 3;</code>
        * @return The externalId.
        */
@@ -7888,6 +7931,10 @@ public final class ClientServerChannelProtos {
         return externalId_;
       }
       /**
+       * <pre>
+       * = node_id
+       * </pre>
+       *
        * <code>required uint32 external_id = 3;</code>
        * @param value The externalId to set.
        * @return This builder for chaining.
@@ -7899,6 +7946,10 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
+       * <pre>
+       * = node_id
+       * </pre>
+       *
        * <code>required uint32 external_id = 3;</code>
        * @return This builder for chaining.
        */
@@ -12588,12 +12639,13 @@ public final class ClientServerChannelProtos {
       "_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n\003b_X\030\004 \002(\001\022\013\n\003b_" +
       "Y\030\005 \002(\001\032Z\n\020GeoCircleAddress\022\022\n\nip_addres" +
       "s\030\001 \002(\r\022\020\n\010center_X\030\002 \002(\001\022\020\n\010center_Y\030\003 " +
-      "\002(\001\022\016\n\006radius\030\004 \002(\001B\t\n\007address*\216\001\n\014Radio" +
+      "\002(\001\022\016\n\006radius\030\004 \002(\001B\t\n\007address*\236\001\n\014Radio" +
       "Channel\022\016\n\nPROTO_SCH1\020\000\022\016\n\nPROTO_SCH2\020\001\022" +
       "\016\n\nPROTO_SCH3\020\002\022\r\n\tPROTO_CCH\020\003\022\016\n\nPROTO_" +
       "SCH4\020\004\022\016\n\nPROTO_SCH5\020\005\022\016\n\nPROTO_SCH6\020\006\022\017" +
-      "\n\013PROTO_UNDEF\020\007B<\n\037org.eclipse.mosaic.li" +
-      "b.couplingB\031ClientServerChannelProtos"
+      "\n\013PROTO_UNDEF\020\007\022\016\n\nPROTO_CELL\020\010B<\n\037org.e" +
+      "clipse.mosaic.lib.couplingB\031ClientServer" +
+      "ChannelProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
