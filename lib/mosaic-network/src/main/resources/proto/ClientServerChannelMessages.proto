@@ -91,12 +91,16 @@ enum RadioChannel {
     PROTO_SCH5 = 5;
     PROTO_SCH6 = 6;
     PROTO_UNDEF = 7;
+    PROTO_CELL = 8;
 }
 
+/*
+ * in ns3: currently only time, external_id, radio_number, primary_radio.tx_power are used
+ */
 message ConfigureRadioMessage {
     required int64 time = 1;
     required uint32 message_id = 2;
-    required uint32 external_id = 3;
+    required uint32 external_id = 3; // = node_id
     enum RadioNumber {
         NO_RADIO = 0;
         SINGLE_RADIO = 1;

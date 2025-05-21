@@ -26,6 +26,7 @@ import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
+import org.eclipse.mosaic.lib.enums.RoutingType;
 import org.eclipse.mosaic.lib.geo.CartesianCircle;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
 import org.eclipse.mosaic.lib.geo.CartesianRectangle;
@@ -357,11 +358,19 @@ public class ClientServerChannel {
     public int writeSendMessage(long time, int srcNodeId,
                                 int msgId, long msgLength, DestinationAddressContainer dac) throws IOException {
         writeCommand(CMD.MSG_SEND);
+
+        ClientServerChannelProtos.RadioChannel channel;
+        if (dac.getType().isAdHoc()) {
+            channel = translateChannel(dac.getAdhocChannelId());
+        } else {
+            channel = ClientServerChannelProtos.RadioChannel.PROTO_CELL;
+        }
+
         //Add message details to the builder
         SendMessageMessage.Builder sendMess = SendMessageMessage.newBuilder()
                 .setTime(time)
                 .setNodeId(srcNodeId)
-                .setChannelId(translateChannel(dac.getAdhocChannelId()))
+                .setChannelId(channel)
                 .setMessageId(msgId)
                 .setLength(msgLength);
 
