@@ -623,7 +623,13 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 }
             } else if (dac.getType() == RoutingType.CELL_TOPOCAST) {
                 if (dac.getAddress().isUnicast()) {
-                    // TODO NOW
+                    ack = ambassadorFederateChannel.writeSendMessage(
+                            interaction.getTime(),
+                            sourceId,
+                            interaction.getMessage().getId(),
+                            interaction.getMessage().getPayload().getEffectiveLength(),
+                            dac
+                    );
                 } else {
                     throw new InternalFederateException(
                             String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
