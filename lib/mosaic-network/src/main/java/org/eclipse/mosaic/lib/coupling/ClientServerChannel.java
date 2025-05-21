@@ -378,7 +378,7 @@ public class ClientServerChannel {
         buffer.put(dac.getAddress().getIPv4Address().getAddress()); //make an int32 out of the byte array
         buffer.position(0);
 
-        if (dac.isGeocast()) { //Geocasts
+        if (dac.getType().isGeocast()) {
             if (dac.getGeoArea() instanceof GeoRectangle geoRectangle) {   //Rectangular area
                 SendMessageMessage.GeoRectangleAddress.Builder rectangleAddress = SendMessageMessage.GeoRectangleAddress.newBuilder();
                 //builder for rectangular addresses
@@ -406,12 +406,15 @@ public class ClientServerChannel {
             } else {
                 throw new IllegalArgumentException("Addressing does support GeoCircle and GeoRectangle only.");
             }
-        } else if (dac.getTimeToLive() > -1) {  //Topocast addresses
+        } else if (dac.getType().isTopocast()) {
             SendMessageMessage.TopoAddress.Builder topoAddress = SendMessageMessage.TopoAddress.newBuilder();
-            topoAddress.setIpAddress(buffer.getInt());  //Add IP as flat int
-            topoAddress.setTtl(dac.getTimeToLive());    //add time to live
-            sendMess.setTopoAddress(topoAddress);   //set address in message
-        } //TODO: create else case and throw exception
+            topoAddress.setIpAddress(buffer.getInt());
+            if (dac.getType().isAdHoc() && !(dac.getTimeToLive() > -1)) {
+                throw new IllegalArgumentException("Require TimeToLive for topocast ad-hoc communciation.");
+            }
+            topoAddress.setTtl(dac.getTimeToLive());
+            sendMess.setTopoAddress(topoAddress);
+        }
         sendMess.build().writeDelimitedTo(out); //write message onto channel        
         return readCommand();
     }
