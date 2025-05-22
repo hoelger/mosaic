@@ -1,7 +1,7 @@
 {
     "simulation": {
         "id": "ns3-simple-server",
-        "duration": "3s",
+        "duration": "5s",
         "randomSeed": 268965854,
         "projection": {
             "centerCoordinates": {
