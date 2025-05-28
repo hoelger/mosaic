@@ -33,7 +33,9 @@ public class CarTxCellApp extends AbstractApplication<VehicleOperatingSystem> im
         getLog().infoSimTime(this, "Initialize application");
         getOs().getCellModule().enable();
         getLog().infoSimTime(this, "Activated Cell Module");
-        sample();
+
+        // The ns3 lte device requires 21 millliseconds to attach to the eNB
+        getOs().getEventManager().addEvent(getOs().getSimulationTime() + 21 * TIME.MILLI_SECOND, this);
     }
 
     @Override
