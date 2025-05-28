@@ -50,7 +50,7 @@
                     "name": "Car",
                     "applications": [
                         "org.eclipse.mosaic.app.tutorial.CarRxCellApp",
-                        "org.eclipse.mosaic.app.tutorial.CarTxCellApp"
+                        "org.eclipse.mosaic.app.tutorial.CarTxCellApp(\"server_0\")"
                     ]
                 }
             ]
