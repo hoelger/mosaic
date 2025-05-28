@@ -13,7 +13,7 @@
  * Contact: mosaic@fokus.fraunhofer.de
  */
 
-package org.eclipse.mosaic.app.tutorial;
+package org.eclipse.mosaic.test.app.networking;
 
 import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.AdHocModuleConfiguration;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.CamBuilder;
@@ -21,12 +21,12 @@ import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.Re
 import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.ReceivedV2xMessage;
 import org.eclipse.mosaic.fed.application.app.AbstractApplication;
 import org.eclipse.mosaic.fed.application.app.api.CommunicationApplication;
-import org.eclipse.mosaic.fed.application.app.api.os.RoadSideUnitOperatingSystem;
+import org.eclipse.mosaic.fed.application.app.api.os.VehicleOperatingSystem;
 import org.eclipse.mosaic.interactions.communication.V2xMessageTransmission;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.util.scheduling.Event;
 
-public class RsuRxCellApp extends AbstractApplication<RoadSideUnitOperatingSystem> implements CommunicationApplication {
+public class CarRxCellApp extends AbstractApplication<VehicleOperatingSystem> implements CommunicationApplication {
     @Override
     public void onStartup() {
         getLog().infoSimTime(this, "Initialize application");
@@ -46,7 +46,6 @@ public class RsuRxCellApp extends AbstractApplication<RoadSideUnitOperatingSyste
                 receivedV2xMessage.getMessage().getSimpleClassName(),
                 receivedV2xMessage.getMessage().getRouting().getSource().getSourceName()
         );
-
     }
 
     @Override

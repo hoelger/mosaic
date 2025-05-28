@@ -13,23 +13,31 @@
  * Contact: mosaic@fokus.fraunhofer.de
  */
 
-package org.eclipse.mosaic.app.tutorial;
+package org.eclipse.mosaic.test.app.networking;
 
+import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.AdHocModuleConfiguration;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.CamBuilder;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.ReceivedAcknowledgement;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.ReceivedV2xMessage;
 import org.eclipse.mosaic.fed.application.app.AbstractApplication;
 import org.eclipse.mosaic.fed.application.app.api.CommunicationApplication;
-import org.eclipse.mosaic.fed.application.app.api.os.ServerOperatingSystem;
+import org.eclipse.mosaic.fed.application.app.api.os.TrafficLightOperatingSystem;
 import org.eclipse.mosaic.interactions.communication.V2xMessageTransmission;
+import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.util.scheduling.Event;
 
-public class ServerRxCellApp extends AbstractApplication<ServerOperatingSystem> implements CommunicationApplication {
+public class TrafficLightRxCellApp extends AbstractApplication<TrafficLightOperatingSystem> implements CommunicationApplication {
     @Override
     public void onStartup() {
         getLog().infoSimTime(this, "Initialize application");
         getOs().getCellModule().enable();
         getLog().infoSimTime(this, "Activated Cell Module");
+        getOs().getAdHocModule().enable(new AdHocModuleConfiguration()
+                .addRadio()
+                .channel(AdHocChannel.CCH)
+                .power(50)
+                .create());
+        getLog().infoSimTime(this, "Activated Wifi Module");
     }
 
     @Override
