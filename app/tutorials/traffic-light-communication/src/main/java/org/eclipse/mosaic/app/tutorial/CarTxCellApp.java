@@ -24,6 +24,7 @@ import org.eclipse.mosaic.fed.application.app.api.CommunicationApplication;
 import org.eclipse.mosaic.fed.application.app.api.os.VehicleOperatingSystem;
 import org.eclipse.mosaic.interactions.communication.V2xMessageTransmission;
 import org.eclipse.mosaic.lib.util.scheduling.Event;
+import org.eclipse.mosaic.rti.TIME;
 
 public class CarTxCellApp extends AbstractApplication<VehicleOperatingSystem> implements CommunicationApplication {
 
@@ -32,7 +33,19 @@ public class CarTxCellApp extends AbstractApplication<VehicleOperatingSystem> im
         getLog().infoSimTime(this, "Initialize application");
         getOs().getCellModule().enable();
         getLog().infoSimTime(this, "Activated Cell Module");
+        sample();
+    }
 
+    @Override
+    public void processEvent(Event event) throws Exception {
+        getLog().infoSimTime(this, "Received event: {}", event.getResourceClassSimpleName());
+        sample();
+    }
+
+    public void sample() {
+        getOs().getEventManager().addEvent(
+                getOs().getSimulationTime() + 2 * TIME.SECOND, this
+        );
         getLog().infoSimTime(this, "Sending out cell message to server_0");
         getOs().getCellModule().sendV2xMessage(
             new InterVehicleMsg(
@@ -45,11 +58,6 @@ public class CarTxCellApp extends AbstractApplication<VehicleOperatingSystem> im
     @Override
     public void onShutdown() {
         getLog().infoSimTime(this, "Shutdown application");
-    }
-
-    @Override
-    public void processEvent(Event event) throws Exception {
-        getLog().infoSimTime(this, "Received event: {}", event.getResourceClassSimpleName());
     }
 
     @Override
