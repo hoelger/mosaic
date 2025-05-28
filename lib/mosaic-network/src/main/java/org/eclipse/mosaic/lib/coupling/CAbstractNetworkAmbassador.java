@@ -74,7 +74,7 @@ public final class CAbstractNetworkAmbassador {
             routingType.put(DestinationType.AD_HOC_TOPOCAST, true);
             routingType.put(DestinationType.CELL_GEOCAST, false);
             routingType.put(DestinationType.CELL_GEOCAST_MBMS, false);
-            routingType.put(DestinationType.CELL_TOPOCAST, false);
+            routingType.put(DestinationType.CELL_TOPOCAST, true);
 
             protocolType.put(ProtocolType.UDP, true);
             protocolType.put(ProtocolType.TCP, false);
@@ -83,7 +83,7 @@ public final class CAbstractNetworkAmbassador {
 
     @SuppressWarnings("FieldCanBeLocal")
     static class CDestinationAddress {
-        private boolean ipv4UnicastAddress = false;
+        private boolean ipv4UnicastAddress = true;
         private boolean ipv4BroadcastAddress = true;
         private boolean ipv4AnycastAddress = false;
     }
