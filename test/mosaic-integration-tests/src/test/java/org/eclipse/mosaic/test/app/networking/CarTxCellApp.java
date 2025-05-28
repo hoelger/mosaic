@@ -27,12 +27,20 @@ import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.util.scheduling.Event;
 import org.eclipse.mosaic.rti.TIME;
 
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
+
 public class CarTxCellApp extends AbstractApplication<VehicleOperatingSystem> implements CommunicationApplication {
 
-    String destination;
+    Inet4Address ip;
 
-    public CarTxCellApp(String destination){
-        this.destination = destination;
+    public CarTxCellApp(String str_ip){
+        try {
+            this.ip = (Inet4Address) Inet4Address.getByName(str_ip);
+        } catch (UnknownHostException e) {
+            getLog().error("Cannot translate destination {} to IP", str_ip, e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -61,10 +69,10 @@ public class CarTxCellApp extends AbstractApplication<VehicleOperatingSystem> im
         getOs().getEventManager().addEvent(
                 getOs().getSimulationTime() + 2 * TIME.SECOND, this
         );
-        getLog().infoSimTime(this, "Sending out cell message to " + destination);
+        getLog().infoSimTime(this, "Sending out cell message to " + ip);
         getOs().getCellModule().sendV2xMessage(
             new InterVehicleMsg(
-                getOs().getCellModule().createMessageRouting().destination(destination).topological().build(),
+                getOs().getCellModule().createMessageRouting().destination(ip).topological().build(),
                 getOs().getPosition()
             )
         );
