@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ns3>
     <LogLevel>
-        <!-- for name, refer to corresponding ns3 model -->
+        <!-- for field "name" refer to corresponding ns3 model -->
         <!-- possible level values: error warn debug info function logic all * -->
         <!-- including higher levels: level_error level_warn level_debug level_info level_function level_logic level_all ** -->
         <!-- possible prefix values: func time node level prefix_func prefix_time prefix_node prefix_level prefix_all -->
-        <component name="*" value="prefix_level|prefix_time"/>
 
-        <!-- These are setting suggestions for verbosity levels
-             which are equivalent to MOSAIC's log level INFO and DEBUG
+        <component name="*" value="prefix_level|prefix_time|prefix_func"/>
 
-             MOSAIC log level equivalent:             INFO                                       DEBUG
-        .....................................................................................................................-->
-        <component name="MosaicStarter"        value="warn|error|debug|info"/>       <!-- value="warn|error|debug|info"      -->
-        <component name="MosaicSimulatorImpl"  value="warn|error|debug|info"/>       <!-- value="warn|error|debug|info"      -->
-        <component name="MosaicNs3Server"      value="warn|error"/>                  <!-- value="warn|error"                 -->
-        <component name="MosaicNodeManager"    value="warn|error|debug"/>            <!-- value="warn|error|debug"           -->
-        <component name="MosaicProxyApp"       value="warn|error|debug|func|info"/>  <!-- value="warn|error|debug|func|info" -->
-        <component name="ClientServerChannel"  value="warn|error"/>                  <!-- value="warn|error"                 -->
+        <component name="MosaicStarter"        value="error|warn|debug|info"/>
+        <component name="MosaicSimulatorImpl"  value="error|warn|debug|info"/>
+        <component name="MosaicNs3Server"      value="error|warn|debug|info"/>
+        <component name="MosaicNodeManager"    value="error|warn|debug|info"/>
+        <component name="MosaicProxyApp"       value="error|warn|debug|info|prefix_node"/>
+        <component name="ClientServerChannel"  value="error|warn"/>
 
-        <component name="UdpSocketImpl"        value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="UdpL4Protocol"        value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="Ipv4L3Protocol"       value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="Ipv4Interface"        value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="TrafficControlLayer"  value="warn|error"/>                  <!-- value="warn|error|debug"           -->
+        <component name="UdpSocketImpl"        value="error|warn|prefix_node"/>
+        <component name="UdpL4Protocol"        value="error|warn|prefix_node"/>
+        <component name="TrafficControlLayer"  value="error|warn|prefix_node"/>
+        <component name="Ipv4L3Protocol"       value="error|warn|prefix_node"/>
+        <component name="Ipv4Interface"        value="error|warn|prefix_node"/>
 
-        <component name="PropagationLossModel" value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="WifiPhy"              value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="YansWifiPhy"          value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="WaveNetDevice"        value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="YansWifiChannel"      value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <component name="InterferenceHelper"   value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-        <!-- List can be extendy by other components to set logging for -->
+        <component name="LteNetDevice"         value="error|warn"/>
+        <component name="LteHelper"            value="error|warn"/>
+        <component name="NoBackhaulEpcHelper"  value="error|warn"/>
+        <component name="EpcPgwApplication"    value="error|warn"/>
+        <component name="LteEnbRrc"            value="error|warn|prefix_node"/>
+        <component name="LteUeRrc"             value="error|warn|prefix_node"/>
+        <component name="EpcX2"                value="error|warn"/>
+
+        <component name="OcbWifiMac"           value="error|warn"/>
+
+        <component name="PropagationLossModel" value="error"/>
+        <component name="WifiPhy"              value="error|warn"/>
+        <component name="YansWifiPhy"          value="error|warn"/>
+        <component name="WaveNetDevice"        value="error|warn"/>
+        <component name="WifiNetDevice"        value="error|warn"/>
+        <component name="YansWifiChannel"      value="error|warn"/>
+        <component name="InterferenceHelper"   value="error|warn"/>
     </LogLevel>
 
     <!-- Mosaic Federate settings -->
