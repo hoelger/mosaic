@@ -30,6 +30,12 @@ import org.eclipse.mosaic.rti.TIME;
 
 public class CarTxCellApp extends AbstractApplication<VehicleOperatingSystem> implements CommunicationApplication {
 
+    String destination;
+
+    public CarTxCellApp(String destination){
+        this.destination = destination;
+    }
+
     @Override
     public void onStartup() {
         getLog().infoSimTime(this, "Initialize application");
@@ -56,10 +62,10 @@ public class CarTxCellApp extends AbstractApplication<VehicleOperatingSystem> im
         getOs().getEventManager().addEvent(
                 getOs().getSimulationTime() + 2 * TIME.SECOND, this
         );
-        getLog().infoSimTime(this, "Sending out cell message to server_0");
+        getLog().infoSimTime(this, "Sending out cell message to " + destination);
         getOs().getCellModule().sendV2xMessage(
             new InterVehicleMsg(
-                getOs().getCellModule().createMessageRouting().destination("server_0").topological().build(),
+                getOs().getCellModule().createMessageRouting().destination(destination).topological().build(),
                 getOs().getPosition()
             )
         );
