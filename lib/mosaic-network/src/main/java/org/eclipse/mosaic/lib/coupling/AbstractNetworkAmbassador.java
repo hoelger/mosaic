@@ -47,7 +47,6 @@ import org.eclipse.mosaic.rti.api.InternalFederateException;
 import org.eclipse.mosaic.rti.api.federatestarter.DockerFederateExecutor;
 import org.eclipse.mosaic.rti.api.parameters.AmbassadorParameter;
 
-import com.google.common.collect.Lists;
 import org.apache.commons.lang3.tuple.Pair;
 import org.slf4j.LoggerFactory;
 
@@ -505,7 +504,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     RegisteredNode registeredNode = registeredNodes.get(vi.getName());
                     registeredNode.position = vi.getProjectedPosition();
                     if (registeredNode.configuration != null) {
-                        addVehicleNodeToSimulation(vi.getName(), registeredNode, interaction.getTime());
+                        addNodeToSimulation(vi.getName(), registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, interaction.getTime());
                         registeredNodes.remove(vi.getName());
                     }
                 }
@@ -667,38 +666,35 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         final String nodeId = interaction.getConfiguration().getNodeId();
         if (interaction.getConfiguration().getRadioMode() == AdHocConfiguration.RadioMode.OFF) {
             log.debug("Received AdHoc configuration (disable) for node {}", nodeId);
-            disableRadioForNode(nodeId, interaction);
+            removeNode(nodeId, interaction);
         } else {
             log.debug("Received AdHoc configuration (enable) for node {}", nodeId);
             configureRadioForNode(nodeId, interaction);
         }
     }
 
-    private void disableRadioForNode(String nodeId, AdHocCommunicationConfiguration interaction) throws InternalFederateException {
+    private void removeNode(String nodeId, Interaction interaction) throws InternalFederateException {
         final long time = interaction.getTime();
-        // verify the vehicles are simulated in the current simulation
+        // verify the node is simulated in the current simulation
         final Integer nodeToRemove = simulatedNodes.containsInternalId(nodeId) ? simulatedNodes.toExternalId(nodeId) : null;
         if (nodeToRemove != null) {
             log.info("removeNode ID[int={}, ext={}] time={}", nodeId, nodeToRemove, TIME.format(time));
             simulatedNodes.removeUsingInternalId(nodeId); // remove the vehicle from our internal list
             removedNodes.add(nodeId);
+            try {
+                if (CMD.SUCCESS != ambassadorFederateChannel.writeRemoveNodeMessage(time, nodeToRemove)) {
+                    log.error("Could not remove node.");
+                    throw new InternalFederateException("Error in " + federateName + ": Could not remove node");
+                }
+            } catch (IOException | InternalFederateException e) {
+                log.error("{}, time={}", e.getMessage(), TIME.format(interaction.getTime()));
+                throw new InternalFederateException("Could not remove node from the simulator.", e);
+            }
         } else if (registeredNodes.containsKey(nodeId)) {
             log.info("removeNode (still virtual) ID[int={}] time={}", nodeId, TIME.format(time));
             registeredNodes.remove(nodeId);
-            return;
         } else {
             log.warn("Node ID[int={}] is not simulated", nodeId);
-            return;
-        }
-
-        try {
-            if (CMD.SUCCESS != ambassadorFederateChannel.writeRemoveNodesMessage(time, Lists.newArrayList(nodeToRemove))) {
-                log.error("Could not remove nodes.");
-                throw new InternalFederateException("Error in " + federateName + ": Could not remove nodes");
-            }
-        } catch (IOException | InternalFederateException e) {
-            log.error("{}, time={}", e.getMessage(), TIME.format(interaction.getTime()));
-            throw new InternalFederateException("Could not remove node from the simulator.", e);
         }
     }
 
@@ -714,7 +710,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             VehicleData latestData = fetchVehicleDataFromLastUpdate(nodeId);
             RegisteredNode configuredNode = new RegisteredNode(interaction, latestData != null ? latestData.getProjectedPosition() : null);
             if (latestData != null) {
-                addVehicleNodeToSimulation(nodeId, configuredNode, interaction.getTime());
+                addNodeToSimulation(nodeId, configuredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, interaction.getTime());
             } else if (!removedNodes.contains(nodeId)) {
                 log.debug("Saving Configuration for later insertion as vehicle {} has not moved yet.", nodeId);
                 registeredNodes.put(nodeId, configuredNode);
@@ -723,7 +719,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             // for RSUs, TLs and CSs, Registrations arrive before AdHocCommunicationConfiguration -> they could be added to simulation now
             RegisteredNode registeredNode = registeredNodes.get(nodeId);
             registeredNode.configuration = interaction;
-            addRsuNodeToSimulation(nodeId, registeredNode, interaction.getTime());
+            addNodeToSimulation(nodeId, registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU, interaction.getTime());
             registeredNodes.remove(nodeId);
         } else {
             log.warn("Got AdHoc configuration for unknown node {}. Ignoring.", nodeId);
@@ -741,56 +737,26 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         return vehicleData.orElse(null);
     }
 
-    private synchronized void addRsuNodeToSimulation(String nodeId, RegisteredNode virtualNode, long time) throws InternalFederateException {
-        List<NodeDataContainer> nodesToAdd = new ArrayList<>(); // Prepare a list for adding multiple RSUs
+    private synchronized void addNodeToSimulation(String nodeId, RegisteredNode registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType type, long time) throws InternalFederateException {
         try {
             if (simulatedNodes.containsInternalId(nodeId)) {
-                log.warn("RSU with id (internal={}) couldn't be added: name already exists ", nodeId);
+                log.warn("Node with id (internal={}) couldn't be added: name already exists", nodeId);
             } else {
                 int id = simulatedNodes.toExternalId(nodeId);
-                nodesToAdd.add(new NodeDataContainer(id, virtualNode.position));  // Add TL to the list
-                // Let channel send list and get an acknowledgement
-                if (CMD.SUCCESS != ambassadorFederateChannel.writeAddRsuNodeMessage(time, nodesToAdd)) {
-                    log.error("Could not add new RSU.");
-                    throw new InternalFederateException("Error in " + federateName + ": Could not add new RSU");
+                if (CMD.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, type, new NodeDataContainer(id, registeredNode.position))) {
+                    log.error("Could not add new node.");
+                    throw new InternalFederateException("Error in " + federateName + ": Could not add new node");
                 }
                 log.info(
                         "Added RSU ID[int={}, ext={}] at projected position={} time={}",
-                        simulatedNodes.fromExternalId(id), id, virtualNode.position, TIME.format(time)
-                );
-                log.debug("Sending AdHocCommunicationConfiguration for RSU node {}", nodeId);
-                sendAdHocCommunicationConfiguration(virtualNode.configuration, time);
-            }
-        } catch (IOException | InternalFederateException e) {
-            log.error(e.getMessage(), e);
-            throw new InternalFederateException("Could not add new rsu.", e);
-        }
-    }
-
-    private synchronized void addVehicleNodeToSimulation(String nodeId, RegisteredNode registeredNode, long time) throws InternalFederateException {
-        List<NodeDataContainer> nodesToAdd = new ArrayList<>();
-        try {
-            if (simulatedNodes.containsInternalId(nodeId)) {
-                log.warn("Vehicle with id(int={}) couldn't be added: name already exists ", nodeId);
-            } else {
-                int id = simulatedNodes.toExternalId(nodeId);
-                nodesToAdd.add(new NodeDataContainer(id, registeredNode.position));
-                if (CMD.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, nodesToAdd)) {
-                    log.error("Could not add new vehicles.");
-                    throw new InternalFederateException(
-                            "Error in " + federateName + ": Could not add new vehicles."
-                    );
-                }
-                log.info(
-                        "Added vehicle ID[int={}, ext={}] at position={} time={}",
                         simulatedNodes.fromExternalId(id), id, registeredNode.position, TIME.format(time)
                 );
-                log.debug("Sending AdHocCommunicationConfiguration for vehicle node {}.", nodeId);
+                log.debug("Sending AdHocCommunicationConfiguration for node {}", nodeId);
                 sendAdHocCommunicationConfiguration(registeredNode.configuration, time);
             }
         } catch (IOException | InternalFederateException e) {
             log.error(e.getMessage(), e);
-            throw new InternalFederateException("Could not add new vehicle.", e);
+            throw new InternalFederateException("Could not add new node.", e);
         }
     }
 
@@ -820,8 +786,6 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                             (configuration.getConf1() != null ? configuration.getConf1().getChannel0() : "null"),
                             (configuration.getConf1() != null ? configuration.getConf1().getChannel1() : "null")
                     );
-                }
-                if (log.isTraceEnabled()) {
                     log.trace("AdHocCommunicationConfiguration: Number of radios: {}", configuration.getRadioMode());
                     if (configuration.getRadioMode() != AdHocConfiguration.RadioMode.OFF) {
                         log.trace("AdHocCommunicationConfiguration: radio0: IP: {}", configuration.getConf0().getNewIP());
