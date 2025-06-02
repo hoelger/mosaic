@@ -16,6 +16,8 @@
 package org.eclipse.mosaic.lib.coupling;
 
 import org.eclipse.mosaic.interactions.communication.AdHocCommunicationConfiguration;
+import org.eclipse.mosaic.interactions.communication.CellularCommunicationConfiguration;
+import org.eclipse.mosaic.interactions.communication.CommunicationConfiguration;
 import org.eclipse.mosaic.interactions.communication.V2xMessageReception;
 import org.eclipse.mosaic.interactions.communication.V2xMessageTransmission;
 import org.eclipse.mosaic.interactions.mapping.ChargingStationRegistration;
@@ -70,11 +72,11 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
 
     private final static class RegisteredNode {
 
-        private AdHocCommunicationConfiguration configuration;
+        private CommunicationConfiguration configuration;
         private CartesianPoint position;
 
-        private RegisteredNode(AdHocCommunicationConfiguration configAdHoc, CartesianPoint position) {
-            this.configuration = configAdHoc;
+        private RegisteredNode(CommunicationConfiguration config, CartesianPoint position) {
+            this.configuration = config;
             this.position = position;
         }
     }
@@ -107,11 +109,11 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     protected DockerFederateExecutor dockerFederateExecutor = null;
 
     /**
-     * List of new nodes, either vehicles or RSUs, which are only added when they have a position AND enabled AdHoc Communication.
+     * List of new nodes, either vehicles or RSUs, which are only added when they have a position AND enabled radio communication.
      * Nodes are registered when just one part 1. OR 2. is received,
      * To get fully simulated, the ambassador must receive both of the following interactions:
      * 1. {@link VehicleUpdates}, {@link RsuRegistration}, {@link TrafficLightRegistration}, {@link ChargingStationRegistration}
-     * 2. {@link AdHocCommunicationConfiguration}
+     * 2. {@link CommunicationConfiguration}
      */
     private final Map<String, RegisteredNode> registeredNodes;
 
@@ -326,6 +328,10 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             this.process((V2xMessageTransmission) interaction);
         } else if (interaction.getTypeId().equals(AdHocCommunicationConfiguration.TYPE_ID)) {
             this.process((AdHocCommunicationConfiguration) interaction);
+        } else if (interaction.getTypeId().equals(CellularCommunicationConfiguration.TYPE_ID)) {
+            this.process((CellularCommunicationConfiguration) interaction);
+        } else {
+            log.warn("Unhandeled interaction type {}", interaction.getTypeId());
         }
     }
 
@@ -407,14 +413,14 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             log.warn("A RSU with ID {} was already added. Ignoring message.", mapping.getName());
             return;
         }
-        // Put the new RSU into our list of nodes to be added when AdHoc configuration is received
+        // Put the new RSU into our list of nodes to be added when radio configuration is received
         registeredNodes.put(mapping.getName(), new RegisteredNode(null, mapping.getPosition().toCartesian()));
     }
 
     /**
      * Add nodes based on received traffic light mappings.
      * The method checks if the TLs are already present.
-     * If not, the traffic light is added as a virtual node for later adding if an AdhocModuleConfiguration is received.
+     * If not, the traffic light is added as a virtual node for later adding if an {@link CommunicationConfiguration} is received.
      *
      * @param interaction interaction containing a mapping of added traffic light
      */
@@ -429,14 +435,14 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             log.warn("A TL with ID {} was already added. Ignoring message.", mapping.getName());
             return;
         }
-        // Put the new TL RSU into our list of nodes to be added when AdHoc configuration is received
+        // Put the new TL RSU into our list of nodes to be added when radio configuration is received
         registeredNodes.put(mapping.getName(), new RegisteredNode(null, mapping.getPosition().toCartesian()));
     }
 
     /**
      * Add nodes based on received charging station mappings.
      * The method checks if the ChargingStation RSU is already present.
-     * If not, the charging station is added as a virtual node for later adding if an AdhocModuleConfiguration is received.
+     * If not, the charging station is added as a virtual node for later adding if an {@link CommunicationConfiguration} is received.
      *
      * @param interaction interaction containing a mapping of added charging station
      */
@@ -451,7 +457,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             log.warn("A ChargingStation with ID {} was already added. Ignoring message.", mapping.getName());
             return;
         }
-        // Put the new Charging Station RSU into our list of virtually added RSUs with no AdHoc configuration yet
+        // Put the new Charging Station RSU into our list of nodes to be added when radio configuration is received
         registeredNodes.put(mapping.getName(), new RegisteredNode(null, mapping.getPosition().toCartesian()));
     }
 
@@ -485,7 +491,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     if (simulatedNodes.containsInternalId(vi.getName())) {
                         log.warn("Vehicle with ID {} was already added, ignoring entry.", vi.getName());
                     } else if (registeredNodes.containsKey(vi.getName())) {
-                        // AdHocCommunicationConfiguration arrived before VehicleUpdates
+                        // CommunicationConfiguration arrived before VehicleUpdates
                         RegisteredNode registeredNode = registeredNodes.get(vi.getName());
                         registeredNode.position = vi.getProjectedPosition();
                         if (registeredNode.configuration == null) {
@@ -494,7 +500,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         }
                         addNodeToSimulation(vi.getName(), registeredNode, interaction.getTime());
                     } else {
-                        // Waiting for AdHocCommunicationConfiguration
+                        // Waiting for CommunicationConfiguration
                         registeredNodes.put(vi.getName(), new RegisteredNode(null, vi.getProjectedPosition()));
                     }
                 }
@@ -663,20 +669,41 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         }
     }
 
+    /**
+     * Receive an {@link CellularCommunicationConfiguration} and send it to the federate if the corresponding node is simulated.
+     * If the node is not simulated (only added but did not move yet) the configuration interaction will be saved for later.
+     *
+     * @param interaction the Cellular configuration interaction
+     */
+    protected synchronized void process(CellularCommunicationConfiguration interaction) throws InternalFederateException {
+        final String nodeId = interaction.getConfiguration().getNodeId();
+        if (interaction.getConfiguration().isEnabled()) {
+            log.debug("Received Cellular configuration (enable) for node {}", nodeId);
+            configureRadioForNode(nodeId, interaction);
+        } else {
+            log.debug("Received Cellular configuration (disable) for node {}", nodeId);
+            removeNode(nodeId, interaction);
+        }
+    }
+
     //####################################################################
     //   Helper methods
     //####################################################################
 
-    private void configureRadioForNode(String nodeId, AdHocCommunicationConfiguration interaction) throws InternalFederateException {
+    private void configureRadioForNode(String nodeId, CommunicationConfiguration interaction) throws InternalFederateException {
         if (removedNodes.contains(nodeId)) {
-            log.warn("Got AdHoc configuration for already removed node {}. Ignoring.", nodeId);
+            log.warn("Got radio configuration for already removed node {}. Ignoring.", nodeId);
         } else if (simulatedNodes.containsInternalId(nodeId)) {
             // node is already simulated -> configure
             log.debug("Updating Configuration for simulated node {}", nodeId);
-            sendAdHocCommunicationConfiguration(interaction, interaction.getTime());
+            if (interaction instanceof AdHocCommunicationConfiguration castedInteraction) {
+                sendAdHocCommunicationConfiguration(castedInteraction, interaction.getTime());
+            } else if (interaction instanceof CellularCommunicationConfiguration castedInteraction) {
+                sendCellularCommunicationConfiguration(castedInteraction, interaction.getTime());
+            }
         } else if (UnitNameGenerator.isVehicle(nodeId)) {
             if (registeredNodes.containsKey(nodeId)) {
-                // VehicleUpdates arrived before AdHocCommunicationConfiguration
+                // VehicleUpdates arrived before CommunicationConfiguration
                 RegisteredNode registeredNode = registeredNodes.get(nodeId);
                 registeredNode.configuration = interaction;
                 if (registeredNode.position == null) {
@@ -689,12 +716,12 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 registeredNodes.put(nodeId, new RegisteredNode(interaction, null));
             }
         } else if (registeredNodes.containsKey(nodeId)) {
-            // for RSUs, TLs and CSs, Registrations arrive before AdHocCommunicationConfiguration -> they can be added to the simulation now
+            // for RSUs, TLs and CSs, Registrations arrive before CommunicationConfiguration -> they can be added to the simulation now
             RegisteredNode registeredNode = registeredNodes.get(nodeId);
             registeredNode.configuration = interaction;
             addNodeToSimulation(nodeId, registeredNode, interaction.getTime());
         } else {
-            log.warn("Got AdHoc configuration for unknown node {}. Ignoring.", nodeId);
+            log.warn("Got radio configuration for unknown node {}. Ignoring.", nodeId);
         }
     }
 
@@ -714,8 +741,13 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         simulatedNodes.fromExternalId(id), id, registeredNode.position, TIME.format(time)
                 );
                 registeredNodes.remove(nodeId);
-                log.debug("Sending AdHocCommunicationConfiguration for node {}", nodeId);
-                sendAdHocCommunicationConfiguration(registeredNode.configuration, time);
+                if (registeredNode.configuration instanceof AdHocCommunicationConfiguration castedInteraction) {
+                    log.debug("Sending AdHocCommunicationConfiguration for node {}", nodeId);
+                    sendAdHocCommunicationConfiguration(castedInteraction, time);
+                } else if (registeredNode.configuration instanceof CellularCommunicationConfiguration castedInteraction) {
+                    log.debug("Sending CellularCommunicationConfiguration for node {}", nodeId);
+                    sendCellularCommunicationConfiguration(castedInteraction, time);
+                }
             }
         } catch (IOException | InternalFederateException e) {
             log.error(e.getMessage(), e);
@@ -732,7 +764,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      * @param time        workaround for wrong timestamps when retaining configuration interactions
      */
     private synchronized void sendAdHocCommunicationConfiguration(AdHocCommunicationConfiguration interaction, long time) {
-        log.debug("Sending radio configuration interaction {} to {}", interaction.getId(), federateName);
+        log.debug("Sending adhoc configuration interaction {} to {}", interaction.getId(), federateName);
         try {
             int interactionId = interaction.getId();
             AdHocConfiguration configuration = interaction.getConfiguration();
@@ -791,6 +823,10 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         } catch (IOException | InternalFederateException | IllegalValueException ex) {
             log.error("{} could not configure the radio", ambassadorName);
         }
+    }
+
+    private synchronized void sendCellularCommunicationConfiguration(CellularCommunicationConfiguration interaction, long time) {
+        // TODO
     }
 
     private void removeNode(String nodeId, Interaction interaction) throws InternalFederateException {
