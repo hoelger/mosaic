@@ -492,8 +492,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                             log.error("Vehicle with ID {} was already registered but has no config present.", vi.getName());
                             return;
                         }
-                        addNodeToSimulation(vi.getName(), registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, interaction.getTime());
-                        registeredNodes.remove(vi.getName());
+                        addNodeToSimulation(vi.getName(), registeredNode, interaction.getTime());
                     } else {
                         // Waiting for AdHocCommunicationConfiguration
                         registeredNodes.put(vi.getName(), new RegisteredNode(null, vi.getProjectedPosition()));
@@ -705,8 +704,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     log.error("Vehicle with ID {} was already registered but has no position present.", nodeId);
                     return;
                 }
-                addNodeToSimulation(nodeId, registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, interaction.getTime());
-                registeredNodes.remove(nodeId);
+                addNodeToSimulation(nodeId, registeredNode, interaction.getTime());
             } else {
                 // Wait for first VehicleUpdate with position
                 registeredNodes.put(nodeId, new RegisteredNode(interaction, null));
@@ -715,27 +713,28 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             // for RSUs, TLs and CSs, Registrations arrive before AdHocCommunicationConfiguration -> they can be added to the simulation now
             RegisteredNode registeredNode = registeredNodes.get(nodeId);
             registeredNode.configuration = interaction;
-            addNodeToSimulation(nodeId, registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU, interaction.getTime());
-            registeredNodes.remove(nodeId);
+            addNodeToSimulation(nodeId, registeredNode, interaction.getTime());
         } else {
             log.warn("Got AdHoc configuration for unknown node {}. Ignoring.", nodeId);
         }
     }
 
-    private synchronized void addNodeToSimulation(String nodeId, RegisteredNode registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType type, long time) throws InternalFederateException {
+    private synchronized void addNodeToSimulation(String nodeId, RegisteredNode registeredNode, long time) throws InternalFederateException {
         try {
             if (simulatedNodes.containsInternalId(nodeId)) {
                 log.warn("Node with id (internal={}) couldn't be added: name already exists", nodeId);
             } else {
                 int id = simulatedNodes.toExternalId(nodeId);
+                ClientServerChannelProtos.UpdateNode.UpdateType type = UnitNameGenerator.isVehicle(nodeId) ? ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE : ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU;
                 if (CMD.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, type, new NodeDataContainer(id, registeredNode.position))) {
                     log.error("Could not add new node.");
                     throw new InternalFederateException("Error in " + federateName + ": Could not add new node");
                 }
                 log.info(
-                        "Added RSU ID[int={}, ext={}] at projected position={} time={}",
+                        "Added Node ID[int={}, ext={}] at projected position={} time={}",
                         simulatedNodes.fromExternalId(id), id, registeredNode.position, TIME.format(time)
                 );
+                registeredNodes.remove(nodeId);
                 log.debug("Sending AdHocCommunicationConfiguration for node {}", nodeId);
                 sendAdHocCommunicationConfiguration(registeredNode.configuration, time);
             }
