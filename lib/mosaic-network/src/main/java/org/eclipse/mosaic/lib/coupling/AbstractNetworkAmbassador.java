@@ -768,57 +768,54 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         try {
             int interactionId = interaction.getId();
             AdHocConfiguration configuration = interaction.getConfiguration();
-            Integer externalId = simulatedNodes.containsInternalId(configuration.getNodeId())
-                    ? simulatedNodes.toExternalId(configuration.getNodeId())
-                    : null;
-            if (externalId != null) {   // If the node is simulated
-                if (log.isTraceEnabled()) {
-                    log.trace(
-                            "AdHocCommunicationConfiguration: from node ID[int={}, ext={}], at time = {} channels: [{},{}|{},{}]",
-                            configuration.getNodeId(), externalId, time,
-                            (configuration.getConf0() != null ? configuration.getConf0().getChannel0() : "null"),
-                            (configuration.getConf0() != null ? configuration.getConf0().getChannel1() : "null"),
-                            (configuration.getConf1() != null ? configuration.getConf1().getChannel0() : "null"),
-                            (configuration.getConf1() != null ? configuration.getConf1().getChannel1() : "null")
-                    );
-                    log.trace("AdHocCommunicationConfiguration: Number of radios: {}", configuration.getRadioMode());
-                    if (configuration.getRadioMode() != AdHocConfiguration.RadioMode.OFF) {
-                        log.trace("AdHocCommunicationConfiguration: radio0: IP: {}", configuration.getConf0().getNewIP());
-                        log.trace("AdHocCommunicationConfiguration: radio0: Subnet: {}", configuration.getConf0().getNewSubnet());
-                        log.trace("AdHocCommunicationConfiguration: radio0: Mode: {}", configuration.getConf0().getMode());
-                        log.trace("AdHocCommunicationConfiguration: radio0: Channel0: {}", configuration.getConf0().getChannel0());
-                        log.trace("AdHocCommunicationConfiguration: radio0: Channel1: {}", configuration.getConf0().getChannel1());
-                        if (configuration.getConf0().getNewPower() == -1) {
-                            log.trace("AdHocCommunicationConfiguration: radio0: Power set by federate");
-                        } else {
-                            log.trace("AdHocCommunicationConfiguration: radio0: Power: {} mW", configuration.getConf0().getNewPower());
-                        }
-                    }
-                    if (configuration.getRadioMode() == AdHocConfiguration.RadioMode.DUAL) {
-                        log.trace("AdHocCommunicationConfiguration: radio1: IP: {}", configuration.getConf1().getNewIP());
-                        log.trace("AdHocCommunicationConfiguration: radio1: Subnet: {}", configuration.getConf1().getNewSubnet());
-                        log.trace("AdHocCommunicationConfiguration: radio1: Mode: {}", configuration.getConf1().getMode());
-                        log.trace("AdHocCommunicationConfiguration: radio1: Channel0: {}", configuration.getConf1().getChannel0());
-                        log.trace("AdHocCommunicationConfiguration: radio1: Channel1: {}", configuration.getConf1().getChannel1());
-                        if (configuration.getConf1().getNewPower() == -1) {
-                            log.trace("AdHocCommunicationConfiguration: radio1: Power set by federate");
-                        } else {
-                            log.trace("AdHocCommunicationConfiguration: radio1: Power: {} mW", configuration.getConf1().getNewPower());
-                        }
-                    }
-                }
-                // actually write the data to the federate
-                if (CMD.SUCCESS != ambassadorFederateChannel.writeConfigMessage(time, interactionId, externalId, configuration)) {
-                    LoggerFactory.getLogger(this.getClass()).error(
-                            "Could not configure node {}s radio",
-                            configuration.getNodeId()
-                    );
-                    throw new InternalFederateException(
-                            "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
-                    );
-                }
-            } else {
+            if (simulatedNodes.containsInternalId(configuration.getNodeId())) {
                 throw new IllegalValueException("Node not simulated: " + configuration.getNodeId());
+            }
+            Integer externalId = simulatedNodes.toExternalId(configuration.getNodeId());
+            if (log.isTraceEnabled()) {
+                log.trace(
+                        "AdHocCommunicationConfiguration: from node ID[int={}, ext={}], at time = {} channels: [{},{}|{},{}]",
+                        configuration.getNodeId(), externalId, time,
+                        (configuration.getConf0() != null ? configuration.getConf0().getChannel0() : "null"),
+                        (configuration.getConf0() != null ? configuration.getConf0().getChannel1() : "null"),
+                        (configuration.getConf1() != null ? configuration.getConf1().getChannel0() : "null"),
+                        (configuration.getConf1() != null ? configuration.getConf1().getChannel1() : "null")
+                );
+                log.trace("AdHocCommunicationConfiguration: Number of radios: {}", configuration.getRadioMode());
+                if (configuration.getRadioMode() != AdHocConfiguration.RadioMode.OFF) {
+                    log.trace("AdHocCommunicationConfiguration: radio0: IP: {}", configuration.getConf0().getNewIP());
+                    log.trace("AdHocCommunicationConfiguration: radio0: Subnet: {}", configuration.getConf0().getNewSubnet());
+                    log.trace("AdHocCommunicationConfiguration: radio0: Mode: {}", configuration.getConf0().getMode());
+                    log.trace("AdHocCommunicationConfiguration: radio0: Channel0: {}", configuration.getConf0().getChannel0());
+                    log.trace("AdHocCommunicationConfiguration: radio0: Channel1: {}", configuration.getConf0().getChannel1());
+                    if (configuration.getConf0().getNewPower() == -1) {
+                        log.trace("AdHocCommunicationConfiguration: radio0: Power set by federate");
+                    } else {
+                        log.trace("AdHocCommunicationConfiguration: radio0: Power: {} mW", configuration.getConf0().getNewPower());
+                    }
+                }
+                if (configuration.getRadioMode() == AdHocConfiguration.RadioMode.DUAL) {
+                    log.trace("AdHocCommunicationConfiguration: radio1: IP: {}", configuration.getConf1().getNewIP());
+                    log.trace("AdHocCommunicationConfiguration: radio1: Subnet: {}", configuration.getConf1().getNewSubnet());
+                    log.trace("AdHocCommunicationConfiguration: radio1: Mode: {}", configuration.getConf1().getMode());
+                    log.trace("AdHocCommunicationConfiguration: radio1: Channel0: {}", configuration.getConf1().getChannel0());
+                    log.trace("AdHocCommunicationConfiguration: radio1: Channel1: {}", configuration.getConf1().getChannel1());
+                    if (configuration.getConf1().getNewPower() == -1) {
+                        log.trace("AdHocCommunicationConfiguration: radio1: Power set by federate");
+                    } else {
+                        log.trace("AdHocCommunicationConfiguration: radio1: Power: {} mW", configuration.getConf1().getNewPower());
+                    }
+                }
+            }
+            // actually write the data to the federate
+            if (CMD.SUCCESS != ambassadorFederateChannel.writeConfigMessage(time, interactionId, externalId, configuration)) {
+                LoggerFactory.getLogger(this.getClass()).error(
+                        "Could not configure node {}s radio",
+                        configuration.getNodeId()
+                );
+                throw new InternalFederateException(
+                        "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
+                );
             }
         } catch (IOException | InternalFederateException | IllegalValueException ex) {
             log.error("{} could not configure the radio", ambassadorName);
