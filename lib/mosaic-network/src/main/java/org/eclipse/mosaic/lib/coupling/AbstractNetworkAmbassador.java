@@ -60,10 +60,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
 
 /**
  * The Ambassador for coupling a network simulator to MOSAIC RTI.
@@ -127,12 +125,6 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      * Ids of nodes which has been added and removed.
      */
     protected final List<String> removedNodes;
-
-    /**
-     * This is used to fetch the most recent position of a vehicle when a {@link AdHocCommunicationConfiguration} interaction
-     * is processed.
-     */
-    private VehicleUpdates latestVehicleUpdates = null;
 
     /**
      * A config object for whether to bypass federate destination type capability queries in
@@ -485,9 +477,6 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      */
     private synchronized void process(VehicleUpdates interaction) throws InternalFederateException {
         try {
-            // save the latest vehicle updates for the case: first VehicleUpdates arrive before AdHocCommunicationConfiguration
-            latestVehicleUpdates = interaction;
-
             if (!interaction.getAdded().isEmpty()) {
                 List<VehicleData> addedVehicles = interaction.getAdded();
                 Comparator<UnitData> comp = new UnitNameComparator();
@@ -495,17 +484,19 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 for (VehicleData vi : addedVehicles) {
                     if (simulatedNodes.containsInternalId(vi.getName())) {
                         log.warn("Vehicle with ID {} was already added, ignoring entry.", vi.getName());
-                        continue;
-                    } else if (!registeredNodes.containsKey(vi.getName())) {
-                        log.debug("Vehicle with ID {} is not in the registered list (no config arrived yet)", vi.getName());
-                        continue;
-                    }
-                    // add vehicles with stored config in the case: AdHocCommunicationConfiguration arrived before VehicleUpdates
-                    RegisteredNode registeredNode = registeredNodes.get(vi.getName());
-                    registeredNode.position = vi.getProjectedPosition();
-                    if (registeredNode.configuration != null) {
+                    } else if (registeredNodes.containsKey(vi.getName())) {
+                        // AdHocCommunicationConfiguration arrived before VehicleUpdates
+                        RegisteredNode registeredNode = registeredNodes.get(vi.getName());
+                        registeredNode.position = vi.getProjectedPosition();
+                        if (registeredNode.configuration == null) {
+                            log.error("Vehicle with ID {} was already registered but has no config present.", vi.getName());
+                            return;
+                        }
                         addNodeToSimulation(vi.getName(), registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, interaction.getTime());
                         registeredNodes.remove(vi.getName());
+                    } else {
+                        // Waiting for AdHocCommunicationConfiguration
+                        registeredNodes.put(vi.getName(), new RegisteredNode(null, vi.getProjectedPosition()));
                     }
                 }
             }
@@ -699,24 +690,29 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     }
 
     private void configureRadioForNode(String nodeId, AdHocCommunicationConfiguration interaction) throws InternalFederateException {
-        if (simulatedNodes.containsInternalId(nodeId)) {
+        if (removedNodes.contains(nodeId)) {
+            log.warn("Got AdHoc configuration for already removed node {}. Ignoring.", nodeId);
+        } else if (simulatedNodes.containsInternalId(nodeId)) {
             // node is already simulated -> configure
             log.debug("Updating Configuration for simulated node {}", nodeId);
             sendAdHocCommunicationConfiguration(interaction, interaction.getTime());
         } else if (UnitNameGenerator.isVehicle(nodeId)) {
-            // for (not yet simulated) vehicles:
-            // we fetch the latest position from the most recent VehicleUpdates (they may arrived before AdHocCommunicationConfiguration)
-            // in case VehicleUpdates (and hence positions) are not there, put the vehicle's config to registeredNodes without position
-            VehicleData latestData = fetchVehicleDataFromLastUpdate(nodeId);
-            RegisteredNode configuredNode = new RegisteredNode(interaction, latestData != null ? latestData.getProjectedPosition() : null);
-            if (latestData != null) {
-                addNodeToSimulation(nodeId, configuredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, interaction.getTime());
-            } else if (!removedNodes.contains(nodeId)) {
-                log.debug("Saving Configuration for later insertion as vehicle {} has not moved yet.", nodeId);
-                registeredNodes.put(nodeId, configuredNode);
+            if (registeredNodes.containsKey(nodeId)) {
+                // VehicleUpdates arrived before AdHocCommunicationConfiguration
+                RegisteredNode registeredNode = registeredNodes.get(nodeId);
+                registeredNode.configuration = interaction;
+                if (registeredNode.position == null) {
+                    log.error("Vehicle with ID {} was already registered but has no position present.", nodeId);
+                    return;
+                }
+                addNodeToSimulation(nodeId, registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, interaction.getTime());
+                registeredNodes.remove(nodeId);
+            } else {
+                // Wait for first VehicleUpdate with position
+                registeredNodes.put(nodeId, new RegisteredNode(interaction, null));
             }
         } else if (registeredNodes.containsKey(nodeId)) {
-            // for RSUs, TLs and CSs, Registrations arrive before AdHocCommunicationConfiguration -> they could be added to simulation now
+            // for RSUs, TLs and CSs, Registrations arrive before AdHocCommunicationConfiguration -> they can be added to the simulation now
             RegisteredNode registeredNode = registeredNodes.get(nodeId);
             registeredNode.configuration = interaction;
             addNodeToSimulation(nodeId, registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU, interaction.getTime());
@@ -724,17 +720,6 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         } else {
             log.warn("Got AdHoc configuration for unknown node {}. Ignoring.", nodeId);
         }
-    }
-
-    private synchronized VehicleData fetchVehicleDataFromLastUpdate(String vehicleId) {
-        if (latestVehicleUpdates == null) {
-            return null;
-        }
-        // see if vehicle was added or updated within the last vehicle update
-        Optional<VehicleData> vehicleData = Stream.concat(latestVehicleUpdates.getAdded().stream(), latestVehicleUpdates.getUpdated().stream())
-                .filter(v -> v.getName().equals(vehicleId))
-                .findFirst();
-        return vehicleData.orElse(null);
     }
 
     private synchronized void addNodeToSimulation(String nodeId, RegisteredNode registeredNode, ClientServerChannelProtos.UpdateNode.UpdateType type, long time) throws InternalFederateException {
