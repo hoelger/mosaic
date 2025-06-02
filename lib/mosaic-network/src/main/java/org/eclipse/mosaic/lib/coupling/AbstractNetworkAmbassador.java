@@ -663,30 +663,9 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         }
     }
 
-    private void removeNode(String nodeId, Interaction interaction) throws InternalFederateException {
-        final long time = interaction.getTime();
-        // verify the node is simulated in the current simulation
-        final Integer nodeToRemove = simulatedNodes.containsInternalId(nodeId) ? simulatedNodes.toExternalId(nodeId) : null;
-        if (nodeToRemove != null) {
-            log.info("removeNode ID[int={}, ext={}] time={}", nodeId, nodeToRemove, TIME.format(time));
-            simulatedNodes.removeUsingInternalId(nodeId); // remove the vehicle from our internal list
-            removedNodes.add(nodeId);
-            try {
-                if (CMD.SUCCESS != ambassadorFederateChannel.writeRemoveNodeMessage(time, nodeToRemove)) {
-                    log.error("Could not remove node.");
-                    throw new InternalFederateException("Error in " + federateName + ": Could not remove node");
-                }
-            } catch (IOException | InternalFederateException e) {
-                log.error("{}, time={}", e.getMessage(), TIME.format(interaction.getTime()));
-                throw new InternalFederateException("Could not remove node from the simulator.", e);
-            }
-        } else if (registeredNodes.containsKey(nodeId)) {
-            log.info("removeNode (still virtual) ID[int={}] time={}", nodeId, TIME.format(time));
-            registeredNodes.remove(nodeId);
-        } else {
-            log.warn("Node ID[int={}] is not simulated", nodeId);
-        }
-    }
+    //####################################################################
+    //   Helper methods
+    //####################################################################
 
     private void configureRadioForNode(String nodeId, AdHocCommunicationConfiguration interaction) throws InternalFederateException {
         if (removedNodes.contains(nodeId)) {
@@ -811,6 +790,31 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             }
         } catch (IOException | InternalFederateException | IllegalValueException ex) {
             log.error("{} could not configure the radio", ambassadorName);
+        }
+    }
+
+    private void removeNode(String nodeId, Interaction interaction) throws InternalFederateException {
+        final long time = interaction.getTime();
+        // verify the node is simulated in the current simulation
+        final Integer nodeToRemove = simulatedNodes.containsInternalId(nodeId) ? simulatedNodes.toExternalId(nodeId) : null;
+        if (nodeToRemove != null) {
+            log.info("removeNode ID[int={}, ext={}] time={}", nodeId, nodeToRemove, TIME.format(time));
+            simulatedNodes.removeUsingInternalId(nodeId); // remove the vehicle from our internal list
+            removedNodes.add(nodeId);
+            try {
+                if (CMD.SUCCESS != ambassadorFederateChannel.writeRemoveNodeMessage(time, nodeToRemove)) {
+                    log.error("Could not remove node.");
+                    throw new InternalFederateException("Error in " + federateName + ": Could not remove node");
+                }
+            } catch (IOException | InternalFederateException e) {
+                log.error("{}, time={}", e.getMessage(), TIME.format(interaction.getTime()));
+                throw new InternalFederateException("Could not remove node from the simulator.", e);
+            }
+        } else if (registeredNodes.containsKey(nodeId)) {
+            log.info("removeNode (still virtual) ID[int={}] time={}", nodeId, TIME.format(time));
+            registeredNodes.remove(nodeId);
+        } else {
+            log.warn("Node ID[int={}] is not simulated", nodeId);
         }
     }
 
