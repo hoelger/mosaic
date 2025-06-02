@@ -123,28 +123,6 @@ public class ClientServerChannel {
     }
 
     /**
-     * Allowed address types.
-     * FIXME: Is this still needed?
-     */
-    public static final class ADDRESSTYPE {
-
-        /**
-         * Topological address.
-         */
-        public final static int TOPOCAST = 1;
-
-        /**
-         * Geo address with circular shaped area.
-         */
-        public final static int GEOCIRCLE = 2;
-
-        /**
-         * Geo address with rectangular shaped area.
-         */
-        public final static int GEORECTANGLE = 3;
-    }
-
-    /**
      * Socket connected to the network federate.
      */
     public Socket socket;
@@ -160,11 +138,6 @@ public class ClientServerChannel {
     final private OutputStream out;
 
     /**
-     * Logger (not yet used).
-     *///TODO: implement usage
-    final private Logger log;
-
-    /**
      * Constructor.
      *
      * @param host the remote host address as an InetAddress
@@ -177,7 +150,7 @@ public class ClientServerChannel {
         socket.setTcpNoDelay(true);
         this.in = new DataInputStream(socket.getInputStream());
         this.out = new DataOutputStream(socket.getOutputStream());
-        this.log = log;
+        // TODO: use logger
     }
 
     /**
@@ -261,43 +234,20 @@ public class ClientServerChannel {
     }
 
     /**
-     * Command: Add nodes.
+     * Command: Add node.
      *
-     * @param time  time at which the node is added
-     * @param nodes a list of ids and positions
+     * @param time time at which the node is added
+     * @param node id and position
      * @return command returned by the federate
      */
-    public int writeAddNodeMessage(long time, List<NodeDataContainer> nodes) throws IOException {
-        writeCommand(CMD.UPDATE_NODE);                                  //Announce UPDATE_NODE message
-        UpdateNode.Builder updateNode = UpdateNode.newBuilder();        //Create builder
-        updateNode.setUpdateType(UpdateNode.UpdateType.ADD_VEHICLE).setTime(time);  //Set the type of the update message
-        for (NodeDataContainer cont : nodes) {                           //Fill the given nodes into the builder
-            NodeData.Builder tmpBuilder = NodeData.newBuilder();        //Every node data is another protobuf object, thus new builder
-            tmpBuilder.setId(cont.id).setX(cont.pos.getX()).setY(cont.pos.getY());  //Set coordinates
-            updateNode.addProperties(tmpBuilder.build());               //Add node data to message
-        }
-        updateNode.build().writeDelimitedTo(out);                       //Build message and write to stream
-        return readCommand();                                           //Read command (hopefully a success)
-    }
-
-    /**
-     * Command: Add rsu nodes.
-     *
-     * @param time the time at which he RSU is added
-     * @param rsus list of ids and positions
-     * @return command returned by the federate
-     */
-    public int writeAddRsuNodeMessage(long time, List<NodeDataContainer> rsus) throws IOException {
+    public int writeAddNodeMessage(long time, UpdateNode.UpdateType type, NodeDataContainer node) throws IOException {
         writeCommand(CMD.UPDATE_NODE);
         UpdateNode.Builder updateNode = UpdateNode.newBuilder();
-        updateNode.setUpdateType(UpdateNode.UpdateType.ADD_RSU).setTime(time);
-        for (NodeDataContainer cont : rsus) {
-            NodeData.Builder tmpBuilder = NodeData.newBuilder();
-            tmpBuilder.setId(cont.id).setX(cont.pos.getX()).setY(cont.pos.getY());
-            updateNode.addProperties(tmpBuilder.build());
-        }
+        updateNode.setUpdateType(type).setTime(time);
+        NodeData.Builder tmpBuilder = NodeData.newBuilder();
+        tmpBuilder.setId(node.id).setX(node.pos.getX()).setY(node.pos.getY());
+        updateNode.addProperties(tmpBuilder.build());
         updateNode.build().writeDelimitedTo(out);
-
         return readCommand();
     }
 
@@ -325,24 +275,19 @@ public class ClientServerChannel {
      * Command: Remove nodes.
      *
      * @param time time at which the nodes are removed
-     * @param ids  list of IDs to remove
+     * @param id   ID to remove
      * @return command returned by the federate
      */
-    public int writeRemoveNodesMessage(long time, List<Integer> ids) throws IOException {
+    public int writeRemoveNodeMessage(long time, Integer id) throws IOException {
         writeCommand(CMD.UPDATE_NODE);
         UpdateNode.Builder updateNode = UpdateNode.newBuilder();
         updateNode.setUpdateType(UpdateNode.UpdateType.REMOVE_NODE).setTime(time);
-        for (int id : ids) {
-            NodeData.Builder tmpBuilder = NodeData.newBuilder();  //like add and move but coordinates are ignored
-            tmpBuilder.setId(id).setX(0).setY(0);
-            updateNode.addProperties(tmpBuilder.build());
-        }
+        NodeData.Builder tmpBuilder = NodeData.newBuilder();
+        tmpBuilder.setId(id).setX(0).setY(0);
+        updateNode.addProperties(tmpBuilder.build());
         updateNode.build().writeDelimitedTo(out);
-
         return readCommand();
     }
-
-    // @param channelId the channelID               //TODO: make enum from
 
     /**
      * Write send message header to stream.
