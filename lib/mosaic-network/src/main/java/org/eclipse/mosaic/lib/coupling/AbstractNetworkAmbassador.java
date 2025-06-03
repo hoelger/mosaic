@@ -763,7 +763,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      * @param interaction interaction containing an AdHocConfiguration
      * @param time        workaround for wrong timestamps when retaining configuration interactions
      */
-    private synchronized void sendAdHocCommunicationConfiguration(AdHocCommunicationConfiguration interaction, long time) {
+    private synchronized void sendAdHocCommunicationConfiguration(AdHocCommunicationConfiguration interaction, long time) throws InternalFederateException {
         log.debug("Sending adhoc configuration interaction {} to {}", interaction.getId(), federateName);
         try {
             int interactionId = interaction.getId();
@@ -771,11 +771,11 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             if (simulatedNodes.containsInternalId(configuration.getNodeId())) {
                 throw new IllegalValueException("Node not simulated: " + configuration.getNodeId());
             }
-            Integer externalId = simulatedNodes.toExternalId(configuration.getNodeId());
+            Integer nodeId = simulatedNodes.toExternalId(configuration.getNodeId());
             if (log.isTraceEnabled()) {
                 log.trace(
                         "AdHocCommunicationConfiguration: from node ID[int={}, ext={}], at time = {} channels: [{},{}|{},{}]",
-                        configuration.getNodeId(), externalId, time,
+                        configuration.getNodeId(), nodeId, time,
                         (configuration.getConf0() != null ? configuration.getConf0().getChannel0() : "null"),
                         (configuration.getConf0() != null ? configuration.getConf0().getChannel1() : "null"),
                         (configuration.getConf1() != null ? configuration.getConf1().getChannel0() : "null"),
@@ -807,18 +807,15 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     }
                 }
             }
-            // actually write the data to the federate
-            if (CMD.SUCCESS != ambassadorFederateChannel.writeConfigMessage(time, interactionId, externalId, configuration)) {
-                LoggerFactory.getLogger(this.getClass()).error(
-                        "Could not configure node {}s radio",
-                        configuration.getNodeId()
-                );
+            if (CMD.SUCCESS != ambassadorFederateChannel.writeConfigMessage(time, interactionId, nodeId, configuration)) {
+                log.error("Could not configure node {}s radio", configuration.getNodeId());
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
                 );
             }
-        } catch (IOException | InternalFederateException | IllegalValueException ex) {
-            log.error("{} could not configure the radio", ambassadorName);
+        } catch (IOException | InternalFederateException | IllegalValueException e) {
+            log.error(e.getMessage(), e);
+            throw new InternalFederateException("Could not configure the radio.", e);
         }
     }
 
