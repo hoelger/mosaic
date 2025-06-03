@@ -405,7 +405,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      */
     private synchronized void process(RsuRegistration interaction) {
         log.debug(
-                "Add RSU {} at simulation time {} ",
+                "Register RSU {} at simulation time {} ",
                 interaction.getMapping().getName(),
                 TIME.format(interaction.getTime())
         );
@@ -427,7 +427,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      */
     private synchronized void process(TrafficLightRegistration interaction) {
         log.debug(
-                "Add traffic light RSU for TL {} at simulation time {} ",
+                "Register TL {} (as RSU) at simulation time {} ",
                 interaction.getMapping().getName(),
                 TIME.format(interaction.getTime())
         );
@@ -502,6 +502,11 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         addNodeToSimulation(vi.getName(), registeredNode, interaction.getTime());
                     } else {
                         // Waiting for CommunicationConfiguration
+                        log.debug(
+                                "Register Vehicle {} at simulation time {} ",
+                                vi.getName(),
+                                TIME.format(interaction.getTime())
+                        );
                         registeredNodes.put(vi.getName(), new RegisteredNode(null, vi.getProjectedPosition()));
                     }
                 }
@@ -714,6 +719,11 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 addNodeToSimulation(nodeId, registeredNode, interaction.getTime());
             } else {
                 // Wait for first VehicleUpdate with position
+                log.debug(
+                    "Register radio config for Vehicle {} at simulation time {} ",
+                    nodeId,
+                    TIME.format(interaction.getTime())
+                );
                 registeredNodes.put(nodeId, new RegisteredNode(interaction, null));
             }
         } else if (registeredNodes.containsKey(nodeId)) {
@@ -743,10 +753,8 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 );
                 registeredNodes.remove(nodeId);
                 if (registeredNode.configuration instanceof AdHocCommunicationConfiguration castedInteraction) {
-                    log.debug("Sending AdHocCommunicationConfiguration for node {}", nodeId);
                     sendAdHocCommunicationConfiguration(castedInteraction, time);
                 } else if (registeredNode.configuration instanceof CellularCommunicationConfiguration castedInteraction) {
-                    log.debug("Sending CellularCommunicationConfiguration for node {}", nodeId);
                     sendCellularCommunicationConfiguration(castedInteraction, time);
                 }
             }
@@ -765,13 +773,13 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      * @param time        workaround for wrong timestamps when retaining configuration interactions
      */
     private synchronized void sendAdHocCommunicationConfiguration(AdHocCommunicationConfiguration interaction, long time) throws InternalFederateException {
-        log.debug("Sending adhoc configuration interaction {} to {}", interaction.getId(), federateName);
         try {
             int interactionId = interaction.getId();
             AdHocConfiguration configuration = interaction.getConfiguration();
             if (!simulatedNodes.containsInternalId(configuration.getNodeId())) {
                 throw new IllegalValueException("Node not simulated: " + configuration.getNodeId());
             }
+            log.debug("Sending AdHocCommunicationConfiguration for node {}", configuration.getNodeId());
             Integer nodeId = simulatedNodes.toExternalId(configuration.getNodeId());
             if (log.isTraceEnabled()) {
                 log.trace(
@@ -821,12 +829,12 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     }
 
     private synchronized void sendCellularCommunicationConfiguration(CellularCommunicationConfiguration interaction, long time) throws InternalFederateException {
-        log.debug("Sending cellular configuration interaction {} to {}", interaction.getId(), federateName);
         try {
             CellConfiguration configuration = interaction.getConfiguration();
             if (!simulatedNodes.containsInternalId(configuration.getNodeId())) {
                 throw new IllegalValueException("Node not simulated: " + configuration.getNodeId());
             }
+            log.debug("Sending CellularCommunicationConfiguration for node {}", configuration.getNodeId());
             Integer nodeId = simulatedNodes.toExternalId(configuration.getNodeId());
             if (CMD.SUCCESS != ambassadorFederateChannel.writeCellRadioConfigMessage(time, nodeId, configuration)) {
                 log.error("Could not configure node {}s radio", configuration.getNodeId());
