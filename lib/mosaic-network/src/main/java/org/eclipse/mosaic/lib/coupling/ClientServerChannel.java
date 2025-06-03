@@ -33,6 +33,7 @@ import org.eclipse.mosaic.lib.geo.GeoCircle;
 import org.eclipse.mosaic.lib.geo.GeoRectangle;
 import org.eclipse.mosaic.lib.objects.addressing.DestinationAddressContainer;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration;
+import org.eclipse.mosaic.lib.objects.communication.CellConfiguration;
 import org.eclipse.mosaic.lib.objects.communication.InterfaceConfiguration;
 import org.eclipse.mosaic.lib.objects.v2x.V2xReceiverInformation;
 import org.eclipse.mosaic.lib.util.objects.IdTransformer;
@@ -371,7 +372,7 @@ public class ClientServerChannel {
      * @param configuration the actual configuration
      * @return command returned by the federate
      */
-    public int writeConfigMessage(long time, int msgID, int externalId, AdHocConfiguration configuration) throws IOException {
+    public int writeAdhocRadioConfigMessage(long time, int msgID, int externalId, AdHocConfiguration configuration) throws IOException {
         writeCommand(CMD.CONF_RADIO);
         ConfigureRadioMessage.Builder configRadio = ConfigureRadioMessage.newBuilder();
         configRadio.setTime(time);
@@ -414,6 +415,37 @@ public class ClientServerChannel {
             }
             configRadio.setSecondaryRadioConfiguration(radioConfig2);
         }
+        configRadio.build().writeDelimitedTo(out);
+        return readCommand();
+    }
+
+
+    /**
+     * Takes a configuration message and inserts it via the wrapped protobuf channel
+     * Configuration is then sent to the federate.
+     *
+     * @param time          the logical time at which the configuration happens
+     * @param nodeId        the external (federate-internal) ID of the node
+     * @param configuration the actual configuration
+     * @return command returned by the federate
+     */
+    public int writeCellRadioConfigMessage(long time, int nodeId, CellConfiguration configuration) throws IOException {
+        writeCommand(CMD.CONF_RADIO);
+        ConfigureRadioMessage.Builder configRadio = ConfigureRadioMessage.newBuilder();
+        configRadio.setTime(time);
+        configRadio.setMessageId(0);                    // TODO
+        configRadio.setExternalId(nodeId);
+        configRadio.setRadioNumber(ConfigureRadioMessage.RadioNumber.SINGLE_RADIO);
+
+        ConfigureRadioMessage.RadioConfiguration.Builder radioConfig1 = ConfigureRadioMessage.RadioConfiguration.newBuilder();
+        radioConfig1.setReceivingMessages(false);       // TODO
+        radioConfig1.setIpAddress(0);                   // TODO
+        radioConfig1.setSubnetAddress(0);               // TODO
+        radioConfig1.setTransmissionPower(1);           // TODO
+        radioConfig1.setRadioMode(ConfigureRadioMessage.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
+        radioConfig1.setPrimaryRadioChannel(ClientServerChannelProtos.RadioChannel.PROTO_CELL);
+        configRadio.setPrimaryRadioConfiguration(radioConfig1);
+
         configRadio.build().writeDelimitedTo(out);
         return readCommand();
     }
