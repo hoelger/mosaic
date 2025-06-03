@@ -36,6 +36,7 @@ import org.eclipse.mosaic.lib.objects.UnitNameGenerator;
 import org.eclipse.mosaic.lib.objects.addressing.DestinationAddressContainer;
 import org.eclipse.mosaic.lib.objects.addressing.SourceAddressContainer;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration;
+import org.eclipse.mosaic.lib.objects.communication.CellConfiguration;
 import org.eclipse.mosaic.lib.objects.mapping.ChargingStationMapping;
 import org.eclipse.mosaic.lib.objects.mapping.RsuMapping;
 import org.eclipse.mosaic.lib.objects.mapping.TrafficLightMapping;
@@ -807,7 +808,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     }
                 }
             }
-            if (CMD.SUCCESS != ambassadorFederateChannel.writeConfigMessage(time, interactionId, nodeId, configuration)) {
+            if (CMD.SUCCESS != ambassadorFederateChannel.writeAdhocRadioConfigMessage(time, interactionId, nodeId, configuration)) {
                 log.error("Could not configure node {}s radio", configuration.getNodeId());
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
@@ -819,8 +820,24 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         }
     }
 
-    private synchronized void sendCellularCommunicationConfiguration(CellularCommunicationConfiguration interaction, long time) {
-        // TODO
+    private synchronized void sendCellularCommunicationConfiguration(CellularCommunicationConfiguration interaction, long time) throws InternalFederateException {
+        log.debug("Sending cellular configuration interaction {} to {}", interaction.getId(), federateName);
+        try {
+            CellConfiguration configuration = interaction.getConfiguration();
+            if (!simulatedNodes.containsInternalId(configuration.getNodeId())) {
+                throw new IllegalValueException("Node not simulated: " + configuration.getNodeId());
+            }
+            Integer nodeId = simulatedNodes.toExternalId(configuration.getNodeId());
+            if (CMD.SUCCESS != ambassadorFederateChannel.writeCellRadioConfigMessage(time, nodeId, configuration)) {
+                log.error("Could not configure node {}s radio", configuration.getNodeId());
+                throw new InternalFederateException(
+                        "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
+                );
+            }
+        } catch (IOException | InternalFederateException | IllegalValueException e) {
+            log.error(e.getMessage(), e);
+            throw new InternalFederateException("Could not configure the radio.", e);
+        }
     }
 
     private void removeNode(String nodeId, Interaction interaction) throws InternalFederateException {
