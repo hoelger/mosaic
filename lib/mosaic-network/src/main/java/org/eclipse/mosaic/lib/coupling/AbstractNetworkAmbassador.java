@@ -768,7 +768,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         try {
             int interactionId = interaction.getId();
             AdHocConfiguration configuration = interaction.getConfiguration();
-            if (simulatedNodes.containsInternalId(configuration.getNodeId())) {
+            if (!simulatedNodes.containsInternalId(configuration.getNodeId())) {
                 throw new IllegalValueException("Node not simulated: " + configuration.getNodeId());
             }
             Integer nodeId = simulatedNodes.toExternalId(configuration.getNodeId());
