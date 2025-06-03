@@ -26,7 +26,6 @@ import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
-import org.eclipse.mosaic.lib.enums.RoutingType;
 import org.eclipse.mosaic.lib.geo.CartesianCircle;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
 import org.eclipse.mosaic.lib.geo.CartesianRectangle;
@@ -41,8 +40,6 @@ import org.eclipse.mosaic.lib.util.objects.IdTransformer;
 import org.apache.commons.lang3.Validate;
 import org.slf4j.Logger;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -262,9 +259,9 @@ public class ClientServerChannel {
         writeCommand(CMD.UPDATE_NODE);
         UpdateNode.Builder updateNode = UpdateNode.newBuilder();
         updateNode.setUpdateType(UpdateNode.UpdateType.MOVE_NODE).setTime(time);
-        for (NodeDataContainer cont : nodes) {
+        for (NodeDataContainer node : nodes) {
             NodeData.Builder tmpBuilder = NodeData.newBuilder();
-            tmpBuilder.setId(cont.id).setX(cont.pos.getX()).setY(cont.pos.getY());
+            tmpBuilder.setId(node.id).setX(node.pos.getX()).setY(node.pos.getY());
             updateNode.addProperties(tmpBuilder.build());
         }
         updateNode.build().writeDelimitedTo(out);
@@ -377,7 +374,9 @@ public class ClientServerChannel {
     public int writeConfigMessage(long time, int msgID, int externalId, AdHocConfiguration configuration) throws IOException {
         writeCommand(CMD.CONF_RADIO);
         ConfigureRadioMessage.Builder configRadio = ConfigureRadioMessage.newBuilder();
-        configRadio.setTime(time).setMessageId(msgID).setExternalId(externalId);
+        configRadio.setTime(time);
+        configRadio.setMessageId(msgID);
+        configRadio.setExternalId(externalId);
         configRadio.setRadioNumber(switch (configuration.getRadioMode()) {
             case OFF -> ConfigureRadioMessage.RadioNumber.NO_RADIO;
             case SINGLE -> ConfigureRadioMessage.RadioNumber.SINGLE_RADIO;
