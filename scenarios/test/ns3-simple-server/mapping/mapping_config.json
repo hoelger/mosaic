@@ -49,7 +49,6 @@
                 {
                     "name": "Car",
                     "applications": [
-                        "org.eclipse.mosaic.test.app.networking.CarRxCellApp",
                         "org.eclipse.mosaic.test.app.networking.CarTxCellApp(\"7.0.0.3\")"
                     ]
                 }
