@@ -34,6 +34,7 @@ import org.eclipse.mosaic.lib.objects.UnitData;
 import org.eclipse.mosaic.lib.objects.UnitNameComparator;
 import org.eclipse.mosaic.lib.objects.UnitNameGenerator;
 import org.eclipse.mosaic.lib.objects.addressing.DestinationAddressContainer;
+import org.eclipse.mosaic.lib.objects.addressing.IpResolver;
 import org.eclipse.mosaic.lib.objects.addressing.SourceAddressContainer;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration;
 import org.eclipse.mosaic.lib.objects.communication.CellConfiguration;
@@ -55,6 +56,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -836,7 +838,8 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             }
             log.debug("Sending CellularCommunicationConfiguration for node {}", configuration.getNodeId());
             Integer nodeId = simulatedNodes.toExternalId(configuration.getNodeId());
-            if (CMD.SUCCESS != ambassadorFederateChannel.writeCellRadioConfigMessage(time, nodeId, configuration)) {
+            Inet4Address ip = IpResolver.getSingleton().lookup(configuration.getNodeId());
+            if (CMD.SUCCESS != ambassadorFederateChannel.writeCellRadioConfigMessage(time, nodeId, configuration, ip)) {
                 log.error("Could not configure node {}s radio", configuration.getNodeId());
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"

@@ -429,7 +429,7 @@ public class ClientServerChannel {
      * @param configuration the actual configuration
      * @return command returned by the federate
      */
-    public int writeCellRadioConfigMessage(long time, int nodeId, CellConfiguration configuration) throws IOException {
+    public int writeCellRadioConfigMessage(long time, int nodeId, CellConfiguration configuration, Inet4Address ip) throws IOException {
         writeCommand(CMD.CONF_RADIO);
         ConfigureRadioMessage.Builder configRadio = ConfigureRadioMessage.newBuilder();
         configRadio.setTime(time);
@@ -439,7 +439,7 @@ public class ClientServerChannel {
 
         ConfigureRadioMessage.RadioConfiguration.Builder radioConfig1 = ConfigureRadioMessage.RadioConfiguration.newBuilder();
         radioConfig1.setReceivingMessages(false);       // TODO
-        radioConfig1.setIpAddress(0);                   // TODO
+        radioConfig1.setIpAddress(inet4ToInt(ip));      // TODO
         radioConfig1.setSubnetAddress(0);               // TODO
         radioConfig1.setTransmissionPower(1);           // TODO
         radioConfig1.setRadioMode(ConfigureRadioMessage.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
