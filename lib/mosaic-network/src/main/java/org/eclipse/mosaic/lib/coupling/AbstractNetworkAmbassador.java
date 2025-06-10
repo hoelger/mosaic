@@ -451,7 +451,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      */
     private synchronized void process(ChargingStationRegistration interaction) {
         log.debug(
-                "Add charging station RSU for CS {} at simulation time {} ",
+                "Register charging station {} (as RSU) at simulation time {} ",
                 interaction.getMapping().getName(),
                 TIME.format(interaction.getTime())
         );
