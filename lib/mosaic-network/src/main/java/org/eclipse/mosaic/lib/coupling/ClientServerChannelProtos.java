@@ -966,6 +966,1705 @@ public final class ClientServerChannelProtos {
 
   }
 
+  public interface InitMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.InitMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 start_time = 1;</code>
+     * @return Whether the startTime field is set.
+     */
+    boolean hasStartTime();
+    /**
+     * <code>required int64 start_time = 1;</code>
+     * @return The startTime.
+     */
+    long getStartTime();
+
+    /**
+     * <code>required int64 end_time = 2;</code>
+     * @return Whether the endTime field is set.
+     */
+    boolean hasEndTime();
+    /**
+     * <code>required int64 end_time = 2;</code>
+     * @return The endTime.
+     */
+    long getEndTime();
+  }
+  /**
+   * Protobuf type {@code ClientServerChannelSpace.InitMessage}
+   */
+  public static final class InitMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.InitMessage)
+      InitMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use InitMessage.newBuilder() to construct.
+    private InitMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private InitMessage() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new InitMessage();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private InitMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              startTime_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              endTime_ = input.readInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int START_TIME_FIELD_NUMBER = 1;
+    private long startTime_;
+    /**
+     * <code>required int64 start_time = 1;</code>
+     * @return Whether the startTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasStartTime() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required int64 start_time = 1;</code>
+     * @return The startTime.
+     */
+    @java.lang.Override
+    public long getStartTime() {
+      return startTime_;
+    }
+
+    public static final int END_TIME_FIELD_NUMBER = 2;
+    private long endTime_;
+    /**
+     * <code>required int64 end_time = 2;</code>
+     * @return Whether the endTime field is set.
+     */
+    @java.lang.Override
+    public boolean hasEndTime() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required int64 end_time = 2;</code>
+     * @return The endTime.
+     */
+    @java.lang.Override
+    public long getEndTime() {
+      return endTime_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasStartTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasEndTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt64(1, startTime_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeInt64(2, endTime_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, startTime_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(2, endTime_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage)) {
+        return super.equals(obj);
+      }
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage) obj;
+
+      if (hasStartTime() != other.hasStartTime()) return false;
+      if (hasStartTime()) {
+        if (getStartTime()
+            != other.getStartTime()) return false;
+      }
+      if (hasEndTime() != other.hasEndTime()) return false;
+      if (hasEndTime()) {
+        if (getEndTime()
+            != other.getEndTime()) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStartTime()) {
+        hash = (37 * hash) + START_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getStartTime());
+      }
+      if (hasEndTime()) {
+        hash = (37 * hash) + END_TIME_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getEndTime());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ClientServerChannelSpace.InitMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.InitMessage)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.Builder.class);
+      }
+
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        startTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        endTime_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.startTime_ = startTime_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.endTime_ = endTime_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.getDefaultInstance()) return this;
+        if (other.hasStartTime()) {
+          setStartTime(other.getStartTime());
+        }
+        if (other.hasEndTime()) {
+          setEndTime(other.getEndTime());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasStartTime()) {
+          return false;
+        }
+        if (!hasEndTime()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long startTime_ ;
+      /**
+       * <code>required int64 start_time = 1;</code>
+       * @return Whether the startTime field is set.
+       */
+      @java.lang.Override
+      public boolean hasStartTime() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required int64 start_time = 1;</code>
+       * @return The startTime.
+       */
+      @java.lang.Override
+      public long getStartTime() {
+        return startTime_;
+      }
+      /**
+       * <code>required int64 start_time = 1;</code>
+       * @param value The startTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartTime(long value) {
+        bitField0_ |= 0x00000001;
+        startTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 start_time = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStartTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        startTime_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long endTime_ ;
+      /**
+       * <code>required int64 end_time = 2;</code>
+       * @return Whether the endTime field is set.
+       */
+      @java.lang.Override
+      public boolean hasEndTime() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required int64 end_time = 2;</code>
+       * @return The endTime.
+       */
+      @java.lang.Override
+      public long getEndTime() {
+        return endTime_;
+      }
+      /**
+       * <code>required int64 end_time = 2;</code>
+       * @param value The endTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEndTime(long value) {
+        bitField0_ |= 0x00000002;
+        endTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 end_time = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEndTime() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        endTime_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.InitMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.InitMessage)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage();
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<InitMessage>
+        PARSER = new com.google.protobuf.AbstractParser<InitMessage>() {
+      @java.lang.Override
+      public InitMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new InitMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<InitMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InitMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PortExchangeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.PortExchange)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required uint32 port_number = 1;</code>
+     * @return Whether the portNumber field is set.
+     */
+    boolean hasPortNumber();
+    /**
+     * <code>required uint32 port_number = 1;</code>
+     * @return The portNumber.
+     */
+    int getPortNumber();
+  }
+  /**
+   * Protobuf type {@code ClientServerChannelSpace.PortExchange}
+   */
+  public static final class PortExchange extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.PortExchange)
+      PortExchangeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PortExchange.newBuilder() to construct.
+    private PortExchange(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PortExchange() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new PortExchange();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PortExchange(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              portNumber_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int PORT_NUMBER_FIELD_NUMBER = 1;
+    private int portNumber_;
+    /**
+     * <code>required uint32 port_number = 1;</code>
+     * @return Whether the portNumber field is set.
+     */
+    @java.lang.Override
+    public boolean hasPortNumber() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required uint32 port_number = 1;</code>
+     * @return The portNumber.
+     */
+    @java.lang.Override
+    public int getPortNumber() {
+      return portNumber_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasPortNumber()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeUInt32(1, portNumber_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, portNumber_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange)) {
+        return super.equals(obj);
+      }
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange) obj;
+
+      if (hasPortNumber() != other.hasPortNumber()) return false;
+      if (hasPortNumber()) {
+        if (getPortNumber()
+            != other.getPortNumber()) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasPortNumber()) {
+        hash = (37 * hash) + PORT_NUMBER_FIELD_NUMBER;
+        hash = (53 * hash) + getPortNumber();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ClientServerChannelSpace.PortExchange}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.PortExchange)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchangeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.Builder.class);
+      }
+
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        portNumber_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_descriptor;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.portNumber_ = portNumber_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.getDefaultInstance()) return this;
+        if (other.hasPortNumber()) {
+          setPortNumber(other.getPortNumber());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasPortNumber()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int portNumber_ ;
+      /**
+       * <code>required uint32 port_number = 1;</code>
+       * @return Whether the portNumber field is set.
+       */
+      @java.lang.Override
+      public boolean hasPortNumber() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required uint32 port_number = 1;</code>
+       * @return The portNumber.
+       */
+      @java.lang.Override
+      public int getPortNumber() {
+        return portNumber_;
+      }
+      /**
+       * <code>required uint32 port_number = 1;</code>
+       * @param value The portNumber to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPortNumber(int value) {
+        bitField0_ |= 0x00000001;
+        portNumber_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 port_number = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPortNumber() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        portNumber_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.PortExchange)
+    }
+
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.PortExchange)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange();
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<PortExchange>
+        PARSER = new com.google.protobuf.AbstractParser<PortExchange>() {
+      @java.lang.Override
+      public PortExchange parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PortExchange(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PortExchange> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PortExchange> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TimeMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.TimeMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return Whether the time field is set.
+     */
+    boolean hasTime();
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return The time.
+     */
+    long getTime();
+  }
+  /**
+   * Protobuf type {@code ClientServerChannelSpace.TimeMessage}
+   */
+  public static final class TimeMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.TimeMessage)
+      TimeMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TimeMessage.newBuilder() to construct.
+    private TimeMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TimeMessage() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TimeMessage();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TimeMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              time_ = input.readInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TIME_FIELD_NUMBER = 1;
+    private long time_;
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return Whether the time field is set.
+     */
+    @java.lang.Override
+    public boolean hasTime() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt64(1, time_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, time_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage)) {
+        return super.equals(obj);
+      }
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage) obj;
+
+      if (hasTime() != other.hasTime()) return false;
+      if (hasTime()) {
+        if (getTime()
+            != other.getTime()) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTime()) {
+        hash = (37 * hash) + TIME_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getTime());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ClientServerChannelSpace.TimeMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.TimeMessage)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.Builder.class);
+      }
+
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        time_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.time_ = time_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.getDefaultInstance()) return this;
+        if (other.hasTime()) {
+          setTime(other.getTime());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasTime()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long time_ ;
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return Whether the time field is set.
+       */
+      @java.lang.Override
+      public boolean hasTime() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return The time.
+       */
+      @java.lang.Override
+      public long getTime() {
+        return time_;
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @param value The time to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTime(long value) {
+        bitField0_ |= 0x00000001;
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        time_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.TimeMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.TimeMessage)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage();
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<TimeMessage>
+        PARSER = new com.google.protobuf.AbstractParser<TimeMessage>() {
+      @java.lang.Override
+      public TimeMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TimeMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TimeMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TimeMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface UpdateNodeOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.UpdateNode)
       com.google.protobuf.MessageOrBuilder {
@@ -2852,2673 +4551,6 @@ public final class ClientServerChannelProtos {
 
     @java.lang.Override
     public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface InitMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.InitMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int64 start_time = 1;</code>
-     * @return Whether the startTime field is set.
-     */
-    boolean hasStartTime();
-    /**
-     * <code>required int64 start_time = 1;</code>
-     * @return The startTime.
-     */
-    long getStartTime();
-
-    /**
-     * <code>required int64 end_time = 2;</code>
-     * @return Whether the endTime field is set.
-     */
-    boolean hasEndTime();
-    /**
-     * <code>required int64 end_time = 2;</code>
-     * @return The endTime.
-     */
-    long getEndTime();
-  }
-  /**
-   * Protobuf type {@code ClientServerChannelSpace.InitMessage}
-   */
-  public static final class InitMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.InitMessage)
-      InitMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use InitMessage.newBuilder() to construct.
-    private InitMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private InitMessage() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new InitMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private InitMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              startTime_ = input.readInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              endTime_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int START_TIME_FIELD_NUMBER = 1;
-    private long startTime_;
-    /**
-     * <code>required int64 start_time = 1;</code>
-     * @return Whether the startTime field is set.
-     */
-    @java.lang.Override
-    public boolean hasStartTime() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required int64 start_time = 1;</code>
-     * @return The startTime.
-     */
-    @java.lang.Override
-    public long getStartTime() {
-      return startTime_;
-    }
-
-    public static final int END_TIME_FIELD_NUMBER = 2;
-    private long endTime_;
-    /**
-     * <code>required int64 end_time = 2;</code>
-     * @return Whether the endTime field is set.
-     */
-    @java.lang.Override
-    public boolean hasEndTime() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required int64 end_time = 2;</code>
-     * @return The endTime.
-     */
-    @java.lang.Override
-    public long getEndTime() {
-      return endTime_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasStartTime()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasEndTime()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt64(1, startTime_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt64(2, endTime_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, startTime_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, endTime_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage)) {
-        return super.equals(obj);
-      }
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage) obj;
-
-      if (hasStartTime() != other.hasStartTime()) return false;
-      if (hasStartTime()) {
-        if (getStartTime()
-            != other.getStartTime()) return false;
-      }
-      if (hasEndTime() != other.hasEndTime()) return false;
-      if (hasEndTime()) {
-        if (getEndTime()
-            != other.getEndTime()) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasStartTime()) {
-        hash = (37 * hash) + START_TIME_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getStartTime());
-      }
-      if (hasEndTime()) {
-        hash = (37 * hash) + END_TIME_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getEndTime());
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code ClientServerChannelSpace.InitMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.InitMessage)
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.Builder.class);
-      }
-
-      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        startTime_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        endTime_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_InitMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage getDefaultInstanceForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage build() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage buildPartial() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.startTime_ = startTime_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.endTime_ = endTime_;
-          to_bitField0_ |= 0x00000002;
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage) {
-          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage other) {
-        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage.getDefaultInstance()) return this;
-        if (other.hasStartTime()) {
-          setStartTime(other.getStartTime());
-        }
-        if (other.hasEndTime()) {
-          setEndTime(other.getEndTime());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasStartTime()) {
-          return false;
-        }
-        if (!hasEndTime()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private long startTime_ ;
-      /**
-       * <code>required int64 start_time = 1;</code>
-       * @return Whether the startTime field is set.
-       */
-      @java.lang.Override
-      public boolean hasStartTime() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int64 start_time = 1;</code>
-       * @return The startTime.
-       */
-      @java.lang.Override
-      public long getStartTime() {
-        return startTime_;
-      }
-      /**
-       * <code>required int64 start_time = 1;</code>
-       * @param value The startTime to set.
-       * @return This builder for chaining.
-       */
-      public Builder setStartTime(long value) {
-        bitField0_ |= 0x00000001;
-        startTime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 start_time = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearStartTime() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        startTime_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private long endTime_ ;
-      /**
-       * <code>required int64 end_time = 2;</code>
-       * @return Whether the endTime field is set.
-       */
-      @java.lang.Override
-      public boolean hasEndTime() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>required int64 end_time = 2;</code>
-       * @return The endTime.
-       */
-      @java.lang.Override
-      public long getEndTime() {
-        return endTime_;
-      }
-      /**
-       * <code>required int64 end_time = 2;</code>
-       * @param value The endTime to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEndTime(long value) {
-        bitField0_ |= 0x00000002;
-        endTime_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 end_time = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEndTime() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        endTime_ = 0L;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.InitMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.InitMessage)
-    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage();
-    }
-
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<InitMessage>
-        PARSER = new com.google.protobuf.AbstractParser<InitMessage>() {
-      @java.lang.Override
-      public InitMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new InitMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<InitMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<InitMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface PortExchangeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.PortExchange)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required uint32 port_number = 1;</code>
-     * @return Whether the portNumber field is set.
-     */
-    boolean hasPortNumber();
-    /**
-     * <code>required uint32 port_number = 1;</code>
-     * @return The portNumber.
-     */
-    int getPortNumber();
-  }
-  /**
-   * Protobuf type {@code ClientServerChannelSpace.PortExchange}
-   */
-  public static final class PortExchange extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.PortExchange)
-      PortExchangeOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use PortExchange.newBuilder() to construct.
-    private PortExchange(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private PortExchange() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new PortExchange();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private PortExchange(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              portNumber_ = input.readUInt32();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int PORT_NUMBER_FIELD_NUMBER = 1;
-    private int portNumber_;
-    /**
-     * <code>required uint32 port_number = 1;</code>
-     * @return Whether the portNumber field is set.
-     */
-    @java.lang.Override
-    public boolean hasPortNumber() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required uint32 port_number = 1;</code>
-     * @return The portNumber.
-     */
-    @java.lang.Override
-    public int getPortNumber() {
-      return portNumber_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasPortNumber()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeUInt32(1, portNumber_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, portNumber_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange)) {
-        return super.equals(obj);
-      }
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange) obj;
-
-      if (hasPortNumber() != other.hasPortNumber()) return false;
-      if (hasPortNumber()) {
-        if (getPortNumber()
-            != other.getPortNumber()) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasPortNumber()) {
-        hash = (37 * hash) + PORT_NUMBER_FIELD_NUMBER;
-        hash = (53 * hash) + getPortNumber();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code ClientServerChannelSpace.PortExchange}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.PortExchange)
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchangeOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.Builder.class);
-      }
-
-      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        portNumber_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_PortExchange_descriptor;
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange getDefaultInstanceForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange build() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange buildPartial() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.portNumber_ = portNumber_;
-          to_bitField0_ |= 0x00000001;
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange) {
-          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange other) {
-        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange.getDefaultInstance()) return this;
-        if (other.hasPortNumber()) {
-          setPortNumber(other.getPortNumber());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasPortNumber()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private int portNumber_ ;
-      /**
-       * <code>required uint32 port_number = 1;</code>
-       * @return Whether the portNumber field is set.
-       */
-      @java.lang.Override
-      public boolean hasPortNumber() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required uint32 port_number = 1;</code>
-       * @return The portNumber.
-       */
-      @java.lang.Override
-      public int getPortNumber() {
-        return portNumber_;
-      }
-      /**
-       * <code>required uint32 port_number = 1;</code>
-       * @param value The portNumber to set.
-       * @return This builder for chaining.
-       */
-      public Builder setPortNumber(int value) {
-        bitField0_ |= 0x00000001;
-        portNumber_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 port_number = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearPortNumber() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        portNumber_ = 0;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.PortExchange)
-    }
-
-    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.PortExchange)
-    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange();
-    }
-
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<PortExchange>
-        PARSER = new com.google.protobuf.AbstractParser<PortExchange>() {
-      @java.lang.Override
-      public PortExchange parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PortExchange(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<PortExchange> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<PortExchange> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface TimeMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.TimeMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int64 time = 1;</code>
-     * @return Whether the time field is set.
-     */
-    boolean hasTime();
-    /**
-     * <code>required int64 time = 1;</code>
-     * @return The time.
-     */
-    long getTime();
-  }
-  /**
-   * Protobuf type {@code ClientServerChannelSpace.TimeMessage}
-   */
-  public static final class TimeMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.TimeMessage)
-      TimeMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use TimeMessage.newBuilder() to construct.
-    private TimeMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private TimeMessage() {
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new TimeMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private TimeMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              time_ = input.readInt64();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int TIME_FIELD_NUMBER = 1;
-    private long time_;
-    /**
-     * <code>required int64 time = 1;</code>
-     * @return Whether the time field is set.
-     */
-    @java.lang.Override
-    public boolean hasTime() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required int64 time = 1;</code>
-     * @return The time.
-     */
-    @java.lang.Override
-    public long getTime() {
-      return time_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasTime()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt64(1, time_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, time_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage)) {
-        return super.equals(obj);
-      }
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage) obj;
-
-      if (hasTime() != other.hasTime()) return false;
-      if (hasTime()) {
-        if (getTime()
-            != other.getTime()) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasTime()) {
-        hash = (37 * hash) + TIME_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getTime());
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code ClientServerChannelSpace.TimeMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.TimeMessage)
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.Builder.class);
-      }
-
-      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        time_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_TimeMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage getDefaultInstanceForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage build() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage buildPartial() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.time_ = time_;
-          to_bitField0_ |= 0x00000001;
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage) {
-          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage other) {
-        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage.getDefaultInstance()) return this;
-        if (other.hasTime()) {
-          setTime(other.getTime());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasTime()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private long time_ ;
-      /**
-       * <code>required int64 time = 1;</code>
-       * @return Whether the time field is set.
-       */
-      @java.lang.Override
-      public boolean hasTime() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int64 time = 1;</code>
-       * @return The time.
-       */
-      @java.lang.Override
-      public long getTime() {
-        return time_;
-      }
-      /**
-       * <code>required int64 time = 1;</code>
-       * @param value The time to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTime(long value) {
-        bitField0_ |= 0x00000001;
-        time_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 time = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTime() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        time_ = 0L;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.TimeMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.TimeMessage)
-    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage();
-    }
-
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<TimeMessage>
-        PARSER = new com.google.protobuf.AbstractParser<TimeMessage>() {
-      @java.lang.Override
-      public TimeMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TimeMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<TimeMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<TimeMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ReceiveMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.ReceiveMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>required int64 time = 1;</code>
-     * @return Whether the time field is set.
-     */
-    boolean hasTime();
-    /**
-     * <code>required int64 time = 1;</code>
-     * @return The time.
-     */
-    long getTime();
-
-    /**
-     * <code>required uint32 node_id = 2;</code>
-     * @return Whether the nodeId field is set.
-     */
-    boolean hasNodeId();
-    /**
-     * <code>required uint32 node_id = 2;</code>
-     * @return The nodeId.
-     */
-    int getNodeId();
-
-    /**
-     * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
-     * @return Whether the channelId field is set.
-     */
-    boolean hasChannelId();
-    /**
-     * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
-     * @return The channelId.
-     */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel getChannelId();
-
-    /**
-     * <code>required uint32 message_id = 4;</code>
-     * @return Whether the messageId field is set.
-     */
-    boolean hasMessageId();
-    /**
-     * <code>required uint32 message_id = 4;</code>
-     * @return The messageId.
-     */
-    int getMessageId();
-
-    /**
-     * <code>required float rssi = 5;</code>
-     * @return Whether the rssi field is set.
-     */
-    boolean hasRssi();
-    /**
-     * <code>required float rssi = 5;</code>
-     * @return The rssi.
-     */
-    float getRssi();
-  }
-  /**
-   * Protobuf type {@code ClientServerChannelSpace.ReceiveMessage}
-   */
-  public static final class ReceiveMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.ReceiveMessage)
-      ReceiveMessageOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use ReceiveMessage.newBuilder() to construct.
-    private ReceiveMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ReceiveMessage() {
-      channelId_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new ReceiveMessage();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private ReceiveMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              bitField0_ |= 0x00000001;
-              time_ = input.readInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              nodeId_ = input.readUInt32();
-              break;
-            }
-            case 24: {
-              int rawValue = input.readEnum();
-                @SuppressWarnings("deprecation")
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel value = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(3, rawValue);
-              } else {
-                bitField0_ |= 0x00000004;
-                channelId_ = rawValue;
-              }
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              messageId_ = input.readUInt32();
-              break;
-            }
-            case 45: {
-              bitField0_ |= 0x00000010;
-              rssi_ = input.readFloat();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.Builder.class);
-    }
-
-    private int bitField0_;
-    public static final int TIME_FIELD_NUMBER = 1;
-    private long time_;
-    /**
-     * <code>required int64 time = 1;</code>
-     * @return Whether the time field is set.
-     */
-    @java.lang.Override
-    public boolean hasTime() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required int64 time = 1;</code>
-     * @return The time.
-     */
-    @java.lang.Override
-    public long getTime() {
-      return time_;
-    }
-
-    public static final int NODE_ID_FIELD_NUMBER = 2;
-    private int nodeId_;
-    /**
-     * <code>required uint32 node_id = 2;</code>
-     * @return Whether the nodeId field is set.
-     */
-    @java.lang.Override
-    public boolean hasNodeId() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>required uint32 node_id = 2;</code>
-     * @return The nodeId.
-     */
-    @java.lang.Override
-    public int getNodeId() {
-      return nodeId_;
-    }
-
-    public static final int CHANNEL_ID_FIELD_NUMBER = 3;
-    private int channelId_;
-    /**
-     * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
-     * @return Whether the channelId field is set.
-     */
-    @java.lang.Override public boolean hasChannelId() {
-      return ((bitField0_ & 0x00000004) != 0);
-    }
-    /**
-     * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
-     * @return The channelId.
-     */
-    @java.lang.Override public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel getChannelId() {
-      @SuppressWarnings("deprecation")
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.valueOf(channelId_);
-      return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.PROTO_SCH1 : result;
-    }
-
-    public static final int MESSAGE_ID_FIELD_NUMBER = 4;
-    private int messageId_;
-    /**
-     * <code>required uint32 message_id = 4;</code>
-     * @return Whether the messageId field is set.
-     */
-    @java.lang.Override
-    public boolean hasMessageId() {
-      return ((bitField0_ & 0x00000008) != 0);
-    }
-    /**
-     * <code>required uint32 message_id = 4;</code>
-     * @return The messageId.
-     */
-    @java.lang.Override
-    public int getMessageId() {
-      return messageId_;
-    }
-
-    public static final int RSSI_FIELD_NUMBER = 5;
-    private float rssi_;
-    /**
-     * <code>required float rssi = 5;</code>
-     * @return Whether the rssi field is set.
-     */
-    @java.lang.Override
-    public boolean hasRssi() {
-      return ((bitField0_ & 0x00000010) != 0);
-    }
-    /**
-     * <code>required float rssi = 5;</code>
-     * @return The rssi.
-     */
-    @java.lang.Override
-    public float getRssi() {
-      return rssi_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      if (!hasTime()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasNodeId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasChannelId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasMessageId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasRssi()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeInt64(1, time_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeUInt32(2, nodeId_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeEnum(3, channelId_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        output.writeUInt32(4, messageId_);
-      }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        output.writeFloat(5, rssi_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, time_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, nodeId_);
-      }
-      if (((bitField0_ & 0x00000004) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(3, channelId_);
-      }
-      if (((bitField0_ & 0x00000008) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, messageId_);
-      }
-      if (((bitField0_ & 0x00000010) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(5, rssi_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage)) {
-        return super.equals(obj);
-      }
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) obj;
-
-      if (hasTime() != other.hasTime()) return false;
-      if (hasTime()) {
-        if (getTime()
-            != other.getTime()) return false;
-      }
-      if (hasNodeId() != other.hasNodeId()) return false;
-      if (hasNodeId()) {
-        if (getNodeId()
-            != other.getNodeId()) return false;
-      }
-      if (hasChannelId() != other.hasChannelId()) return false;
-      if (hasChannelId()) {
-        if (channelId_ != other.channelId_) return false;
-      }
-      if (hasMessageId() != other.hasMessageId()) return false;
-      if (hasMessageId()) {
-        if (getMessageId()
-            != other.getMessageId()) return false;
-      }
-      if (hasRssi() != other.hasRssi()) return false;
-      if (hasRssi()) {
-        if (java.lang.Float.floatToIntBits(getRssi())
-            != java.lang.Float.floatToIntBits(
-                other.getRssi())) return false;
-      }
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasTime()) {
-        hash = (37 * hash) + TIME_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getTime());
-      }
-      if (hasNodeId()) {
-        hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
-        hash = (53 * hash) + getNodeId();
-      }
-      if (hasChannelId()) {
-        hash = (37 * hash) + CHANNEL_ID_FIELD_NUMBER;
-        hash = (53 * hash) + channelId_;
-      }
-      if (hasMessageId()) {
-        hash = (37 * hash) + MESSAGE_ID_FIELD_NUMBER;
-        hash = (53 * hash) + getMessageId();
-      }
-      if (hasRssi()) {
-        hash = (37 * hash) + RSSI_FIELD_NUMBER;
-        hash = (53 * hash) + java.lang.Float.floatToIntBits(
-            getRssi());
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code ClientServerChannelSpace.ReceiveMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.ReceiveMessage)
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.Builder.class);
-      }
-
-      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        time_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        nodeId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
-        channelId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        messageId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        rssi_ = 0F;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstanceForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage build() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage buildPartial() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.time_ = time_;
-          to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.nodeId_ = nodeId_;
-          to_bitField0_ |= 0x00000002;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.channelId_ = channelId_;
-        if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.messageId_ = messageId_;
-          to_bitField0_ |= 0x00000008;
-        }
-        if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.rssi_ = rssi_;
-          to_bitField0_ |= 0x00000010;
-        }
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) {
-          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage other) {
-        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.getDefaultInstance()) return this;
-        if (other.hasTime()) {
-          setTime(other.getTime());
-        }
-        if (other.hasNodeId()) {
-          setNodeId(other.getNodeId());
-        }
-        if (other.hasChannelId()) {
-          setChannelId(other.getChannelId());
-        }
-        if (other.hasMessageId()) {
-          setMessageId(other.getMessageId());
-        }
-        if (other.hasRssi()) {
-          setRssi(other.getRssi());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        if (!hasTime()) {
-          return false;
-        }
-        if (!hasNodeId()) {
-          return false;
-        }
-        if (!hasChannelId()) {
-          return false;
-        }
-        if (!hasMessageId()) {
-          return false;
-        }
-        if (!hasRssi()) {
-          return false;
-        }
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      private long time_ ;
-      /**
-       * <code>required int64 time = 1;</code>
-       * @return Whether the time field is set.
-       */
-      @java.lang.Override
-      public boolean hasTime() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required int64 time = 1;</code>
-       * @return The time.
-       */
-      @java.lang.Override
-      public long getTime() {
-        return time_;
-      }
-      /**
-       * <code>required int64 time = 1;</code>
-       * @param value The time to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTime(long value) {
-        bitField0_ |= 0x00000001;
-        time_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 time = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTime() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        time_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      private int nodeId_ ;
-      /**
-       * <code>required uint32 node_id = 2;</code>
-       * @return Whether the nodeId field is set.
-       */
-      @java.lang.Override
-      public boolean hasNodeId() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>required uint32 node_id = 2;</code>
-       * @return The nodeId.
-       */
-      @java.lang.Override
-      public int getNodeId() {
-        return nodeId_;
-      }
-      /**
-       * <code>required uint32 node_id = 2;</code>
-       * @param value The nodeId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setNodeId(int value) {
-        bitField0_ |= 0x00000002;
-        nodeId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 node_id = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearNodeId() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        nodeId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int channelId_ = 0;
-      /**
-       * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
-       * @return Whether the channelId field is set.
-       */
-      @java.lang.Override public boolean hasChannelId() {
-        return ((bitField0_ & 0x00000004) != 0);
-      }
-      /**
-       * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
-       * @return The channelId.
-       */
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel getChannelId() {
-        @SuppressWarnings("deprecation")
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.valueOf(channelId_);
-        return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.PROTO_SCH1 : result;
-      }
-      /**
-       * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
-       * @param value The channelId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setChannelId(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000004;
-        channelId_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearChannelId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        channelId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int messageId_ ;
-      /**
-       * <code>required uint32 message_id = 4;</code>
-       * @return Whether the messageId field is set.
-       */
-      @java.lang.Override
-      public boolean hasMessageId() {
-        return ((bitField0_ & 0x00000008) != 0);
-      }
-      /**
-       * <code>required uint32 message_id = 4;</code>
-       * @return The messageId.
-       */
-      @java.lang.Override
-      public int getMessageId() {
-        return messageId_;
-      }
-      /**
-       * <code>required uint32 message_id = 4;</code>
-       * @param value The messageId to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMessageId(int value) {
-        bitField0_ |= 0x00000008;
-        messageId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 message_id = 4;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMessageId() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        messageId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private float rssi_ ;
-      /**
-       * <code>required float rssi = 5;</code>
-       * @return Whether the rssi field is set.
-       */
-      @java.lang.Override
-      public boolean hasRssi() {
-        return ((bitField0_ & 0x00000010) != 0);
-      }
-      /**
-       * <code>required float rssi = 5;</code>
-       * @return The rssi.
-       */
-      @java.lang.Override
-      public float getRssi() {
-        return rssi_;
-      }
-      /**
-       * <code>required float rssi = 5;</code>
-       * @param value The rssi to set.
-       * @return This builder for chaining.
-       */
-      public Builder setRssi(float value) {
-        bitField0_ |= 0x00000010;
-        rssi_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required float rssi = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearRssi() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        rssi_ = 0F;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.ReceiveMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.ReceiveMessage)
-    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage();
-    }
-
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ReceiveMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ReceiveMessage>() {
-      @java.lang.Override
-      public ReceiveMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ReceiveMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ReceiveMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ReceiveMessage> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -12498,21 +11530,979 @@ public final class ClientServerChannelProtos {
 
   }
 
+  public interface ReceiveMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.ReceiveMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return Whether the time field is set.
+     */
+    boolean hasTime();
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return The time.
+     */
+    long getTime();
+
+    /**
+     * <code>required uint32 node_id = 2;</code>
+     * @return Whether the nodeId field is set.
+     */
+    boolean hasNodeId();
+    /**
+     * <code>required uint32 node_id = 2;</code>
+     * @return The nodeId.
+     */
+    int getNodeId();
+
+    /**
+     * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
+     * @return Whether the channelId field is set.
+     */
+    boolean hasChannelId();
+    /**
+     * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
+     * @return The channelId.
+     */
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel getChannelId();
+
+    /**
+     * <code>required uint32 message_id = 4;</code>
+     * @return Whether the messageId field is set.
+     */
+    boolean hasMessageId();
+    /**
+     * <code>required uint32 message_id = 4;</code>
+     * @return The messageId.
+     */
+    int getMessageId();
+
+    /**
+     * <code>required float rssi = 5;</code>
+     * @return Whether the rssi field is set.
+     */
+    boolean hasRssi();
+    /**
+     * <code>required float rssi = 5;</code>
+     * @return The rssi.
+     */
+    float getRssi();
+  }
+  /**
+   * Protobuf type {@code ClientServerChannelSpace.ReceiveMessage}
+   */
+  public static final class ReceiveMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.ReceiveMessage)
+      ReceiveMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ReceiveMessage.newBuilder() to construct.
+    private ReceiveMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ReceiveMessage() {
+      channelId_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ReceiveMessage();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ReceiveMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              time_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              nodeId_ = input.readUInt32();
+              break;
+            }
+            case 24: {
+              int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel value = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(3, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                channelId_ = rawValue;
+              }
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              messageId_ = input.readUInt32();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000010;
+              rssi_ = input.readFloat();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TIME_FIELD_NUMBER = 1;
+    private long time_;
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return Whether the time field is set.
+     */
+    @java.lang.Override
+    public boolean hasTime() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+
+    public static final int NODE_ID_FIELD_NUMBER = 2;
+    private int nodeId_;
+    /**
+     * <code>required uint32 node_id = 2;</code>
+     * @return Whether the nodeId field is set.
+     */
+    @java.lang.Override
+    public boolean hasNodeId() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required uint32 node_id = 2;</code>
+     * @return The nodeId.
+     */
+    @java.lang.Override
+    public int getNodeId() {
+      return nodeId_;
+    }
+
+    public static final int CHANNEL_ID_FIELD_NUMBER = 3;
+    private int channelId_;
+    /**
+     * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
+     * @return Whether the channelId field is set.
+     */
+    @java.lang.Override public boolean hasChannelId() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
+     * @return The channelId.
+     */
+    @java.lang.Override public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel getChannelId() {
+      @SuppressWarnings("deprecation")
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.valueOf(channelId_);
+      return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.PROTO_SCH1 : result;
+    }
+
+    public static final int MESSAGE_ID_FIELD_NUMBER = 4;
+    private int messageId_;
+    /**
+     * <code>required uint32 message_id = 4;</code>
+     * @return Whether the messageId field is set.
+     */
+    @java.lang.Override
+    public boolean hasMessageId() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>required uint32 message_id = 4;</code>
+     * @return The messageId.
+     */
+    @java.lang.Override
+    public int getMessageId() {
+      return messageId_;
+    }
+
+    public static final int RSSI_FIELD_NUMBER = 5;
+    private float rssi_;
+    /**
+     * <code>required float rssi = 5;</code>
+     * @return Whether the rssi field is set.
+     */
+    @java.lang.Override
+    public boolean hasRssi() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>required float rssi = 5;</code>
+     * @return The rssi.
+     */
+    @java.lang.Override
+    public float getRssi() {
+      return rssi_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNodeId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasChannelId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMessageId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRssi()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt64(1, time_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeUInt32(2, nodeId_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeEnum(3, channelId_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeUInt32(4, messageId_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeFloat(5, rssi_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, time_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, nodeId_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, channelId_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(4, messageId_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(5, rssi_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage)) {
+        return super.equals(obj);
+      }
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) obj;
+
+      if (hasTime() != other.hasTime()) return false;
+      if (hasTime()) {
+        if (getTime()
+            != other.getTime()) return false;
+      }
+      if (hasNodeId() != other.hasNodeId()) return false;
+      if (hasNodeId()) {
+        if (getNodeId()
+            != other.getNodeId()) return false;
+      }
+      if (hasChannelId() != other.hasChannelId()) return false;
+      if (hasChannelId()) {
+        if (channelId_ != other.channelId_) return false;
+      }
+      if (hasMessageId() != other.hasMessageId()) return false;
+      if (hasMessageId()) {
+        if (getMessageId()
+            != other.getMessageId()) return false;
+      }
+      if (hasRssi() != other.hasRssi()) return false;
+      if (hasRssi()) {
+        if (java.lang.Float.floatToIntBits(getRssi())
+            != java.lang.Float.floatToIntBits(
+                other.getRssi())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTime()) {
+        hash = (37 * hash) + TIME_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getTime());
+      }
+      if (hasNodeId()) {
+        hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getNodeId();
+      }
+      if (hasChannelId()) {
+        hash = (37 * hash) + CHANNEL_ID_FIELD_NUMBER;
+        hash = (53 * hash) + channelId_;
+      }
+      if (hasMessageId()) {
+        hash = (37 * hash) + MESSAGE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getMessageId();
+      }
+      if (hasRssi()) {
+        hash = (37 * hash) + RSSI_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getRssi());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ClientServerChannelSpace.ReceiveMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.ReceiveMessage)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.Builder.class);
+      }
+
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        time_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nodeId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        channelId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        messageId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        rssi_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.time_ = time_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.nodeId_ = nodeId_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.channelId_ = channelId_;
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.messageId_ = messageId_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.rssi_ = rssi_;
+          to_bitField0_ |= 0x00000010;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.getDefaultInstance()) return this;
+        if (other.hasTime()) {
+          setTime(other.getTime());
+        }
+        if (other.hasNodeId()) {
+          setNodeId(other.getNodeId());
+        }
+        if (other.hasChannelId()) {
+          setChannelId(other.getChannelId());
+        }
+        if (other.hasMessageId()) {
+          setMessageId(other.getMessageId());
+        }
+        if (other.hasRssi()) {
+          setRssi(other.getRssi());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasTime()) {
+          return false;
+        }
+        if (!hasNodeId()) {
+          return false;
+        }
+        if (!hasChannelId()) {
+          return false;
+        }
+        if (!hasMessageId()) {
+          return false;
+        }
+        if (!hasRssi()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long time_ ;
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return Whether the time field is set.
+       */
+      @java.lang.Override
+      public boolean hasTime() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return The time.
+       */
+      @java.lang.Override
+      public long getTime() {
+        return time_;
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @param value The time to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTime(long value) {
+        bitField0_ |= 0x00000001;
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        time_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int nodeId_ ;
+      /**
+       * <code>required uint32 node_id = 2;</code>
+       * @return Whether the nodeId field is set.
+       */
+      @java.lang.Override
+      public boolean hasNodeId() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required uint32 node_id = 2;</code>
+       * @return The nodeId.
+       */
+      @java.lang.Override
+      public int getNodeId() {
+        return nodeId_;
+      }
+      /**
+       * <code>required uint32 node_id = 2;</code>
+       * @param value The nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeId(int value) {
+        bitField0_ |= 0x00000002;
+        nodeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 node_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nodeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int channelId_ = 0;
+      /**
+       * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
+       * @return Whether the channelId field is set.
+       */
+      @java.lang.Override public boolean hasChannelId() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
+       * @return The channelId.
+       */
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel getChannelId() {
+        @SuppressWarnings("deprecation")
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.valueOf(channelId_);
+        return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel.PROTO_SCH1 : result;
+      }
+      /**
+       * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
+       * @param value The channelId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChannelId(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000004;
+        channelId_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .ClientServerChannelSpace.RadioChannel channel_id = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearChannelId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        channelId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int messageId_ ;
+      /**
+       * <code>required uint32 message_id = 4;</code>
+       * @return Whether the messageId field is set.
+       */
+      @java.lang.Override
+      public boolean hasMessageId() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>required uint32 message_id = 4;</code>
+       * @return The messageId.
+       */
+      @java.lang.Override
+      public int getMessageId() {
+        return messageId_;
+      }
+      /**
+       * <code>required uint32 message_id = 4;</code>
+       * @param value The messageId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageId(int value) {
+        bitField0_ |= 0x00000008;
+        messageId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 message_id = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessageId() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        messageId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private float rssi_ ;
+      /**
+       * <code>required float rssi = 5;</code>
+       * @return Whether the rssi field is set.
+       */
+      @java.lang.Override
+      public boolean hasRssi() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>required float rssi = 5;</code>
+       * @return The rssi.
+       */
+      @java.lang.Override
+      public float getRssi() {
+        return rssi_;
+      }
+      /**
+       * <code>required float rssi = 5;</code>
+       * @param value The rssi to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRssi(float value) {
+        bitField0_ |= 0x00000010;
+        rssi_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required float rssi = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRssi() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        rssi_ = 0F;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.ReceiveMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.ReceiveMessage)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage();
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ReceiveMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ReceiveMessage>() {
+      @java.lang.Override
+      public ReceiveMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ReceiveMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ReceiveMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReceiveMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ClientServerChannelSpace_CommandMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ClientServerChannelSpace_CommandMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_UpdateNode_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_UpdateNode_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_UpdateNode_NodeData_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_UpdateNode_NodeData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ClientServerChannelSpace_InitMessage_descriptor;
   private static final 
@@ -12529,10 +12519,15 @@ public final class ClientServerChannelProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ClientServerChannelSpace_TimeMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+    internal_static_ClientServerChannelSpace_UpdateNode_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable;
+      internal_static_ClientServerChannelSpace_UpdateNode_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ClientServerChannelSpace_UpdateNode_NodeData_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ClientServerChannelSpace_UpdateNode_NodeData_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor;
   private static final 
@@ -12563,6 +12558,11 @@ public final class ClientServerChannelProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12581,58 +12581,58 @@ public final class ClientServerChannelProtos {
       "VENT\020\025\022\020\n\014ADVANCE_TIME\020\024\022\007\n\003END\020(\022\017\n\013UPD" +
       "ATE_NODE\020\n\022\016\n\nCONF_RADIO\020\037\022\014\n\010MSG_SEND\020\036" +
       "\022\014\n\010MSG_RECV\020\026\022\032\n\026DEPRECATED_REMOVE_NODE" +
-      "\020\013\"\235\002\n\nUpdateNode\022D\n\013update_type\030\001 \002(\0162/" +
-      ".ClientServerChannelSpace.UpdateNode.Upd" +
-      "ateType\022\014\n\004time\030\002 \002(\003\022A\n\nproperties\030\003 \003(" +
-      "\0132-.ClientServerChannelSpace.UpdateNode." +
-      "NodeData\032,\n\010NodeData\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 " +
-      "\002(\001\022\t\n\001y\030\003 \002(\001\"J\n\nUpdateType\022\013\n\007ADD_RSU\020" +
-      "\001\022\017\n\013ADD_VEHICLE\020\002\022\r\n\tMOVE_NODE\020\003\022\017\n\013REM" +
-      "OVE_NODE\020\004\"3\n\013InitMessage\022\022\n\nstart_time\030" +
-      "\001 \002(\003\022\020\n\010end_time\030\002 \002(\003\"#\n\014PortExchange\022" +
-      "\023\n\013port_number\030\001 \002(\r\"\033\n\013TimeMessage\022\014\n\004t" +
-      "ime\030\001 \002(\003\"\215\001\n\016ReceiveMessage\022\014\n\004time\030\001 \002" +
-      "(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002(\0162" +
-      "&.ClientServerChannelSpace.RadioChannel\022" +
-      "\022\n\nmessage_id\030\004 \002(\r\022\014\n\004rssi\030\005 \002(\002\"\324\006\n\025Co" +
-      "nfigureRadioMessage\022\014\n\004time\030\001 \002(\003\022\022\n\nmes" +
-      "sage_id\030\002 \002(\r\022\023\n\013external_id\030\003 \002(\r\022Q\n\014ra" +
-      "dio_number\030\004 \002(\0162;.ClientServerChannelSp" +
-      "ace.ConfigureRadioMessage.RadioNumber\022g\n" +
-      "\033primary_radio_configuration\030\005 \002(\0132B.Cli" +
-      "entServerChannelSpace.ConfigureRadioMess" +
-      "age.RadioConfiguration\022i\n\035secondary_radi" +
-      "o_configuration\030\006 \001(\0132B.ClientServerChan" +
-      "nelSpace.ConfigureRadioMessage.RadioConf" +
-      "iguration\032\235\003\n\022RadioConfiguration\022\032\n\022rece" +
-      "iving_messages\030\001 \002(\010\022\022\n\nip_address\030\002 \002(\r" +
-      "\022\026\n\016subnet_address\030\003 \002(\r\022\032\n\022transmission" +
-      "_power\030\004 \002(\001\022`\n\nradio_mode\030\005 \002(\0162L.Clien" +
+      "\020\013\"3\n\013InitMessage\022\022\n\nstart_time\030\001 \002(\003\022\020\n" +
+      "\010end_time\030\002 \002(\003\"#\n\014PortExchange\022\023\n\013port_" +
+      "number\030\001 \002(\r\"\033\n\013TimeMessage\022\014\n\004time\030\001 \002(" +
+      "\003\"\235\002\n\nUpdateNode\022D\n\013update_type\030\001 \002(\0162/." +
+      "ClientServerChannelSpace.UpdateNode.Upda" +
+      "teType\022\014\n\004time\030\002 \002(\003\022A\n\nproperties\030\003 \003(\013" +
+      "2-.ClientServerChannelSpace.UpdateNode.N" +
+      "odeData\032,\n\010NodeData\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \002" +
+      "(\001\022\t\n\001y\030\003 \002(\001\"J\n\nUpdateType\022\013\n\007ADD_RSU\020\001" +
+      "\022\017\n\013ADD_VEHICLE\020\002\022\r\n\tMOVE_NODE\020\003\022\017\n\013REMO" +
+      "VE_NODE\020\004\"\324\006\n\025ConfigureRadioMessage\022\014\n\004t" +
+      "ime\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\023\n\013externa" +
+      "l_id\030\003 \002(\r\022Q\n\014radio_number\030\004 \002(\0162;.Clien" +
       "tServerChannelSpace.ConfigureRadioMessag" +
-      "e.RadioConfiguration.RadioMode\022E\n\025primar" +
-      "y_radio_channel\030\006 \002(\0162&.ClientServerChan" +
-      "nelSpace.RadioChannel\022G\n\027secondary_radio" +
-      "_channel\030\007 \001(\0162&.ClientServerChannelSpac" +
-      "e.RadioChannel\"1\n\tRadioMode\022\022\n\016SINGLE_CH" +
-      "ANNEL\020\001\022\020\n\014DUAL_CHANNEL\020\002\"=\n\013RadioNumber" +
-      "\022\014\n\010NO_RADIO\020\000\022\020\n\014SINGLE_RADIO\020\001\022\016\n\nDUAL" +
-      "_RADIO\020\002\"\223\005\n\022SendMessageMessage\022\014\n\004time\030" +
-      "\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002" +
-      "(\0162&.ClientServerChannelSpace.RadioChann" +
-      "el\022\022\n\nmessage_id\030\004 \002(\r\022\016\n\006length\030\005 \002(\004\022P" +
-      "\n\014topo_address\030\006 \001(\01328.ClientServerChann" +
-      "elSpace.SendMessageMessage.TopoAddressH\000" +
-      "\022]\n\021rectangle_address\030\007 \001(\0132@.ClientServ" +
-      "erChannelSpace.SendMessageMessage.GeoRec" +
-      "tangleAddressH\000\022W\n\016circle_address\030\010 \001(\0132" +
-      "=.ClientServerChannelSpace.SendMessageMe" +
-      "ssage.GeoCircleAddressH\000\032.\n\013TopoAddress\022" +
-      "\022\n\nip_address\030\001 \002(\r\022\013\n\003ttl\030\002 \001(\r\032]\n\023GeoR" +
-      "ectangleAddress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003a" +
-      "_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n\003b_X\030\004 \002(\001\022\013\n\003b_" +
-      "Y\030\005 \002(\001\032Z\n\020GeoCircleAddress\022\022\n\nip_addres" +
-      "s\030\001 \002(\r\022\020\n\010center_X\030\002 \002(\001\022\020\n\010center_Y\030\003 " +
-      "\002(\001\022\016\n\006radius\030\004 \002(\001B\t\n\007address*\236\001\n\014Radio" +
+      "e.RadioNumber\022g\n\033primary_radio_configura" +
+      "tion\030\005 \002(\0132B.ClientServerChannelSpace.Co" +
+      "nfigureRadioMessage.RadioConfiguration\022i" +
+      "\n\035secondary_radio_configuration\030\006 \001(\0132B." +
+      "ClientServerChannelSpace.ConfigureRadioM" +
+      "essage.RadioConfiguration\032\235\003\n\022RadioConfi" +
+      "guration\022\032\n\022receiving_messages\030\001 \002(\010\022\022\n\n" +
+      "ip_address\030\002 \002(\r\022\026\n\016subnet_address\030\003 \002(\r" +
+      "\022\032\n\022transmission_power\030\004 \002(\001\022`\n\nradio_mo" +
+      "de\030\005 \002(\0162L.ClientServerChannelSpace.Conf" +
+      "igureRadioMessage.RadioConfiguration.Rad" +
+      "ioMode\022E\n\025primary_radio_channel\030\006 \002(\0162&." +
+      "ClientServerChannelSpace.RadioChannel\022G\n" +
+      "\027secondary_radio_channel\030\007 \001(\0162&.ClientS" +
+      "erverChannelSpace.RadioChannel\"1\n\tRadioM" +
+      "ode\022\022\n\016SINGLE_CHANNEL\020\001\022\020\n\014DUAL_CHANNEL\020" +
+      "\002\"=\n\013RadioNumber\022\014\n\010NO_RADIO\020\000\022\020\n\014SINGLE" +
+      "_RADIO\020\001\022\016\n\nDUAL_RADIO\020\002\"\223\005\n\022SendMessage" +
+      "Message\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:" +
+      "\n\nchannel_id\030\003 \002(\0162&.ClientServerChannel" +
+      "Space.RadioChannel\022\022\n\nmessage_id\030\004 \002(\r\022\016" +
+      "\n\006length\030\005 \002(\004\022P\n\014topo_address\030\006 \001(\01328.C" +
+      "lientServerChannelSpace.SendMessageMessa" +
+      "ge.TopoAddressH\000\022]\n\021rectangle_address\030\007 " +
+      "\001(\0132@.ClientServerChannelSpace.SendMessa" +
+      "geMessage.GeoRectangleAddressH\000\022W\n\016circl" +
+      "e_address\030\010 \001(\0132=.ClientServerChannelSpa" +
+      "ce.SendMessageMessage.GeoCircleAddressH\000" +
+      "\032.\n\013TopoAddress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003t" +
+      "tl\030\002 \001(\r\032]\n\023GeoRectangleAddress\022\022\n\nip_ad" +
+      "dress\030\001 \002(\r\022\013\n\003a_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n" +
+      "\003b_X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(\001\032Z\n\020GeoCircleAddr" +
+      "ess\022\022\n\nip_address\030\001 \002(\r\022\020\n\010center_X\030\002 \002(" +
+      "\001\022\020\n\010center_Y\030\003 \002(\001\022\016\n\006radius\030\004 \002(\001B\t\n\007a" +
+      "ddress\"\215\001\n\016ReceiveMessage\022\014\n\004time\030\001 \002(\003\022" +
+      "\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002(\0162&.C" +
+      "lientServerChannelSpace.RadioChannel\022\022\n\n" +
+      "message_id\030\004 \002(\r\022\014\n\004rssi\030\005 \002(\002*\236\001\n\014Radio" +
       "Channel\022\016\n\nPROTO_SCH1\020\000\022\016\n\nPROTO_SCH2\020\001\022" +
       "\016\n\nPROTO_SCH3\020\002\022\r\n\tPROTO_CCH\020\003\022\016\n\nPROTO_" +
       "SCH4\020\004\022\016\n\nPROTO_SCH5\020\005\022\016\n\nPROTO_SCH6\020\006\022\017" +
@@ -12650,8 +12650,26 @@ public final class ClientServerChannelProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_CommandMessage_descriptor,
         new java.lang.String[] { "CommandType", });
-    internal_static_ClientServerChannelSpace_UpdateNode_descriptor =
+    internal_static_ClientServerChannelSpace_InitMessage_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_ClientServerChannelSpace_InitMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ClientServerChannelSpace_InitMessage_descriptor,
+        new java.lang.String[] { "StartTime", "EndTime", });
+    internal_static_ClientServerChannelSpace_PortExchange_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_ClientServerChannelSpace_PortExchange_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ClientServerChannelSpace_PortExchange_descriptor,
+        new java.lang.String[] { "PortNumber", });
+    internal_static_ClientServerChannelSpace_TimeMessage_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ClientServerChannelSpace_TimeMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ClientServerChannelSpace_TimeMessage_descriptor,
+        new java.lang.String[] { "Time", });
+    internal_static_ClientServerChannelSpace_UpdateNode_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_ClientServerChannelSpace_UpdateNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_UpdateNode_descriptor,
@@ -12662,32 +12680,8 @@ public final class ClientServerChannelProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_UpdateNode_NodeData_descriptor,
         new java.lang.String[] { "Id", "X", "Y", });
-    internal_static_ClientServerChannelSpace_InitMessage_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_ClientServerChannelSpace_InitMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_InitMessage_descriptor,
-        new java.lang.String[] { "StartTime", "EndTime", });
-    internal_static_ClientServerChannelSpace_PortExchange_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_ClientServerChannelSpace_PortExchange_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_PortExchange_descriptor,
-        new java.lang.String[] { "PortNumber", });
-    internal_static_ClientServerChannelSpace_TimeMessage_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_ClientServerChannelSpace_TimeMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_TimeMessage_descriptor,
-        new java.lang.String[] { "Time", });
-    internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor,
-        new java.lang.String[] { "Time", "NodeId", "ChannelId", "MessageId", "Rssi", });
     internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_ClientServerChannelSpace_ConfigureRadioMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor,
@@ -12699,7 +12693,7 @@ public final class ClientServerChannelProtos {
         internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_descriptor,
         new java.lang.String[] { "ReceivingMessages", "IpAddress", "SubnetAddress", "TransmissionPower", "RadioMode", "PrimaryRadioChannel", "SecondaryRadioChannel", });
     internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_ClientServerChannelSpace_SendMessageMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor,
@@ -12722,6 +12716,12 @@ public final class ClientServerChannelProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_descriptor,
         new java.lang.String[] { "IpAddress", "CenterX", "CenterY", "Radius", });
+    internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor,
+        new java.lang.String[] { "Time", "NodeId", "ChannelId", "MessageId", "Rssi", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
