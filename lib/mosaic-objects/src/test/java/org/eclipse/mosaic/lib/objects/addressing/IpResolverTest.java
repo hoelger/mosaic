@@ -133,12 +133,12 @@ public class IpResolverTest {
         ad6 = IpResolver.getSingleton().registerHost("agent_1337");
 
         Assert.assertTrue(exceptionThrown);
-        byte[] array1 = {10, 1, 0, 7};
-        byte[] array2 = {10, 2, 0, 0};
-        byte[] array3 = {10, 3, 0, 100};
-        byte[] array4 = {10, 4, (byte) 3, (byte) 232};
-        byte[] array5 = {10, 3, (byte) 255, (byte) 254};
-        byte[] array6 = {10, 10, (byte) 5, (byte) 57};
+        byte[] array1 = {10, 1, 0, 8};
+        byte[] array2 = {10, 2, 0, 1};
+        byte[] array3 = {10, 3, 0, 101};
+        byte[] array4 = {10, 4, (byte) 3, (byte) 233};
+        byte[] array5 = {10, 3, (byte) 255, (byte) 255};
+        byte[] array6 = {10, 10, (byte) 5, (byte) 58};
         Assert.assertArrayEquals(array1, ad1.getAddress());
         Assert.assertArrayEquals(array2, ad2.getAddress());
         Assert.assertArrayEquals(array3, ad3.getAddress());
