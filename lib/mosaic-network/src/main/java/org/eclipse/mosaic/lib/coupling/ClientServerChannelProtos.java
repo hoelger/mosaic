@@ -189,11 +189,6 @@ public final class ClientServerChannelProtos {
     org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.CommandMessage.CommandType getCommandType();
   }
   /**
-   * <pre>
-   * Optional: tag numbers from 1 to 15 would take only one byte in protobuf. maybe optimize here?
-   * Attention: After refactoring we keep the now non-sequential numbers, for backwards compatibility.
-   * </pre>
-   *
    * Protobuf type {@code ClientServerChannelSpace.CommandMessage}
    */
   public static final class CommandMessage extends
@@ -314,57 +309,73 @@ public final class ClientServerChannelProtos {
        * used as 'cmd ack'
        * </pre>
        *
-       * <code>SUCCESS = 41;</code>
+       * <code>SUCCESS = 3;</code>
        */
-      SUCCESS(41),
+      SUCCESS(3),
       /**
-       * <code>NEXT_EVENT = 21;</code>
+       * <code>NEXT_EVENT = 4;</code>
        */
-      NEXT_EVENT(21),
+      NEXT_EVENT(4),
       /**
-       * <code>ADVANCE_TIME = 20;</code>
+       * <code>ADVANCE_TIME = 5;</code>
        */
-      ADVANCE_TIME(20),
+      ADVANCE_TIME(5),
       /**
        * <pre>
-       * used as 'time advance done'
+       * used as 'advance time done'
        * </pre>
        *
-       * <code>END = 40;</code>
+       * <code>END = 6;</code>
        */
-      END(40),
+      END(6),
       /**
        * <pre>
        * Entities... 
        * </pre>
        *
-       * <code>UPDATE_NODE = 10;</code>
+       * <code>ADD_NODE = 10;</code>
        */
-      UPDATE_NODE(10),
+      ADD_NODE(10),
+      /**
+       * <code>UPDATE_NODE = 11;</code>
+       */
+      UPDATE_NODE(11),
+      /**
+       * <code>REMOVE_NODE = 12;</code>
+       */
+      REMOVE_NODE(12),
       /**
        * <pre>
-       * Communication... 
+       * Wifi Communication... 
        * </pre>
        *
-       * <code>CONF_RADIO = 31;</code>
+       * <code>CONF_WIFI_RADIO = 20;</code>
        */
-      CONF_RADIO(31),
+      CONF_WIFI_RADIO(20),
       /**
-       * <code>MSG_SEND = 30;</code>
+       * <code>SEND_WIFI_MSG = 21;</code>
        */
-      MSG_SEND(30),
+      SEND_WIFI_MSG(21),
       /**
-       * <code>MSG_RECV = 22;</code>
+       * <code>RECV_WIFI_MSG = 22;</code>
        */
-      MSG_RECV(22),
+      RECV_WIFI_MSG(22),
       /**
        * <pre>
-       * Deprecated... 
+       * Cellular Communication... 
        * </pre>
        *
-       * <code>DEPRECATED_REMOVE_NODE = 11;</code>
+       * <code>CONF_CELL_RADIO = 30;</code>
        */
-      DEPRECATED_REMOVE_NODE(11),
+      CONF_CELL_RADIO(30),
+      /**
+       * <code>SEND_CELL_MSG = 31;</code>
+       */
+      SEND_CELL_MSG(31),
+      /**
+       * <code>RECV_CELL_MSG = 32;</code>
+       */
+      RECV_CELL_MSG(32),
       ;
 
       /**
@@ -392,57 +403,73 @@ public final class ClientServerChannelProtos {
        * used as 'cmd ack'
        * </pre>
        *
-       * <code>SUCCESS = 41;</code>
+       * <code>SUCCESS = 3;</code>
        */
-      public static final int SUCCESS_VALUE = 41;
+      public static final int SUCCESS_VALUE = 3;
       /**
-       * <code>NEXT_EVENT = 21;</code>
+       * <code>NEXT_EVENT = 4;</code>
        */
-      public static final int NEXT_EVENT_VALUE = 21;
+      public static final int NEXT_EVENT_VALUE = 4;
       /**
-       * <code>ADVANCE_TIME = 20;</code>
+       * <code>ADVANCE_TIME = 5;</code>
        */
-      public static final int ADVANCE_TIME_VALUE = 20;
+      public static final int ADVANCE_TIME_VALUE = 5;
       /**
        * <pre>
-       * used as 'time advance done'
+       * used as 'advance time done'
        * </pre>
        *
-       * <code>END = 40;</code>
+       * <code>END = 6;</code>
        */
-      public static final int END_VALUE = 40;
+      public static final int END_VALUE = 6;
       /**
        * <pre>
        * Entities... 
        * </pre>
        *
-       * <code>UPDATE_NODE = 10;</code>
+       * <code>ADD_NODE = 10;</code>
        */
-      public static final int UPDATE_NODE_VALUE = 10;
+      public static final int ADD_NODE_VALUE = 10;
+      /**
+       * <code>UPDATE_NODE = 11;</code>
+       */
+      public static final int UPDATE_NODE_VALUE = 11;
+      /**
+       * <code>REMOVE_NODE = 12;</code>
+       */
+      public static final int REMOVE_NODE_VALUE = 12;
       /**
        * <pre>
-       * Communication... 
+       * Wifi Communication... 
        * </pre>
        *
-       * <code>CONF_RADIO = 31;</code>
+       * <code>CONF_WIFI_RADIO = 20;</code>
        */
-      public static final int CONF_RADIO_VALUE = 31;
+      public static final int CONF_WIFI_RADIO_VALUE = 20;
       /**
-       * <code>MSG_SEND = 30;</code>
+       * <code>SEND_WIFI_MSG = 21;</code>
        */
-      public static final int MSG_SEND_VALUE = 30;
+      public static final int SEND_WIFI_MSG_VALUE = 21;
       /**
-       * <code>MSG_RECV = 22;</code>
+       * <code>RECV_WIFI_MSG = 22;</code>
        */
-      public static final int MSG_RECV_VALUE = 22;
+      public static final int RECV_WIFI_MSG_VALUE = 22;
       /**
        * <pre>
-       * Deprecated... 
+       * Cellular Communication... 
        * </pre>
        *
-       * <code>DEPRECATED_REMOVE_NODE = 11;</code>
+       * <code>CONF_CELL_RADIO = 30;</code>
        */
-      public static final int DEPRECATED_REMOVE_NODE_VALUE = 11;
+      public static final int CONF_CELL_RADIO_VALUE = 30;
+      /**
+       * <code>SEND_CELL_MSG = 31;</code>
+       */
+      public static final int SEND_CELL_MSG_VALUE = 31;
+      /**
+       * <code>RECV_CELL_MSG = 32;</code>
+       */
+      public static final int RECV_CELL_MSG_VALUE = 32;
 
 
       public final int getNumber() {
@@ -468,15 +495,19 @@ public final class ClientServerChannelProtos {
           case -1: return UNDEF;
           case 1: return INIT;
           case 2: return SHUT_DOWN;
-          case 41: return SUCCESS;
-          case 21: return NEXT_EVENT;
-          case 20: return ADVANCE_TIME;
-          case 40: return END;
-          case 10: return UPDATE_NODE;
-          case 31: return CONF_RADIO;
-          case 30: return MSG_SEND;
-          case 22: return MSG_RECV;
-          case 11: return DEPRECATED_REMOVE_NODE;
+          case 3: return SUCCESS;
+          case 4: return NEXT_EVENT;
+          case 5: return ADVANCE_TIME;
+          case 6: return END;
+          case 10: return ADD_NODE;
+          case 11: return UPDATE_NODE;
+          case 12: return REMOVE_NODE;
+          case 20: return CONF_WIFI_RADIO;
+          case 21: return SEND_WIFI_MSG;
+          case 22: return RECV_WIFI_MSG;
+          case 30: return CONF_CELL_RADIO;
+          case 31: return SEND_CELL_MSG;
+          case 32: return RECV_CELL_MSG;
           default: return null;
         }
       }
@@ -710,11 +741,6 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
-     * <pre>
-     * Optional: tag numbers from 1 to 15 would take only one byte in protobuf. maybe optimize here?
-     * Attention: After refactoring we keep the now non-sequential numbers, for backwards compatibility.
-     * </pre>
-     *
      * Protobuf type {@code ClientServerChannelSpace.CommandMessage}
      */
     public static final class Builder extends
@@ -12573,72 +12599,74 @@ public final class ClientServerChannelProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n!ClientServerChannelMessages.proto\022\030Cli" +
-      "entServerChannelSpace\"\252\002\n\016CommandMessage" +
+      "entServerChannelSpace\"\367\002\n\016CommandMessage" +
       "\022J\n\014command_type\030\001 \002(\01624.ClientServerCha" +
-      "nnelSpace.CommandMessage.CommandType\"\313\001\n" +
+      "nnelSpace.CommandMessage.CommandType\"\230\002\n" +
       "\013CommandType\022\022\n\005UNDEF\020\377\377\377\377\377\377\377\377\377\001\022\010\n\004INIT" +
-      "\020\001\022\r\n\tSHUT_DOWN\020\002\022\013\n\007SUCCESS\020)\022\016\n\nNEXT_E" +
-      "VENT\020\025\022\020\n\014ADVANCE_TIME\020\024\022\007\n\003END\020(\022\017\n\013UPD" +
-      "ATE_NODE\020\n\022\016\n\nCONF_RADIO\020\037\022\014\n\010MSG_SEND\020\036" +
-      "\022\014\n\010MSG_RECV\020\026\022\032\n\026DEPRECATED_REMOVE_NODE" +
-      "\020\013\"3\n\013InitMessage\022\022\n\nstart_time\030\001 \002(\003\022\020\n" +
-      "\010end_time\030\002 \002(\003\"#\n\014PortExchange\022\023\n\013port_" +
-      "number\030\001 \002(\r\"\033\n\013TimeMessage\022\014\n\004time\030\001 \002(" +
-      "\003\"\235\002\n\nUpdateNode\022D\n\013update_type\030\001 \002(\0162/." +
-      "ClientServerChannelSpace.UpdateNode.Upda" +
-      "teType\022\014\n\004time\030\002 \002(\003\022A\n\nproperties\030\003 \003(\013" +
-      "2-.ClientServerChannelSpace.UpdateNode.N" +
-      "odeData\032,\n\010NodeData\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \002" +
-      "(\001\022\t\n\001y\030\003 \002(\001\"J\n\nUpdateType\022\013\n\007ADD_RSU\020\001" +
-      "\022\017\n\013ADD_VEHICLE\020\002\022\r\n\tMOVE_NODE\020\003\022\017\n\013REMO" +
-      "VE_NODE\020\004\"\324\006\n\025ConfigureRadioMessage\022\014\n\004t" +
-      "ime\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\023\n\013externa" +
-      "l_id\030\003 \002(\r\022Q\n\014radio_number\030\004 \002(\0162;.Clien" +
-      "tServerChannelSpace.ConfigureRadioMessag" +
-      "e.RadioNumber\022g\n\033primary_radio_configura" +
-      "tion\030\005 \002(\0132B.ClientServerChannelSpace.Co" +
-      "nfigureRadioMessage.RadioConfiguration\022i" +
-      "\n\035secondary_radio_configuration\030\006 \001(\0132B." +
-      "ClientServerChannelSpace.ConfigureRadioM" +
-      "essage.RadioConfiguration\032\235\003\n\022RadioConfi" +
-      "guration\022\032\n\022receiving_messages\030\001 \002(\010\022\022\n\n" +
-      "ip_address\030\002 \002(\r\022\026\n\016subnet_address\030\003 \002(\r" +
-      "\022\032\n\022transmission_power\030\004 \002(\001\022`\n\nradio_mo" +
-      "de\030\005 \002(\0162L.ClientServerChannelSpace.Conf" +
-      "igureRadioMessage.RadioConfiguration.Rad" +
-      "ioMode\022E\n\025primary_radio_channel\030\006 \002(\0162&." +
-      "ClientServerChannelSpace.RadioChannel\022G\n" +
-      "\027secondary_radio_channel\030\007 \001(\0162&.ClientS" +
-      "erverChannelSpace.RadioChannel\"1\n\tRadioM" +
-      "ode\022\022\n\016SINGLE_CHANNEL\020\001\022\020\n\014DUAL_CHANNEL\020" +
-      "\002\"=\n\013RadioNumber\022\014\n\010NO_RADIO\020\000\022\020\n\014SINGLE" +
-      "_RADIO\020\001\022\016\n\nDUAL_RADIO\020\002\"\223\005\n\022SendMessage" +
-      "Message\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:" +
-      "\n\nchannel_id\030\003 \002(\0162&.ClientServerChannel" +
-      "Space.RadioChannel\022\022\n\nmessage_id\030\004 \002(\r\022\016" +
-      "\n\006length\030\005 \002(\004\022P\n\014topo_address\030\006 \001(\01328.C" +
-      "lientServerChannelSpace.SendMessageMessa" +
-      "ge.TopoAddressH\000\022]\n\021rectangle_address\030\007 " +
-      "\001(\0132@.ClientServerChannelSpace.SendMessa" +
-      "geMessage.GeoRectangleAddressH\000\022W\n\016circl" +
-      "e_address\030\010 \001(\0132=.ClientServerChannelSpa" +
-      "ce.SendMessageMessage.GeoCircleAddressH\000" +
-      "\032.\n\013TopoAddress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003t" +
-      "tl\030\002 \001(\r\032]\n\023GeoRectangleAddress\022\022\n\nip_ad" +
-      "dress\030\001 \002(\r\022\013\n\003a_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n" +
-      "\003b_X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(\001\032Z\n\020GeoCircleAddr" +
-      "ess\022\022\n\nip_address\030\001 \002(\r\022\020\n\010center_X\030\002 \002(" +
-      "\001\022\020\n\010center_Y\030\003 \002(\001\022\016\n\006radius\030\004 \002(\001B\t\n\007a" +
-      "ddress\"\215\001\n\016ReceiveMessage\022\014\n\004time\030\001 \002(\003\022" +
-      "\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002(\0162&.C" +
-      "lientServerChannelSpace.RadioChannel\022\022\n\n" +
-      "message_id\030\004 \002(\r\022\014\n\004rssi\030\005 \002(\002*\236\001\n\014Radio" +
-      "Channel\022\016\n\nPROTO_SCH1\020\000\022\016\n\nPROTO_SCH2\020\001\022" +
-      "\016\n\nPROTO_SCH3\020\002\022\r\n\tPROTO_CCH\020\003\022\016\n\nPROTO_" +
-      "SCH4\020\004\022\016\n\nPROTO_SCH5\020\005\022\016\n\nPROTO_SCH6\020\006\022\017" +
-      "\n\013PROTO_UNDEF\020\007\022\016\n\nPROTO_CELL\020\010B<\n\037org.e" +
-      "clipse.mosaic.lib.couplingB\031ClientServer" +
-      "ChannelProtos"
+      "\020\001\022\r\n\tSHUT_DOWN\020\002\022\013\n\007SUCCESS\020\003\022\016\n\nNEXT_E" +
+      "VENT\020\004\022\020\n\014ADVANCE_TIME\020\005\022\007\n\003END\020\006\022\014\n\010ADD" +
+      "_NODE\020\n\022\017\n\013UPDATE_NODE\020\013\022\017\n\013REMOVE_NODE\020" +
+      "\014\022\023\n\017CONF_WIFI_RADIO\020\024\022\021\n\rSEND_WIFI_MSG\020" +
+      "\025\022\021\n\rRECV_WIFI_MSG\020\026\022\023\n\017CONF_CELL_RADIO\020" +
+      "\036\022\021\n\rSEND_CELL_MSG\020\037\022\021\n\rRECV_CELL_MSG\020 \"" +
+      "3\n\013InitMessage\022\022\n\nstart_time\030\001 \002(\003\022\020\n\010en" +
+      "d_time\030\002 \002(\003\"#\n\014PortExchange\022\023\n\013port_num" +
+      "ber\030\001 \002(\r\"\033\n\013TimeMessage\022\014\n\004time\030\001 \002(\003\"\235" +
+      "\002\n\nUpdateNode\022D\n\013update_type\030\001 \002(\0162/.Cli" +
+      "entServerChannelSpace.UpdateNode.UpdateT" +
+      "ype\022\014\n\004time\030\002 \002(\003\022A\n\nproperties\030\003 \003(\0132-." +
+      "ClientServerChannelSpace.UpdateNode.Node" +
+      "Data\032,\n\010NodeData\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \002(\001\022" +
+      "\t\n\001y\030\003 \002(\001\"J\n\nUpdateType\022\013\n\007ADD_RSU\020\001\022\017\n" +
+      "\013ADD_VEHICLE\020\002\022\r\n\tMOVE_NODE\020\003\022\017\n\013REMOVE_" +
+      "NODE\020\004\"\324\006\n\025ConfigureRadioMessage\022\014\n\004time" +
+      "\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\023\n\013external_i" +
+      "d\030\003 \002(\r\022Q\n\014radio_number\030\004 \002(\0162;.ClientSe" +
+      "rverChannelSpace.ConfigureRadioMessage.R" +
+      "adioNumber\022g\n\033primary_radio_configuratio" +
+      "n\030\005 \002(\0132B.ClientServerChannelSpace.Confi" +
+      "gureRadioMessage.RadioConfiguration\022i\n\035s" +
+      "econdary_radio_configuration\030\006 \001(\0132B.Cli" +
+      "entServerChannelSpace.ConfigureRadioMess" +
+      "age.RadioConfiguration\032\235\003\n\022RadioConfigur" +
+      "ation\022\032\n\022receiving_messages\030\001 \002(\010\022\022\n\nip_" +
+      "address\030\002 \002(\r\022\026\n\016subnet_address\030\003 \002(\r\022\032\n" +
+      "\022transmission_power\030\004 \002(\001\022`\n\nradio_mode\030" +
+      "\005 \002(\0162L.ClientServerChannelSpace.Configu" +
+      "reRadioMessage.RadioConfiguration.RadioM" +
+      "ode\022E\n\025primary_radio_channel\030\006 \002(\0162&.Cli" +
+      "entServerChannelSpace.RadioChannel\022G\n\027se" +
+      "condary_radio_channel\030\007 \001(\0162&.ClientServ" +
+      "erChannelSpace.RadioChannel\"1\n\tRadioMode" +
+      "\022\022\n\016SINGLE_CHANNEL\020\001\022\020\n\014DUAL_CHANNEL\020\002\"=" +
+      "\n\013RadioNumber\022\014\n\010NO_RADIO\020\000\022\020\n\014SINGLE_RA" +
+      "DIO\020\001\022\016\n\nDUAL_RADIO\020\002\"\223\005\n\022SendMessageMes" +
+      "sage\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nc" +
+      "hannel_id\030\003 \002(\0162&.ClientServerChannelSpa" +
+      "ce.RadioChannel\022\022\n\nmessage_id\030\004 \002(\r\022\016\n\006l" +
+      "ength\030\005 \002(\004\022P\n\014topo_address\030\006 \001(\01328.Clie" +
+      "ntServerChannelSpace.SendMessageMessage." +
+      "TopoAddressH\000\022]\n\021rectangle_address\030\007 \001(\013" +
+      "2@.ClientServerChannelSpace.SendMessageM" +
+      "essage.GeoRectangleAddressH\000\022W\n\016circle_a" +
+      "ddress\030\010 \001(\0132=.ClientServerChannelSpace." +
+      "SendMessageMessage.GeoCircleAddressH\000\032.\n" +
+      "\013TopoAddress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003ttl\030" +
+      "\002 \001(\r\032]\n\023GeoRectangleAddress\022\022\n\nip_addre" +
+      "ss\030\001 \002(\r\022\013\n\003a_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n\003b_" +
+      "X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(\001\032Z\n\020GeoCircleAddress" +
+      "\022\022\n\nip_address\030\001 \002(\r\022\020\n\010center_X\030\002 \002(\001\022\020" +
+      "\n\010center_Y\030\003 \002(\001\022\016\n\006radius\030\004 \002(\001B\t\n\007addr" +
+      "ess\"\215\001\n\016ReceiveMessage\022\014\n\004time\030\001 \002(\003\022\017\n\007" +
+      "node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002(\0162&.Clie" +
+      "ntServerChannelSpace.RadioChannel\022\022\n\nmes" +
+      "sage_id\030\004 \002(\r\022\014\n\004rssi\030\005 \002(\002*\236\001\n\014RadioCha" +
+      "nnel\022\016\n\nPROTO_SCH1\020\000\022\016\n\nPROTO_SCH2\020\001\022\016\n\n" +
+      "PROTO_SCH3\020\002\022\r\n\tPROTO_CCH\020\003\022\016\n\nPROTO_SCH" +
+      "4\020\004\022\016\n\nPROTO_SCH5\020\005\022\016\n\nPROTO_SCH6\020\006\022\017\n\013P" +
+      "ROTO_UNDEF\020\007\022\016\n\nPROTO_CELL\020\010B<\n\037org.ecli" +
+      "pse.mosaic.lib.couplingB\031ClientServerCha" +
+      "nnelProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
