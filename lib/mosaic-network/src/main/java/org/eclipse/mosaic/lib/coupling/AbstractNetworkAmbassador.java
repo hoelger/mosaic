@@ -24,9 +24,9 @@ import org.eclipse.mosaic.interactions.mapping.ChargingStationRegistration;
 import org.eclipse.mosaic.interactions.mapping.RsuRegistration;
 import org.eclipse.mosaic.interactions.mapping.TrafficLightRegistration;
 import org.eclipse.mosaic.interactions.traffic.VehicleUpdates;
-import org.eclipse.mosaic.lib.coupling.ClientServerChannel.CMD;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.NodeDataContainer;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.ReceiveMessageContainer;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.CommandMessage.CommandType;
 import org.eclipse.mosaic.lib.enums.RoutingType;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
 import org.eclipse.mosaic.lib.geo.GeoPoint;
@@ -263,8 +263,8 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         log.info("Connected to {} for reading on port {}", federateName, port);
 
         try { // Read the initial command and the port number to connect incoming channel
-            int cmd = federateAmbassadorChannel.readCommand();
-            if (cmd == CMD.INIT) {
+            CommandType cmd = federateAmbassadorChannel.readCommand();
+            if (cmd == CommandType.INIT) {
                 // This is the port the federate listens on for the second channel
                 int remotePort = federateAmbassadorChannel.readPortBody();
                 remotePort = getHostPortFromDockerPort(remotePort);
@@ -303,7 +303,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         super.initialize(startTime, endTime);   // Set times in the super class
         try {
             // 1st Handshake: (1) Ambassador sends INIT (2) Ambassador sends times, (3) Federate sends SUCCESS
-            if (CMD.SUCCESS != ambassadorFederateChannel.writeInitBody(startTime, endTime)) {
+            if (CommandType.SUCCESS != ambassadorFederateChannel.writeInitBody(startTime, endTime)) {
                 log.error("Could not initialize.");
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not initialize"
@@ -349,9 +349,9 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             command_loop:
             while (true) { // While the federate is advancing time we are receiving messages from it
                 log.trace("Reading Command in TimeAdvanceGrant");
-                int cmd = federateAmbassadorChannel.readCommand(); // Which message does the federate send?
+                CommandType cmd = federateAmbassadorChannel.readCommand(); // Which message does the federate send?
                 switch (cmd) {
-                    case CMD.NEXT_EVENT: // The federate has scheduled an event
+                    case NEXT_EVENT: // The federate has scheduled an event
                         long nextTime = federateAmbassadorChannel.readTimeBody();
                         log.trace("Requested next_event at {} ", nextTime);
                         // If the federates event is beyond our allowed time we have to request time advance from the RTI
@@ -359,7 +359,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                             this.rti.requestAdvanceTime(nextTime);
                         }
                         break;
-                    case CMD.MSG_RECV:  // A simulated node has received a V2X message
+                    case RECV_WIFI_MSG:  // A simulated node has received a V2X message
                         ReceiveMessageContainer rcvMsgContainer = federateAmbassadorChannel.readMessage(simulatedNodes);
                         // read message body
                         // The receiver may have been removed from the simulation while message was on air
@@ -374,7 +374,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                             this.rti.triggerInteraction(msg);  // Hand the received message to the RTI and thus the other federates
                         }
                         break;
-                    case CMD.END:       // The federate has terminated the current time advance -> we are done here
+                    case END:       // The federate has terminated the current time advance -> we are done here
                         long termTime = federateAmbassadorChannel.readTimeBody();
                         log.trace("End ProcessTimeAdvanceGrant at: {}", termTime);
                         break command_loop; // break out of the infinite loop
@@ -390,7 +390,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     @Override
     public void finishSimulation() throws InternalFederateException {
         try {
-            ambassadorFederateChannel.writeCommand(CMD.SHUT_DOWN);
+            ambassadorFederateChannel.writeCommand(CommandType.SHUT_DOWN);
             ambassadorFederateChannel.close();
             federateAmbassadorChannel.close();
         } catch (IOException e) {
@@ -539,7 +539,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         log.warn("Node ID[int={}] is not simulated", vi.getName());
                     }
                 }
-                if (CMD.SUCCESS != ambassadorFederateChannel.writeUpdatePositionsMessage(time, nodesToUpdate)) {
+                if (CommandType.SUCCESS != ambassadorFederateChannel.writeUpdatePositionsMessage(time, nodesToUpdate)) {
                     LoggerFactory.getLogger(this.getClass()).error("Could not update nodes.");
                     throw new InternalFederateException("Error in " + federateName + ": Could not update nodes");
                 }
@@ -609,7 +609,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             );
             // Write the message onto the channel and to the federate
             // Then wait for ack
-            int ack = CMD.UNDEF;
+            CommandType ack = CommandType.UNDEF;
             if (dac.getType() == RoutingType.AD_HOC_TOPOCAST) {
                 if (dac.getAddress().isBroadcast()) {
                     ack = ambassadorFederateChannel.writeSendMessage(
@@ -645,7 +645,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 );
             }
 
-            if (CMD.SUCCESS != ack) {
+            if (CommandType.SUCCESS != ack) {
                 log.error(
                         "Could not insert V2X message into network. Return status: {}",
                         ack
@@ -745,7 +745,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             } else {
                 int id = simulatedNodes.toExternalId(nodeId);
                 ClientServerChannelProtos.UpdateNode.UpdateType type = UnitNameGenerator.isVehicle(nodeId) ? ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE : ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU;
-                if (CMD.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, type, new NodeDataContainer(id, registeredNode.position))) {
+                if (CommandType.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, type, new NodeDataContainer(id, registeredNode.position))) {
                     log.error("Could not add new node.");
                     throw new InternalFederateException("Error in " + federateName + ": Could not add new node");
                 }
@@ -818,7 +818,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     }
                 }
             }
-            if (CMD.SUCCESS != ambassadorFederateChannel.writeAdhocRadioConfigMessage(time, interactionId, nodeId, configuration)) {
+            if (CommandType.SUCCESS != ambassadorFederateChannel.writeAdhocRadioConfigMessage(time, interactionId, nodeId, configuration)) {
                 log.error("Could not configure node {}s radio", configuration.getNodeId());
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
@@ -839,7 +839,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             log.debug("Sending CellularCommunicationConfiguration for node {}", configuration.getNodeId());
             Integer nodeId = simulatedNodes.toExternalId(configuration.getNodeId());
             Inet4Address ip = IpResolver.getSingleton().lookup(configuration.getNodeId());
-            if (CMD.SUCCESS != ambassadorFederateChannel.writeCellRadioConfigMessage(time, nodeId, configuration, ip)) {
+            if (CommandType.SUCCESS != ambassadorFederateChannel.writeCellRadioConfigMessage(time, nodeId, configuration, ip)) {
                 log.error("Could not configure node {}s radio", configuration.getNodeId());
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
@@ -860,7 +860,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             simulatedNodes.removeUsingInternalId(nodeId); // remove the vehicle from our internal list
             removedNodes.add(nodeId);
             try {
-                if (CMD.SUCCESS != ambassadorFederateChannel.writeRemoveNodeMessage(time, nodeToRemove)) {
+                if (CommandType.SUCCESS != ambassadorFederateChannel.writeRemoveNodeMessage(time, nodeToRemove)) {
                     log.error("Could not remove node.");
                     throw new InternalFederateException("Error in " + federateName + ": Could not remove node");
                 }

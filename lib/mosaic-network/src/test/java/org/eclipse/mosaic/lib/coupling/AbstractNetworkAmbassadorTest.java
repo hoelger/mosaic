@@ -28,6 +28,7 @@ import static org.mockito.Mockito.when;
 import org.eclipse.mosaic.interactions.communication.AdHocCommunicationConfiguration;
 import org.eclipse.mosaic.interactions.mapping.RsuRegistration;
 import org.eclipse.mosaic.interactions.traffic.VehicleUpdates;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.CommandMessage.CommandType;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
 import org.eclipse.mosaic.lib.geo.GeoPoint;
@@ -88,15 +89,15 @@ public class AbstractNetworkAmbassadorTest {
         };
         networkAmbassador.connectToFederate(null, -1);
 
-        when(ambassadorFederateChannelMock.writeInitBody(anyLong(), anyLong())).thenReturn(ClientServerChannel.CMD.SUCCESS);
-        when(ambassadorFederateChannelMock.writeAddNodeMessage(anyLong(), ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())))).thenReturn(ClientServerChannel.CMD.SUCCESS);
-        when(ambassadorFederateChannelMock.writeAddNodeMessage(anyLong(), ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())))).thenReturn(ClientServerChannel.CMD.SUCCESS);
+        when(ambassadorFederateChannelMock.writeInitBody(anyLong(), anyLong())).thenReturn(CommandType.SUCCESS);
+        when(ambassadorFederateChannelMock.writeAddNodeMessage(anyLong(), ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())))).thenReturn(CommandType.SUCCESS);
+        when(ambassadorFederateChannelMock.writeAddNodeMessage(anyLong(), ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())))).thenReturn(CommandType.SUCCESS);
         when(ambassadorFederateChannelMock.writeAdhocRadioConfigMessage(
                 anyLong(),
                 anyInt(),
                 anyInt(),
                 isA(AdHocConfiguration.class))
-        ).thenReturn(ClientServerChannel.CMD.SUCCESS);
+        ).thenReturn(CommandType.SUCCESS);
     }
 
     private static Inet4Address createDummyIp() {
