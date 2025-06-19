@@ -58,68 +58,6 @@ import java.util.List;
  */
 public class ClientServerChannel {
 
-    public static final class CMD {
-        /**
-         * Undefined Message.
-         */
-        public final static int UNDEF = -1;
-
-        /**
-         * initialize the federate.
-         */
-        public final static int INIT = 1;
-
-        /**
-         * Stop simulation.
-         */
-        public final static int SHUT_DOWN = 4;
-
-        /**
-         * Success message, returned by federate upon successful execution of command.
-         */
-        public final static int SUCCESS = 41;
-
-        /**
-         * Scheduling request at the next event time.
-         */
-        public final static int NEXT_EVENT = 21;
-
-        /**
-         * Advance simulation time.
-         */
-        public final static int ADVANCE_TIME = 20;
-
-        /**
-         * Termination of steps or lists.
-         */
-        public static final int END = 40;
-
-        /**
-         * Update node properties.
-         */
-        public static final int UPDATE_NODE = 10;
-
-        /**
-         * Configure radio.
-         */
-        public static final int CONF_RADIO = 31;
-
-        /**
-         * A virtual node has sent a message.
-         */
-        public static final int MSG_SEND = 30;
-
-        /**
-         * A virtual node has received a message.
-         */
-        public final static int MSG_RECV = 22;
-
-        /**
-         * Deprecated: Delete network nodes.
-         */
-        public static final int DEPRECATED_REMOVE_NODE = 11;
-    }
-
     /**
      * Socket connected to the network federate.
      */
@@ -207,9 +145,9 @@ public class ClientServerChannel {
      *
      * @return the read command
      */
-    public int readCommand() throws IOException {
+    public CommandType readCommand() throws IOException {
         CommandMessage commandMessage = Validate.notNull(CommandMessage.parseDelimitedFrom(in), "Could not read command.");
-        return protobufCmdToCmd(commandMessage.getCommandType());
+        return commandMessage.getCommandType();
     }
 
     //####################################################################
@@ -223,8 +161,8 @@ public class ClientServerChannel {
      * @param endTime   the last timestep simulated by the simulator
      * @return command returned by the federate
      */
-    public int writeInitBody(long startTime, long endTime) throws IOException {
-        writeCommand(CMD.INIT);                                     //Announce INIT message
+    public CommandType writeInitBody(long startTime, long endTime) throws IOException {
+        writeCommand(CommandType.INIT);                                     //Announce INIT message
         InitMessage.Builder initMessage = InitMessage.newBuilder(); //Builder for the protobuf message
         initMessage.setStartTime(startTime).setEndTime(endTime);    //Hand times to builder
         initMessage.build().writeDelimitedTo(out);                  //Build object and write it (delimited!) to stream
@@ -238,8 +176,8 @@ public class ClientServerChannel {
      * @param node id and position
      * @return command returned by the federate
      */
-    public int writeAddNodeMessage(long time, UpdateNode.UpdateType type, NodeDataContainer node) throws IOException {
-        writeCommand(CMD.UPDATE_NODE);
+    public CommandType writeAddNodeMessage(long time, UpdateNode.UpdateType type, NodeDataContainer node) throws IOException {
+        writeCommand(CommandType.UPDATE_NODE);
         UpdateNode.Builder updateNode = UpdateNode.newBuilder();
         updateNode.setUpdateType(type).setTime(time);
         NodeData.Builder tmpBuilder = NodeData.newBuilder();
@@ -256,8 +194,8 @@ public class ClientServerChannel {
      * @param nodes a list of ids and positions
      * @return command returned by the federate
      */
-    public int writeUpdatePositionsMessage(long time, List<NodeDataContainer> nodes) throws IOException {
-        writeCommand(CMD.UPDATE_NODE);
+    public CommandType writeUpdatePositionsMessage(long time, List<NodeDataContainer> nodes) throws IOException {
+        writeCommand(CommandType.UPDATE_NODE);
         UpdateNode.Builder updateNode = UpdateNode.newBuilder();
         updateNode.setUpdateType(UpdateNode.UpdateType.MOVE_NODE).setTime(time);
         for (NodeDataContainer node : nodes) {
@@ -276,8 +214,8 @@ public class ClientServerChannel {
      * @param id   ID to remove
      * @return command returned by the federate
      */
-    public int writeRemoveNodeMessage(long time, Integer id) throws IOException {
-        writeCommand(CMD.UPDATE_NODE);
+    public CommandType writeRemoveNodeMessage(long time, Integer id) throws IOException {
+        writeCommand(CommandType.UPDATE_NODE);
         UpdateNode.Builder updateNode = UpdateNode.newBuilder();
         updateNode.setUpdateType(UpdateNode.UpdateType.REMOVE_NODE).setTime(time);
         NodeData.Builder tmpBuilder = NodeData.newBuilder();
@@ -298,9 +236,9 @@ public class ClientServerChannel {
      * @param dac       DestinationAddressContainer with the destination address of the sender and additional information
      * @return command returned by the federate
      */
-    public int writeSendMessage(long time, int srcNodeId,
+    public CommandType writeSendMessage(long time, int srcNodeId,
                                 int msgId, long msgLength, DestinationAddressContainer dac) throws IOException {
-        writeCommand(CMD.MSG_SEND);
+        writeCommand(CommandType.SEND_WIFI_MSG);
 
         ClientServerChannelProtos.RadioChannel channel;
         if (dac.getType().isAdHoc()) {
@@ -372,8 +310,8 @@ public class ClientServerChannel {
      * @param configuration the actual configuration
      * @return command returned by the federate
      */
-    public int writeAdhocRadioConfigMessage(long time, int msgID, int externalId, AdHocConfiguration configuration) throws IOException {
-        writeCommand(CMD.CONF_RADIO);
+    public CommandType writeAdhocRadioConfigMessage(long time, int msgID, int externalId, AdHocConfiguration configuration) throws IOException {
+        writeCommand(CommandType.CONF_WIFI_RADIO);
         ConfigureRadioMessage.Builder configRadio = ConfigureRadioMessage.newBuilder();
         configRadio.setTime(time);
         configRadio.setMessageId(msgID);
@@ -429,8 +367,8 @@ public class ClientServerChannel {
      * @param configuration the actual configuration
      * @return command returned by the federate
      */
-    public int writeCellRadioConfigMessage(long time, int nodeId, CellConfiguration configuration, Inet4Address ip) throws IOException {
-        writeCommand(CMD.CONF_RADIO);
+    public CommandType writeCellRadioConfigMessage(long time, int nodeId, CellConfiguration configuration, Inet4Address ip) throws IOException {
+        writeCommand(CommandType.CONF_CELL_RADIO);
         ConfigureRadioMessage.Builder configRadio = ConfigureRadioMessage.newBuilder();
         configRadio.setTime(time);
         configRadio.setMessageId(0);                    // TODO
@@ -456,7 +394,7 @@ public class ClientServerChannel {
      * @param time point in time up to which advance is granted
      */
     public void writeAdvanceTimeMessage(long time) throws IOException {
-        writeCommand(CMD.ADVANCE_TIME);
+        writeCommand(CommandType.ADVANCE_TIME);
         TimeMessage.Builder timeMessage = TimeMessage.newBuilder();
         timeMessage.setTime(time);
         timeMessage.build().writeDelimitedTo(out);
@@ -468,8 +406,7 @@ public class ClientServerChannel {
      * @param cmd the command to write onto the channel
      * @throws IOException Communication error.
      */
-    public void writeCommand(int cmd) throws IOException {
-        CommandType protobufCmd = cmdToProtobufCmd(cmd);
+    public void writeCommand(CommandType protobufCmd) throws IOException {
         if (protobufCmd == CommandType.UNDEF) {
             return;
         }
@@ -494,40 +431,6 @@ public class ClientServerChannel {
         buffer.put(ip.getAddress());
         buffer.position(0);
         return buffer.getInt();
-    }
-
-    private int protobufCmdToCmd(CommandType protoCmd) {
-        return switch (protoCmd) {
-            case INIT -> CMD.INIT;
-            case SHUT_DOWN -> CMD.SHUT_DOWN;
-            case SUCCESS -> CMD.SUCCESS;
-            case NEXT_EVENT -> CMD.NEXT_EVENT;
-            case ADVANCE_TIME -> CMD.ADVANCE_TIME;
-            case END -> CMD.END;
-            case UPDATE_NODE -> CMD.UPDATE_NODE;
-            case CONF_RADIO -> CMD.CONF_RADIO;
-            case MSG_SEND -> CMD.MSG_SEND;
-            case MSG_RECV -> CMD.MSG_RECV;
-            case DEPRECATED_REMOVE_NODE -> CMD.DEPRECATED_REMOVE_NODE;
-            default -> CMD.UNDEF;
-        };
-    }
-
-    private CommandType cmdToProtobufCmd(int cmd) {
-        return switch (cmd) {
-            case CMD.INIT -> CommandType.INIT;
-            case CMD.SHUT_DOWN -> CommandType.SHUT_DOWN;
-            case CMD.SUCCESS -> CommandType.SUCCESS;
-            case CMD.NEXT_EVENT -> CommandType.NEXT_EVENT;
-            case CMD.ADVANCE_TIME -> CommandType.ADVANCE_TIME;
-            case CMD.END -> CommandType.END;
-            case CMD.UPDATE_NODE -> CommandType.UPDATE_NODE;
-            case CMD.CONF_RADIO -> CommandType.CONF_RADIO;
-            case CMD.MSG_SEND -> CommandType.MSG_SEND;
-            case CMD.MSG_RECV -> CommandType.MSG_RECV;
-            case CMD.DEPRECATED_REMOVE_NODE -> CommandType.DEPRECATED_REMOVE_NODE;
-            default -> CommandType.UNDEF;
-        };
     }
 
     /**
