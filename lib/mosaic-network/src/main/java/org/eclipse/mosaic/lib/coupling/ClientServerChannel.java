@@ -307,16 +307,16 @@ public class ClientServerChannel {
      *
      * @param time          the logical time at which the configuration happens
      * @param msgID         the ID of the configuration message
-     * @param externalId    the external (federate-internal) ID of the node
+     * @param nodeId        the external (federate-internal) ID of the node
      * @param configuration the actual configuration
      * @return command returned by the federate
      */
-    public CommandType writeConfigureWifiRadio(long time, int msgID, int externalId, AdHocConfiguration configuration) throws IOException {
+    public CommandType writeConfigureWifiRadio(long time, int msgID, int nodeId, AdHocConfiguration configuration) throws IOException {
         writeCommand(CommandType.CONF_WIFI_RADIO);
         ConfigureWifiRadio.Builder configRadio = ConfigureWifiRadio.newBuilder();
         configRadio.setTime(time);
         configRadio.setMessageId(msgID);
-        configRadio.setExternalId(externalId);
+        configRadio.setNodeId(nodeId);
         configRadio.setRadioNumber(switch (configuration.getRadioMode()) {
             case OFF -> ConfigureWifiRadio.RadioNumber.NO_RADIO;
             case SINGLE -> ConfigureWifiRadio.RadioNumber.SINGLE_RADIO;
@@ -373,7 +373,7 @@ public class ClientServerChannel {
         ConfigureWifiRadio.Builder configRadio = ConfigureWifiRadio.newBuilder();
         configRadio.setTime(time);
         configRadio.setMessageId(0);                    // TODO
-        configRadio.setExternalId(nodeId);
+        configRadio.setNodeId(nodeId);
         configRadio.setRadioNumber(ConfigureWifiRadio.RadioNumber.SINGLE_RADIO);
 
         ConfigureWifiRadio.RadioConfiguration.Builder radioConfig1 = ConfigureWifiRadio.RadioConfiguration.newBuilder();
