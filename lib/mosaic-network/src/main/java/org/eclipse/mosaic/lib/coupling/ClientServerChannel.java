@@ -17,16 +17,16 @@ package org.eclipse.mosaic.lib.coupling;
 
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.CommandMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.CommandMessage.CommandType;
-import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.InitMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange;
-import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage;
-import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.geo.CartesianCircle;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
@@ -102,8 +102,8 @@ public class ClientServerChannel {
     //                  Reading methods
     //####################################################################
 
-    private ReceiveMessage readMessage() throws IOException {
-        return Validate.notNull(ReceiveMessage.parseDelimitedFrom(in), "Could not read message body.");
+    private ReceiveWifiMessage readReceiveWifiMessage() throws IOException {
+        return Validate.notNull(ReceiveWifiMessage.parseDelimitedFrom(in), "Could not read message body.");
     }
 
     /**
@@ -112,8 +112,8 @@ public class ClientServerChannel {
      *
      * @return The read message.
      */
-    public ReceiveMessageContainer readMessage(IdTransformer<Integer, String> idTransformer) throws IOException {
-        ReceiveMessage receiveMessage = this.readMessage();
+    public ReceiveMessageContainer readReceiveWifiMessage(IdTransformer<Integer, String> idTransformer) throws IOException {
+        ReceiveWifiMessage receiveMessage = this.readReceiveWifiMessage();
         V2xReceiverInformation recInfo = new V2xReceiverInformation(receiveMessage.getTime()).signalStrength(receiveMessage.getRssi());
         return new ReceiveMessageContainer(
                 receiveMessage.getTime(),
@@ -237,8 +237,8 @@ public class ClientServerChannel {
      * @param dac       DestinationAddressContainer with the destination address of the sender and additional information
      * @return command returned by the federate
      */
-    public CommandType writeSendMessage(long time, int srcNodeId,
-                                int msgId, long msgLength, DestinationAddressContainer dac) throws IOException {
+    public CommandType writeSendWifiMessage(long time, int srcNodeId,
+                                            int msgId, long msgLength, DestinationAddressContainer dac) throws IOException {
         writeCommand(CommandType.SEND_WIFI_MSG);
 
         ClientServerChannelProtos.RadioChannel channel;
@@ -249,7 +249,7 @@ public class ClientServerChannel {
         }
 
         //Add message details to the builder
-        SendMessageMessage.Builder sendMess = SendMessageMessage.newBuilder()
+        SendWifiMessage.Builder sendMess = SendWifiMessage.newBuilder()
                 .setTime(time)
                 .setNodeId(srcNodeId)
                 .setChannelId(channel)
@@ -262,7 +262,7 @@ public class ClientServerChannel {
 
         if (dac.getType().isGeocast()) {
             if (dac.getGeoArea() instanceof GeoRectangle geoRectangle) {   //Rectangular area
-                SendMessageMessage.GeoRectangleAddress.Builder rectangleAddress = SendMessageMessage.GeoRectangleAddress.newBuilder();
+                SendWifiMessage.GeoRectangleAddress.Builder rectangleAddress = SendWifiMessage.GeoRectangleAddress.newBuilder();
                 //builder for rectangular addresses
                 rectangleAddress.setIpAddress(buffer.getInt()); //write the ip address as flat integer into the builder
                 //convert coordinates etc.
@@ -275,7 +275,7 @@ public class ClientServerChannel {
                 //add address to the message
                 sendMess.setRectangleAddress(rectangleAddress);
             } else if (dac.getGeoArea() instanceof GeoCircle geoCircle) {
-                SendMessageMessage.GeoCircleAddress.Builder circleAddress = SendMessageMessage.GeoCircleAddress.newBuilder();
+                SendWifiMessage.GeoCircleAddress.Builder circleAddress = SendWifiMessage.GeoCircleAddress.newBuilder();
                 circleAddress.setIpAddress(buffer.getInt());
 
                 CartesianCircle projectedCircle = geoCircle.toCartesian();
@@ -289,7 +289,7 @@ public class ClientServerChannel {
                 throw new IllegalArgumentException("Addressing does support GeoCircle and GeoRectangle only.");
             }
         } else if (dac.getType().isTopocast()) {
-            SendMessageMessage.TopoAddress.Builder topoAddress = SendMessageMessage.TopoAddress.newBuilder();
+            SendWifiMessage.TopoAddress.Builder topoAddress = SendWifiMessage.TopoAddress.newBuilder();
             topoAddress.setIpAddress(buffer.getInt());
             if (dac.getType().isAdHoc() && !(dac.getTimeToLive() > -1)) {
                 throw new IllegalArgumentException("Require TimeToLive for topocast ad-hoc communciation.");
@@ -311,21 +311,21 @@ public class ClientServerChannel {
      * @param configuration the actual configuration
      * @return command returned by the federate
      */
-    public CommandType writeAdhocRadioConfigMessage(long time, int msgID, int externalId, AdHocConfiguration configuration) throws IOException {
+    public CommandType writeConfigureWifiRadio(long time, int msgID, int externalId, AdHocConfiguration configuration) throws IOException {
         writeCommand(CommandType.CONF_WIFI_RADIO);
-        ConfigureRadioMessage.Builder configRadio = ConfigureRadioMessage.newBuilder();
+        ConfigureWifiRadio.Builder configRadio = ConfigureWifiRadio.newBuilder();
         configRadio.setTime(time);
         configRadio.setMessageId(msgID);
         configRadio.setExternalId(externalId);
         configRadio.setRadioNumber(switch (configuration.getRadioMode()) {
-            case OFF -> ConfigureRadioMessage.RadioNumber.NO_RADIO;
-            case SINGLE -> ConfigureRadioMessage.RadioNumber.SINGLE_RADIO;
-            case DUAL -> ConfigureRadioMessage.RadioNumber.DUAL_RADIO;
+            case OFF -> ConfigureWifiRadio.RadioNumber.NO_RADIO;
+            case SINGLE -> ConfigureWifiRadio.RadioNumber.SINGLE_RADIO;
+            case DUAL -> ConfigureWifiRadio.RadioNumber.DUAL_RADIO;
             default -> throw new RuntimeException("Illegal number of radios in configuration: " + configuration.getRadioMode().toString());
         });
         if (configuration.getRadioMode() == AdHocConfiguration.RadioMode.SINGLE
                 || configuration.getRadioMode() == AdHocConfiguration.RadioMode.DUAL) {
-            ConfigureRadioMessage.RadioConfiguration.Builder radioConfig1 = ConfigureRadioMessage.RadioConfiguration.newBuilder();
+            ConfigureWifiRadio.RadioConfiguration.Builder radioConfig1 = ConfigureWifiRadio.RadioConfiguration.newBuilder();
             radioConfig1.setReceivingMessages(false);                                     //!!Semantic in Java: true -> only routing
             radioConfig1.setIpAddress(inet4ToInt(configuration.getConf0().getIp()));   //Semantic in federates: false -> only routing
             radioConfig1.setSubnetAddress(inet4ToInt(configuration.getConf0().getSubnet()));
@@ -333,14 +333,14 @@ public class ClientServerChannel {
             radioConfig1.setPrimaryRadioChannel(translateChannel(configuration.getConf0().getChannel0()));
             if (configuration.getConf0().getMode() == InterfaceConfiguration.MultiChannelMode.ALTERNATING) {
                 radioConfig1.setSecondaryRadioChannel(translateChannel(configuration.getConf0().getChannel1()));
-                radioConfig1.setRadioMode(ConfigureRadioMessage.RadioConfiguration.RadioMode.DUAL_CHANNEL);
+                radioConfig1.setRadioMode(ConfigureWifiRadio.RadioConfiguration.RadioMode.DUAL_CHANNEL);
             } else {
-                radioConfig1.setRadioMode(ConfigureRadioMessage.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
+                radioConfig1.setRadioMode(ConfigureWifiRadio.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
             }
             configRadio.setPrimaryRadioConfiguration(radioConfig1);
         }
         if (configuration.getRadioMode() == AdHocConfiguration.RadioMode.DUAL) {
-            ConfigureRadioMessage.RadioConfiguration.Builder radioConfig2 = ConfigureRadioMessage.RadioConfiguration.newBuilder();
+            ConfigureWifiRadio.RadioConfiguration.Builder radioConfig2 = ConfigureWifiRadio.RadioConfiguration.newBuilder();
             radioConfig2.setReceivingMessages(false); //!!Semantic in Java: true -> only routing
             radioConfig2.setIpAddress(inet4ToInt(configuration.getConf1().getIp()));   //Semantic in federates: false -> only routing
             radioConfig2.setSubnetAddress(inet4ToInt(configuration.getConf1().getSubnet()));
@@ -348,9 +348,9 @@ public class ClientServerChannel {
             radioConfig2.setPrimaryRadioChannel(translateChannel(configuration.getConf1().getChannel0()));
             if (configuration.getConf1().getMode() == InterfaceConfiguration.MultiChannelMode.ALTERNATING) {
                 radioConfig2.setSecondaryRadioChannel(translateChannel(configuration.getConf1().getChannel1()));
-                radioConfig2.setRadioMode(ConfigureRadioMessage.RadioConfiguration.RadioMode.DUAL_CHANNEL);
+                radioConfig2.setRadioMode(ConfigureWifiRadio.RadioConfiguration.RadioMode.DUAL_CHANNEL);
             } else {
-                radioConfig2.setRadioMode(ConfigureRadioMessage.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
+                radioConfig2.setRadioMode(ConfigureWifiRadio.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
             }
             configRadio.setSecondaryRadioConfiguration(radioConfig2);
         }
@@ -368,20 +368,20 @@ public class ClientServerChannel {
      * @param configuration the actual configuration
      * @return command returned by the federate
      */
-    public CommandType writeCellRadioConfigMessage(long time, int nodeId, CellConfiguration configuration, Inet4Address ip) throws IOException {
+    public CommandType writeConfigureCellRadio(long time, int nodeId, CellConfiguration configuration, Inet4Address ip) throws IOException {
         writeCommand(CommandType.CONF_CELL_RADIO);
-        ConfigureRadioMessage.Builder configRadio = ConfigureRadioMessage.newBuilder();
+        ConfigureWifiRadio.Builder configRadio = ConfigureWifiRadio.newBuilder();
         configRadio.setTime(time);
         configRadio.setMessageId(0);                    // TODO
         configRadio.setExternalId(nodeId);
-        configRadio.setRadioNumber(ConfigureRadioMessage.RadioNumber.SINGLE_RADIO);
+        configRadio.setRadioNumber(ConfigureWifiRadio.RadioNumber.SINGLE_RADIO);
 
-        ConfigureRadioMessage.RadioConfiguration.Builder radioConfig1 = ConfigureRadioMessage.RadioConfiguration.newBuilder();
+        ConfigureWifiRadio.RadioConfiguration.Builder radioConfig1 = ConfigureWifiRadio.RadioConfiguration.newBuilder();
         radioConfig1.setReceivingMessages(false);       // TODO
         radioConfig1.setIpAddress(inet4ToInt(ip));      // TODO
         radioConfig1.setSubnetAddress(0);               // TODO
         radioConfig1.setTransmissionPower(1);           // TODO
-        radioConfig1.setRadioMode(ConfigureRadioMessage.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
+        radioConfig1.setRadioMode(ConfigureWifiRadio.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
         radioConfig1.setPrimaryRadioChannel(ClientServerChannelProtos.RadioChannel.PROTO_CELL);
         configRadio.setPrimaryRadioConfiguration(radioConfig1);
 

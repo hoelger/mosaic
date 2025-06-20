@@ -361,7 +361,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         }
                         break;
                     case RECV_WIFI_MSG:  // A simulated node has received a V2X message
-                        ReceiveMessageContainer rcvMsgContainer = federateAmbassadorChannel.readMessage(simulatedNodes);
+                        ReceiveMessageContainer rcvMsgContainer = federateAmbassadorChannel.readReceiveWifiMessage(simulatedNodes);
                         // read message body
                         // The receiver may have been removed from the simulation while message was on air
                         if (rcvMsgContainer.receiverName() != null) {
@@ -613,7 +613,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             CommandType ack = CommandType.UNDEF;
             if (dac.getType() == RoutingType.AD_HOC_TOPOCAST) {
                 if (dac.getAddress().isBroadcast()) {
-                    ack = ambassadorFederateChannel.writeSendMessage(
+                    ack = ambassadorFederateChannel.writeSendWifiMessage(
                             interaction.getTime(),
                             sourceId,
                             interaction.getMessage().getId(),
@@ -627,7 +627,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 }
             } else if (dac.getType() == RoutingType.CELL_TOPOCAST) {
                 if (dac.getAddress().isUnicast()) {
-                    ack = ambassadorFederateChannel.writeSendMessage(
+                    ack = ambassadorFederateChannel.writeSendWifiMessage(
                             interaction.getTime(),
                             sourceId,
                             interaction.getMessage().getId(),
@@ -818,7 +818,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     }
                 }
             }
-            if (CommandType.SUCCESS != ambassadorFederateChannel.writeAdhocRadioConfigMessage(time, interactionId, nodeId, configuration)) {
+            if (CommandType.SUCCESS != ambassadorFederateChannel.writeConfigureWifiRadio(time, interactionId, nodeId, configuration)) {
                 log.error("Could not configure node {}s radio", configuration.getNodeId());
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
@@ -839,7 +839,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             log.debug("Sending CellularCommunicationConfiguration for node {}", configuration.getNodeId());
             Integer nodeId = simulatedNodes.toExternalId(configuration.getNodeId());
             Inet4Address ip = IpResolver.getSingleton().lookup(configuration.getNodeId());
-            if (CommandType.SUCCESS != ambassadorFederateChannel.writeCellRadioConfigMessage(time, nodeId, configuration, ip)) {
+            if (CommandType.SUCCESS != ambassadorFederateChannel.writeConfigureCellRadio(time, nodeId, configuration, ip)) {
                 log.error("Could not configure node {}s radio", configuration.getNodeId());
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not configure node " + configuration.getNodeId() + "s radio"
