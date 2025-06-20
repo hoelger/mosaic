@@ -6299,23 +6299,15 @@ public final class ClientServerChannelProtos {
     int getMessageId();
 
     /**
-     * <pre>
-     * = node_id
-     * </pre>
-     *
-     * <code>required uint32 external_id = 3;</code>
-     * @return Whether the externalId field is set.
+     * <code>required uint32 node_id = 3;</code>
+     * @return Whether the nodeId field is set.
      */
-    boolean hasExternalId();
+    boolean hasNodeId();
     /**
-     * <pre>
-     * = node_id
-     * </pre>
-     *
-     * <code>required uint32 external_id = 3;</code>
-     * @return The externalId.
+     * <code>required uint32 node_id = 3;</code>
+     * @return The nodeId.
      */
-    int getExternalId();
+    int getNodeId();
 
     /**
      * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
@@ -6361,7 +6353,7 @@ public final class ClientServerChannelProtos {
   /**
    * <pre>
    *
-   * in ns3: currently only time, external_id, radio_number, primary_radio.tx_power are used
+   * in ns3: currently only time, node_id, radio_number, primary_radio.tx_power are used
    * </pre>
    *
    * Protobuf type {@code ClientServerChannelSpace.ConfigureWifiRadio}
@@ -6422,7 +6414,7 @@ public final class ClientServerChannelProtos {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              externalId_ = input.readUInt32();
+              nodeId_ = input.readUInt32();
               break;
             }
             case 32: {
@@ -7962,31 +7954,23 @@ public final class ClientServerChannelProtos {
       return messageId_;
     }
 
-    public static final int EXTERNAL_ID_FIELD_NUMBER = 3;
-    private int externalId_;
+    public static final int NODE_ID_FIELD_NUMBER = 3;
+    private int nodeId_;
     /**
-     * <pre>
-     * = node_id
-     * </pre>
-     *
-     * <code>required uint32 external_id = 3;</code>
-     * @return Whether the externalId field is set.
+     * <code>required uint32 node_id = 3;</code>
+     * @return Whether the nodeId field is set.
      */
     @java.lang.Override
-    public boolean hasExternalId() {
+    public boolean hasNodeId() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <pre>
-     * = node_id
-     * </pre>
-     *
-     * <code>required uint32 external_id = 3;</code>
-     * @return The externalId.
+     * <code>required uint32 node_id = 3;</code>
+     * @return The nodeId.
      */
     @java.lang.Override
-    public int getExternalId() {
-      return externalId_;
+    public int getNodeId() {
+      return nodeId_;
     }
 
     public static final int RADIO_NUMBER_FIELD_NUMBER = 4;
@@ -8075,7 +8059,7 @@ public final class ClientServerChannelProtos {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasExternalId()) {
+      if (!hasNodeId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -8111,7 +8095,7 @@ public final class ClientServerChannelProtos {
         output.writeUInt32(2, messageId_);
       }
       if (((bitField0_ & 0x00000004) != 0)) {
-        output.writeUInt32(3, externalId_);
+        output.writeUInt32(3, nodeId_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         output.writeEnum(4, radioNumber_);
@@ -8141,7 +8125,7 @@ public final class ClientServerChannelProtos {
       }
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, externalId_);
+          .computeUInt32Size(3, nodeId_);
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
@@ -8180,10 +8164,10 @@ public final class ClientServerChannelProtos {
         if (getMessageId()
             != other.getMessageId()) return false;
       }
-      if (hasExternalId() != other.hasExternalId()) return false;
-      if (hasExternalId()) {
-        if (getExternalId()
-            != other.getExternalId()) return false;
+      if (hasNodeId() != other.hasNodeId()) return false;
+      if (hasNodeId()) {
+        if (getNodeId()
+            != other.getNodeId()) return false;
       }
       if (hasRadioNumber() != other.hasRadioNumber()) return false;
       if (hasRadioNumber()) {
@@ -8219,9 +8203,9 @@ public final class ClientServerChannelProtos {
         hash = (37 * hash) + MESSAGE_ID_FIELD_NUMBER;
         hash = (53 * hash) + getMessageId();
       }
-      if (hasExternalId()) {
-        hash = (37 * hash) + EXTERNAL_ID_FIELD_NUMBER;
-        hash = (53 * hash) + getExternalId();
+      if (hasNodeId()) {
+        hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getNodeId();
       }
       if (hasRadioNumber()) {
         hash = (37 * hash) + RADIO_NUMBER_FIELD_NUMBER;
@@ -8333,7 +8317,7 @@ public final class ClientServerChannelProtos {
     /**
      * <pre>
      *
-     * in ns3: currently only time, external_id, radio_number, primary_radio.tx_power are used
+     * in ns3: currently only time, node_id, radio_number, primary_radio.tx_power are used
      * </pre>
      *
      * Protobuf type {@code ClientServerChannelSpace.ConfigureWifiRadio}
@@ -8379,7 +8363,7 @@ public final class ClientServerChannelProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         messageId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        externalId_ = 0;
+        nodeId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
         radioNumber_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -8432,7 +8416,7 @@ public final class ClientServerChannelProtos {
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.externalId_ = externalId_;
+          result.nodeId_ = nodeId_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
@@ -8510,8 +8494,8 @@ public final class ClientServerChannelProtos {
         if (other.hasMessageId()) {
           setMessageId(other.getMessageId());
         }
-        if (other.hasExternalId()) {
-          setExternalId(other.getExternalId());
+        if (other.hasNodeId()) {
+          setNodeId(other.getNodeId());
         }
         if (other.hasRadioNumber()) {
           setRadioNumber(other.getRadioNumber());
@@ -8535,7 +8519,7 @@ public final class ClientServerChannelProtos {
         if (!hasMessageId()) {
           return false;
         }
-        if (!hasExternalId()) {
+        if (!hasNodeId()) {
           return false;
         }
         if (!hasRadioNumber()) {
@@ -8653,57 +8637,41 @@ public final class ClientServerChannelProtos {
         return this;
       }
 
-      private int externalId_ ;
+      private int nodeId_ ;
       /**
-       * <pre>
-       * = node_id
-       * </pre>
-       *
-       * <code>required uint32 external_id = 3;</code>
-       * @return Whether the externalId field is set.
+       * <code>required uint32 node_id = 3;</code>
+       * @return Whether the nodeId field is set.
        */
       @java.lang.Override
-      public boolean hasExternalId() {
+      public boolean hasNodeId() {
         return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <pre>
-       * = node_id
-       * </pre>
-       *
-       * <code>required uint32 external_id = 3;</code>
-       * @return The externalId.
+       * <code>required uint32 node_id = 3;</code>
+       * @return The nodeId.
        */
       @java.lang.Override
-      public int getExternalId() {
-        return externalId_;
+      public int getNodeId() {
+        return nodeId_;
       }
       /**
-       * <pre>
-       * = node_id
-       * </pre>
-       *
-       * <code>required uint32 external_id = 3;</code>
-       * @param value The externalId to set.
+       * <code>required uint32 node_id = 3;</code>
+       * @param value The nodeId to set.
        * @return This builder for chaining.
        */
-      public Builder setExternalId(int value) {
+      public Builder setNodeId(int value) {
         bitField0_ |= 0x00000004;
-        externalId_ = value;
+        nodeId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <pre>
-       * = node_id
-       * </pre>
-       *
-       * <code>required uint32 external_id = 3;</code>
+       * <code>required uint32 node_id = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearExternalId() {
+      public Builder clearNodeId() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        externalId_ = 0;
+        nodeId_ = 0;
         onChanged();
         return this;
       }
@@ -9150,6 +9118,11 @@ public final class ClientServerChannelProtos {
     public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.AddressCase getAddressCase();
   }
   /**
+   * <pre>
+   *
+   * in ns3: currently RadioChannel and TTL are unused, only TopoAddress implemented
+   * </pre>
+   *
    * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage}
    */
   public static final class SendWifiMessage extends
@@ -12297,6 +12270,11 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
+     * <pre>
+     *
+     * in ns3: currently RadioChannel and TTL are unused, only TopoAddress implemented
+     * </pre>
+     *
      * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage}
      */
     public static final class Builder extends
@@ -13306,6 +13284,11 @@ public final class ClientServerChannelProtos {
     float getRssi();
   }
   /**
+   * <pre>
+   *
+   * in ns3: currently RadioChannel and RSSI are unused
+   * </pre>
+   *
    * Protobuf type {@code ClientServerChannelSpace.ReceiveWifiMessage}
    */
   public static final class ReceiveWifiMessage extends
@@ -13759,6 +13742,11 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
+     * <pre>
+     *
+     * in ns3: currently RadioChannel and RSSI are unused
+     * </pre>
+     *
      * Protobuf type {@code ClientServerChannelSpace.ReceiveWifiMessage}
      */
     public static final class Builder extends
@@ -14321,53 +14309,53 @@ public final class ClientServerChannelProtos {
       "ChannelSpace.UpdateNode.NodeData\0327\n\010Node" +
       "Data\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \002(\001\022\t\n\001y\030\003 \002(\001\022\t" +
       "\n\001z\030\004 \001(\001\"+\n\nRemoveNode\022\014\n\004time\030\001 \002(\003\022\017\n" +
-      "\007node_id\030\002 \002(\005\"\305\006\n\022ConfigureWifiRadio\022\014\n" +
-      "\004time\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\023\n\013exter" +
-      "nal_id\030\003 \002(\r\022N\n\014radio_number\030\004 \002(\01628.Cli" +
-      "entServerChannelSpace.ConfigureWifiRadio" +
-      ".RadioNumber\022d\n\033primary_radio_configurat" +
-      "ion\030\005 \002(\0132?.ClientServerChannelSpace.Con" +
-      "figureWifiRadio.RadioConfiguration\022f\n\035se" +
-      "condary_radio_configuration\030\006 \001(\0132?.Clie" +
-      "ntServerChannelSpace.ConfigureWifiRadio." +
-      "RadioConfiguration\032\232\003\n\022RadioConfiguratio" +
-      "n\022\032\n\022receiving_messages\030\001 \002(\010\022\022\n\nip_addr" +
-      "ess\030\002 \002(\r\022\026\n\016subnet_address\030\003 \002(\r\022\032\n\022tra" +
-      "nsmission_power\030\004 \002(\001\022]\n\nradio_mode\030\005 \002(" +
-      "\0162I.ClientServerChannelSpace.ConfigureWi" +
-      "fiRadio.RadioConfiguration.RadioMode\022E\n\025" +
-      "primary_radio_channel\030\006 \002(\0162&.ClientServ" +
-      "erChannelSpace.RadioChannel\022G\n\027secondary" +
-      "_radio_channel\030\007 \001(\0162&.ClientServerChann" +
-      "elSpace.RadioChannel\"1\n\tRadioMode\022\022\n\016SIN" +
-      "GLE_CHANNEL\020\001\022\020\n\014DUAL_CHANNEL\020\002\"=\n\013Radio" +
-      "Number\022\014\n\010NO_RADIO\020\000\022\020\n\014SINGLE_RADIO\020\001\022\016" +
-      "\n\nDUAL_RADIO\020\002\"\207\005\n\017SendWifiMessage\022\014\n\004ti" +
-      "me\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030" +
-      "\003 \002(\0162&.ClientServerChannelSpace.RadioCh" +
-      "annel\022\022\n\nmessage_id\030\004 \002(\r\022\016\n\006length\030\005 \002(" +
-      "\004\022M\n\014topo_address\030\006 \001(\01325.ClientServerCh" +
-      "annelSpace.SendWifiMessage.TopoAddressH\000" +
-      "\022Z\n\021rectangle_address\030\007 \001(\0132=.ClientServ" +
-      "erChannelSpace.SendWifiMessage.GeoRectan" +
-      "gleAddressH\000\022T\n\016circle_address\030\010 \001(\0132:.C" +
-      "lientServerChannelSpace.SendWifiMessage." +
-      "GeoCircleAddressH\000\032.\n\013TopoAddress\022\022\n\nip_" +
-      "address\030\001 \002(\r\022\013\n\003ttl\030\002 \001(\r\032]\n\023GeoRectang" +
-      "leAddress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003a_X\030\002 \002" +
-      "(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n\003b_X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(" +
-      "\001\032Z\n\020GeoCircleAddress\022\022\n\nip_address\030\001 \002(" +
-      "\r\022\020\n\010center_X\030\002 \002(\001\022\020\n\010center_Y\030\003 \002(\001\022\016\n" +
-      "\006radius\030\004 \002(\001B\t\n\007address\"\221\001\n\022ReceiveWifi" +
-      "Message\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:" +
-      "\n\nchannel_id\030\003 \002(\0162&.ClientServerChannel" +
-      "Space.RadioChannel\022\022\n\nmessage_id\030\004 \002(\r\022\014" +
-      "\n\004rssi\030\005 \002(\002*\236\001\n\014RadioChannel\022\016\n\nPROTO_S" +
-      "CH1\020\000\022\016\n\nPROTO_SCH2\020\001\022\016\n\nPROTO_SCH3\020\002\022\r\n" +
-      "\tPROTO_CCH\020\003\022\016\n\nPROTO_SCH4\020\004\022\016\n\nPROTO_SC" +
-      "H5\020\005\022\016\n\nPROTO_SCH6\020\006\022\017\n\013PROTO_UNDEF\020\007\022\016\n" +
-      "\nPROTO_CELL\020\010B<\n\037org.eclipse.mosaic.lib." +
-      "couplingB\031ClientServerChannelProtos"
+      "\007node_id\030\002 \002(\005\"\301\006\n\022ConfigureWifiRadio\022\014\n" +
+      "\004time\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\017\n\007node_" +
+      "id\030\003 \002(\r\022N\n\014radio_number\030\004 \002(\01628.ClientS" +
+      "erverChannelSpace.ConfigureWifiRadio.Rad" +
+      "ioNumber\022d\n\033primary_radio_configuration\030" +
+      "\005 \002(\0132?.ClientServerChannelSpace.Configu" +
+      "reWifiRadio.RadioConfiguration\022f\n\035second" +
+      "ary_radio_configuration\030\006 \001(\0132?.ClientSe" +
+      "rverChannelSpace.ConfigureWifiRadio.Radi" +
+      "oConfiguration\032\232\003\n\022RadioConfiguration\022\032\n" +
+      "\022receiving_messages\030\001 \002(\010\022\022\n\nip_address\030" +
+      "\002 \002(\r\022\026\n\016subnet_address\030\003 \002(\r\022\032\n\022transmi" +
+      "ssion_power\030\004 \002(\001\022]\n\nradio_mode\030\005 \002(\0162I." +
+      "ClientServerChannelSpace.ConfigureWifiRa" +
+      "dio.RadioConfiguration.RadioMode\022E\n\025prim" +
+      "ary_radio_channel\030\006 \002(\0162&.ClientServerCh" +
+      "annelSpace.RadioChannel\022G\n\027secondary_rad" +
+      "io_channel\030\007 \001(\0162&.ClientServerChannelSp" +
+      "ace.RadioChannel\"1\n\tRadioMode\022\022\n\016SINGLE_" +
+      "CHANNEL\020\001\022\020\n\014DUAL_CHANNEL\020\002\"=\n\013RadioNumb" +
+      "er\022\014\n\010NO_RADIO\020\000\022\020\n\014SINGLE_RADIO\020\001\022\016\n\nDU" +
+      "AL_RADIO\020\002\"\207\005\n\017SendWifiMessage\022\014\n\004time\030\001" +
+      " \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002(" +
+      "\0162&.ClientServerChannelSpace.RadioChanne" +
+      "l\022\022\n\nmessage_id\030\004 \002(\r\022\016\n\006length\030\005 \002(\004\022M\n" +
+      "\014topo_address\030\006 \001(\01325.ClientServerChanne" +
+      "lSpace.SendWifiMessage.TopoAddressH\000\022Z\n\021" +
+      "rectangle_address\030\007 \001(\0132=.ClientServerCh" +
+      "annelSpace.SendWifiMessage.GeoRectangleA" +
+      "ddressH\000\022T\n\016circle_address\030\010 \001(\0132:.Clien" +
+      "tServerChannelSpace.SendWifiMessage.GeoC" +
+      "ircleAddressH\000\032.\n\013TopoAddress\022\022\n\nip_addr" +
+      "ess\030\001 \002(\r\022\013\n\003ttl\030\002 \001(\r\032]\n\023GeoRectangleAd" +
+      "dress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003a_X\030\002 \002(\001\022\013" +
+      "\n\003a_Y\030\003 \002(\001\022\013\n\003b_X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(\001\032Z\n" +
+      "\020GeoCircleAddress\022\022\n\nip_address\030\001 \002(\r\022\020\n" +
+      "\010center_X\030\002 \002(\001\022\020\n\010center_Y\030\003 \002(\001\022\016\n\006rad" +
+      "ius\030\004 \002(\001B\t\n\007address\"\221\001\n\022ReceiveWifiMess" +
+      "age\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nch" +
+      "annel_id\030\003 \002(\0162&.ClientServerChannelSpac" +
+      "e.RadioChannel\022\022\n\nmessage_id\030\004 \002(\r\022\014\n\004rs" +
+      "si\030\005 \002(\002*\236\001\n\014RadioChannel\022\016\n\nPROTO_SCH1\020" +
+      "\000\022\016\n\nPROTO_SCH2\020\001\022\016\n\nPROTO_SCH3\020\002\022\r\n\tPRO" +
+      "TO_CCH\020\003\022\016\n\nPROTO_SCH4\020\004\022\016\n\nPROTO_SCH5\020\005" +
+      "\022\016\n\nPROTO_SCH6\020\006\022\017\n\013PROTO_UNDEF\020\007\022\016\n\nPRO" +
+      "TO_CELL\020\010B<\n\037org.eclipse.mosaic.lib.coup" +
+      "lingB\031ClientServerChannelProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -14426,7 +14414,7 @@ public final class ClientServerChannelProtos {
     internal_static_ClientServerChannelSpace_ConfigureWifiRadio_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor,
-        new java.lang.String[] { "Time", "MessageId", "ExternalId", "RadioNumber", "PrimaryRadioConfiguration", "SecondaryRadioConfiguration", });
+        new java.lang.String[] { "Time", "MessageId", "NodeId", "RadioNumber", "PrimaryRadioConfiguration", "SecondaryRadioConfiguration", });
     internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_descriptor =
       internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor.getNestedTypes().get(0);
     internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_fieldAccessorTable = new
