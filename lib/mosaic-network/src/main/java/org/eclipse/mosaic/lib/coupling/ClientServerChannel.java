@@ -28,6 +28,7 @@ import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRa
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureCellRadio;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendCellMessage;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.geo.CartesianCircle;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
@@ -228,7 +229,7 @@ public class ClientServerChannel {
     }
 
     /**
-     * Write send message header to stream.
+     * Write send wifi message header to channel.
      * Not used in eWorld visualizer.
      *
      * @param time      simulation time at which the message is sent
@@ -242,18 +243,11 @@ public class ClientServerChannel {
                                             int msgId, long msgLength, DestinationAddressContainer dac) throws IOException {
         writeCommand(CommandType.SEND_WIFI_MSG);
 
-        ClientServerChannelProtos.RadioChannel channel;
-        if (dac.getType().isAdHoc()) {
-            channel = translateChannel(dac.getAdhocChannelId());
-        } else {
-            channel = ClientServerChannelProtos.RadioChannel.PROTO_CELL;
-        }
-
         //Add message details to the builder
         SendWifiMessage.Builder sendMess = SendWifiMessage.newBuilder()
                 .setTime(time)
                 .setNodeId(srcNodeId)
-                .setChannelId(channel)
+                .setChannelId(translateChannel(dac.getAdhocChannelId()))
                 .setMessageId(msgId)
                 .setLength(msgLength);
 
@@ -292,7 +286,7 @@ public class ClientServerChannel {
         } else if (dac.getType().isTopocast()) {
             SendWifiMessage.TopoAddress.Builder topoAddress = SendWifiMessage.TopoAddress.newBuilder();
             topoAddress.setIpAddress(buffer.getInt());
-            if (dac.getType().isAdHoc() && !(dac.getTimeToLive() > -1)) {
+            if (!(dac.getTimeToLive() > -1)) {
                 throw new IllegalArgumentException("Require TimeToLive for topocast ad-hoc communciation.");
             }
             topoAddress.setTtl(dac.getTimeToLive());
@@ -378,6 +372,40 @@ public class ClientServerChannel {
         message.setIpAddress(inet4ToInt(ip));
         message.setSubnetAddress(0);
         message.build().writeDelimitedTo(out);
+        return readCommand();
+    }
+
+
+    /**
+     * Write send cell message header to channel.
+     *
+     * @param time      simulation time at which the message is sent
+     * @param srcNodeId ID of the sending node
+     * @param msgId     the ID of the message
+     * @param msgLength length of the message
+     * @param dac       DestinationAddressContainer with the destination address of the sender and additional information
+     * @return command returned by the federate
+     */
+    public CommandType writeSendCellMessage(long time, int srcNodeId,
+                                            int msgId, long msgLength, DestinationAddressContainer dac) throws IOException {
+        writeCommand(CommandType.SEND_CELL_MSG);
+
+        SendCellMessage.Builder msg = SendCellMessage.newBuilder();
+        msg.setTime(time);
+        msg.setNodeId(srcNodeId);
+        msg.setMessageId(msgId);
+        msg.setLength(msgLength);;
+
+        if (!dac.getType().isTopocast()) {
+            throw new IllegalArgumentException("Only topocast is supported");
+        }
+        SendCellMessage.TopologicalAddress.Builder adr = SendCellMessage.TopologicalAddress.newBuilder();
+        ByteBuffer buffer = ByteBuffer.allocate(Long.SIZE);
+        buffer.put(dac.getAddress().getIPv4Address().getAddress());
+        buffer.position(0);
+        adr.setIpAddress(buffer.getInt());
+        msg.setTopologicalAddress(adr);
+        msg.build().writeDelimitedTo(out);
         return readCommand();
     }
 

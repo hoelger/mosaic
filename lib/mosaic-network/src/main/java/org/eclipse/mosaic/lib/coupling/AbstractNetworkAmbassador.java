@@ -627,7 +627,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 }
             } else if (dac.getType() == RoutingType.CELL_TOPOCAST) {
                 if (dac.getAddress().isUnicast()) {
-                    ack = ambassadorFederateChannel.writeSendWifiMessage(
+                    ack = ambassadorFederateChannel.writeSendCellMessage(
                             interaction.getTime(),
                             sourceId,
                             interaction.getMessage().getId(),
