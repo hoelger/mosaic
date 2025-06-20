@@ -141,12 +141,12 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     /**
      * Number of tries to establish a ClientServerConnection
      */
-    protected final static int MAX_CONNECTION_TRIES = 50;
+    protected final static int MAX_CONNECTION_TRIES = 100;
 
     /**
      * Milliseconds to wait between tries when establishing a ClientServerConnection
      */
-    protected final static int WAIT_BETWEEN_CONNECTION_TRIES = 100;
+    protected final static int WAIT_BETWEEN_CONNECTION_TRIES = 200;
 
     /**
      * Creates a new AbstractNetworkAmbassador.
