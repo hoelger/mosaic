@@ -27,6 +27,7 @@ import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.Node
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureCellRadio;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.geo.CartesianCircle;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
@@ -369,23 +370,14 @@ public class ClientServerChannel {
      * @return command returned by the federate
      */
     public CommandType writeConfigureCellRadio(long time, int nodeId, CellConfiguration configuration, Inet4Address ip) throws IOException {
+        // CellConfiguration unused
         writeCommand(CommandType.CONF_CELL_RADIO);
-        ConfigureWifiRadio.Builder configRadio = ConfigureWifiRadio.newBuilder();
-        configRadio.setTime(time);
-        configRadio.setMessageId(0);                    // TODO
-        configRadio.setNodeId(nodeId);
-        configRadio.setRadioNumber(ConfigureWifiRadio.RadioNumber.SINGLE_RADIO);
-
-        ConfigureWifiRadio.RadioConfiguration.Builder radioConfig1 = ConfigureWifiRadio.RadioConfiguration.newBuilder();
-        radioConfig1.setReceivingMessages(false);       // TODO
-        radioConfig1.setIpAddress(inet4ToInt(ip));      // TODO
-        radioConfig1.setSubnetAddress(0);               // TODO
-        radioConfig1.setTransmissionPower(1);           // TODO
-        radioConfig1.setRadioMode(ConfigureWifiRadio.RadioConfiguration.RadioMode.SINGLE_CHANNEL);
-        radioConfig1.setPrimaryRadioChannel(ClientServerChannelProtos.RadioChannel.PROTO_CELL);
-        configRadio.setPrimaryRadioConfiguration(radioConfig1);
-
-        configRadio.build().writeDelimitedTo(out);
+        ConfigureCellRadio.Builder message = ConfigureCellRadio.newBuilder();
+        message.setTime(time);
+        message.setNodeId(nodeId);
+        message.setIpAddress(inet4ToInt(ip));
+        message.setSubnetAddress(0);
+        message.build().writeDelimitedTo(out);
         return readCommand();
     }
 
