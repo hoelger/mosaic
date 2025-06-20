@@ -27,6 +27,7 @@ import org.eclipse.mosaic.interactions.traffic.VehicleUpdates;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.NodeDataContainer;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.ReceiveMessageContainer;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.CommandMessage.CommandType;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType;
 import org.eclipse.mosaic.lib.enums.RoutingType;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
 import org.eclipse.mosaic.lib.geo.GeoPoint;
@@ -744,8 +745,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 log.warn("Node with id (internal={}) couldn't be added: name already exists", nodeId);
             } else {
                 int id = simulatedNodes.toExternalId(nodeId);
-                ClientServerChannelProtos.UpdateNode.UpdateType type = UnitNameGenerator.isVehicle(nodeId) ? ClientServerChannelProtos.UpdateNode.UpdateType.ADD_VEHICLE : ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU;
-                if (CommandType.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, type, new NodeDataContainer(id, registeredNode.position))) {
+                if (CommandType.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, NodeType.RADIO_NODE, new NodeDataContainer(id, registeredNode.position))) {
                     log.error("Could not add new node.");
                     throw new InternalFederateException("Error in " + federateName + ": Could not add new node");
                 }
