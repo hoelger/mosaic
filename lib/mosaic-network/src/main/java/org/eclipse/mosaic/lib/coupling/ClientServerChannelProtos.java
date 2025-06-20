@@ -6272,8 +6272,8 @@ public final class ClientServerChannelProtos {
 
   }
 
-  public interface ConfigureRadioMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.ConfigureRadioMessage)
+  public interface ConfigureWifiRadioOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.ConfigureWifiRadio)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -6318,45 +6318,45 @@ public final class ClientServerChannelProtos {
     int getExternalId();
 
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber radio_number = 4;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
      * @return Whether the radioNumber field is set.
      */
     boolean hasRadioNumber();
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber radio_number = 4;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
      * @return The radioNumber.
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber getRadioNumber();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber getRadioNumber();
 
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
      * @return Whether the primaryRadioConfiguration field is set.
      */
     boolean hasPrimaryRadioConfiguration();
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
      * @return The primaryRadioConfiguration.
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getPrimaryRadioConfiguration();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getPrimaryRadioConfiguration();
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder getPrimaryRadioConfigurationOrBuilder();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder getPrimaryRadioConfigurationOrBuilder();
 
     /**
-     * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+     * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
      * @return Whether the secondaryRadioConfiguration field is set.
      */
     boolean hasSecondaryRadioConfiguration();
     /**
-     * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+     * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
      * @return The secondaryRadioConfiguration.
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getSecondaryRadioConfiguration();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getSecondaryRadioConfiguration();
     /**
-     * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+     * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder getSecondaryRadioConfigurationOrBuilder();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder getSecondaryRadioConfigurationOrBuilder();
   }
   /**
    * <pre>
@@ -6364,18 +6364,18 @@ public final class ClientServerChannelProtos {
    * in ns3: currently only time, external_id, radio_number, primary_radio.tx_power are used
    * </pre>
    *
-   * Protobuf type {@code ClientServerChannelSpace.ConfigureRadioMessage}
+   * Protobuf type {@code ClientServerChannelSpace.ConfigureWifiRadio}
    */
-  public static final class ConfigureRadioMessage extends
+  public static final class ConfigureWifiRadio extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.ConfigureRadioMessage)
-      ConfigureRadioMessageOrBuilder {
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.ConfigureWifiRadio)
+      ConfigureWifiRadioOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ConfigureRadioMessage.newBuilder() to construct.
-    private ConfigureRadioMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ConfigureWifiRadio.newBuilder() to construct.
+    private ConfigureWifiRadio(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ConfigureRadioMessage() {
+    private ConfigureWifiRadio() {
       radioNumber_ = 0;
     }
 
@@ -6383,7 +6383,7 @@ public final class ClientServerChannelProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ConfigureRadioMessage();
+      return new ConfigureWifiRadio();
     }
 
     @java.lang.Override
@@ -6391,7 +6391,7 @@ public final class ClientServerChannelProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ConfigureRadioMessage(
+    private ConfigureWifiRadio(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -6428,7 +6428,7 @@ public final class ClientServerChannelProtos {
             case 32: {
               int rawValue = input.readEnum();
                 @SuppressWarnings("deprecation")
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber value = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber.valueOf(rawValue);
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber value = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(4, rawValue);
               } else {
@@ -6438,11 +6438,11 @@ public final class ClientServerChannelProtos {
               break;
             }
             case 42: {
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder subBuilder = null;
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder subBuilder = null;
               if (((bitField0_ & 0x00000010) != 0)) {
                 subBuilder = primaryRadioConfiguration_.toBuilder();
               }
-              primaryRadioConfiguration_ = input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.PARSER, extensionRegistry);
+              primaryRadioConfiguration_ = input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(primaryRadioConfiguration_);
                 primaryRadioConfiguration_ = subBuilder.buildPartial();
@@ -6451,11 +6451,11 @@ public final class ClientServerChannelProtos {
               break;
             }
             case 50: {
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder subBuilder = null;
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder subBuilder = null;
               if (((bitField0_ & 0x00000020) != 0)) {
                 subBuilder = secondaryRadioConfiguration_.toBuilder();
               }
-              secondaryRadioConfiguration_ = input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.PARSER, extensionRegistry);
+              secondaryRadioConfiguration_ = input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.PARSER, extensionRegistry);
               if (subBuilder != null) {
                 subBuilder.mergeFrom(secondaryRadioConfiguration_);
                 secondaryRadioConfiguration_ = subBuilder.buildPartial();
@@ -6484,19 +6484,19 @@ public final class ClientServerChannelProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor;
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_fieldAccessorTable
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.Builder.class);
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber}
+     * Protobuf enum {@code ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber}
      */
     public enum RadioNumber
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -6577,7 +6577,7 @@ public final class ClientServerChannelProtos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.getDescriptor().getEnumTypes().get(0);
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final RadioNumber[] VALUES = values();
@@ -6597,11 +6597,11 @@ public final class ClientServerChannelProtos {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber)
+      // @@protoc_insertion_point(enum_scope:ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber)
     }
 
     public interface RadioConfigurationOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration)
+        // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -6657,15 +6657,15 @@ public final class ClientServerChannelProtos {
       double getTransmissionPower();
 
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode radio_mode = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode radio_mode = 5;</code>
        * @return Whether the radioMode field is set.
        */
       boolean hasRadioMode();
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode radio_mode = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode radio_mode = 5;</code>
        * @return The radioMode.
        */
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode getRadioMode();
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode getRadioMode();
 
       /**
        * <code>required .ClientServerChannelSpace.RadioChannel primary_radio_channel = 6;</code>
@@ -6690,11 +6690,11 @@ public final class ClientServerChannelProtos {
       org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RadioChannel getSecondaryRadioChannel();
     }
     /**
-     * Protobuf type {@code ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration}
+     * Protobuf type {@code ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration}
      */
     public static final class RadioConfiguration extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration)
+        // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration)
         RadioConfigurationOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use RadioConfiguration.newBuilder() to construct.
@@ -6761,7 +6761,7 @@ public final class ClientServerChannelProtos {
               case 40: {
                 int rawValue = input.readEnum();
                   @SuppressWarnings("deprecation")
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode value = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode.valueOf(rawValue);
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode value = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode.valueOf(rawValue);
                 if (value == null) {
                   unknownFields.mergeVarintField(5, rawValue);
                 } else {
@@ -6815,19 +6815,19 @@ public final class ClientServerChannelProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_fieldAccessorTable
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder.class);
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder.class);
       }
 
       /**
-       * Protobuf enum {@code ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode}
+       * Protobuf enum {@code ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode}
        */
       public enum RadioMode
           implements com.google.protobuf.ProtocolMessageEnum {
@@ -6899,7 +6899,7 @@ public final class ClientServerChannelProtos {
         }
         public static final com.google.protobuf.Descriptors.EnumDescriptor
             getDescriptor() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDescriptor().getEnumTypes().get(0);
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDescriptor().getEnumTypes().get(0);
         }
 
         private static final RadioMode[] VALUES = values();
@@ -6919,7 +6919,7 @@ public final class ClientServerChannelProtos {
           this.value = value;
         }
 
-        // @@protoc_insertion_point(enum_scope:ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode)
+        // @@protoc_insertion_point(enum_scope:ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode)
       }
 
       private int bitField0_;
@@ -7010,20 +7010,20 @@ public final class ClientServerChannelProtos {
       public static final int RADIO_MODE_FIELD_NUMBER = 5;
       private int radioMode_;
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode radio_mode = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode radio_mode = 5;</code>
        * @return Whether the radioMode field is set.
        */
       @java.lang.Override public boolean hasRadioMode() {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode radio_mode = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode radio_mode = 5;</code>
        * @return The radioMode.
        */
-      @java.lang.Override public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode getRadioMode() {
+      @java.lang.Override public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode getRadioMode() {
         @SuppressWarnings("deprecation")
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode.valueOf(radioMode_);
-        return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode.SINGLE_CHANNEL : result;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode.valueOf(radioMode_);
+        return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode.SINGLE_CHANNEL : result;
       }
 
       public static final int PRIMARY_RADIO_CHANNEL_FIELD_NUMBER = 6;
@@ -7170,10 +7170,10 @@ public final class ClientServerChannelProtos {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration)) {
+        if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration)) {
           return super.equals(obj);
         }
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration) obj;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration) obj;
 
         if (hasReceivingMessages() != other.hasReceivingMessages()) return false;
         if (hasReceivingMessages()) {
@@ -7254,69 +7254,69 @@ public final class ClientServerChannelProtos {
         return hash;
       }
 
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(byte[] data)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(java.io.InputStream input)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseDelimitedFrom(java.io.InputStream input)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseDelimitedFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -7329,7 +7329,7 @@ public final class ClientServerChannelProtos {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration prototype) {
+      public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -7345,26 +7345,26 @@ public final class ClientServerChannelProtos {
         return builder;
       }
       /**
-       * Protobuf type {@code ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration}
+       * Protobuf type {@code ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration)
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder {
+          // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration)
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_descriptor;
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_fieldAccessorTable
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder.class);
+                  org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder.class);
         }
 
-        // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.newBuilder()
+        // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -7402,17 +7402,17 @@ public final class ClientServerChannelProtos {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_descriptor;
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_descriptor;
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getDefaultInstanceForType() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance();
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getDefaultInstanceForType() {
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance();
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration build() {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration result = buildPartial();
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration build() {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -7420,8 +7420,8 @@ public final class ClientServerChannelProtos {
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration buildPartial() {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration(this);
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration buildPartial() {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -7491,16 +7491,16 @@ public final class ClientServerChannelProtos {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration) {
-            return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration)other);
+          if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration) {
+            return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration other) {
-          if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration other) {
+          if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance()) return this;
           if (other.hasReceivingMessages()) {
             setReceivingMessages(other.getReceivingMessages());
           }
@@ -7555,11 +7555,11 @@ public final class ClientServerChannelProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration parsedMessage = null;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration) e.getUnfinishedMessage();
+            parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -7744,28 +7744,28 @@ public final class ClientServerChannelProtos {
 
         private int radioMode_ = 1;
         /**
-         * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode radio_mode = 5;</code>
+         * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode radio_mode = 5;</code>
          * @return Whether the radioMode field is set.
          */
         @java.lang.Override public boolean hasRadioMode() {
           return ((bitField0_ & 0x00000010) != 0);
         }
         /**
-         * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode radio_mode = 5;</code>
+         * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode radio_mode = 5;</code>
          * @return The radioMode.
          */
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode getRadioMode() {
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode getRadioMode() {
           @SuppressWarnings("deprecation")
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode.valueOf(radioMode_);
-          return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode.SINGLE_CHANNEL : result;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode.valueOf(radioMode_);
+          return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode.SINGLE_CHANNEL : result;
         }
         /**
-         * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode radio_mode = 5;</code>
+         * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode radio_mode = 5;</code>
          * @param value The radioMode to set.
          * @return This builder for chaining.
          */
-        public Builder setRadioMode(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.RadioMode value) {
+        public Builder setRadioMode(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.RadioMode value) {
           if (value == null) {
             throw new NullPointerException();
           }
@@ -7775,7 +7775,7 @@ public final class ClientServerChannelProtos {
           return this;
         }
         /**
-         * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration.RadioMode radio_mode = 5;</code>
+         * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration.RadioMode radio_mode = 5;</code>
          * @return This builder for chaining.
          */
         public Builder clearRadioMode() {
@@ -7883,16 +7883,16 @@ public final class ClientServerChannelProtos {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration)
+        // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration)
       }
 
-      // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration)
-      private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration)
+      private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration();
+        DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration();
       }
 
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getDefaultInstance() {
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -7917,7 +7917,7 @@ public final class ClientServerChannelProtos {
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getDefaultInstanceForType() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -7992,26 +7992,26 @@ public final class ClientServerChannelProtos {
     public static final int RADIO_NUMBER_FIELD_NUMBER = 4;
     private int radioNumber_;
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber radio_number = 4;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
      * @return Whether the radioNumber field is set.
      */
     @java.lang.Override public boolean hasRadioNumber() {
       return ((bitField0_ & 0x00000008) != 0);
     }
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber radio_number = 4;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
      * @return The radioNumber.
      */
-    @java.lang.Override public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber getRadioNumber() {
+    @java.lang.Override public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber getRadioNumber() {
       @SuppressWarnings("deprecation")
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber.valueOf(radioNumber_);
-      return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber.NO_RADIO : result;
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber.valueOf(radioNumber_);
+      return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber.NO_RADIO : result;
     }
 
     public static final int PRIMARY_RADIO_CONFIGURATION_FIELD_NUMBER = 5;
-    private org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration primaryRadioConfiguration_;
+    private org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration primaryRadioConfiguration_;
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
      * @return Whether the primaryRadioConfiguration field is set.
      */
     @java.lang.Override
@@ -8019,25 +8019,25 @@ public final class ClientServerChannelProtos {
       return ((bitField0_ & 0x00000010) != 0);
     }
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
      * @return The primaryRadioConfiguration.
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getPrimaryRadioConfiguration() {
-      return primaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance() : primaryRadioConfiguration_;
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getPrimaryRadioConfiguration() {
+      return primaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance() : primaryRadioConfiguration_;
     }
     /**
-     * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+     * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder getPrimaryRadioConfigurationOrBuilder() {
-      return primaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance() : primaryRadioConfiguration_;
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder getPrimaryRadioConfigurationOrBuilder() {
+      return primaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance() : primaryRadioConfiguration_;
     }
 
     public static final int SECONDARY_RADIO_CONFIGURATION_FIELD_NUMBER = 6;
-    private org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration secondaryRadioConfiguration_;
+    private org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration secondaryRadioConfiguration_;
     /**
-     * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+     * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
      * @return Whether the secondaryRadioConfiguration field is set.
      */
     @java.lang.Override
@@ -8045,19 +8045,19 @@ public final class ClientServerChannelProtos {
       return ((bitField0_ & 0x00000020) != 0);
     }
     /**
-     * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+     * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
      * @return The secondaryRadioConfiguration.
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getSecondaryRadioConfiguration() {
-      return secondaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance() : secondaryRadioConfiguration_;
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getSecondaryRadioConfiguration() {
+      return secondaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance() : secondaryRadioConfiguration_;
     }
     /**
-     * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+     * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder getSecondaryRadioConfigurationOrBuilder() {
-      return secondaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance() : secondaryRadioConfiguration_;
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder getSecondaryRadioConfigurationOrBuilder() {
+      return secondaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance() : secondaryRadioConfiguration_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8165,10 +8165,10 @@ public final class ClientServerChannelProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage)) {
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio)) {
         return super.equals(obj);
       }
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage) obj;
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio) obj;
 
       if (hasTime() != other.hasTime()) return false;
       if (hasTime()) {
@@ -8240,69 +8240,69 @@ public final class ClientServerChannelProtos {
       return hash;
     }
 
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(byte[] data)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(java.io.InputStream input)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseDelimitedFrom(java.io.InputStream input)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseDelimitedFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8315,7 +8315,7 @@ public final class ClientServerChannelProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage prototype) {
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -8336,26 +8336,26 @@ public final class ClientServerChannelProtos {
      * in ns3: currently only time, external_id, radio_number, primary_radio.tx_power are used
      * </pre>
      *
-     * Protobuf type {@code ClientServerChannelSpace.ConfigureRadioMessage}
+     * Protobuf type {@code ClientServerChannelSpace.ConfigureWifiRadio}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.ConfigureRadioMessage)
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.ConfigureWifiRadio)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadioOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_fieldAccessorTable
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.Builder.class);
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.Builder.class);
       }
 
-      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.newBuilder()
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8401,17 +8401,17 @@ public final class ClientServerChannelProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor;
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage getDefaultInstanceForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.getDefaultInstance();
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage build() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage result = buildPartial();
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -8419,8 +8419,8 @@ public final class ClientServerChannelProtos {
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage buildPartial() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage(this);
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -8494,16 +8494,16 @@ public final class ClientServerChannelProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage) {
-          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage)other);
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage other) {
-        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.getDefaultInstance()) return this;
         if (other.hasTime()) {
           setTime(other.getTime());
         }
@@ -8560,11 +8560,11 @@ public final class ClientServerChannelProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage parsedMessage = null;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage) e.getUnfinishedMessage();
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -8710,28 +8710,28 @@ public final class ClientServerChannelProtos {
 
       private int radioNumber_ = 0;
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber radio_number = 4;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
        * @return Whether the radioNumber field is set.
        */
       @java.lang.Override public boolean hasRadioNumber() {
         return ((bitField0_ & 0x00000008) != 0);
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber radio_number = 4;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
        * @return The radioNumber.
        */
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber getRadioNumber() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber getRadioNumber() {
         @SuppressWarnings("deprecation")
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber.valueOf(radioNumber_);
-        return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber.NO_RADIO : result;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber.valueOf(radioNumber_);
+        return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber.NO_RADIO : result;
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber radio_number = 4;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
        * @param value The radioNumber to set.
        * @return This builder for chaining.
        */
-      public Builder setRadioNumber(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioNumber value) {
+      public Builder setRadioNumber(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioNumber value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -8741,7 +8741,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioNumber radio_number = 4;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioNumber radio_number = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearRadioNumber() {
@@ -8751,31 +8751,31 @@ public final class ClientServerChannelProtos {
         return this;
       }
 
-      private org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration primaryRadioConfiguration_;
+      private org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration primaryRadioConfiguration_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder> primaryRadioConfigurationBuilder_;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder> primaryRadioConfigurationBuilder_;
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        * @return Whether the primaryRadioConfiguration field is set.
        */
       public boolean hasPrimaryRadioConfiguration() {
         return ((bitField0_ & 0x00000010) != 0);
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        * @return The primaryRadioConfiguration.
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getPrimaryRadioConfiguration() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getPrimaryRadioConfiguration() {
         if (primaryRadioConfigurationBuilder_ == null) {
-          return primaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance() : primaryRadioConfiguration_;
+          return primaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance() : primaryRadioConfiguration_;
         } else {
           return primaryRadioConfigurationBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        */
-      public Builder setPrimaryRadioConfiguration(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration value) {
+      public Builder setPrimaryRadioConfiguration(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration value) {
         if (primaryRadioConfigurationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8789,10 +8789,10 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        */
       public Builder setPrimaryRadioConfiguration(
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder builderForValue) {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder builderForValue) {
         if (primaryRadioConfigurationBuilder_ == null) {
           primaryRadioConfiguration_ = builderForValue.build();
           onChanged();
@@ -8803,15 +8803,15 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        */
-      public Builder mergePrimaryRadioConfiguration(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration value) {
+      public Builder mergePrimaryRadioConfiguration(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration value) {
         if (primaryRadioConfigurationBuilder_ == null) {
           if (((bitField0_ & 0x00000010) != 0) &&
               primaryRadioConfiguration_ != null &&
-              primaryRadioConfiguration_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance()) {
+              primaryRadioConfiguration_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance()) {
             primaryRadioConfiguration_ =
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.newBuilder(primaryRadioConfiguration_).mergeFrom(value).buildPartial();
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.newBuilder(primaryRadioConfiguration_).mergeFrom(value).buildPartial();
           } else {
             primaryRadioConfiguration_ = value;
           }
@@ -8823,7 +8823,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        */
       public Builder clearPrimaryRadioConfiguration() {
         if (primaryRadioConfigurationBuilder_ == null) {
@@ -8836,33 +8836,33 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder getPrimaryRadioConfigurationBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder getPrimaryRadioConfigurationBuilder() {
         bitField0_ |= 0x00000010;
         onChanged();
         return getPrimaryRadioConfigurationFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder getPrimaryRadioConfigurationOrBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder getPrimaryRadioConfigurationOrBuilder() {
         if (primaryRadioConfigurationBuilder_ != null) {
           return primaryRadioConfigurationBuilder_.getMessageOrBuilder();
         } else {
           return primaryRadioConfiguration_ == null ?
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance() : primaryRadioConfiguration_;
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance() : primaryRadioConfiguration_;
         }
       }
       /**
-       * <code>required .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration primary_radio_configuration = 5;</code>
+       * <code>required .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration primary_radio_configuration = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder> 
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder> 
           getPrimaryRadioConfigurationFieldBuilder() {
         if (primaryRadioConfigurationBuilder_ == null) {
           primaryRadioConfigurationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder>(
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder>(
                   getPrimaryRadioConfiguration(),
                   getParentForChildren(),
                   isClean());
@@ -8871,31 +8871,31 @@ public final class ClientServerChannelProtos {
         return primaryRadioConfigurationBuilder_;
       }
 
-      private org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration secondaryRadioConfiguration_;
+      private org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration secondaryRadioConfiguration_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder> secondaryRadioConfigurationBuilder_;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder> secondaryRadioConfigurationBuilder_;
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        * @return Whether the secondaryRadioConfiguration field is set.
        */
       public boolean hasSecondaryRadioConfiguration() {
         return ((bitField0_ & 0x00000020) != 0);
       }
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        * @return The secondaryRadioConfiguration.
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration getSecondaryRadioConfiguration() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration getSecondaryRadioConfiguration() {
         if (secondaryRadioConfigurationBuilder_ == null) {
-          return secondaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance() : secondaryRadioConfiguration_;
+          return secondaryRadioConfiguration_ == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance() : secondaryRadioConfiguration_;
         } else {
           return secondaryRadioConfigurationBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        */
-      public Builder setSecondaryRadioConfiguration(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration value) {
+      public Builder setSecondaryRadioConfiguration(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration value) {
         if (secondaryRadioConfigurationBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -8909,10 +8909,10 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        */
       public Builder setSecondaryRadioConfiguration(
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder builderForValue) {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder builderForValue) {
         if (secondaryRadioConfigurationBuilder_ == null) {
           secondaryRadioConfiguration_ = builderForValue.build();
           onChanged();
@@ -8923,15 +8923,15 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        */
-      public Builder mergeSecondaryRadioConfiguration(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration value) {
+      public Builder mergeSecondaryRadioConfiguration(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration value) {
         if (secondaryRadioConfigurationBuilder_ == null) {
           if (((bitField0_ & 0x00000020) != 0) &&
               secondaryRadioConfiguration_ != null &&
-              secondaryRadioConfiguration_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance()) {
+              secondaryRadioConfiguration_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance()) {
             secondaryRadioConfiguration_ =
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.newBuilder(secondaryRadioConfiguration_).mergeFrom(value).buildPartial();
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.newBuilder(secondaryRadioConfiguration_).mergeFrom(value).buildPartial();
           } else {
             secondaryRadioConfiguration_ = value;
           }
@@ -8943,7 +8943,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        */
       public Builder clearSecondaryRadioConfiguration() {
         if (secondaryRadioConfigurationBuilder_ == null) {
@@ -8956,33 +8956,33 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder getSecondaryRadioConfigurationBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder getSecondaryRadioConfigurationBuilder() {
         bitField0_ |= 0x00000020;
         onChanged();
         return getSecondaryRadioConfigurationFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder getSecondaryRadioConfigurationOrBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder getSecondaryRadioConfigurationOrBuilder() {
         if (secondaryRadioConfigurationBuilder_ != null) {
           return secondaryRadioConfigurationBuilder_.getMessageOrBuilder();
         } else {
           return secondaryRadioConfiguration_ == null ?
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.getDefaultInstance() : secondaryRadioConfiguration_;
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.getDefaultInstance() : secondaryRadioConfiguration_;
         }
       }
       /**
-       * <code>optional .ClientServerChannelSpace.ConfigureRadioMessage.RadioConfiguration secondary_radio_configuration = 6;</code>
+       * <code>optional .ClientServerChannelSpace.ConfigureWifiRadio.RadioConfiguration secondary_radio_configuration = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder> 
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder> 
           getSecondaryRadioConfigurationFieldBuilder() {
         if (secondaryRadioConfigurationBuilder_ == null) {
           secondaryRadioConfigurationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage.RadioConfigurationOrBuilder>(
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfiguration.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio.RadioConfigurationOrBuilder>(
                   getSecondaryRadioConfiguration(),
                   getParentForChildren(),
                   isClean());
@@ -9003,48 +9003,48 @@ public final class ClientServerChannelProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.ConfigureRadioMessage)
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.ConfigureWifiRadio)
     }
 
-    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.ConfigureRadioMessage)
-    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.ConfigureWifiRadio)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage();
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio();
     }
 
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage getDefaultInstance() {
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ConfigureRadioMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ConfigureRadioMessage>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ConfigureWifiRadio>
+        PARSER = new com.google.protobuf.AbstractParser<ConfigureWifiRadio>() {
       @java.lang.Override
-      public ConfigureRadioMessage parsePartialFrom(
+      public ConfigureWifiRadio parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ConfigureRadioMessage(input, extensionRegistry);
+        return new ConfigureWifiRadio(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ConfigureRadioMessage> parser() {
+    public static com.google.protobuf.Parser<ConfigureWifiRadio> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ConfigureRadioMessage> getParserForType() {
+    public com.google.protobuf.Parser<ConfigureWifiRadio> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureRadioMessage getDefaultInstanceForType() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureWifiRadio getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface SendMessageMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.SendMessageMessage)
+  public interface SendWifiMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.SendWifiMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -9103,65 +9103,65 @@ public final class ClientServerChannelProtos {
     long getLength();
 
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
      * @return Whether the topoAddress field is set.
      */
     boolean hasTopoAddress();
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
      * @return The topoAddress.
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress getTopoAddress();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress getTopoAddress();
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddressOrBuilder getTopoAddressOrBuilder();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddressOrBuilder getTopoAddressOrBuilder();
 
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
      * @return Whether the rectangleAddress field is set.
      */
     boolean hasRectangleAddress();
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
      * @return The rectangleAddress.
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress getRectangleAddress();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress getRectangleAddress();
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddressOrBuilder getRectangleAddressOrBuilder();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddressOrBuilder getRectangleAddressOrBuilder();
 
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
      * @return Whether the circleAddress field is set.
      */
     boolean hasCircleAddress();
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
      * @return The circleAddress.
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress getCircleAddress();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress getCircleAddress();
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
      */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddressOrBuilder getCircleAddressOrBuilder();
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddressOrBuilder getCircleAddressOrBuilder();
 
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.AddressCase getAddressCase();
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.AddressCase getAddressCase();
   }
   /**
-   * Protobuf type {@code ClientServerChannelSpace.SendMessageMessage}
+   * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage}
    */
-  public static final class SendMessageMessage extends
+  public static final class SendWifiMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.SendMessageMessage)
-      SendMessageMessageOrBuilder {
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.SendWifiMessage)
+      SendWifiMessageOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use SendMessageMessage.newBuilder() to construct.
-    private SendMessageMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use SendWifiMessage.newBuilder() to construct.
+    private SendWifiMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SendMessageMessage() {
+    private SendWifiMessage() {
       channelId_ = 0;
     }
 
@@ -9169,7 +9169,7 @@ public final class ClientServerChannelProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new SendMessageMessage();
+      return new SendWifiMessage();
     }
 
     @java.lang.Override
@@ -9177,7 +9177,7 @@ public final class ClientServerChannelProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SendMessageMessage(
+    private SendWifiMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -9229,42 +9229,42 @@ public final class ClientServerChannelProtos {
               break;
             }
             case 50: {
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.Builder subBuilder = null;
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.Builder subBuilder = null;
               if (addressCase_ == 6) {
-                subBuilder = ((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_).toBuilder();
+                subBuilder = ((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_).toBuilder();
               }
               address_ =
-                  input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.PARSER, extensionRegistry);
+                  input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_);
+                subBuilder.mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_);
                 address_ = subBuilder.buildPartial();
               }
               addressCase_ = 6;
               break;
             }
             case 58: {
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.Builder subBuilder = null;
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.Builder subBuilder = null;
               if (addressCase_ == 7) {
-                subBuilder = ((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_).toBuilder();
+                subBuilder = ((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_).toBuilder();
               }
               address_ =
-                  input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.PARSER, extensionRegistry);
+                  input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_);
+                subBuilder.mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_);
                 address_ = subBuilder.buildPartial();
               }
               addressCase_ = 7;
               break;
             }
             case 66: {
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.Builder subBuilder = null;
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.Builder subBuilder = null;
               if (addressCase_ == 8) {
-                subBuilder = ((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_).toBuilder();
+                subBuilder = ((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_).toBuilder();
               }
               address_ =
-                  input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.PARSER, extensionRegistry);
+                  input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_);
+                subBuilder.mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_);
                 address_ = subBuilder.buildPartial();
               }
               addressCase_ = 8;
@@ -9291,19 +9291,19 @@ public final class ClientServerChannelProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor;
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_fieldAccessorTable
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.Builder.class);
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.Builder.class);
     }
 
     public interface TopoAddressOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.SendMessageMessage.TopoAddress)
+        // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.SendWifiMessage.TopoAddress)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -9329,11 +9329,11 @@ public final class ClientServerChannelProtos {
       int getTtl();
     }
     /**
-     * Protobuf type {@code ClientServerChannelSpace.SendMessageMessage.TopoAddress}
+     * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage.TopoAddress}
      */
     public static final class TopoAddress extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.SendMessageMessage.TopoAddress)
+        // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.SendWifiMessage.TopoAddress)
         TopoAddressOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use TopoAddress.newBuilder() to construct.
@@ -9405,15 +9405,15 @@ public final class ClientServerChannelProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_fieldAccessorTable
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.Builder.class);
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.Builder.class);
       }
 
       private int bitField0_;
@@ -9506,10 +9506,10 @@ public final class ClientServerChannelProtos {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress)) {
+        if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress)) {
           return super.equals(obj);
         }
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) obj;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) obj;
 
         if (hasIpAddress() != other.hasIpAddress()) return false;
         if (hasIpAddress()) {
@@ -9545,69 +9545,69 @@ public final class ClientServerChannelProtos {
         return hash;
       }
 
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(byte[] data)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(java.io.InputStream input)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseDelimitedFrom(java.io.InputStream input)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseDelimitedFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -9620,7 +9620,7 @@ public final class ClientServerChannelProtos {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress prototype) {
+      public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -9636,26 +9636,26 @@ public final class ClientServerChannelProtos {
         return builder;
       }
       /**
-       * Protobuf type {@code ClientServerChannelSpace.SendMessageMessage.TopoAddress}
+       * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage.TopoAddress}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.SendMessageMessage.TopoAddress)
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddressOrBuilder {
+          // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.SendWifiMessage.TopoAddress)
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddressOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_descriptor;
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_fieldAccessorTable
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.Builder.class);
+                  org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.Builder.class);
         }
 
-        // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.newBuilder()
+        // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -9683,17 +9683,17 @@ public final class ClientServerChannelProtos {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_descriptor;
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_descriptor;
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress getDefaultInstanceForType() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance();
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress getDefaultInstanceForType() {
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance();
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress build() {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress result = buildPartial();
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress build() {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -9701,8 +9701,8 @@ public final class ClientServerChannelProtos {
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress buildPartial() {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress(this);
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress buildPartial() {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -9752,16 +9752,16 @@ public final class ClientServerChannelProtos {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) {
-            return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress)other);
+          if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) {
+            return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress other) {
-          if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress other) {
+          if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance()) return this;
           if (other.hasIpAddress()) {
             setIpAddress(other.getIpAddress());
           }
@@ -9786,11 +9786,11 @@ public final class ClientServerChannelProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress parsedMessage = null;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) e.getUnfinishedMessage();
+            parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -9891,16 +9891,16 @@ public final class ClientServerChannelProtos {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.SendMessageMessage.TopoAddress)
+        // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.SendWifiMessage.TopoAddress)
       }
 
-      // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.SendMessageMessage.TopoAddress)
-      private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.SendWifiMessage.TopoAddress)
+      private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress();
+        DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress();
       }
 
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress getDefaultInstance() {
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -9925,14 +9925,14 @@ public final class ClientServerChannelProtos {
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress getDefaultInstanceForType() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public interface GeoRectangleAddressOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress)
+        // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -9991,11 +9991,11 @@ public final class ClientServerChannelProtos {
       double getBY();
     }
     /**
-     * Protobuf type {@code ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress}
+     * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress}
      */
     public static final class GeoRectangleAddress extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress)
+        // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress)
         GeoRectangleAddressOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use GeoRectangleAddress.newBuilder() to construct.
@@ -10082,15 +10082,15 @@ public final class ClientServerChannelProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_fieldAccessorTable
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.Builder.class);
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.Builder.class);
       }
 
       private int bitField0_;
@@ -10277,10 +10277,10 @@ public final class ClientServerChannelProtos {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress)) {
+        if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress)) {
           return super.equals(obj);
         }
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) obj;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) obj;
 
         if (hasIpAddress() != other.hasIpAddress()) return false;
         if (hasIpAddress()) {
@@ -10351,69 +10351,69 @@ public final class ClientServerChannelProtos {
         return hash;
       }
 
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(byte[] data)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(java.io.InputStream input)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseDelimitedFrom(java.io.InputStream input)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseDelimitedFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -10426,7 +10426,7 @@ public final class ClientServerChannelProtos {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress prototype) {
+      public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -10442,26 +10442,26 @@ public final class ClientServerChannelProtos {
         return builder;
       }
       /**
-       * Protobuf type {@code ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress}
+       * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress)
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddressOrBuilder {
+          // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress)
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddressOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_descriptor;
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_fieldAccessorTable
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.Builder.class);
+                  org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.Builder.class);
         }
 
-        // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.newBuilder()
+        // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -10495,17 +10495,17 @@ public final class ClientServerChannelProtos {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_descriptor;
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_descriptor;
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress getDefaultInstanceForType() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance();
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress getDefaultInstanceForType() {
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance();
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress build() {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress result = buildPartial();
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress build() {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -10513,8 +10513,8 @@ public final class ClientServerChannelProtos {
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress buildPartial() {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress(this);
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress buildPartial() {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -10576,16 +10576,16 @@ public final class ClientServerChannelProtos {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) {
-            return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress)other);
+          if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) {
+            return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress other) {
-          if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress other) {
+          if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance()) return this;
           if (other.hasIpAddress()) {
             setIpAddress(other.getIpAddress());
           }
@@ -10631,11 +10631,11 @@ public final class ClientServerChannelProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress parsedMessage = null;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) e.getUnfinishedMessage();
+            parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -10853,16 +10853,16 @@ public final class ClientServerChannelProtos {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress)
+        // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress)
       }
 
-      // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress)
-      private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress)
+      private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress();
+        DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress();
       }
 
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress getDefaultInstance() {
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -10887,14 +10887,14 @@ public final class ClientServerChannelProtos {
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress getDefaultInstanceForType() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     public interface GeoCircleAddressOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress)
+        // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress)
         com.google.protobuf.MessageOrBuilder {
 
       /**
@@ -10942,11 +10942,11 @@ public final class ClientServerChannelProtos {
       double getRadius();
     }
     /**
-     * Protobuf type {@code ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress}
+     * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress}
      */
     public static final class GeoCircleAddress extends
         com.google.protobuf.GeneratedMessageV3 implements
-        // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress)
+        // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress)
         GeoCircleAddressOrBuilder {
     private static final long serialVersionUID = 0L;
       // Use GeoCircleAddress.newBuilder() to construct.
@@ -11028,15 +11028,15 @@ public final class ClientServerChannelProtos {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_fieldAccessorTable
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.Builder.class);
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.Builder.class);
       }
 
       private int bitField0_;
@@ -11193,10 +11193,10 @@ public final class ClientServerChannelProtos {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress)) {
+        if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress)) {
           return super.equals(obj);
         }
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) obj;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) obj;
 
         if (hasIpAddress() != other.hasIpAddress()) return false;
         if (hasIpAddress()) {
@@ -11256,69 +11256,69 @@ public final class ClientServerChannelProtos {
         return hash;
       }
 
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(byte[] data)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(java.io.InputStream input)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseDelimitedFrom(java.io.InputStream input)
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseDelimitedFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parseFrom(
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -11331,7 +11331,7 @@ public final class ClientServerChannelProtos {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress prototype) {
+      public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -11347,26 +11347,26 @@ public final class ClientServerChannelProtos {
         return builder;
       }
       /**
-       * Protobuf type {@code ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress}
+       * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress)
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddressOrBuilder {
+          // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress)
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddressOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_descriptor;
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_descriptor;
         }
 
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_fieldAccessorTable
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.Builder.class);
+                  org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.Builder.class);
         }
 
-        // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.newBuilder()
+        // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
@@ -11398,17 +11398,17 @@ public final class ClientServerChannelProtos {
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_descriptor;
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_descriptor;
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress getDefaultInstanceForType() {
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance();
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress getDefaultInstanceForType() {
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance();
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress build() {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress result = buildPartial();
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress build() {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -11416,8 +11416,8 @@ public final class ClientServerChannelProtos {
         }
 
         @java.lang.Override
-        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress buildPartial() {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress(this);
+        public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress buildPartial() {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress(this);
           int from_bitField0_ = bitField0_;
           int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -11475,16 +11475,16 @@ public final class ClientServerChannelProtos {
         }
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) {
-            return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress)other);
+          if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) {
+            return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress other) {
-          if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance()) return this;
+        public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress other) {
+          if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance()) return this;
           if (other.hasIpAddress()) {
             setIpAddress(other.getIpAddress());
           }
@@ -11524,11 +11524,11 @@ public final class ClientServerChannelProtos {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress parsedMessage = null;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) e.getUnfinishedMessage();
+            parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -11707,16 +11707,16 @@ public final class ClientServerChannelProtos {
         }
 
 
-        // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress)
+        // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress)
       }
 
-      // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress)
-      private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress)
+      private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress();
+        DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress();
       }
 
-      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress getDefaultInstance() {
+      public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -11741,7 +11741,7 @@ public final class ClientServerChannelProtos {
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress getDefaultInstanceForType() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -11888,7 +11888,7 @@ public final class ClientServerChannelProtos {
 
     public static final int TOPO_ADDRESS_FIELD_NUMBER = 6;
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
      * @return Whether the topoAddress field is set.
      */
     @java.lang.Override
@@ -11896,30 +11896,30 @@ public final class ClientServerChannelProtos {
       return addressCase_ == 6;
     }
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
      * @return The topoAddress.
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress getTopoAddress() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress getTopoAddress() {
       if (addressCase_ == 6) {
-         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_;
+         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_;
       }
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance();
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance();
     }
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddressOrBuilder getTopoAddressOrBuilder() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddressOrBuilder getTopoAddressOrBuilder() {
       if (addressCase_ == 6) {
-         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_;
+         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_;
       }
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance();
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance();
     }
 
     public static final int RECTANGLE_ADDRESS_FIELD_NUMBER = 7;
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
      * @return Whether the rectangleAddress field is set.
      */
     @java.lang.Override
@@ -11927,30 +11927,30 @@ public final class ClientServerChannelProtos {
       return addressCase_ == 7;
     }
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
      * @return The rectangleAddress.
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress getRectangleAddress() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress getRectangleAddress() {
       if (addressCase_ == 7) {
-         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_;
+         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_;
       }
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance();
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance();
     }
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddressOrBuilder getRectangleAddressOrBuilder() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddressOrBuilder getRectangleAddressOrBuilder() {
       if (addressCase_ == 7) {
-         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_;
+         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_;
       }
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance();
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance();
     }
 
     public static final int CIRCLE_ADDRESS_FIELD_NUMBER = 8;
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
      * @return Whether the circleAddress field is set.
      */
     @java.lang.Override
@@ -11958,25 +11958,25 @@ public final class ClientServerChannelProtos {
       return addressCase_ == 8;
     }
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
      * @return The circleAddress.
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress getCircleAddress() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress getCircleAddress() {
       if (addressCase_ == 8) {
-         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_;
+         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_;
       }
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance();
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance();
     }
     /**
-     * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+     * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
      */
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddressOrBuilder getCircleAddressOrBuilder() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddressOrBuilder getCircleAddressOrBuilder() {
       if (addressCase_ == 8) {
-         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_;
+         return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_;
       }
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance();
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -12047,13 +12047,13 @@ public final class ClientServerChannelProtos {
         output.writeUInt64(5, length_);
       }
       if (addressCase_ == 6) {
-        output.writeMessage(6, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_);
+        output.writeMessage(6, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_);
       }
       if (addressCase_ == 7) {
-        output.writeMessage(7, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_);
+        output.writeMessage(7, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_);
       }
       if (addressCase_ == 8) {
-        output.writeMessage(8, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_);
+        output.writeMessage(8, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_);
       }
       unknownFields.writeTo(output);
     }
@@ -12086,15 +12086,15 @@ public final class ClientServerChannelProtos {
       }
       if (addressCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_);
+          .computeMessageSize(6, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_);
       }
       if (addressCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_);
+          .computeMessageSize(7, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_);
       }
       if (addressCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_);
+          .computeMessageSize(8, (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -12106,10 +12106,10 @@ public final class ClientServerChannelProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage)) {
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage)) {
         return super.equals(obj);
       }
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage) obj;
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage) obj;
 
       if (hasTime() != other.hasTime()) return false;
       if (hasTime()) {
@@ -12206,69 +12206,69 @@ public final class ClientServerChannelProtos {
       return hash;
     }
 
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(byte[] data)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(java.io.InputStream input)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseDelimitedFrom(java.io.InputStream input)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseDelimitedFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -12281,7 +12281,7 @@ public final class ClientServerChannelProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage prototype) {
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -12297,26 +12297,26 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code ClientServerChannelSpace.SendMessageMessage}
+     * Protobuf type {@code ClientServerChannelSpace.SendWifiMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.SendMessageMessage)
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.SendWifiMessage)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_fieldAccessorTable
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.Builder.class);
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.Builder.class);
       }
 
-      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.newBuilder()
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -12352,17 +12352,17 @@ public final class ClientServerChannelProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor;
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage getDefaultInstanceForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.getDefaultInstance();
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage build() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage result = buildPartial();
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -12370,8 +12370,8 @@ public final class ClientServerChannelProtos {
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage buildPartial() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage(this);
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -12455,16 +12455,16 @@ public final class ClientServerChannelProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage) {
-          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage)other);
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage other) {
-        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.getDefaultInstance()) return this;
         if (other.hasTime()) {
           setTime(other.getTime());
         }
@@ -12542,11 +12542,11 @@ public final class ClientServerChannelProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage parsedMessage = null;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage) e.getUnfinishedMessage();
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -12772,9 +12772,9 @@ public final class ClientServerChannelProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddressOrBuilder> topoAddressBuilder_;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddressOrBuilder> topoAddressBuilder_;
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        * @return Whether the topoAddress field is set.
        */
       @java.lang.Override
@@ -12782,27 +12782,27 @@ public final class ClientServerChannelProtos {
         return addressCase_ == 6;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        * @return The topoAddress.
        */
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress getTopoAddress() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress getTopoAddress() {
         if (topoAddressBuilder_ == null) {
           if (addressCase_ == 6) {
-            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_;
+            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_;
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance();
         } else {
           if (addressCase_ == 6) {
             return topoAddressBuilder_.getMessage();
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance();
         }
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        */
-      public Builder setTopoAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress value) {
+      public Builder setTopoAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress value) {
         if (topoAddressBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -12816,10 +12816,10 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        */
       public Builder setTopoAddress(
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.Builder builderForValue) {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.Builder builderForValue) {
         if (topoAddressBuilder_ == null) {
           address_ = builderForValue.build();
           onChanged();
@@ -12830,13 +12830,13 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        */
-      public Builder mergeTopoAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress value) {
+      public Builder mergeTopoAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress value) {
         if (topoAddressBuilder_ == null) {
           if (addressCase_ == 6 &&
-              address_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance()) {
-            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.newBuilder((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_)
+              address_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance()) {
+            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.newBuilder((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_)
                 .mergeFrom(value).buildPartial();
           } else {
             address_ = value;
@@ -12852,7 +12852,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        */
       public Builder clearTopoAddress() {
         if (topoAddressBuilder_ == null) {
@@ -12871,38 +12871,38 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.Builder getTopoAddressBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.Builder getTopoAddressBuilder() {
         return getTopoAddressFieldBuilder().getBuilder();
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        */
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddressOrBuilder getTopoAddressOrBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddressOrBuilder getTopoAddressOrBuilder() {
         if ((addressCase_ == 6) && (topoAddressBuilder_ != null)) {
           return topoAddressBuilder_.getMessageOrBuilder();
         } else {
           if (addressCase_ == 6) {
-            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_;
+            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_;
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance();
         }
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.TopoAddress topo_address = 6;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.TopoAddress topo_address = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddressOrBuilder> 
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddressOrBuilder> 
           getTopoAddressFieldBuilder() {
         if (topoAddressBuilder_ == null) {
           if (!(addressCase_ == 6)) {
-            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.getDefaultInstance();
+            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.getDefaultInstance();
           }
           topoAddressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddressOrBuilder>(
-                  (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.TopoAddress) address_,
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddressOrBuilder>(
+                  (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.TopoAddress) address_,
                   getParentForChildren(),
                   isClean());
           address_ = null;
@@ -12913,9 +12913,9 @@ public final class ClientServerChannelProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddressOrBuilder> rectangleAddressBuilder_;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddressOrBuilder> rectangleAddressBuilder_;
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        * @return Whether the rectangleAddress field is set.
        */
       @java.lang.Override
@@ -12923,27 +12923,27 @@ public final class ClientServerChannelProtos {
         return addressCase_ == 7;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        * @return The rectangleAddress.
        */
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress getRectangleAddress() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress getRectangleAddress() {
         if (rectangleAddressBuilder_ == null) {
           if (addressCase_ == 7) {
-            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_;
+            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_;
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance();
         } else {
           if (addressCase_ == 7) {
             return rectangleAddressBuilder_.getMessage();
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance();
         }
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        */
-      public Builder setRectangleAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress value) {
+      public Builder setRectangleAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress value) {
         if (rectangleAddressBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -12957,10 +12957,10 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        */
       public Builder setRectangleAddress(
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.Builder builderForValue) {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.Builder builderForValue) {
         if (rectangleAddressBuilder_ == null) {
           address_ = builderForValue.build();
           onChanged();
@@ -12971,13 +12971,13 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        */
-      public Builder mergeRectangleAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress value) {
+      public Builder mergeRectangleAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress value) {
         if (rectangleAddressBuilder_ == null) {
           if (addressCase_ == 7 &&
-              address_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance()) {
-            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.newBuilder((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_)
+              address_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance()) {
+            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.newBuilder((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_)
                 .mergeFrom(value).buildPartial();
           } else {
             address_ = value;
@@ -12993,7 +12993,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        */
       public Builder clearRectangleAddress() {
         if (rectangleAddressBuilder_ == null) {
@@ -13012,38 +13012,38 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.Builder getRectangleAddressBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.Builder getRectangleAddressBuilder() {
         return getRectangleAddressFieldBuilder().getBuilder();
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        */
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddressOrBuilder getRectangleAddressOrBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddressOrBuilder getRectangleAddressOrBuilder() {
         if ((addressCase_ == 7) && (rectangleAddressBuilder_ != null)) {
           return rectangleAddressBuilder_.getMessageOrBuilder();
         } else {
           if (addressCase_ == 7) {
-            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_;
+            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_;
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance();
         }
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoRectangleAddress rectangle_address = 7;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoRectangleAddress rectangle_address = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddressOrBuilder> 
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddressOrBuilder> 
           getRectangleAddressFieldBuilder() {
         if (rectangleAddressBuilder_ == null) {
           if (!(addressCase_ == 7)) {
-            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.getDefaultInstance();
+            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.getDefaultInstance();
           }
           rectangleAddressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddressOrBuilder>(
-                  (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoRectangleAddress) address_,
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddressOrBuilder>(
+                  (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoRectangleAddress) address_,
                   getParentForChildren(),
                   isClean());
           address_ = null;
@@ -13054,9 +13054,9 @@ public final class ClientServerChannelProtos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddressOrBuilder> circleAddressBuilder_;
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddressOrBuilder> circleAddressBuilder_;
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        * @return Whether the circleAddress field is set.
        */
       @java.lang.Override
@@ -13064,27 +13064,27 @@ public final class ClientServerChannelProtos {
         return addressCase_ == 8;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        * @return The circleAddress.
        */
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress getCircleAddress() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress getCircleAddress() {
         if (circleAddressBuilder_ == null) {
           if (addressCase_ == 8) {
-            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_;
+            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_;
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance();
         } else {
           if (addressCase_ == 8) {
             return circleAddressBuilder_.getMessage();
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance();
         }
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        */
-      public Builder setCircleAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress value) {
+      public Builder setCircleAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress value) {
         if (circleAddressBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -13098,10 +13098,10 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        */
       public Builder setCircleAddress(
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.Builder builderForValue) {
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.Builder builderForValue) {
         if (circleAddressBuilder_ == null) {
           address_ = builderForValue.build();
           onChanged();
@@ -13112,13 +13112,13 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        */
-      public Builder mergeCircleAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress value) {
+      public Builder mergeCircleAddress(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress value) {
         if (circleAddressBuilder_ == null) {
           if (addressCase_ == 8 &&
-              address_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance()) {
-            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.newBuilder((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_)
+              address_ != org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance()) {
+            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.newBuilder((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_)
                 .mergeFrom(value).buildPartial();
           } else {
             address_ = value;
@@ -13134,7 +13134,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        */
       public Builder clearCircleAddress() {
         if (circleAddressBuilder_ == null) {
@@ -13153,38 +13153,38 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        */
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.Builder getCircleAddressBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.Builder getCircleAddressBuilder() {
         return getCircleAddressFieldBuilder().getBuilder();
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        */
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddressOrBuilder getCircleAddressOrBuilder() {
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddressOrBuilder getCircleAddressOrBuilder() {
         if ((addressCase_ == 8) && (circleAddressBuilder_ != null)) {
           return circleAddressBuilder_.getMessageOrBuilder();
         } else {
           if (addressCase_ == 8) {
-            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_;
+            return (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_;
           }
-          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance();
+          return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance();
         }
       }
       /**
-       * <code>.ClientServerChannelSpace.SendMessageMessage.GeoCircleAddress circle_address = 8;</code>
+       * <code>.ClientServerChannelSpace.SendWifiMessage.GeoCircleAddress circle_address = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddressOrBuilder> 
+          org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddressOrBuilder> 
           getCircleAddressFieldBuilder() {
         if (circleAddressBuilder_ == null) {
           if (!(addressCase_ == 8)) {
-            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.getDefaultInstance();
+            address_ = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.getDefaultInstance();
           }
           circleAddressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddressOrBuilder>(
-                  (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage.GeoCircleAddress) address_,
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddressOrBuilder>(
+                  (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage.GeoCircleAddress) address_,
                   getParentForChildren(),
                   isClean());
           address_ = null;
@@ -13206,48 +13206,48 @@ public final class ClientServerChannelProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.SendMessageMessage)
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.SendWifiMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.SendMessageMessage)
-    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.SendWifiMessage)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage();
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage();
     }
 
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage getDefaultInstance() {
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<SendMessageMessage>
-        PARSER = new com.google.protobuf.AbstractParser<SendMessageMessage>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<SendWifiMessage>
+        PARSER = new com.google.protobuf.AbstractParser<SendWifiMessage>() {
       @java.lang.Override
-      public SendMessageMessage parsePartialFrom(
+      public SendWifiMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SendMessageMessage(input, extensionRegistry);
+        return new SendWifiMessage(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<SendMessageMessage> parser() {
+    public static com.google.protobuf.Parser<SendWifiMessage> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SendMessageMessage> getParserForType() {
+    public com.google.protobuf.Parser<SendWifiMessage> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage getDefaultInstanceForType() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ReceiveMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.ReceiveMessage)
+  public interface ReceiveWifiMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.ReceiveWifiMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -13306,18 +13306,18 @@ public final class ClientServerChannelProtos {
     float getRssi();
   }
   /**
-   * Protobuf type {@code ClientServerChannelSpace.ReceiveMessage}
+   * Protobuf type {@code ClientServerChannelSpace.ReceiveWifiMessage}
    */
-  public static final class ReceiveMessage extends
+  public static final class ReceiveWifiMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.ReceiveMessage)
-      ReceiveMessageOrBuilder {
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.ReceiveWifiMessage)
+      ReceiveWifiMessageOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use ReceiveMessage.newBuilder() to construct.
-    private ReceiveMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ReceiveWifiMessage.newBuilder() to construct.
+    private ReceiveWifiMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private ReceiveMessage() {
+    private ReceiveWifiMessage() {
       channelId_ = 0;
     }
 
@@ -13325,7 +13325,7 @@ public final class ClientServerChannelProtos {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new ReceiveMessage();
+      return new ReceiveWifiMessage();
     }
 
     @java.lang.Override
@@ -13333,7 +13333,7 @@ public final class ClientServerChannelProtos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private ReceiveMessage(
+    private ReceiveWifiMessage(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -13405,15 +13405,15 @@ public final class ClientServerChannelProtos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveWifiMessage_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveWifiMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.Builder.class);
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage.Builder.class);
     }
 
     private int bitField0_;
@@ -13600,10 +13600,10 @@ public final class ClientServerChannelProtos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage)) {
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage)) {
         return super.equals(obj);
       }
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) obj;
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage) obj;
 
       if (hasTime() != other.hasTime()) return false;
       if (hasTime()) {
@@ -13668,69 +13668,69 @@ public final class ClientServerChannelProtos {
       return hash;
     }
 
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(byte[] data)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(java.io.InputStream input)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseDelimitedFrom(java.io.InputStream input)
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseDelimitedFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parseFrom(
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -13743,7 +13743,7 @@ public final class ClientServerChannelProtos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage prototype) {
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -13759,26 +13759,26 @@ public final class ClientServerChannelProtos {
       return builder;
     }
     /**
-     * Protobuf type {@code ClientServerChannelSpace.ReceiveMessage}
+     * Protobuf type {@code ClientServerChannelSpace.ReceiveWifiMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.ReceiveMessage)
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessageOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.ReceiveWifiMessage)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveWifiMessage_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveWifiMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.Builder.class);
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage.Builder.class);
       }
 
-      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.newBuilder()
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -13812,17 +13812,17 @@ public final class ClientServerChannelProtos {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_ReceiveWifiMessage_descriptor;
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstanceForType() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.getDefaultInstance();
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage build() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage result = buildPartial();
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -13830,8 +13830,8 @@ public final class ClientServerChannelProtos {
       }
 
       @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage buildPartial() {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage(this);
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -13893,16 +13893,16 @@ public final class ClientServerChannelProtos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) {
-          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage)other);
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage other) {
-        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage.getDefaultInstance()) return this;
         if (other.hasTime()) {
           setTime(other.getTime());
         }
@@ -13948,11 +13948,11 @@ public final class ClientServerChannelProtos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage parsedMessage = null;
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage) e.getUnfinishedMessage();
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -14174,41 +14174,41 @@ public final class ClientServerChannelProtos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.ReceiveMessage)
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.ReceiveWifiMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.ReceiveMessage)
-    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.ReceiveWifiMessage)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage();
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage();
     }
 
-    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstance() {
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ReceiveMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ReceiveMessage>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<ReceiveWifiMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ReceiveWifiMessage>() {
       @java.lang.Override
-      public ReceiveMessage parsePartialFrom(
+      public ReceiveWifiMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new ReceiveMessage(input, extensionRegistry);
+        return new ReceiveWifiMessage(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<ReceiveMessage> parser() {
+    public static com.google.protobuf.Parser<ReceiveWifiMessage> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<ReceiveMessage> getParserForType() {
+    public com.google.protobuf.Parser<ReceiveWifiMessage> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage getDefaultInstanceForType() {
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -14255,40 +14255,40 @@ public final class ClientServerChannelProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ClientServerChannelSpace_RemoveNode_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor;
+    internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_ConfigureRadioMessage_fieldAccessorTable;
+      internal_static_ClientServerChannelSpace_ConfigureWifiRadio_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_descriptor;
+    internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_fieldAccessorTable;
+      internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor;
+    internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_SendMessageMessage_fieldAccessorTable;
+      internal_static_ClientServerChannelSpace_SendWifiMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_descriptor;
+    internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_fieldAccessorTable;
+      internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_descriptor;
+    internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_fieldAccessorTable;
+      internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_descriptor;
+    internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_fieldAccessorTable;
+      internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor;
+    internal_static_ClientServerChannelSpace_ReceiveWifiMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable;
+      internal_static_ClientServerChannelSpace_ReceiveWifiMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -14321,54 +14321,53 @@ public final class ClientServerChannelProtos {
       "ChannelSpace.UpdateNode.NodeData\0327\n\010Node" +
       "Data\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \002(\001\022\t\n\001y\030\003 \002(\001\022\t" +
       "\n\001z\030\004 \001(\001\"+\n\nRemoveNode\022\014\n\004time\030\001 \002(\003\022\017\n" +
-      "\007node_id\030\002 \002(\005\"\324\006\n\025ConfigureRadioMessage" +
-      "\022\014\n\004time\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\023\n\013ex" +
-      "ternal_id\030\003 \002(\r\022Q\n\014radio_number\030\004 \002(\0162;." +
-      "ClientServerChannelSpace.ConfigureRadioM" +
-      "essage.RadioNumber\022g\n\033primary_radio_conf" +
-      "iguration\030\005 \002(\0132B.ClientServerChannelSpa" +
-      "ce.ConfigureRadioMessage.RadioConfigurat" +
-      "ion\022i\n\035secondary_radio_configuration\030\006 \001" +
-      "(\0132B.ClientServerChannelSpace.ConfigureR" +
-      "adioMessage.RadioConfiguration\032\235\003\n\022Radio" +
-      "Configuration\022\032\n\022receiving_messages\030\001 \002(" +
-      "\010\022\022\n\nip_address\030\002 \002(\r\022\026\n\016subnet_address\030" +
-      "\003 \002(\r\022\032\n\022transmission_power\030\004 \002(\001\022`\n\nrad" +
-      "io_mode\030\005 \002(\0162L.ClientServerChannelSpace" +
-      ".ConfigureRadioMessage.RadioConfiguratio" +
-      "n.RadioMode\022E\n\025primary_radio_channel\030\006 \002" +
-      "(\0162&.ClientServerChannelSpace.RadioChann" +
-      "el\022G\n\027secondary_radio_channel\030\007 \001(\0162&.Cl" +
-      "ientServerChannelSpace.RadioChannel\"1\n\tR" +
-      "adioMode\022\022\n\016SINGLE_CHANNEL\020\001\022\020\n\014DUAL_CHA" +
-      "NNEL\020\002\"=\n\013RadioNumber\022\014\n\010NO_RADIO\020\000\022\020\n\014S" +
-      "INGLE_RADIO\020\001\022\016\n\nDUAL_RADIO\020\002\"\223\005\n\022SendMe" +
-      "ssageMessage\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 " +
-      "\002(\r\022:\n\nchannel_id\030\003 \002(\0162&.ClientServerCh" +
-      "annelSpace.RadioChannel\022\022\n\nmessage_id\030\004 " +
-      "\002(\r\022\016\n\006length\030\005 \002(\004\022P\n\014topo_address\030\006 \001(" +
-      "\01328.ClientServerChannelSpace.SendMessage" +
-      "Message.TopoAddressH\000\022]\n\021rectangle_addre" +
-      "ss\030\007 \001(\0132@.ClientServerChannelSpace.Send" +
-      "MessageMessage.GeoRectangleAddressH\000\022W\n\016" +
-      "circle_address\030\010 \001(\0132=.ClientServerChann" +
-      "elSpace.SendMessageMessage.GeoCircleAddr" +
-      "essH\000\032.\n\013TopoAddress\022\022\n\nip_address\030\001 \002(\r" +
-      "\022\013\n\003ttl\030\002 \001(\r\032]\n\023GeoRectangleAddress\022\022\n\n" +
-      "ip_address\030\001 \002(\r\022\013\n\003a_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002" +
-      "(\001\022\013\n\003b_X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(\001\032Z\n\020GeoCircl" +
-      "eAddress\022\022\n\nip_address\030\001 \002(\r\022\020\n\010center_X" +
-      "\030\002 \002(\001\022\020\n\010center_Y\030\003 \002(\001\022\016\n\006radius\030\004 \002(\001" +
-      "B\t\n\007address\"\215\001\n\016ReceiveMessage\022\014\n\004time\030\001" +
-      " \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002(" +
-      "\0162&.ClientServerChannelSpace.RadioChanne" +
-      "l\022\022\n\nmessage_id\030\004 \002(\r\022\014\n\004rssi\030\005 \002(\002*\236\001\n\014" +
-      "RadioChannel\022\016\n\nPROTO_SCH1\020\000\022\016\n\nPROTO_SC" +
-      "H2\020\001\022\016\n\nPROTO_SCH3\020\002\022\r\n\tPROTO_CCH\020\003\022\016\n\nP" +
-      "ROTO_SCH4\020\004\022\016\n\nPROTO_SCH5\020\005\022\016\n\nPROTO_SCH" +
-      "6\020\006\022\017\n\013PROTO_UNDEF\020\007\022\016\n\nPROTO_CELL\020\010B<\n\037" +
-      "org.eclipse.mosaic.lib.couplingB\031ClientS" +
-      "erverChannelProtos"
+      "\007node_id\030\002 \002(\005\"\305\006\n\022ConfigureWifiRadio\022\014\n" +
+      "\004time\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\023\n\013exter" +
+      "nal_id\030\003 \002(\r\022N\n\014radio_number\030\004 \002(\01628.Cli" +
+      "entServerChannelSpace.ConfigureWifiRadio" +
+      ".RadioNumber\022d\n\033primary_radio_configurat" +
+      "ion\030\005 \002(\0132?.ClientServerChannelSpace.Con" +
+      "figureWifiRadio.RadioConfiguration\022f\n\035se" +
+      "condary_radio_configuration\030\006 \001(\0132?.Clie" +
+      "ntServerChannelSpace.ConfigureWifiRadio." +
+      "RadioConfiguration\032\232\003\n\022RadioConfiguratio" +
+      "n\022\032\n\022receiving_messages\030\001 \002(\010\022\022\n\nip_addr" +
+      "ess\030\002 \002(\r\022\026\n\016subnet_address\030\003 \002(\r\022\032\n\022tra" +
+      "nsmission_power\030\004 \002(\001\022]\n\nradio_mode\030\005 \002(" +
+      "\0162I.ClientServerChannelSpace.ConfigureWi" +
+      "fiRadio.RadioConfiguration.RadioMode\022E\n\025" +
+      "primary_radio_channel\030\006 \002(\0162&.ClientServ" +
+      "erChannelSpace.RadioChannel\022G\n\027secondary" +
+      "_radio_channel\030\007 \001(\0162&.ClientServerChann" +
+      "elSpace.RadioChannel\"1\n\tRadioMode\022\022\n\016SIN" +
+      "GLE_CHANNEL\020\001\022\020\n\014DUAL_CHANNEL\020\002\"=\n\013Radio" +
+      "Number\022\014\n\010NO_RADIO\020\000\022\020\n\014SINGLE_RADIO\020\001\022\016" +
+      "\n\nDUAL_RADIO\020\002\"\207\005\n\017SendWifiMessage\022\014\n\004ti" +
+      "me\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030" +
+      "\003 \002(\0162&.ClientServerChannelSpace.RadioCh" +
+      "annel\022\022\n\nmessage_id\030\004 \002(\r\022\016\n\006length\030\005 \002(" +
+      "\004\022M\n\014topo_address\030\006 \001(\01325.ClientServerCh" +
+      "annelSpace.SendWifiMessage.TopoAddressH\000" +
+      "\022Z\n\021rectangle_address\030\007 \001(\0132=.ClientServ" +
+      "erChannelSpace.SendWifiMessage.GeoRectan" +
+      "gleAddressH\000\022T\n\016circle_address\030\010 \001(\0132:.C" +
+      "lientServerChannelSpace.SendWifiMessage." +
+      "GeoCircleAddressH\000\032.\n\013TopoAddress\022\022\n\nip_" +
+      "address\030\001 \002(\r\022\013\n\003ttl\030\002 \001(\r\032]\n\023GeoRectang" +
+      "leAddress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003a_X\030\002 \002" +
+      "(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n\003b_X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(" +
+      "\001\032Z\n\020GeoCircleAddress\022\022\n\nip_address\030\001 \002(" +
+      "\r\022\020\n\010center_X\030\002 \002(\001\022\020\n\010center_Y\030\003 \002(\001\022\016\n" +
+      "\006radius\030\004 \002(\001B\t\n\007address\"\221\001\n\022ReceiveWifi" +
+      "Message\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:" +
+      "\n\nchannel_id\030\003 \002(\0162&.ClientServerChannel" +
+      "Space.RadioChannel\022\022\n\nmessage_id\030\004 \002(\r\022\014" +
+      "\n\004rssi\030\005 \002(\002*\236\001\n\014RadioChannel\022\016\n\nPROTO_S" +
+      "CH1\020\000\022\016\n\nPROTO_SCH2\020\001\022\016\n\nPROTO_SCH3\020\002\022\r\n" +
+      "\tPROTO_CCH\020\003\022\016\n\nPROTO_SCH4\020\004\022\016\n\nPROTO_SC" +
+      "H5\020\005\022\016\n\nPROTO_SCH6\020\006\022\017\n\013PROTO_UNDEF\020\007\022\016\n" +
+      "\nPROTO_CELL\020\010B<\n\037org.eclipse.mosaic.lib." +
+      "couplingB\031ClientServerChannelProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -14422,47 +14421,47 @@ public final class ClientServerChannelProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_RemoveNode_descriptor,
         new java.lang.String[] { "Time", "NodeId", });
-    internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor =
+    internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_ClientServerChannelSpace_ConfigureRadioMessage_fieldAccessorTable = new
+    internal_static_ClientServerChannelSpace_ConfigureWifiRadio_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor,
+        internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor,
         new java.lang.String[] { "Time", "MessageId", "ExternalId", "RadioNumber", "PrimaryRadioConfiguration", "SecondaryRadioConfiguration", });
-    internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_descriptor =
-      internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor.getNestedTypes().get(0);
-    internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_fieldAccessorTable = new
+    internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_descriptor =
+      internal_static_ClientServerChannelSpace_ConfigureWifiRadio_descriptor.getNestedTypes().get(0);
+    internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_descriptor,
+        internal_static_ClientServerChannelSpace_ConfigureWifiRadio_RadioConfiguration_descriptor,
         new java.lang.String[] { "ReceivingMessages", "IpAddress", "SubnetAddress", "TransmissionPower", "RadioMode", "PrimaryRadioChannel", "SecondaryRadioChannel", });
-    internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor =
+    internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_ClientServerChannelSpace_SendMessageMessage_fieldAccessorTable = new
+    internal_static_ClientServerChannelSpace_SendWifiMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor,
+        internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor,
         new java.lang.String[] { "Time", "NodeId", "ChannelId", "MessageId", "Length", "TopoAddress", "RectangleAddress", "CircleAddress", "Address", });
-    internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_descriptor =
-      internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor.getNestedTypes().get(0);
-    internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_fieldAccessorTable = new
+    internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_descriptor =
+      internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor.getNestedTypes().get(0);
+    internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_SendMessageMessage_TopoAddress_descriptor,
+        internal_static_ClientServerChannelSpace_SendWifiMessage_TopoAddress_descriptor,
         new java.lang.String[] { "IpAddress", "Ttl", });
-    internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_descriptor =
-      internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor.getNestedTypes().get(1);
-    internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_fieldAccessorTable = new
+    internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_descriptor =
+      internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor.getNestedTypes().get(1);
+    internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_SendMessageMessage_GeoRectangleAddress_descriptor,
+        internal_static_ClientServerChannelSpace_SendWifiMessage_GeoRectangleAddress_descriptor,
         new java.lang.String[] { "IpAddress", "AX", "AY", "BX", "BY", });
-    internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_descriptor =
-      internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor.getNestedTypes().get(2);
-    internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_fieldAccessorTable = new
+    internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_descriptor =
+      internal_static_ClientServerChannelSpace_SendWifiMessage_descriptor.getNestedTypes().get(2);
+    internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_descriptor,
+        internal_static_ClientServerChannelSpace_SendWifiMessage_GeoCircleAddress_descriptor,
         new java.lang.String[] { "IpAddress", "CenterX", "CenterY", "Radius", });
-    internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor =
+    internal_static_ClientServerChannelSpace_ReceiveWifiMessage_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable = new
+    internal_static_ClientServerChannelSpace_ReceiveWifiMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor,
+        internal_static_ClientServerChannelSpace_ReceiveWifiMessage_descriptor,
         new java.lang.String[] { "Time", "NodeId", "ChannelId", "MessageId", "Rssi", });
   }
 
