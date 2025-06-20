@@ -93,7 +93,7 @@ public class AbstractNetworkAmbassadorTest {
         when(ambassadorFederateChannelMock.writeInitBody(anyLong(), anyLong())).thenReturn(CommandType.SUCCESS);
         when(ambassadorFederateChannelMock.writeAddNodeMessage(anyLong(), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())))).thenReturn(CommandType.SUCCESS);
         when(ambassadorFederateChannelMock.writeAddNodeMessage(anyLong(), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())))).thenReturn(CommandType.SUCCESS);
-        when(ambassadorFederateChannelMock.writeAdhocRadioConfigMessage(
+        when(ambassadorFederateChannelMock.writeConfigureWifiRadio(
                 anyLong(),
                 anyInt(),
                 anyInt(),
@@ -136,7 +136,7 @@ public class AbstractNetworkAmbassadorTest {
         // even though processMessage(VehicleUpdates message) has been called,
         // they can only be called when an ad hoc configuration is configured, which we haven't done yet
         verify(ambassadorFederateChannelMock, never()).writeAddNodeMessage(anyLong(), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));
-        verify(ambassadorFederateChannelMock, never()).writeAdhocRadioConfigMessage(anyLong(), anyInt(), anyInt(), isA(AdHocConfiguration.class));
+        verify(ambassadorFederateChannelMock, never()).writeConfigureWifiRadio(anyLong(), anyInt(), anyInt(), isA(AdHocConfiguration.class));
     }
 
     @Test
@@ -163,7 +163,7 @@ public class AbstractNetworkAmbassadorTest {
 
         // Assert
         verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));
-        verify(ambassadorFederateChannelMock, times(1)).writeAdhocRadioConfigMessage(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
+        verify(ambassadorFederateChannelMock, times(1)).writeConfigureWifiRadio(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
     }
 
     @Test
@@ -189,7 +189,7 @@ public class AbstractNetworkAmbassadorTest {
 
         // Assert
         verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));
-        verify(ambassadorFederateChannelMock, times(1)).writeAdhocRadioConfigMessage(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
+        verify(ambassadorFederateChannelMock, times(1)).writeConfigureWifiRadio(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
     }
 
     @Test
@@ -209,7 +209,7 @@ public class AbstractNetworkAmbassadorTest {
 
         // Assert
         verify(ambassadorFederateChannelMock, never()).writeAddNodeMessage(anyLong(), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));
-        verify(ambassadorFederateChannelMock, never()).writeAdhocRadioConfigMessage(anyLong(), anyInt(), anyInt(), isA(AdHocConfiguration.class));
+        verify(ambassadorFederateChannelMock, never()).writeConfigureWifiRadio(anyLong(), anyInt(), anyInt(), isA(AdHocConfiguration.class));
     }
 
     @Test
@@ -230,7 +230,7 @@ public class AbstractNetworkAmbassadorTest {
 
         // Assert
         verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));;
-        verify(ambassadorFederateChannelMock, times(1)).writeAdhocRadioConfigMessage(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
+        verify(ambassadorFederateChannelMock, times(1)).writeConfigureWifiRadio(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
     }
 
     private VehicleData createVehicleInfo(String string) {
