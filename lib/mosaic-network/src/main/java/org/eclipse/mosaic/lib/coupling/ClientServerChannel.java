@@ -23,7 +23,9 @@ import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.PortExchange;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendMessageMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.TimeMessage;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.geo.CartesianCircle;
@@ -176,14 +178,15 @@ public class ClientServerChannel {
      * @param node id and position
      * @return command returned by the federate
      */
-    public CommandType writeAddNodeMessage(long time, UpdateNode.UpdateType type, NodeDataContainer node) throws IOException {
-        writeCommand(CommandType.UPDATE_NODE);
-        UpdateNode.Builder updateNode = UpdateNode.newBuilder();
-        updateNode.setUpdateType(type).setTime(time);
-        NodeData.Builder tmpBuilder = NodeData.newBuilder();
-        tmpBuilder.setId(node.id).setX(node.pos.getX()).setY(node.pos.getY());
-        updateNode.addProperties(tmpBuilder.build());
-        updateNode.build().writeDelimitedTo(out);
+    public CommandType writeAddNodeMessage(long time, AddNode.NodeType type, NodeDataContainer node) throws IOException {
+        writeCommand(CommandType.ADD_NODE);
+        AddNode.Builder msg = AddNode.newBuilder();
+        msg.setType(type);
+        msg.setTime(time);
+        msg.setNodeId(node.id);
+        msg.setX(node.pos.getX());
+        msg.setY(node.pos.getY());
+        msg.build().writeDelimitedTo(out);
         return readCommand();
     }
 
@@ -196,14 +199,14 @@ public class ClientServerChannel {
      */
     public CommandType writeUpdatePositionsMessage(long time, List<NodeDataContainer> nodes) throws IOException {
         writeCommand(CommandType.UPDATE_NODE);
-        UpdateNode.Builder updateNode = UpdateNode.newBuilder();
-        updateNode.setUpdateType(UpdateNode.UpdateType.MOVE_NODE).setTime(time);
+        UpdateNode.Builder msg = UpdateNode.newBuilder();
+        msg.setTime(time);
         for (NodeDataContainer node : nodes) {
             NodeData.Builder tmpBuilder = NodeData.newBuilder();
             tmpBuilder.setId(node.id).setX(node.pos.getX()).setY(node.pos.getY());
-            updateNode.addProperties(tmpBuilder.build());
+            msg.addProperties(tmpBuilder.build());
         }
-        updateNode.build().writeDelimitedTo(out);
+        msg.build().writeDelimitedTo(out);
         return readCommand();
     }
 
@@ -215,13 +218,11 @@ public class ClientServerChannel {
      * @return command returned by the federate
      */
     public CommandType writeRemoveNodeMessage(long time, Integer id) throws IOException {
-        writeCommand(CommandType.UPDATE_NODE);
-        UpdateNode.Builder updateNode = UpdateNode.newBuilder();
-        updateNode.setUpdateType(UpdateNode.UpdateType.REMOVE_NODE).setTime(time);
-        NodeData.Builder tmpBuilder = NodeData.newBuilder();
-        tmpBuilder.setId(id).setX(0).setY(0);
-        updateNode.addProperties(tmpBuilder.build());
-        updateNode.build().writeDelimitedTo(out);
+        writeCommand(CommandType.REMOVE_NODE);
+        RemoveNode.Builder msg = RemoveNode.newBuilder();
+        msg.setTime(time);
+        msg.setNodeId(id);
+        msg.build().writeDelimitedTo(out);
         return readCommand();
     }
 
