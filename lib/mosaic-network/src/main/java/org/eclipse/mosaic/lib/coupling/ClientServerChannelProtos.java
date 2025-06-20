@@ -2691,52 +2691,1224 @@ public final class ClientServerChannelProtos {
 
   }
 
-  public interface UpdateNodeOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.UpdateNode)
+  public interface AddNodeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.AddNode)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .ClientServerChannelSpace.UpdateNode.UpdateType update_type = 1;</code>
-     * @return Whether the updateType field is set.
-     */
-    boolean hasUpdateType();
-    /**
-     * <code>required .ClientServerChannelSpace.UpdateNode.UpdateType update_type = 1;</code>
-     * @return The updateType.
-     */
-    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType getUpdateType();
-
-    /**
-     * <code>required int64 time = 2;</code>
+     * <code>required int64 time = 1;</code>
      * @return Whether the time field is set.
      */
     boolean hasTime();
     /**
-     * <code>required int64 time = 2;</code>
+     * <code>required int64 time = 1;</code>
      * @return The time.
      */
     long getTime();
 
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>required .ClientServerChannelSpace.AddNode.NodeType type = 2;</code>
+     * @return Whether the type field is set.
+     */
+    boolean hasType();
+    /**
+     * <code>required .ClientServerChannelSpace.AddNode.NodeType type = 2;</code>
+     * @return The type.
+     */
+    org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType getType();
+
+    /**
+     * <code>required int32 node_id = 3;</code>
+     * @return Whether the nodeId field is set.
+     */
+    boolean hasNodeId();
+    /**
+     * <code>required int32 node_id = 3;</code>
+     * @return The nodeId.
+     */
+    int getNodeId();
+
+    /**
+     * <code>required double x = 4;</code>
+     * @return Whether the x field is set.
+     */
+    boolean hasX();
+    /**
+     * <code>required double x = 4;</code>
+     * @return The x.
+     */
+    double getX();
+
+    /**
+     * <code>required double y = 5;</code>
+     * @return Whether the y field is set.
+     */
+    boolean hasY();
+    /**
+     * <code>required double y = 5;</code>
+     * @return The y.
+     */
+    double getY();
+
+    /**
+     * <code>optional double z = 6;</code>
+     * @return Whether the z field is set.
+     */
+    boolean hasZ();
+    /**
+     * <code>optional double z = 6;</code>
+     * @return The z.
+     */
+    double getZ();
+  }
+  /**
+   * Protobuf type {@code ClientServerChannelSpace.AddNode}
+   */
+  public static final class AddNode extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.AddNode)
+      AddNodeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AddNode.newBuilder() to construct.
+    private AddNode(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AddNode() {
+      type_ = 1;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AddNode();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AddNode(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              time_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType value = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                type_ = rawValue;
+              }
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              nodeId_ = input.readInt32();
+              break;
+            }
+            case 33: {
+              bitField0_ |= 0x00000008;
+              x_ = input.readDouble();
+              break;
+            }
+            case 41: {
+              bitField0_ |= 0x00000010;
+              y_ = input.readDouble();
+              break;
+            }
+            case 49: {
+              bitField0_ |= 0x00000020;
+              z_ = input.readDouble();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_AddNode_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_AddNode_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code ClientServerChannelSpace.AddNode.NodeType}
+     */
+    public enum NodeType
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <pre>
+       * Vehicle, RSU, TL, CS
+       * </pre>
+       *
+       * <code>RADIO_NODE = 1;</code>
+       */
+      RADIO_NODE(1),
+      /**
+       * <pre>
+       * Server, TMC
+       * </pre>
+       *
+       * <code>WIRED_NODE = 2;</code>
+       */
+      WIRED_NODE(2),
+      ;
+
+      /**
+       * <pre>
+       * Vehicle, RSU, TL, CS
+       * </pre>
+       *
+       * <code>RADIO_NODE = 1;</code>
+       */
+      public static final int RADIO_NODE_VALUE = 1;
+      /**
+       * <pre>
+       * Server, TMC
+       * </pre>
+       *
+       * <code>WIRED_NODE = 2;</code>
+       */
+      public static final int WIRED_NODE_VALUE = 2;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static NodeType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static NodeType forNumber(int value) {
+        switch (value) {
+          case 1: return RADIO_NODE;
+          case 2: return WIRED_NODE;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<NodeType>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          NodeType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<NodeType>() {
+              public NodeType findValueByNumber(int number) {
+                return NodeType.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final NodeType[] VALUES = values();
+
+      public static NodeType valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private NodeType(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:ClientServerChannelSpace.AddNode.NodeType)
+    }
+
+    private int bitField0_;
+    public static final int TIME_FIELD_NUMBER = 1;
+    private long time_;
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return Whether the time field is set.
+     */
+    @java.lang.Override
+    public boolean hasTime() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <code>required .ClientServerChannelSpace.AddNode.NodeType type = 2;</code>
+     * @return Whether the type field is set.
+     */
+    @java.lang.Override public boolean hasType() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required .ClientServerChannelSpace.AddNode.NodeType type = 2;</code>
+     * @return The type.
+     */
+    @java.lang.Override public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType getType() {
+      @SuppressWarnings("deprecation")
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType.valueOf(type_);
+      return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType.RADIO_NODE : result;
+    }
+
+    public static final int NODE_ID_FIELD_NUMBER = 3;
+    private int nodeId_;
+    /**
+     * <code>required int32 node_id = 3;</code>
+     * @return Whether the nodeId field is set.
+     */
+    @java.lang.Override
+    public boolean hasNodeId() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required int32 node_id = 3;</code>
+     * @return The nodeId.
+     */
+    @java.lang.Override
+    public int getNodeId() {
+      return nodeId_;
+    }
+
+    public static final int X_FIELD_NUMBER = 4;
+    private double x_;
+    /**
+     * <code>required double x = 4;</code>
+     * @return Whether the x field is set.
+     */
+    @java.lang.Override
+    public boolean hasX() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>required double x = 4;</code>
+     * @return The x.
+     */
+    @java.lang.Override
+    public double getX() {
+      return x_;
+    }
+
+    public static final int Y_FIELD_NUMBER = 5;
+    private double y_;
+    /**
+     * <code>required double y = 5;</code>
+     * @return Whether the y field is set.
+     */
+    @java.lang.Override
+    public boolean hasY() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>required double y = 5;</code>
+     * @return The y.
+     */
+    @java.lang.Override
+    public double getY() {
+      return y_;
+    }
+
+    public static final int Z_FIELD_NUMBER = 6;
+    private double z_;
+    /**
+     * <code>optional double z = 6;</code>
+     * @return Whether the z field is set.
+     */
+    @java.lang.Override
+    public boolean hasZ() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>optional double z = 6;</code>
+     * @return The z.
+     */
+    @java.lang.Override
+    public double getZ() {
+      return z_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNodeId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasX()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasY()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt64(1, time_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeEnum(2, type_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeInt32(3, nodeId_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeDouble(4, x_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeDouble(5, y_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        output.writeDouble(6, z_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, time_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(2, type_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, nodeId_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(4, x_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(5, y_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(6, z_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode)) {
+        return super.equals(obj);
+      }
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode) obj;
+
+      if (hasTime() != other.hasTime()) return false;
+      if (hasTime()) {
+        if (getTime()
+            != other.getTime()) return false;
+      }
+      if (hasType() != other.hasType()) return false;
+      if (hasType()) {
+        if (type_ != other.type_) return false;
+      }
+      if (hasNodeId() != other.hasNodeId()) return false;
+      if (hasNodeId()) {
+        if (getNodeId()
+            != other.getNodeId()) return false;
+      }
+      if (hasX() != other.hasX()) return false;
+      if (hasX()) {
+        if (java.lang.Double.doubleToLongBits(getX())
+            != java.lang.Double.doubleToLongBits(
+                other.getX())) return false;
+      }
+      if (hasY() != other.hasY()) return false;
+      if (hasY()) {
+        if (java.lang.Double.doubleToLongBits(getY())
+            != java.lang.Double.doubleToLongBits(
+                other.getY())) return false;
+      }
+      if (hasZ() != other.hasZ()) return false;
+      if (hasZ()) {
+        if (java.lang.Double.doubleToLongBits(getZ())
+            != java.lang.Double.doubleToLongBits(
+                other.getZ())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTime()) {
+        hash = (37 * hash) + TIME_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getTime());
+      }
+      if (hasType()) {
+        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + type_;
+      }
+      if (hasNodeId()) {
+        hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getNodeId();
+      }
+      if (hasX()) {
+        hash = (37 * hash) + X_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getX()));
+      }
+      if (hasY()) {
+        hash = (37 * hash) + Y_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getY()));
+      }
+      if (hasZ()) {
+        hash = (37 * hash) + Z_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getZ()));
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ClientServerChannelSpace.AddNode}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.AddNode)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNodeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_AddNode_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_AddNode_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.Builder.class);
+      }
+
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        time_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 1;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nodeId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        x_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        y_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        z_ = 0D;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_AddNode_descriptor;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.time_ = time_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.nodeId_ = nodeId_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.x_ = x_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.y_ = y_;
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.z_ = z_;
+          to_bitField0_ |= 0x00000020;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.getDefaultInstance()) return this;
+        if (other.hasTime()) {
+          setTime(other.getTime());
+        }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        if (other.hasNodeId()) {
+          setNodeId(other.getNodeId());
+        }
+        if (other.hasX()) {
+          setX(other.getX());
+        }
+        if (other.hasY()) {
+          setY(other.getY());
+        }
+        if (other.hasZ()) {
+          setZ(other.getZ());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasTime()) {
+          return false;
+        }
+        if (!hasType()) {
+          return false;
+        }
+        if (!hasNodeId()) {
+          return false;
+        }
+        if (!hasX()) {
+          return false;
+        }
+        if (!hasY()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long time_ ;
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return Whether the time field is set.
+       */
+      @java.lang.Override
+      public boolean hasTime() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return The time.
+       */
+      @java.lang.Override
+      public long getTime() {
+        return time_;
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @param value The time to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTime(long value) {
+        bitField0_ |= 0x00000001;
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        time_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int type_ = 1;
+      /**
+       * <code>required .ClientServerChannelSpace.AddNode.NodeType type = 2;</code>
+       * @return Whether the type field is set.
+       */
+      @java.lang.Override public boolean hasType() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required .ClientServerChannelSpace.AddNode.NodeType type = 2;</code>
+       * @return The type.
+       */
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType getType() {
+        @SuppressWarnings("deprecation")
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType.valueOf(type_);
+        return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType.RADIO_NODE : result;
+      }
+      /**
+       * <code>required .ClientServerChannelSpace.AddNode.NodeType type = 2;</code>
+       * @param value The type to set.
+       * @return This builder for chaining.
+       */
+      public Builder setType(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .ClientServerChannelSpace.AddNode.NodeType type = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        type_ = 1;
+        onChanged();
+        return this;
+      }
+
+      private int nodeId_ ;
+      /**
+       * <code>required int32 node_id = 3;</code>
+       * @return Whether the nodeId field is set.
+       */
+      @java.lang.Override
+      public boolean hasNodeId() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>required int32 node_id = 3;</code>
+       * @return The nodeId.
+       */
+      @java.lang.Override
+      public int getNodeId() {
+        return nodeId_;
+      }
+      /**
+       * <code>required int32 node_id = 3;</code>
+       * @param value The nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeId(int value) {
+        bitField0_ |= 0x00000004;
+        nodeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 node_id = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        nodeId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private double x_ ;
+      /**
+       * <code>required double x = 4;</code>
+       * @return Whether the x field is set.
+       */
+      @java.lang.Override
+      public boolean hasX() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>required double x = 4;</code>
+       * @return The x.
+       */
+      @java.lang.Override
+      public double getX() {
+        return x_;
+      }
+      /**
+       * <code>required double x = 4;</code>
+       * @param value The x to set.
+       * @return This builder for chaining.
+       */
+      public Builder setX(double value) {
+        bitField0_ |= 0x00000008;
+        x_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double x = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearX() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        x_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double y_ ;
+      /**
+       * <code>required double y = 5;</code>
+       * @return Whether the y field is set.
+       */
+      @java.lang.Override
+      public boolean hasY() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>required double y = 5;</code>
+       * @return The y.
+       */
+      @java.lang.Override
+      public double getY() {
+        return y_;
+      }
+      /**
+       * <code>required double y = 5;</code>
+       * @param value The y to set.
+       * @return This builder for chaining.
+       */
+      public Builder setY(double value) {
+        bitField0_ |= 0x00000010;
+        y_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required double y = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearY() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        y_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private double z_ ;
+      /**
+       * <code>optional double z = 6;</code>
+       * @return Whether the z field is set.
+       */
+      @java.lang.Override
+      public boolean hasZ() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>optional double z = 6;</code>
+       * @return The z.
+       */
+      @java.lang.Override
+      public double getZ() {
+        return z_;
+      }
+      /**
+       * <code>optional double z = 6;</code>
+       * @param value The z to set.
+       * @return This builder for chaining.
+       */
+      public Builder setZ(double value) {
+        bitField0_ |= 0x00000020;
+        z_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double z = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearZ() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        z_ = 0D;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.AddNode)
+    }
+
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.AddNode)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode();
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<AddNode>
+        PARSER = new com.google.protobuf.AbstractParser<AddNode>() {
+      @java.lang.Override
+      public AddNode parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AddNode(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<AddNode> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AddNode> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UpdateNodeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.UpdateNode)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return Whether the time field is set.
+     */
+    boolean hasTime();
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return The time.
+     */
+    long getTime();
+
+    /**
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     java.util.List<org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData> 
         getPropertiesList();
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData getProperties(int index);
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     int getPropertiesCount();
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     java.util.List<? extends org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeDataOrBuilder> 
         getPropertiesOrBuilderList();
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeDataOrBuilder getPropertiesOrBuilder(
         int index);
@@ -2754,7 +3926,6 @@ public final class ClientServerChannelProtos {
       super(builder);
     }
     private UpdateNode() {
-      updateType_ = 1;
       properties_ = java.util.Collections.emptyList();
     }
 
@@ -2790,26 +3961,14 @@ public final class ClientServerChannelProtos {
               done = true;
               break;
             case 8: {
-              int rawValue = input.readEnum();
-                @SuppressWarnings("deprecation")
-              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType value = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(1, rawValue);
-              } else {
-                bitField0_ |= 0x00000001;
-                updateType_ = rawValue;
-              }
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000001;
               time_ = input.readInt64();
               break;
             }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
                 properties_ = new java.util.ArrayList<org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000002;
               }
               properties_.add(
                   input.readMessage(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.PARSER, extensionRegistry));
@@ -2830,7 +3989,7 @@ public final class ClientServerChannelProtos {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
           properties_ = java.util.Collections.unmodifiableList(properties_);
         }
         this.unknownFields = unknownFields.build();
@@ -2848,120 +4007,6 @@ public final class ClientServerChannelProtos {
       return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_UpdateNode_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.Builder.class);
-    }
-
-    /**
-     * Protobuf enum {@code ClientServerChannelSpace.UpdateNode.UpdateType}
-     */
-    public enum UpdateType
-        implements com.google.protobuf.ProtocolMessageEnum {
-      /**
-       * <code>ADD_RSU = 1;</code>
-       */
-      ADD_RSU(1),
-      /**
-       * <code>ADD_VEHICLE = 2;</code>
-       */
-      ADD_VEHICLE(2),
-      /**
-       * <code>MOVE_NODE = 3;</code>
-       */
-      MOVE_NODE(3),
-      /**
-       * <code>REMOVE_NODE = 4;</code>
-       */
-      REMOVE_NODE(4),
-      ;
-
-      /**
-       * <code>ADD_RSU = 1;</code>
-       */
-      public static final int ADD_RSU_VALUE = 1;
-      /**
-       * <code>ADD_VEHICLE = 2;</code>
-       */
-      public static final int ADD_VEHICLE_VALUE = 2;
-      /**
-       * <code>MOVE_NODE = 3;</code>
-       */
-      public static final int MOVE_NODE_VALUE = 3;
-      /**
-       * <code>REMOVE_NODE = 4;</code>
-       */
-      public static final int REMOVE_NODE_VALUE = 4;
-
-
-      public final int getNumber() {
-        return value;
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       * @deprecated Use {@link #forNumber(int)} instead.
-       */
-      @java.lang.Deprecated
-      public static UpdateType valueOf(int value) {
-        return forNumber(value);
-      }
-
-      /**
-       * @param value The numeric wire value of the corresponding enum entry.
-       * @return The enum associated with the given numeric wire value.
-       */
-      public static UpdateType forNumber(int value) {
-        switch (value) {
-          case 1: return ADD_RSU;
-          case 2: return ADD_VEHICLE;
-          case 3: return MOVE_NODE;
-          case 4: return REMOVE_NODE;
-          default: return null;
-        }
-      }
-
-      public static com.google.protobuf.Internal.EnumLiteMap<UpdateType>
-          internalGetValueMap() {
-        return internalValueMap;
-      }
-      private static final com.google.protobuf.Internal.EnumLiteMap<
-          UpdateType> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<UpdateType>() {
-              public UpdateType findValueByNumber(int number) {
-                return UpdateType.forNumber(number);
-              }
-            };
-
-      public final com.google.protobuf.Descriptors.EnumValueDescriptor
-          getValueDescriptor() {
-        return getDescriptor().getValues().get(ordinal());
-      }
-      public final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptorForType() {
-        return getDescriptor();
-      }
-      public static final com.google.protobuf.Descriptors.EnumDescriptor
-          getDescriptor() {
-        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.getDescriptor().getEnumTypes().get(0);
-      }
-
-      private static final UpdateType[] VALUES = values();
-
-      public static UpdateType valueOf(
-          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-        if (desc.getType() != getDescriptor()) {
-          throw new java.lang.IllegalArgumentException(
-            "EnumValueDescriptor is not for this type.");
-        }
-        return VALUES[desc.getIndex()];
-      }
-
-      private final int value;
-
-      private UpdateType(int value) {
-        this.value = value;
-      }
-
-      // @@protoc_insertion_point(enum_scope:ClientServerChannelSpace.UpdateNode.UpdateType)
     }
 
     public interface NodeDataOrBuilder extends
@@ -3000,6 +4045,17 @@ public final class ClientServerChannelProtos {
        * @return The y.
        */
       double getY();
+
+      /**
+       * <code>optional double z = 4;</code>
+       * @return Whether the z field is set.
+       */
+      boolean hasZ();
+      /**
+       * <code>optional double z = 4;</code>
+       * @return The z.
+       */
+      double getZ();
     }
     /**
      * Protobuf type {@code ClientServerChannelSpace.UpdateNode.NodeData}
@@ -3060,6 +4116,11 @@ public final class ClientServerChannelProtos {
               case 25: {
                 bitField0_ |= 0x00000004;
                 y_ = input.readDouble();
+                break;
+              }
+              case 33: {
+                bitField0_ |= 0x00000008;
+                z_ = input.readDouble();
                 break;
               }
               default: {
@@ -3152,6 +4213,25 @@ public final class ClientServerChannelProtos {
         return y_;
       }
 
+      public static final int Z_FIELD_NUMBER = 4;
+      private double z_;
+      /**
+       * <code>optional double z = 4;</code>
+       * @return Whether the z field is set.
+       */
+      @java.lang.Override
+      public boolean hasZ() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional double z = 4;</code>
+       * @return The z.
+       */
+      @java.lang.Override
+      public double getZ() {
+        return z_;
+      }
+
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
       public final boolean isInitialized() {
@@ -3187,6 +4267,9 @@ public final class ClientServerChannelProtos {
         if (((bitField0_ & 0x00000004) != 0)) {
           output.writeDouble(3, y_);
         }
+        if (((bitField0_ & 0x00000008) != 0)) {
+          output.writeDouble(4, z_);
+        }
         unknownFields.writeTo(output);
       }
 
@@ -3207,6 +4290,10 @@ public final class ClientServerChannelProtos {
         if (((bitField0_ & 0x00000004) != 0)) {
           size += com.google.protobuf.CodedOutputStream
             .computeDoubleSize(3, y_);
+        }
+        if (((bitField0_ & 0x00000008) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeDoubleSize(4, z_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -3240,6 +4327,12 @@ public final class ClientServerChannelProtos {
               != java.lang.Double.doubleToLongBits(
                   other.getY())) return false;
         }
+        if (hasZ() != other.hasZ()) return false;
+        if (hasZ()) {
+          if (java.lang.Double.doubleToLongBits(getZ())
+              != java.lang.Double.doubleToLongBits(
+                  other.getZ())) return false;
+        }
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
       }
@@ -3264,6 +4357,11 @@ public final class ClientServerChannelProtos {
           hash = (37 * hash) + Y_FIELD_NUMBER;
           hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
               java.lang.Double.doubleToLongBits(getY()));
+        }
+        if (hasZ()) {
+          hash = (37 * hash) + Z_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              java.lang.Double.doubleToLongBits(getZ()));
         }
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
@@ -3404,6 +4502,8 @@ public final class ClientServerChannelProtos {
           bitField0_ = (bitField0_ & ~0x00000002);
           y_ = 0D;
           bitField0_ = (bitField0_ & ~0x00000004);
+          z_ = 0D;
+          bitField0_ = (bitField0_ & ~0x00000008);
           return this;
         }
 
@@ -3443,6 +4543,10 @@ public final class ClientServerChannelProtos {
           if (((from_bitField0_ & 0x00000004) != 0)) {
             result.y_ = y_;
             to_bitField0_ |= 0x00000004;
+          }
+          if (((from_bitField0_ & 0x00000008) != 0)) {
+            result.z_ = z_;
+            to_bitField0_ |= 0x00000008;
           }
           result.bitField0_ = to_bitField0_;
           onBuilt();
@@ -3501,6 +4605,9 @@ public final class ClientServerChannelProtos {
           }
           if (other.hasY()) {
             setY(other.getY());
+          }
+          if (other.hasZ()) {
+            setZ(other.getZ());
           }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
@@ -3657,6 +4764,45 @@ public final class ClientServerChannelProtos {
           onChanged();
           return this;
         }
+
+        private double z_ ;
+        /**
+         * <code>optional double z = 4;</code>
+         * @return Whether the z field is set.
+         */
+        @java.lang.Override
+        public boolean hasZ() {
+          return ((bitField0_ & 0x00000008) != 0);
+        }
+        /**
+         * <code>optional double z = 4;</code>
+         * @return The z.
+         */
+        @java.lang.Override
+        public double getZ() {
+          return z_;
+        }
+        /**
+         * <code>optional double z = 4;</code>
+         * @param value The z to set.
+         * @return This builder for chaining.
+         */
+        public Builder setZ(double value) {
+          bitField0_ |= 0x00000008;
+          z_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional double z = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearZ() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          z_ = 0D;
+          onChanged();
+          return this;
+        }
         @java.lang.Override
         public final Builder setUnknownFields(
             final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3711,37 +4857,18 @@ public final class ClientServerChannelProtos {
     }
 
     private int bitField0_;
-    public static final int UPDATE_TYPE_FIELD_NUMBER = 1;
-    private int updateType_;
-    /**
-     * <code>required .ClientServerChannelSpace.UpdateNode.UpdateType update_type = 1;</code>
-     * @return Whether the updateType field is set.
-     */
-    @java.lang.Override public boolean hasUpdateType() {
-      return ((bitField0_ & 0x00000001) != 0);
-    }
-    /**
-     * <code>required .ClientServerChannelSpace.UpdateNode.UpdateType update_type = 1;</code>
-     * @return The updateType.
-     */
-    @java.lang.Override public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType getUpdateType() {
-      @SuppressWarnings("deprecation")
-      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType.valueOf(updateType_);
-      return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU : result;
-    }
-
-    public static final int TIME_FIELD_NUMBER = 2;
+    public static final int TIME_FIELD_NUMBER = 1;
     private long time_;
     /**
-     * <code>required int64 time = 2;</code>
+     * <code>required int64 time = 1;</code>
      * @return Whether the time field is set.
      */
     @java.lang.Override
     public boolean hasTime() {
-      return ((bitField0_ & 0x00000002) != 0);
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>required int64 time = 2;</code>
+     * <code>required int64 time = 1;</code>
      * @return The time.
      */
     @java.lang.Override
@@ -3749,17 +4876,17 @@ public final class ClientServerChannelProtos {
       return time_;
     }
 
-    public static final int PROPERTIES_FIELD_NUMBER = 3;
+    public static final int PROPERTIES_FIELD_NUMBER = 2;
     private java.util.List<org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData> properties_;
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     @java.lang.Override
     public java.util.List<org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData> getPropertiesList() {
       return properties_;
     }
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     @java.lang.Override
     public java.util.List<? extends org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeDataOrBuilder> 
@@ -3767,21 +4894,21 @@ public final class ClientServerChannelProtos {
       return properties_;
     }
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     @java.lang.Override
     public int getPropertiesCount() {
       return properties_.size();
     }
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     @java.lang.Override
     public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData getProperties(int index) {
       return properties_.get(index);
     }
     /**
-     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+     * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
      */
     @java.lang.Override
     public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeDataOrBuilder getPropertiesOrBuilder(
@@ -3796,10 +4923,6 @@ public final class ClientServerChannelProtos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasUpdateType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!hasTime()) {
         memoizedIsInitialized = 0;
         return false;
@@ -3818,13 +4941,10 @@ public final class ClientServerChannelProtos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        output.writeEnum(1, updateType_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeInt64(2, time_);
+        output.writeInt64(1, time_);
       }
       for (int i = 0; i < properties_.size(); i++) {
-        output.writeMessage(3, properties_.get(i));
+        output.writeMessage(2, properties_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -3837,15 +4957,11 @@ public final class ClientServerChannelProtos {
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, updateType_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(2, time_);
+          .computeInt64Size(1, time_);
       }
       for (int i = 0; i < properties_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, properties_.get(i));
+          .computeMessageSize(2, properties_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3862,10 +4978,6 @@ public final class ClientServerChannelProtos {
       }
       org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode) obj;
 
-      if (hasUpdateType() != other.hasUpdateType()) return false;
-      if (hasUpdateType()) {
-        if (updateType_ != other.updateType_) return false;
-      }
       if (hasTime() != other.hasTime()) return false;
       if (hasTime()) {
         if (getTime()
@@ -3884,10 +4996,6 @@ public final class ClientServerChannelProtos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasUpdateType()) {
-        hash = (37 * hash) + UPDATE_TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + updateType_;
-      }
       if (hasTime()) {
         hash = (37 * hash) + TIME_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -4031,13 +5139,11 @@ public final class ClientServerChannelProtos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        updateType_ = 1;
-        bitField0_ = (bitField0_ & ~0x00000001);
         time_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (propertiesBuilder_ == null) {
           properties_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           propertiesBuilder_.clear();
         }
@@ -4070,17 +5176,13 @@ public final class ClientServerChannelProtos {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.time_ = time_;
           to_bitField0_ |= 0x00000001;
         }
-        result.updateType_ = updateType_;
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.time_ = time_;
-          to_bitField0_ |= 0x00000002;
-        }
         if (propertiesBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) != 0)) {
+          if (((bitField0_ & 0x00000002) != 0)) {
             properties_ = java.util.Collections.unmodifiableList(properties_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.properties_ = properties_;
         } else {
@@ -4135,9 +5237,6 @@ public final class ClientServerChannelProtos {
 
       public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode other) {
         if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.getDefaultInstance()) return this;
-        if (other.hasUpdateType()) {
-          setUpdateType(other.getUpdateType());
-        }
         if (other.hasTime()) {
           setTime(other.getTime());
         }
@@ -4145,7 +5244,7 @@ public final class ClientServerChannelProtos {
           if (!other.properties_.isEmpty()) {
             if (properties_.isEmpty()) {
               properties_ = other.properties_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensurePropertiesIsMutable();
               properties_.addAll(other.properties_);
@@ -4158,7 +5257,7 @@ public final class ClientServerChannelProtos {
               propertiesBuilder_.dispose();
               propertiesBuilder_ = null;
               properties_ = other.properties_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
               propertiesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getPropertiesFieldBuilder() : null;
@@ -4174,9 +5273,6 @@ public final class ClientServerChannelProtos {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasUpdateType()) {
-          return false;
-        }
         if (!hasTime()) {
           return false;
         }
@@ -4208,60 +5304,17 @@ public final class ClientServerChannelProtos {
       }
       private int bitField0_;
 
-      private int updateType_ = 1;
-      /**
-       * <code>required .ClientServerChannelSpace.UpdateNode.UpdateType update_type = 1;</code>
-       * @return Whether the updateType field is set.
-       */
-      @java.lang.Override public boolean hasUpdateType() {
-        return ((bitField0_ & 0x00000001) != 0);
-      }
-      /**
-       * <code>required .ClientServerChannelSpace.UpdateNode.UpdateType update_type = 1;</code>
-       * @return The updateType.
-       */
-      @java.lang.Override
-      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType getUpdateType() {
-        @SuppressWarnings("deprecation")
-        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType result = org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType.valueOf(updateType_);
-        return result == null ? org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType.ADD_RSU : result;
-      }
-      /**
-       * <code>required .ClientServerChannelSpace.UpdateNode.UpdateType update_type = 1;</code>
-       * @param value The updateType to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUpdateType(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.UpdateType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000001;
-        updateType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .ClientServerChannelSpace.UpdateNode.UpdateType update_type = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearUpdateType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        updateType_ = 1;
-        onChanged();
-        return this;
-      }
-
       private long time_ ;
       /**
-       * <code>required int64 time = 2;</code>
+       * <code>required int64 time = 1;</code>
        * @return Whether the time field is set.
        */
       @java.lang.Override
       public boolean hasTime() {
-        return ((bitField0_ & 0x00000002) != 0);
+        return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>required int64 time = 2;</code>
+       * <code>required int64 time = 1;</code>
        * @return The time.
        */
       @java.lang.Override
@@ -4269,22 +5322,22 @@ public final class ClientServerChannelProtos {
         return time_;
       }
       /**
-       * <code>required int64 time = 2;</code>
+       * <code>required int64 time = 1;</code>
        * @param value The time to set.
        * @return This builder for chaining.
        */
       public Builder setTime(long value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         time_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 time = 2;</code>
+       * <code>required int64 time = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearTime() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         time_ = 0L;
         onChanged();
         return this;
@@ -4293,9 +5346,9 @@ public final class ClientServerChannelProtos {
       private java.util.List<org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData> properties_ =
         java.util.Collections.emptyList();
       private void ensurePropertiesIsMutable() {
-        if (!((bitField0_ & 0x00000004) != 0)) {
+        if (!((bitField0_ & 0x00000002) != 0)) {
           properties_ = new java.util.ArrayList<org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData>(properties_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -4303,7 +5356,7 @@ public final class ClientServerChannelProtos {
           org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeDataOrBuilder> propertiesBuilder_;
 
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public java.util.List<org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData> getPropertiesList() {
         if (propertiesBuilder_ == null) {
@@ -4313,7 +5366,7 @@ public final class ClientServerChannelProtos {
         }
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public int getPropertiesCount() {
         if (propertiesBuilder_ == null) {
@@ -4323,7 +5376,7 @@ public final class ClientServerChannelProtos {
         }
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData getProperties(int index) {
         if (propertiesBuilder_ == null) {
@@ -4333,7 +5386,7 @@ public final class ClientServerChannelProtos {
         }
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder setProperties(
           int index, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData value) {
@@ -4350,7 +5403,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder setProperties(
           int index, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder builderForValue) {
@@ -4364,7 +5417,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder addProperties(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData value) {
         if (propertiesBuilder_ == null) {
@@ -4380,7 +5433,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder addProperties(
           int index, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData value) {
@@ -4397,7 +5450,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder addProperties(
           org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder builderForValue) {
@@ -4411,7 +5464,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder addProperties(
           int index, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder builderForValue) {
@@ -4425,7 +5478,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder addAllProperties(
           java.lang.Iterable<? extends org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData> values) {
@@ -4440,12 +5493,12 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder clearProperties() {
         if (propertiesBuilder_ == null) {
           properties_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           propertiesBuilder_.clear();
@@ -4453,7 +5506,7 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public Builder removeProperties(int index) {
         if (propertiesBuilder_ == null) {
@@ -4466,14 +5519,14 @@ public final class ClientServerChannelProtos {
         return this;
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder getPropertiesBuilder(
           int index) {
         return getPropertiesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeDataOrBuilder getPropertiesOrBuilder(
           int index) {
@@ -4483,7 +5536,7 @@ public final class ClientServerChannelProtos {
         }
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public java.util.List<? extends org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeDataOrBuilder> 
            getPropertiesOrBuilderList() {
@@ -4494,14 +5547,14 @@ public final class ClientServerChannelProtos {
         }
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder addPropertiesBuilder() {
         return getPropertiesFieldBuilder().addBuilder(
             org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.getDefaultInstance());
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder addPropertiesBuilder(
           int index) {
@@ -4509,7 +5562,7 @@ public final class ClientServerChannelProtos {
             index, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.getDefaultInstance());
       }
       /**
-       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 3;</code>
+       * <code>repeated .ClientServerChannelSpace.UpdateNode.NodeData properties = 2;</code>
        */
       public java.util.List<org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder> 
            getPropertiesBuilderList() {
@@ -4522,7 +5575,7 @@ public final class ClientServerChannelProtos {
           propertiesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeData.Builder, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode.NodeDataOrBuilder>(
                   properties_,
-                  ((bitField0_ & 0x00000004) != 0),
+                  ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
           properties_ = null;
@@ -4577,6 +5630,643 @@ public final class ClientServerChannelProtos {
 
     @java.lang.Override
     public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.UpdateNode getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RemoveNodeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ClientServerChannelSpace.RemoveNode)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return Whether the time field is set.
+     */
+    boolean hasTime();
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return The time.
+     */
+    long getTime();
+
+    /**
+     * <code>required int32 node_id = 2;</code>
+     * @return Whether the nodeId field is set.
+     */
+    boolean hasNodeId();
+    /**
+     * <code>required int32 node_id = 2;</code>
+     * @return The nodeId.
+     */
+    int getNodeId();
+  }
+  /**
+   * Protobuf type {@code ClientServerChannelSpace.RemoveNode}
+   */
+  public static final class RemoveNode extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ClientServerChannelSpace.RemoveNode)
+      RemoveNodeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RemoveNode.newBuilder() to construct.
+    private RemoveNode(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RemoveNode() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new RemoveNode();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RemoveNode(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              bitField0_ |= 0x00000001;
+              time_ = input.readInt64();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              nodeId_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_RemoveNode_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_RemoveNode_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TIME_FIELD_NUMBER = 1;
+    private long time_;
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return Whether the time field is set.
+     */
+    @java.lang.Override
+    public boolean hasTime() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required int64 time = 1;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+
+    public static final int NODE_ID_FIELD_NUMBER = 2;
+    private int nodeId_;
+    /**
+     * <code>required int32 node_id = 2;</code>
+     * @return Whether the nodeId field is set.
+     */
+    @java.lang.Override
+    public boolean hasNodeId() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required int32 node_id = 2;</code>
+     * @return The nodeId.
+     */
+    @java.lang.Override
+    public int getNodeId() {
+      return nodeId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasNodeId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt64(1, time_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeInt32(2, nodeId_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, time_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, nodeId_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode)) {
+        return super.equals(obj);
+      }
+      org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode other = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode) obj;
+
+      if (hasTime() != other.hasTime()) return false;
+      if (hasTime()) {
+        if (getTime()
+            != other.getTime()) return false;
+      }
+      if (hasNodeId() != other.hasNodeId()) return false;
+      if (hasNodeId()) {
+        if (getNodeId()
+            != other.getNodeId()) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTime()) {
+        hash = (37 * hash) + TIME_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getTime());
+      }
+      if (hasNodeId()) {
+        hash = (37 * hash) + NODE_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getNodeId();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ClientServerChannelSpace.RemoveNode}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ClientServerChannelSpace.RemoveNode)
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNodeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_RemoveNode_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_RemoveNode_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode.class, org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode.Builder.class);
+      }
+
+      // Construct using org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        time_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        nodeId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.internal_static_ClientServerChannelSpace_RemoveNode_descriptor;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode getDefaultInstanceForType() {
+        return org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode build() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode buildPartial() {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode result = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.time_ = time_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.nodeId_ = nodeId_;
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode) {
+          return mergeFrom((org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode other) {
+        if (other == org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode.getDefaultInstance()) return this;
+        if (other.hasTime()) {
+          setTime(other.getTime());
+        }
+        if (other.hasNodeId()) {
+          setNodeId(other.getNodeId());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (!hasTime()) {
+          return false;
+        }
+        if (!hasNodeId()) {
+          return false;
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private long time_ ;
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return Whether the time field is set.
+       */
+      @java.lang.Override
+      public boolean hasTime() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return The time.
+       */
+      @java.lang.Override
+      public long getTime() {
+        return time_;
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @param value The time to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTime(long value) {
+        bitField0_ |= 0x00000001;
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int64 time = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTime() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        time_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int nodeId_ ;
+      /**
+       * <code>required int32 node_id = 2;</code>
+       * @return Whether the nodeId field is set.
+       */
+      @java.lang.Override
+      public boolean hasNodeId() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>required int32 node_id = 2;</code>
+       * @return The nodeId.
+       */
+      @java.lang.Override
+      public int getNodeId() {
+        return nodeId_;
+      }
+      /**
+       * <code>required int32 node_id = 2;</code>
+       * @param value The nodeId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNodeId(int value) {
+        bitField0_ |= 0x00000002;
+        nodeId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 node_id = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNodeId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        nodeId_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ClientServerChannelSpace.RemoveNode)
+    }
+
+    // @@protoc_insertion_point(class_scope:ClientServerChannelSpace.RemoveNode)
+    private static final org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode();
+    }
+
+    public static org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<RemoveNode>
+        PARSER = new com.google.protobuf.AbstractParser<RemoveNode>() {
+      @java.lang.Override
+      public RemoveNode parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RemoveNode(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RemoveNode> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RemoveNode> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.RemoveNode getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -12545,6 +14235,11 @@ public final class ClientServerChannelProtos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ClientServerChannelSpace_TimeMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ClientServerChannelSpace_AddNode_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ClientServerChannelSpace_AddNode_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ClientServerChannelSpace_UpdateNode_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -12554,6 +14249,11 @@ public final class ClientServerChannelProtos {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ClientServerChannelSpace_UpdateNode_NodeData_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ClientServerChannelSpace_RemoveNode_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ClientServerChannelSpace_RemoveNode_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor;
   private static final 
@@ -12611,62 +14311,64 @@ public final class ClientServerChannelProtos {
       "\036\022\021\n\rSEND_CELL_MSG\020\037\022\021\n\rRECV_CELL_MSG\020 \"" +
       "3\n\013InitMessage\022\022\n\nstart_time\030\001 \002(\003\022\020\n\010en" +
       "d_time\030\002 \002(\003\"#\n\014PortExchange\022\023\n\013port_num" +
-      "ber\030\001 \002(\r\"\033\n\013TimeMessage\022\014\n\004time\030\001 \002(\003\"\235" +
-      "\002\n\nUpdateNode\022D\n\013update_type\030\001 \002(\0162/.Cli" +
-      "entServerChannelSpace.UpdateNode.UpdateT" +
-      "ype\022\014\n\004time\030\002 \002(\003\022A\n\nproperties\030\003 \003(\0132-." +
-      "ClientServerChannelSpace.UpdateNode.Node" +
-      "Data\032,\n\010NodeData\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \002(\001\022" +
-      "\t\n\001y\030\003 \002(\001\"J\n\nUpdateType\022\013\n\007ADD_RSU\020\001\022\017\n" +
-      "\013ADD_VEHICLE\020\002\022\r\n\tMOVE_NODE\020\003\022\017\n\013REMOVE_" +
-      "NODE\020\004\"\324\006\n\025ConfigureRadioMessage\022\014\n\004time" +
-      "\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\023\n\013external_i" +
-      "d\030\003 \002(\r\022Q\n\014radio_number\030\004 \002(\0162;.ClientSe" +
-      "rverChannelSpace.ConfigureRadioMessage.R" +
-      "adioNumber\022g\n\033primary_radio_configuratio" +
-      "n\030\005 \002(\0132B.ClientServerChannelSpace.Confi" +
-      "gureRadioMessage.RadioConfiguration\022i\n\035s" +
-      "econdary_radio_configuration\030\006 \001(\0132B.Cli" +
-      "entServerChannelSpace.ConfigureRadioMess" +
-      "age.RadioConfiguration\032\235\003\n\022RadioConfigur" +
-      "ation\022\032\n\022receiving_messages\030\001 \002(\010\022\022\n\nip_" +
-      "address\030\002 \002(\r\022\026\n\016subnet_address\030\003 \002(\r\022\032\n" +
-      "\022transmission_power\030\004 \002(\001\022`\n\nradio_mode\030" +
-      "\005 \002(\0162L.ClientServerChannelSpace.Configu" +
-      "reRadioMessage.RadioConfiguration.RadioM" +
-      "ode\022E\n\025primary_radio_channel\030\006 \002(\0162&.Cli" +
-      "entServerChannelSpace.RadioChannel\022G\n\027se" +
-      "condary_radio_channel\030\007 \001(\0162&.ClientServ" +
-      "erChannelSpace.RadioChannel\"1\n\tRadioMode" +
-      "\022\022\n\016SINGLE_CHANNEL\020\001\022\020\n\014DUAL_CHANNEL\020\002\"=" +
-      "\n\013RadioNumber\022\014\n\010NO_RADIO\020\000\022\020\n\014SINGLE_RA" +
-      "DIO\020\001\022\016\n\nDUAL_RADIO\020\002\"\223\005\n\022SendMessageMes" +
-      "sage\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nc" +
-      "hannel_id\030\003 \002(\0162&.ClientServerChannelSpa" +
-      "ce.RadioChannel\022\022\n\nmessage_id\030\004 \002(\r\022\016\n\006l" +
-      "ength\030\005 \002(\004\022P\n\014topo_address\030\006 \001(\01328.Clie" +
-      "ntServerChannelSpace.SendMessageMessage." +
-      "TopoAddressH\000\022]\n\021rectangle_address\030\007 \001(\013" +
-      "2@.ClientServerChannelSpace.SendMessageM" +
-      "essage.GeoRectangleAddressH\000\022W\n\016circle_a" +
-      "ddress\030\010 \001(\0132=.ClientServerChannelSpace." +
-      "SendMessageMessage.GeoCircleAddressH\000\032.\n" +
-      "\013TopoAddress\022\022\n\nip_address\030\001 \002(\r\022\013\n\003ttl\030" +
-      "\002 \001(\r\032]\n\023GeoRectangleAddress\022\022\n\nip_addre" +
-      "ss\030\001 \002(\r\022\013\n\003a_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002(\001\022\013\n\003b_" +
-      "X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(\001\032Z\n\020GeoCircleAddress" +
-      "\022\022\n\nip_address\030\001 \002(\r\022\020\n\010center_X\030\002 \002(\001\022\020" +
-      "\n\010center_Y\030\003 \002(\001\022\016\n\006radius\030\004 \002(\001B\t\n\007addr" +
-      "ess\"\215\001\n\016ReceiveMessage\022\014\n\004time\030\001 \002(\003\022\017\n\007" +
-      "node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002(\0162&.Clie" +
-      "ntServerChannelSpace.RadioChannel\022\022\n\nmes" +
-      "sage_id\030\004 \002(\r\022\014\n\004rssi\030\005 \002(\002*\236\001\n\014RadioCha" +
-      "nnel\022\016\n\nPROTO_SCH1\020\000\022\016\n\nPROTO_SCH2\020\001\022\016\n\n" +
-      "PROTO_SCH3\020\002\022\r\n\tPROTO_CCH\020\003\022\016\n\nPROTO_SCH" +
-      "4\020\004\022\016\n\nPROTO_SCH5\020\005\022\016\n\nPROTO_SCH6\020\006\022\017\n\013P" +
-      "ROTO_UNDEF\020\007\022\016\n\nPROTO_CELL\020\010B<\n\037org.ecli" +
-      "pse.mosaic.lib.couplingB\031ClientServerCha" +
-      "nnelProtos"
+      "ber\030\001 \002(\r\"\033\n\013TimeMessage\022\014\n\004time\030\001 \002(\003\"\257" +
+      "\001\n\007AddNode\022\014\n\004time\030\001 \002(\003\0228\n\004type\030\002 \002(\0162*" +
+      ".ClientServerChannelSpace.AddNode.NodeTy" +
+      "pe\022\017\n\007node_id\030\003 \002(\005\022\t\n\001x\030\004 \002(\001\022\t\n\001y\030\005 \002(" +
+      "\001\022\t\n\001z\030\006 \001(\001\"*\n\010NodeType\022\016\n\nRADIO_NODE\020\001" +
+      "\022\016\n\nWIRED_NODE\020\002\"\226\001\n\nUpdateNode\022\014\n\004time\030" +
+      "\001 \002(\003\022A\n\nproperties\030\002 \003(\0132-.ClientServer" +
+      "ChannelSpace.UpdateNode.NodeData\0327\n\010Node" +
+      "Data\022\n\n\002id\030\001 \002(\005\022\t\n\001x\030\002 \002(\001\022\t\n\001y\030\003 \002(\001\022\t" +
+      "\n\001z\030\004 \001(\001\"+\n\nRemoveNode\022\014\n\004time\030\001 \002(\003\022\017\n" +
+      "\007node_id\030\002 \002(\005\"\324\006\n\025ConfigureRadioMessage" +
+      "\022\014\n\004time\030\001 \002(\003\022\022\n\nmessage_id\030\002 \002(\r\022\023\n\013ex" +
+      "ternal_id\030\003 \002(\r\022Q\n\014radio_number\030\004 \002(\0162;." +
+      "ClientServerChannelSpace.ConfigureRadioM" +
+      "essage.RadioNumber\022g\n\033primary_radio_conf" +
+      "iguration\030\005 \002(\0132B.ClientServerChannelSpa" +
+      "ce.ConfigureRadioMessage.RadioConfigurat" +
+      "ion\022i\n\035secondary_radio_configuration\030\006 \001" +
+      "(\0132B.ClientServerChannelSpace.ConfigureR" +
+      "adioMessage.RadioConfiguration\032\235\003\n\022Radio" +
+      "Configuration\022\032\n\022receiving_messages\030\001 \002(" +
+      "\010\022\022\n\nip_address\030\002 \002(\r\022\026\n\016subnet_address\030" +
+      "\003 \002(\r\022\032\n\022transmission_power\030\004 \002(\001\022`\n\nrad" +
+      "io_mode\030\005 \002(\0162L.ClientServerChannelSpace" +
+      ".ConfigureRadioMessage.RadioConfiguratio" +
+      "n.RadioMode\022E\n\025primary_radio_channel\030\006 \002" +
+      "(\0162&.ClientServerChannelSpace.RadioChann" +
+      "el\022G\n\027secondary_radio_channel\030\007 \001(\0162&.Cl" +
+      "ientServerChannelSpace.RadioChannel\"1\n\tR" +
+      "adioMode\022\022\n\016SINGLE_CHANNEL\020\001\022\020\n\014DUAL_CHA" +
+      "NNEL\020\002\"=\n\013RadioNumber\022\014\n\010NO_RADIO\020\000\022\020\n\014S" +
+      "INGLE_RADIO\020\001\022\016\n\nDUAL_RADIO\020\002\"\223\005\n\022SendMe" +
+      "ssageMessage\022\014\n\004time\030\001 \002(\003\022\017\n\007node_id\030\002 " +
+      "\002(\r\022:\n\nchannel_id\030\003 \002(\0162&.ClientServerCh" +
+      "annelSpace.RadioChannel\022\022\n\nmessage_id\030\004 " +
+      "\002(\r\022\016\n\006length\030\005 \002(\004\022P\n\014topo_address\030\006 \001(" +
+      "\01328.ClientServerChannelSpace.SendMessage" +
+      "Message.TopoAddressH\000\022]\n\021rectangle_addre" +
+      "ss\030\007 \001(\0132@.ClientServerChannelSpace.Send" +
+      "MessageMessage.GeoRectangleAddressH\000\022W\n\016" +
+      "circle_address\030\010 \001(\0132=.ClientServerChann" +
+      "elSpace.SendMessageMessage.GeoCircleAddr" +
+      "essH\000\032.\n\013TopoAddress\022\022\n\nip_address\030\001 \002(\r" +
+      "\022\013\n\003ttl\030\002 \001(\r\032]\n\023GeoRectangleAddress\022\022\n\n" +
+      "ip_address\030\001 \002(\r\022\013\n\003a_X\030\002 \002(\001\022\013\n\003a_Y\030\003 \002" +
+      "(\001\022\013\n\003b_X\030\004 \002(\001\022\013\n\003b_Y\030\005 \002(\001\032Z\n\020GeoCircl" +
+      "eAddress\022\022\n\nip_address\030\001 \002(\r\022\020\n\010center_X" +
+      "\030\002 \002(\001\022\020\n\010center_Y\030\003 \002(\001\022\016\n\006radius\030\004 \002(\001" +
+      "B\t\n\007address\"\215\001\n\016ReceiveMessage\022\014\n\004time\030\001" +
+      " \002(\003\022\017\n\007node_id\030\002 \002(\r\022:\n\nchannel_id\030\003 \002(" +
+      "\0162&.ClientServerChannelSpace.RadioChanne" +
+      "l\022\022\n\nmessage_id\030\004 \002(\r\022\014\n\004rssi\030\005 \002(\002*\236\001\n\014" +
+      "RadioChannel\022\016\n\nPROTO_SCH1\020\000\022\016\n\nPROTO_SC" +
+      "H2\020\001\022\016\n\nPROTO_SCH3\020\002\022\r\n\tPROTO_CCH\020\003\022\016\n\nP" +
+      "ROTO_SCH4\020\004\022\016\n\nPROTO_SCH5\020\005\022\016\n\nPROTO_SCH" +
+      "6\020\006\022\017\n\013PROTO_UNDEF\020\007\022\016\n\nPROTO_CELL\020\010B<\n\037" +
+      "org.eclipse.mosaic.lib.couplingB\031ClientS" +
+      "erverChannelProtos"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12696,20 +14398,32 @@ public final class ClientServerChannelProtos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_TimeMessage_descriptor,
         new java.lang.String[] { "Time", });
-    internal_static_ClientServerChannelSpace_UpdateNode_descriptor =
+    internal_static_ClientServerChannelSpace_AddNode_descriptor =
       getDescriptor().getMessageTypes().get(4);
+    internal_static_ClientServerChannelSpace_AddNode_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ClientServerChannelSpace_AddNode_descriptor,
+        new java.lang.String[] { "Time", "Type", "NodeId", "X", "Y", "Z", });
+    internal_static_ClientServerChannelSpace_UpdateNode_descriptor =
+      getDescriptor().getMessageTypes().get(5);
     internal_static_ClientServerChannelSpace_UpdateNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_UpdateNode_descriptor,
-        new java.lang.String[] { "UpdateType", "Time", "Properties", });
+        new java.lang.String[] { "Time", "Properties", });
     internal_static_ClientServerChannelSpace_UpdateNode_NodeData_descriptor =
       internal_static_ClientServerChannelSpace_UpdateNode_descriptor.getNestedTypes().get(0);
     internal_static_ClientServerChannelSpace_UpdateNode_NodeData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_UpdateNode_NodeData_descriptor,
-        new java.lang.String[] { "Id", "X", "Y", });
+        new java.lang.String[] { "Id", "X", "Y", "Z", });
+    internal_static_ClientServerChannelSpace_RemoveNode_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_ClientServerChannelSpace_RemoveNode_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ClientServerChannelSpace_RemoveNode_descriptor,
+        new java.lang.String[] { "Time", "NodeId", });
     internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_ClientServerChannelSpace_ConfigureRadioMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_ConfigureRadioMessage_descriptor,
@@ -12721,7 +14435,7 @@ public final class ClientServerChannelProtos {
         internal_static_ClientServerChannelSpace_ConfigureRadioMessage_RadioConfiguration_descriptor,
         new java.lang.String[] { "ReceivingMessages", "IpAddress", "SubnetAddress", "TransmissionPower", "RadioMode", "PrimaryRadioChannel", "SecondaryRadioChannel", });
     internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_ClientServerChannelSpace_SendMessageMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_SendMessageMessage_descriptor,
@@ -12745,7 +14459,7 @@ public final class ClientServerChannelProtos {
         internal_static_ClientServerChannelSpace_SendMessageMessage_GeoCircleAddress_descriptor,
         new java.lang.String[] { "IpAddress", "CenterX", "CenterY", "Radius", });
     internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_ClientServerChannelSpace_ReceiveMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ClientServerChannelSpace_ReceiveMessage_descriptor,
