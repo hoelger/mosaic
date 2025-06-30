@@ -284,15 +284,15 @@ public class ClientServerChannel {
                 throw new IllegalArgumentException("Addressing does support GeoCircle and GeoRectangle only.");
             }
         } else if (dac.getType().isTopocast()) {
-            SendWifiMessage.TopoAddress.Builder topoAddress = SendWifiMessage.TopoAddress.newBuilder();
-            topoAddress.setIpAddress(buffer.getInt());
+            SendWifiMessage.TopologicalAddress.Builder adr = SendWifiMessage.TopologicalAddress.newBuilder();
+            adr.setIpAddress(buffer.getInt());
             if (!(dac.getTimeToLive() > -1)) {
                 throw new IllegalArgumentException("Require TimeToLive for topocast ad-hoc communciation.");
             }
-            topoAddress.setTtl(dac.getTimeToLive());
-            sendMess.setTopoAddress(topoAddress);
+            adr.setTtl(dac.getTimeToLive());
+            sendMess.setTopologicalAddress(adr);
         }
-        sendMess.build().writeDelimitedTo(out); //write message onto channel        
+        sendMess.build().writeDelimitedTo(out); //write message onto channel
         return readCommand();
     }
 
