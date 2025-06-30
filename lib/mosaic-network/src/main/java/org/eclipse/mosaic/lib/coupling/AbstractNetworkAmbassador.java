@@ -25,7 +25,8 @@ import org.eclipse.mosaic.interactions.mapping.RsuRegistration;
 import org.eclipse.mosaic.interactions.mapping.TrafficLightRegistration;
 import org.eclipse.mosaic.interactions.traffic.VehicleUpdates;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.NodeDataContainer;
-import org.eclipse.mosaic.lib.coupling.ClientServerChannel.ReceiveMessageContainer;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannel.ReceiveWifiMessageRecord;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannel.ReceiveCellMessageRecord;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.CommandMessage.CommandType;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType;
 import org.eclipse.mosaic.lib.enums.RoutingType;
@@ -360,19 +361,32 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                             this.rti.requestAdvanceTime(nextTime);
                         }
                         break;
-                    case RECV_WIFI_MSG:  // A simulated node has received a V2X message
-                        ReceiveMessageContainer rcvMsgContainer = federateAmbassadorChannel.readReceiveWifiMessage(simulatedNodes);
-                        // read message body
+                    case RECV_WIFI_MSG:
+                        ReceiveWifiMessageRecord wifiRec = federateAmbassadorChannel.readReceiveWifiMessage(simulatedNodes);
                         // The receiver may have been removed from the simulation while message was on air
-                        if (rcvMsgContainer.receiverName() != null) {
+                        if (wifiRec.receiverName() != null) {
                             V2xMessageReception msg = new V2xMessageReception(
-                                    rcvMsgContainer.time(),
-                                    rcvMsgContainer.receiverName(),
-                                    rcvMsgContainer.msgId(),
-                                    rcvMsgContainer.receiverInformation()
+                                    wifiRec.time(),
+                                    wifiRec.receiverName(),
+                                    wifiRec.msgId(),
+                                    wifiRec.receiverInformation()
                             );
-                            log.debug("Receive V2XMessage : Id({}) on Node {} at Time={}", msg.getMessageId(), msg.getReceiverName(), TIME.format(msg.getTime()));
-                            this.rti.triggerInteraction(msg);  // Hand the received message to the RTI and thus the other federates
+                            log.debug("Receive wifi V2xMessage : Id({}) on Node {} at Time={}", msg.getMessageId(), msg.getReceiverName(), TIME.format(msg.getTime()));
+                            this.rti.triggerInteraction(msg);
+                        }
+                        break;
+                    case RECV_CELL_MSG:
+                        ReceiveCellMessageRecord cellRec = federateAmbassadorChannel.readReceiveCellMessage(simulatedNodes);
+                        // The receiver may have been removed from the simulation while message was on air
+                        if (cellRec.receiverName() != null) {
+                            V2xMessageReception msg = new V2xMessageReception(
+                                    cellRec.time(),
+                                    cellRec.receiverName(),
+                                    cellRec.msgId(),
+                                    null
+                            );
+                            log.debug("Receive cell V2xMessage : Id({}) on Node {} at Time={}", msg.getMessageId(), msg.getReceiverName(), TIME.format(msg.getTime()));
+                            this.rti.triggerInteraction(msg);
                         }
                         break;
                     case END:       // The federate has terminated the current time advance -> we are done here
