@@ -29,6 +29,7 @@ import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendWifiMessage
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveWifiMessage;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ConfigureCellRadio;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.SendCellMessage;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.ReceiveCellMessage;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.geo.CartesianCircle;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
@@ -104,23 +105,35 @@ public class ClientServerChannel {
     //                  Reading methods
     //####################################################################
 
-    private ReceiveWifiMessage readReceiveWifiMessage() throws IOException {
-        return Validate.notNull(ReceiveWifiMessage.parseDelimitedFrom(in), "Could not read message body.");
-    }
-
     /**
-     * Reads a message from the incoming channel.
+     * Reads a wifi message from the incoming channel.
      * TODO: ChannelID (and length) not yet treated
      *
      * @return The read message.
      */
-    public ReceiveMessageContainer readReceiveWifiMessage(IdTransformer<Integer, String> idTransformer) throws IOException {
-        ReceiveWifiMessage receiveMessage = this.readReceiveWifiMessage();
+    public ReceiveWifiMessageRecord readReceiveWifiMessage(IdTransformer<Integer, String> idTransformer) throws IOException {
+        ReceiveWifiMessage receiveMessage = Validate.notNull(ReceiveWifiMessage.parseDelimitedFrom(in), "Could not read message body.");
         V2xReceiverInformation recInfo = new V2xReceiverInformation(receiveMessage.getTime()).signalStrength(receiveMessage.getRssi());
-        return new ReceiveMessageContainer(
+        return new ReceiveWifiMessageRecord(
                 receiveMessage.getTime(),
                 idTransformer.fromExternalId(receiveMessage.getNodeId()),
-                receiveMessage.getMessageId(), recInfo
+                receiveMessage.getMessageId(),
+                recInfo
+        );
+    }
+
+
+    /**
+     * Reads a cell message from the incoming channel.
+     *
+     * @return The read message.
+     */
+    public ReceiveCellMessageRecord readReceiveCellMessage(IdTransformer<Integer, String> idTransformer) throws IOException {
+        ReceiveCellMessage msg = Validate.notNull(ReceiveCellMessage.parseDelimitedFrom(in), "Could not read message body.");
+        return new ReceiveCellMessageRecord(
+                msg.getTime(),
+                idTransformer.fromExternalId(msg.getNodeId()),
+                msg.getMessageId()
         );
     }
 
@@ -474,6 +487,8 @@ public class ClientServerChannel {
 
     record NodeDataContainer(int id, CartesianPoint pos) {}
 
-    record ReceiveMessageContainer(long time, String receiverName, int msgId, V2xReceiverInformation receiverInformation) {}
+    record ReceiveWifiMessageRecord(long time, String receiverName, int msgId, V2xReceiverInformation receiverInformation) {}
+
+    record ReceiveCellMessageRecord(long time, String receiverName, int msgId) {}
 
 }
