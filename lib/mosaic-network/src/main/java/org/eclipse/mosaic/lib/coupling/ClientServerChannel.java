@@ -201,6 +201,7 @@ public class ClientServerChannel {
         msg.setNodeId(node.id);
         msg.setX(node.pos.getX());
         msg.setY(node.pos.getY());
+        msg.setZ(node.pos.getZ());
         msg.build().writeDelimitedTo(out);
         return readCommand();
     }
@@ -218,7 +219,10 @@ public class ClientServerChannel {
         msg.setTime(time);
         for (NodeDataContainer node : nodes) {
             NodeData.Builder tmpBuilder = NodeData.newBuilder();
-            tmpBuilder.setId(node.id).setX(node.pos.getX()).setY(node.pos.getY());
+            tmpBuilder.setId(node.id);
+            tmpBuilder.setX(node.pos.getX());
+            tmpBuilder.setY(node.pos.getY());
+            tmpBuilder.setZ(node.pos.getZ());
             msg.addProperties(tmpBuilder.build());
         }
         msg.build().writeDelimitedTo(out);
