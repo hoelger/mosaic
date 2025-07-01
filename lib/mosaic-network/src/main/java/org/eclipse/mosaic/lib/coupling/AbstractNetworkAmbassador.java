@@ -22,6 +22,7 @@ import org.eclipse.mosaic.interactions.communication.V2xMessageReception;
 import org.eclipse.mosaic.interactions.communication.V2xMessageTransmission;
 import org.eclipse.mosaic.interactions.mapping.ChargingStationRegistration;
 import org.eclipse.mosaic.interactions.mapping.RsuRegistration;
+import org.eclipse.mosaic.interactions.mapping.ServerRegistration;
 import org.eclipse.mosaic.interactions.mapping.TrafficLightRegistration;
 import org.eclipse.mosaic.interactions.traffic.VehicleUpdates;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.NodeDataContainer;
@@ -42,6 +43,7 @@ import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration;
 import org.eclipse.mosaic.lib.objects.communication.CellConfiguration;
 import org.eclipse.mosaic.lib.objects.mapping.ChargingStationMapping;
 import org.eclipse.mosaic.lib.objects.mapping.RsuMapping;
+import org.eclipse.mosaic.lib.objects.mapping.ServerMapping;
 import org.eclipse.mosaic.lib.objects.mapping.TrafficLightMapping;
 import org.eclipse.mosaic.lib.objects.vehicle.VehicleData;
 import org.eclipse.mosaic.lib.util.objects.ObjectInstantiation;
@@ -77,12 +79,14 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
 
     private final static class RegisteredNode {
 
-        private CommunicationConfiguration configuration;
+        private NodeType type;
         private CartesianPoint position;
+        private CommunicationConfiguration configuration;
 
-        private RegisteredNode(CommunicationConfiguration config, CartesianPoint position) {
-            this.configuration = config;
+        private RegisteredNode(NodeType type, CartesianPoint position, CommunicationConfiguration config) {
+            this.type = type;
             this.position = position;
+            this.configuration = config;
         }
     }
 
@@ -321,7 +325,9 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     protected void processInteraction(Interaction interaction) throws InternalFederateException {
         log.trace("ProcessInteraction {} at time={}", interaction.getTypeId(), TIME.format(interaction.getTime()));
         // 2nd step of time management cycle: Deliver interactions to the federate
-        if (interaction.getTypeId().equals(RsuRegistration.TYPE_ID)) {
+        if (interaction.getTypeId().equals(ServerRegistration.TYPE_ID)) {
+            this.process((ServerRegistration) interaction);
+        } else if (interaction.getTypeId().equals(RsuRegistration.TYPE_ID)) {
             this.process((RsuRegistration) interaction);
         } else if (interaction.getTypeId().equals(TrafficLightRegistration.TYPE_ID)) {
             this.process((TrafficLightRegistration) interaction);
@@ -420,6 +426,25 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      *
      * @param interaction interaction containing a mapping of added rsu
      */
+    private synchronized void process(ServerRegistration interaction) {
+        log.debug(
+                "Register Server {} at simulation time {} ",
+                interaction.getMapping().getName(),
+                TIME.format(interaction.getTime())
+        );
+        ServerMapping mapping = interaction.getMapping();
+        if (simulatedNodes.containsInternalId(mapping.getName()) || registeredNodes.containsKey(mapping.getName())) {
+            log.warn("A Server with ID {} was already added. Ignoring message.", mapping.getName());
+            return;
+        }
+        // Put the new RSU into our list of nodes to be added when radio configuration is received
+        registeredNodes.put(mapping.getName(), new RegisteredNode(NodeType.WIRED_NODE, CartesianPoint.ORIGO, null));
+    }
+    /**
+     * Add nodes based on received rsu mappings.
+     *
+     * @param interaction interaction containing a mapping of added rsu
+     */
     private synchronized void process(RsuRegistration interaction) {
         log.debug(
                 "Register RSU {} at simulation time {} ",
@@ -432,7 +457,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             return;
         }
         // Put the new RSU into our list of nodes to be added when radio configuration is received
-        registeredNodes.put(mapping.getName(), new RegisteredNode(null, mapping.getPosition().toCartesian()));
+        registeredNodes.put(mapping.getName(), new RegisteredNode(NodeType.RADIO_NODE, mapping.getPosition().toCartesian(), null));
     }
 
     /**
@@ -454,7 +479,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             return;
         }
         // Put the new TL RSU into our list of nodes to be added when radio configuration is received
-        registeredNodes.put(mapping.getName(), new RegisteredNode(null, mapping.getPosition().toCartesian()));
+        registeredNodes.put(mapping.getName(), new RegisteredNode(NodeType.RADIO_NODE, mapping.getPosition().toCartesian(), null));
     }
 
     /**
@@ -476,7 +501,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             return;
         }
         // Put the new Charging Station RSU into our list of nodes to be added when radio configuration is received
-        registeredNodes.put(mapping.getName(), new RegisteredNode(null, mapping.getPosition().toCartesian()));
+        registeredNodes.put(mapping.getName(), new RegisteredNode(NodeType.RADIO_NODE, mapping.getPosition().toCartesian(), null));
     }
 
     /**
@@ -524,7 +549,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                                 vi.getName(),
                                 TIME.format(interaction.getTime())
                         );
-                        registeredNodes.put(vi.getName(), new RegisteredNode(null, vi.getProjectedPosition()));
+                        registeredNodes.put(vi.getName(), new RegisteredNode(NodeType.RADIO_NODE, vi.getProjectedPosition(), null));
                     }
                 }
             }
@@ -717,7 +742,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         if (removedNodes.contains(nodeId)) {
             log.warn("Got radio configuration for already removed node {}. Ignoring.", nodeId);
         } else if (simulatedNodes.containsInternalId(nodeId)) {
-            // node is already simulated -> configure
+            // node is already simulated -> reconfigure by direct call to send*Config
             log.debug("Updating Configuration for simulated node {}", nodeId);
             if (interaction instanceof AdHocCommunicationConfiguration castedInteraction) {
                 sendAdHocCommunicationConfiguration(castedInteraction, interaction.getTime());
@@ -741,10 +766,10 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     nodeId,
                     TIME.format(interaction.getTime())
                 );
-                registeredNodes.put(nodeId, new RegisteredNode(interaction, null));
+                registeredNodes.put(nodeId, new RegisteredNode(NodeType.RADIO_NODE, null, interaction));
             }
         } else if (registeredNodes.containsKey(nodeId)) {
-            // for RSUs, TLs and CSs, Registrations arrive before CommunicationConfiguration -> they can be added to the simulation now
+            // for Servers, RSUs, TLs and CSs, Registrations arrive before CommunicationConfiguration -> they can be added to the simulation now
             RegisteredNode registeredNode = registeredNodes.get(nodeId);
             registeredNode.configuration = interaction;
             addNodeToSimulation(nodeId, registeredNode, interaction.getTime());
@@ -759,7 +784,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 log.warn("Node with id (internal={}) couldn't be added: name already exists", nodeId);
             } else {
                 int id = simulatedNodes.toExternalId(nodeId);
-                if (CommandType.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, NodeType.RADIO_NODE, new NodeDataContainer(id, registeredNode.position))) {
+                if (CommandType.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(time, registeredNode.type, new NodeDataContainer(id, registeredNode.position))) {
                     log.error("Could not add new node.");
                     throw new InternalFederateException("Error in " + federateName + ": Could not add new node");
                 }
