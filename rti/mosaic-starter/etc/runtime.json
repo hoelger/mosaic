@@ -126,6 +126,7 @@
             "deploy": true,
             "start": true,
             "subscriptions": [
+                "ServerRegistration",
                 "RsuRegistration",
                 "ChargingStationRegistration",
                 "TrafficLightRegistration",
