@@ -23,6 +23,7 @@ import org.eclipse.mosaic.interactions.communication.V2xMessageTransmission;
 import org.eclipse.mosaic.interactions.mapping.ChargingStationRegistration;
 import org.eclipse.mosaic.interactions.mapping.RsuRegistration;
 import org.eclipse.mosaic.interactions.mapping.ServerRegistration;
+import org.eclipse.mosaic.interactions.mapping.TmcRegistration;
 import org.eclipse.mosaic.interactions.mapping.TrafficLightRegistration;
 import org.eclipse.mosaic.interactions.traffic.VehicleUpdates;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.NodeDataContainer;
@@ -44,6 +45,7 @@ import org.eclipse.mosaic.lib.objects.communication.CellConfiguration;
 import org.eclipse.mosaic.lib.objects.mapping.ChargingStationMapping;
 import org.eclipse.mosaic.lib.objects.mapping.RsuMapping;
 import org.eclipse.mosaic.lib.objects.mapping.ServerMapping;
+import org.eclipse.mosaic.lib.objects.mapping.TmcMapping;
 import org.eclipse.mosaic.lib.objects.mapping.TrafficLightMapping;
 import org.eclipse.mosaic.lib.objects.vehicle.VehicleData;
 import org.eclipse.mosaic.lib.util.objects.ObjectInstantiation;
@@ -327,6 +329,8 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         // 2nd step of time management cycle: Deliver interactions to the federate
         if (interaction.getTypeId().equals(ServerRegistration.TYPE_ID)) {
             this.process((ServerRegistration) interaction);
+        } else if (interaction.getTypeId().equals(TmcRegistration.TYPE_ID)) {
+            this.process((TmcRegistration) interaction);
         } else if (interaction.getTypeId().equals(RsuRegistration.TYPE_ID)) {
             this.process((RsuRegistration) interaction);
         } else if (interaction.getTypeId().equals(TrafficLightRegistration.TYPE_ID)) {
@@ -422,9 +426,9 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     }
 
     /**
-     * Add nodes based on received rsu mappings.
+     * Add nodes based on received server mappings.
      *
-     * @param interaction interaction containing a mapping of added rsu
+     * @param interaction interaction containing a mapping of added server
      */
     private synchronized void process(ServerRegistration interaction) {
         log.debug(
@@ -440,6 +444,27 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         // Put the new RSU into our list of nodes to be added when radio configuration is received
         registeredNodes.put(mapping.getName(), new RegisteredNode(NodeType.WIRED_NODE, CartesianPoint.ORIGO, null));
     }
+
+    /**
+     * Add nodes based on received tmc mappings.
+     *
+     * @param interaction interaction containing a mapping of added tmc
+     */
+    private synchronized void process(TmcRegistration interaction) {
+        log.debug(
+                "Register TMC {} at simulation time {} ",
+                interaction.getMapping().getName(),
+                TIME.format(interaction.getTime())
+        );
+        TmcMapping mapping = interaction.getMapping();
+        if (simulatedNodes.containsInternalId(mapping.getName()) || registeredNodes.containsKey(mapping.getName())) {
+            log.warn("A TMC with ID {} was already added. Ignoring message.", mapping.getName());
+            return;
+        }
+        // Put the new RSU into our list of nodes to be added when radio configuration is received
+        registeredNodes.put(mapping.getName(), new RegisteredNode(NodeType.WIRED_NODE, CartesianPoint.ORIGO, null));
+    }
+
     /**
      * Add nodes based on received rsu mappings.
      *
@@ -769,7 +794,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 registeredNodes.put(nodeId, new RegisteredNode(NodeType.RADIO_NODE, null, interaction));
             }
         } else if (registeredNodes.containsKey(nodeId)) {
-            // for Servers, RSUs, TLs and CSs, Registrations arrive before CommunicationConfiguration -> they can be added to the simulation now
+            // for Servers, TMCs, RSUs, TLs and CSs: Registrations arrive before CommunicationConfiguration -> they can be added to the simulation now
             RegisteredNode registeredNode = registeredNodes.get(nodeId);
             registeredNode.configuration = interaction;
             addNodeToSimulation(nodeId, registeredNode, interaction.getTime());

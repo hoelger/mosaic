@@ -127,6 +127,7 @@
             "start": true,
             "subscriptions": [
                 "ServerRegistration",
+                "TmcRegistration",
                 "RsuRegistration",
                 "ChargingStationRegistration",
                 "TrafficLightRegistration",
