@@ -484,15 +484,15 @@ public class SpawningFramework {
     void timeAdvance(long time, RtiAmbassador rti, RandomNumberGenerator rng) throws InternalFederateException {
         this.time = time;
 
+        // Server, TMC, RSU, Charging Station Initialization
+        if (!immobileUnitsInitialized) {
+            initStationaryUnits();
+            immobileUnitsInitialized = true;
+        }
         // traffic light initialization
         if (scenarioTrafficLightRegistration != null && !trafficLightsInitialized) {
             initTrafficLights(time, rti, rng);
             trafficLightsInitialized = true;
-        }
-        // RSU, TMC, Charging Station Initialization
-        if (!immobileUnitsInitialized) {
-            initStationaryUnits();
-            immobileUnitsInitialized = true;
         }
 
         Iterator<VehicleFlowGenerator> vehicleFlowIt = vehicleFlowGenerators.iterator();
