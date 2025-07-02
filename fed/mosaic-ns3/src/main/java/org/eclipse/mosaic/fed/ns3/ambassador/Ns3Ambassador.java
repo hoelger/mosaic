@@ -25,7 +25,6 @@ import org.eclipse.mosaic.rti.api.FederateExecutor;
 import org.eclipse.mosaic.rti.api.InternalFederateException;
 import org.eclipse.mosaic.rti.api.federatestarter.DockerFederateExecutor;
 import org.eclipse.mosaic.rti.api.federatestarter.ExecutableFederateExecutor;
-import org.eclipse.mosaic.rti.api.federatestarter.NopFederateExecutor;
 import org.eclipse.mosaic.rti.api.parameters.AmbassadorParameter;
 import org.eclipse.mosaic.rti.config.CLocalHost.OperatingSystem;
 
@@ -74,6 +73,29 @@ public class Ns3Ambassador extends AbstractNetworkAmbassador {
         );
         return dockerFederateExecutor;
     }
+
+    @Override
+    public void initialize(long startTime, long endTime) throws InternalFederateException {
+        super.initialize(startTime, endTime);
+
+        readConfigurations();
+
+        log.info("Finished Initialization, waiting for Interactions...");
+    }
+
+    /**
+     * Digest the configs in regions.json before the simulation starts.
+     */
+    private void readConfigurations() throws InternalFederateException {
+        log.debug("Read Configuration");
+
+        if (log.isTraceEnabled()) {
+            log.trace("Opening configuration file {}", ambassadorParameter.configuration);
+        }
+
+        // can access config with this.config.regionConfigurationFile
+    }
+
 
     @Override
     protected synchronized void process(AdHocCommunicationConfiguration interaction) throws InternalFederateException {
