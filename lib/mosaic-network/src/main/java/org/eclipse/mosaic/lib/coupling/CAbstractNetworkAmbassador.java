@@ -26,6 +26,8 @@ public final class CAbstractNetworkAmbassador {
 
     public String federateConfigurationFile;
 
+    public String regionConfigurationFile;
+
     private CMessages messages = new CMessages();
 
     /**

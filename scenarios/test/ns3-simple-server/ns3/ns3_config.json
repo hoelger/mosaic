@@ -1,4 +1,5 @@
 {
+    "regionConfigurationFile": "regions.json",
     "messages": {
         "routingType": {
             "AD_HOC_GEOCAST": false,
