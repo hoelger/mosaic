@@ -15,12 +15,16 @@
 
 package org.eclipse.mosaic.fed.ns3.ambassador;
 
+import org.eclipse.mosaic.fed.cell.config.gson.ConfigBuilderFactory;
+import org.eclipse.mosaic.fed.ns3.ambassador.config.CNodeB;
+import org.eclipse.mosaic.fed.ns3.ambassador.config.model.CNodeBProperties;
 import org.eclipse.mosaic.interactions.communication.AdHocCommunicationConfiguration;
 import org.eclipse.mosaic.lib.coupling.AbstractNetworkAmbassador;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration.RadioMode;
 import org.eclipse.mosaic.lib.objects.communication.InterfaceConfiguration;
+import org.eclipse.mosaic.lib.util.objects.ObjectInstantiation;
 import org.eclipse.mosaic.rti.api.FederateExecutor;
 import org.eclipse.mosaic.rti.api.InternalFederateException;
 import org.eclipse.mosaic.rti.api.federatestarter.DockerFederateExecutor;
@@ -28,6 +32,9 @@ import org.eclipse.mosaic.rti.api.federatestarter.ExecutableFederateExecutor;
 import org.eclipse.mosaic.rti.api.parameters.AmbassadorParameter;
 import org.eclipse.mosaic.rti.config.CLocalHost.OperatingSystem;
 
+import com.google.gson.JsonParseException;
+
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.annotation.Nonnull;
@@ -93,7 +100,15 @@ public class Ns3Ambassador extends AbstractNetworkAmbassador {
             log.trace("Opening configuration file {}", ambassadorParameter.configuration);
         }
 
-        // can access config with this.config.regionConfigurationFile
+        File configFile = new File(String.valueOf(Paths.get(this.ambassadorParameter.configuration.getParent(), this.config.regionConfigurationFile)));
+        try {
+            CNodeB nodeBs = new ObjectInstantiation<CNodeB>(CNodeB.class, log).readFile(configFile, ConfigBuilderFactory.getConfigBuilder());
+        } catch (InstantiationException | NullPointerException | JsonParseException ex) {
+            log.error("Could not read configuration {}", this.config.regionConfigurationFile, ex);
+            throw new InternalFederateException(ex);
+        }
+
+        // Signal down to ns3
     }
 
 
