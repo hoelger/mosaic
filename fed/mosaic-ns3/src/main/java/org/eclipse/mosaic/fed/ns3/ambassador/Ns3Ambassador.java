@@ -20,6 +20,7 @@ import org.eclipse.mosaic.fed.ns3.ambassador.config.CNodeB;
 import org.eclipse.mosaic.fed.ns3.ambassador.config.model.CNodeBProperties;
 import org.eclipse.mosaic.interactions.communication.AdHocCommunicationConfiguration;
 import org.eclipse.mosaic.lib.coupling.AbstractNetworkAmbassador;
+import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration.RadioMode;
@@ -100,15 +101,19 @@ public class Ns3Ambassador extends AbstractNetworkAmbassador {
             log.trace("Opening configuration file {}", ambassadorParameter.configuration);
         }
 
+        /* read eNB positions and signal down to ns3 */
+        CNodeB nodeBs;
         File configFile = new File(String.valueOf(Paths.get(this.ambassadorParameter.configuration.getParent(), this.config.regionConfigurationFile)));
         try {
-            CNodeB nodeBs = new ObjectInstantiation<CNodeB>(CNodeB.class, log).readFile(configFile, ConfigBuilderFactory.getConfigBuilder());
+            nodeBs = new ObjectInstantiation<CNodeB>(CNodeB.class, log).readFile(configFile, ConfigBuilderFactory.getConfigBuilder());
         } catch (InstantiationException | NullPointerException | JsonParseException ex) {
             log.error("Could not read configuration {}", this.config.regionConfigurationFile, ex);
             throw new InternalFederateException(ex);
         }
 
-        // Signal down to ns3
+        for (CNodeBProperties enb : nodeBs.regions) {
+            super.addNodeBToSimulation(enb.nodeBPosition.toCartesian());
+        }
     }
 
 
