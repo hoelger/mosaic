@@ -100,9 +100,14 @@ public class Ns3Ambassador extends AbstractNetworkAmbassador {
         }
 
         /* read eNB positions and signal down to ns3 */
+        if (this.config.regionConfigurationFile == null || this.config.regionConfigurationFile.isEmpty()) {
+            log.warn("No configuration for eNodeBs given. Ignore.");
+            return;
+        }
+        
         CNodeB nodeBs;
-        File configFile = new File(String.valueOf(Paths.get(this.ambassadorParameter.configuration.getParent(), this.config.regionConfigurationFile)));
         try {
+            File configFile = new File(String.valueOf(Paths.get(this.ambassadorParameter.configuration.getParent(), this.config.regionConfigurationFile)));
             nodeBs = new ObjectInstantiation<CNodeB>(CNodeB.class, log).readFile(configFile, ConfigBuilderFactory.getConfigBuilder());
         } catch (InstantiationException | NullPointerException | JsonParseException ex) {
             log.error("Could not read configuration {}", this.config.regionConfigurationFile, ex);
