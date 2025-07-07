@@ -35,9 +35,8 @@ public final class CNodeB {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-
         for (CNodeBProperties enb : regions) {
-            builder.append(enb.toString()).append("\t\t");
+            builder.append(enb.toString()).append("\n");
         }
         return builder.toString();
     }
@@ -47,13 +46,21 @@ public final class CNodeB {
      */
     public static class CNodeBProperties implements Serializable {
         /**
-         * The eNodeB position.
+         * The eNodeB geo position.
          */
-        public GeoPoint nodeBPosition;
+        public GeoPoint geoPosition;
+
+        /**
+         * The eNodeB cartesian position. GeoPosition will take precedence.
+         */
+        public CartesianPoint cartesianPosition;
 
         @Override
         public String toString() {
-            return ((nodeBPosition != null) ? "nodeBPos: " + nodeBPosition.toString() : "null");
+            String s = "";
+            s += " geoPosition: " + ((geoPosition != null) ? geoPosition.toString() : "null");
+            s += " cartesianPosition: " + ((cartesianPosition != null) ? cartesianPosition.toString() : "null");
+            return s;
         }
     }
 

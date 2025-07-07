@@ -110,7 +110,13 @@ public class Ns3Ambassador extends AbstractNetworkAmbassador {
         }
 
         for (CNodeB.CNodeBProperties enb : nodeBs.regions) {
-            super.addNodeBToSimulation(enb.nodeBPosition.toCartesian());
+            if (enb.geoPosition != null) {
+                super.addNodeBToSimulation(enb.geoPosition.toCartesian());
+            } else if (enb.cartesianPosition != null) {
+                super.addNodeBToSimulation(enb.cartesianPosition);
+            } else {
+                throw new InternalFederateException("NodeB has neither GeoPosition nor CartesianPosition set.");
+            }
         }
     }
 
