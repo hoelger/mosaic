@@ -17,10 +17,8 @@ package org.eclipse.mosaic.fed.ns3.ambassador;
 
 import org.eclipse.mosaic.fed.cell.config.gson.ConfigBuilderFactory;
 import org.eclipse.mosaic.fed.ns3.ambassador.config.CNodeB;
-import org.eclipse.mosaic.fed.ns3.ambassador.config.model.CNodeBProperties;
 import org.eclipse.mosaic.interactions.communication.AdHocCommunicationConfiguration;
 import org.eclipse.mosaic.lib.coupling.AbstractNetworkAmbassador;
-import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration.RadioMode;
@@ -111,7 +109,7 @@ public class Ns3Ambassador extends AbstractNetworkAmbassador {
             throw new InternalFederateException(ex);
         }
 
-        for (CNodeBProperties enb : nodeBs.regions) {
+        for (CNodeB.CNodeBProperties enb : nodeBs.regions) {
             super.addNodeBToSimulation(enb.nodeBPosition.toCartesian());
         }
     }
