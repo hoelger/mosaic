@@ -1,8 +1,12 @@
 {
     "regions": [
         {
-            "id": "tuberlin",
+            "id": "tuberlin1",
             "nodeBPosition": { "lon": 13.3249, "lat": 52.5131 }
+        },
+        {
+            "id": "tuberlin2",
+            "nodeBPosition": { "lon": 13.3273, "lat": 52.5125 }
         }
     ]
 }

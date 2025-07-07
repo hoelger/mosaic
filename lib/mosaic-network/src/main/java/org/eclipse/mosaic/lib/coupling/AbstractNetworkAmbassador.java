@@ -830,6 +830,21 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         }
     }
 
+    protected synchronized void addNodeBToSimulation(CartesianPoint position) throws InternalFederateException {
+        try {
+            if (CommandType.SUCCESS != ambassadorFederateChannel.writeAddNodeMessage(0L, NodeType.NODE_B, new NodeDataContainer(0, position))) {
+                log.error("Could not add new eNodeB.");
+                throw new InternalFederateException("Error in " + federateName + ": Could not add new node");
+            }
+            log.info(
+                    "Added eNodeB at projected position={} time={}", position, TIME.format(0L)
+            );
+        } catch (IOException | InternalFederateException e) {
+            log.error(e.getMessage(), e);
+            throw new InternalFederateException("Could not add new node.", e);
+        }
+    }
+
     /**
      * Send a configuration interaction to the vehicle.
      * <br>
