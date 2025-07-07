@@ -15,8 +15,10 @@
 
 package org.eclipse.mosaic.fed.ns3.ambassador.config;
 
-import org.eclipse.mosaic.fed.ns3.ambassador.config.model.CNodeBProperties;
+import org.eclipse.mosaic.lib.geo.CartesianPoint;
+import org.eclipse.mosaic.lib.geo.GeoPoint;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,4 +41,20 @@ public final class CNodeB {
         }
         return builder.toString();
     }
+
+    /**
+     * Configuration structure of one single NodeB.
+     */
+    public static class CNodeBProperties implements Serializable {
+        /**
+         * The eNodeB position.
+         */
+        public GeoPoint nodeBPosition;
+
+        @Override
+        public String toString() {
+            return ((nodeBPosition != null) ? "nodeBPos: " + nodeBPosition.toString() : "null");
+        }
+    }
+
 }
