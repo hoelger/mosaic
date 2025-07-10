@@ -272,7 +272,7 @@ public class ClientServerChannel {
         buffer.put(dac.getAddress().getIPv4Address().getAddress()); //make an int32 out of the byte array
         buffer.position(0);
 
-        if (dac.getType().isGeocast()) {
+        if (dac.getRoutingType().isGeocast()) {
             if (dac.getGeoArea() instanceof GeoRectangle geoRectangle) {   //Rectangular area
                 SendWifiMessage.GeoRectangleAddress.Builder rectangleAddress = SendWifiMessage.GeoRectangleAddress.newBuilder();
                 //builder for rectangular addresses
@@ -300,7 +300,7 @@ public class ClientServerChannel {
             } else {
                 throw new IllegalArgumentException("Addressing does support GeoCircle and GeoRectangle only.");
             }
-        } else if (dac.getType().isTopocast()) {
+        } else if (dac.getRoutingType().isTopocast()) {
             SendWifiMessage.TopologicalAddress.Builder adr = SendWifiMessage.TopologicalAddress.newBuilder();
             adr.setIpAddress(buffer.getInt());
             if (!(dac.getTimeToLive() > -1)) {
@@ -413,7 +413,7 @@ public class ClientServerChannel {
         msg.setMessageId(msgId);
         msg.setLength(msgLength);;
 
-        if (!dac.getType().isTopocast()) {
+        if (!dac.getRoutingType().isTopocast()) {
             throw new IllegalArgumentException("Only topocast is supported");
         }
         SendCellMessage.TopologicalAddress.Builder adr = SendCellMessage.TopologicalAddress.newBuilder();

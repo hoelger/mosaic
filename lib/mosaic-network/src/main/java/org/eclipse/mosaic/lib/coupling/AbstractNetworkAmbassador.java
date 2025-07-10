@@ -630,12 +630,12 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         final SourceAddressContainer sac = interaction.getMessage().getRouting().getSource();
         final DestinationAddressContainer dac = interaction.getMessage().getRouting().getDestination();
 
-        if (!this.supportedRoutingAddress.getOrDefault(Pair.of(dac.getType(), AddressType.getEnum(dac.getAddress())), false)) {
+        if (!this.supportedRoutingAddress.getOrDefault(Pair.of(dac.getRoutingType(), AddressType.getEnum(dac.getAddress())), false)) {
             log.warn(
                     "This V2XMessage requires a combination of routing scheme ({}) and address type ({})"
                             + " currently not supported by this network simulator."
                             + " Skip this message. Sender={}, Receiver={}, V2XMessage.id={}, time={}",
-                    dac.getType(),
+                    dac.getRoutingType(),
                     AddressType.getEnum(dac.getAddress()),
                     sac.getSourceName(),
                     dac.getAddress().toString(),
@@ -671,12 +671,12 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             log.debug(
                     "sendV2XMessage: id={} from node ID[int={} , ext={}] channel:{} type:{} time={}",
                     interaction.getMessageId(),
-                    sac.getSourceName(), sourceId, dac.getAdhocChannelId(), dac.getType(), TIME.format(interaction.getTime())
+                    sac.getSourceName(), sourceId, dac.getAdhocChannelId(), dac.getRoutingType(), TIME.format(interaction.getTime())
             );
             // Write the message onto the channel and to the federate
             // Then wait for ack
             CommandType ack = CommandType.UNDEF;
-            if (dac.getType().isAdHoc()) {
+            if (dac.getRoutingType().isAdHoc()) {
                 ack = ambassadorFederateChannel.writeSendWifiMessage(
                         interaction.getTime(),
                         sourceId,
@@ -684,7 +684,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         interaction.getMessage().getPayload().getEffectiveLength(),
                         dac
                 );
-            } else if (dac.getType().isCell()) {
+            } else if (dac.getRoutingType().isCell()) {
                 ack = ambassadorFederateChannel.writeSendCellMessage(
                         interaction.getTime(),
                         sourceId,

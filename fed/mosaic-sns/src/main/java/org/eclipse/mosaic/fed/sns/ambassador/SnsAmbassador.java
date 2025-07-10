@@ -205,7 +205,7 @@ public class SnsAmbassador extends AbstractFederateAmbassador {
     }
 
     private void process(V2xMessageTransmission interaction) throws InternalFederateException {
-        RoutingType type = interaction.getMessage().getRouting().getDestination().getType();
+        RoutingType type = interaction.getMessage().getRouting().getDestination().getRoutingType();
         if (type != RoutingType.AD_HOC_GEOCAST && type != RoutingType.AD_HOC_TOPOCAST) {
             return;
         }

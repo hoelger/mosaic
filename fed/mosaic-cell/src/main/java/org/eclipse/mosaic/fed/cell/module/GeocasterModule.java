@@ -93,7 +93,7 @@ public final class GeocasterModule extends CellModule {
         StreamResult streamResult = message.getResource();
         V2xMessage v2xMessage = streamResult.getV2xMessage();
         DestinationAddressContainer dac = v2xMessage.getRouting().getDestination();
-        RoutingType type = dac.getType();
+        RoutingType type = dac.getRoutingType();
         NetworkAddress address = dac.getAddress();
         ProtocolType protocol = dac.getProtocolType();
 
@@ -260,7 +260,7 @@ public final class GeocasterModule extends CellModule {
     private void unknownDestinationType(long time, StreamResult streamResult) {
         V2xMessage v2xMessage = streamResult.getV2xMessage();
         DestinationAddressContainer dac = v2xMessage.getRouting().getDestination();
-        RoutingType type = dac.getType();
+        RoutingType type = dac.getRoutingType();
         NetworkAddress address = dac.getAddress();
 
         // Default case with, up to now, unknown casting scheme

@@ -49,7 +49,7 @@ public class DestinationAddressContainerTest {
         DestinationAddressContainer dac = new DestinationAddressContainer(RoutingType.AD_HOC_TOPOCAST, networkAddress, AdHocChannel.CCH, 1, null, ProtocolType.UDP);
 
         //ASSERT
-        assertEquals(RoutingType.AD_HOC_TOPOCAST, dac.getType());
+        assertEquals(RoutingType.AD_HOC_TOPOCAST, dac.getRoutingType());
         assertEquals(networkAddress, dac.getAddress());
         assertEquals(AdHocChannel.CCH, dac.getAdhocChannelId());
         assertEquals(1, dac.getTimeToLive());
@@ -66,7 +66,7 @@ public class DestinationAddressContainerTest {
         DestinationAddressContainer dac = new DestinationAddressContainer(RoutingType.AD_HOC_GEOCAST, networkAddress, AdHocChannel.CCH, null, GEO_CIRCLE, ProtocolType.UDP);
 
         //ASSERT
-        assertEquals(RoutingType.AD_HOC_GEOCAST, dac.getType());
+        assertEquals(RoutingType.AD_HOC_GEOCAST, dac.getRoutingType());
         assertEquals(networkAddress, dac.getAddress());
         assertEquals(AdHocChannel.CCH, dac.getAdhocChannelId());
         assertEquals(-1, dac.getTimeToLive());
@@ -81,7 +81,7 @@ public class DestinationAddressContainerTest {
         DestinationAddressContainer dac = new DestinationAddressContainer(RoutingType.AD_HOC_GEOCAST, networkAddress, AdHocChannel.CCH, null, GEO_RECTANGLE, ProtocolType.UDP);
 
         //ASSERT
-        assertEquals(RoutingType.AD_HOC_GEOCAST, dac.getType());
+        assertEquals(RoutingType.AD_HOC_GEOCAST, dac.getRoutingType());
         assertEquals(networkAddress, dac.getAddress());
         assertEquals(AdHocChannel.CCH, dac.getAdhocChannelId());
         assertEquals(-1, dac.getTimeToLive());
