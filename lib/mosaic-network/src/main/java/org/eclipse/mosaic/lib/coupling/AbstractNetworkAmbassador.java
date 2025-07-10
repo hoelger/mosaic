@@ -31,6 +31,8 @@ import org.eclipse.mosaic.lib.coupling.ClientServerChannel.ReceiveWifiMessageRec
 import org.eclipse.mosaic.lib.coupling.ClientServerChannel.ReceiveCellMessageRecord;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.CommandMessage.CommandType;
 import org.eclipse.mosaic.lib.coupling.ClientServerChannelProtos.AddNode.NodeType;
+import org.eclipse.mosaic.lib.enums.AddressType;
+import org.eclipse.mosaic.lib.enums.ProtocolType;
 import org.eclipse.mosaic.lib.enums.RoutingType;
 import org.eclipse.mosaic.lib.geo.CartesianPoint;
 import org.eclipse.mosaic.lib.geo.GeoPoint;
@@ -144,6 +146,10 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      * {@link #process(V2xMessageTransmission interaction)} if needed.
      */
     protected CAbstractNetworkAmbassador config;
+
+    protected Map<Pair<RoutingType, AddressType>, Boolean> supportedRoutingAddress = new HashMap<>();
+
+    protected Map<ProtocolType, Boolean> supportedProtocols = new HashMap<>();
 
     /**
      * Number of tries to establish a ClientServerConnection
@@ -624,11 +630,13 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         final SourceAddressContainer sac = interaction.getMessage().getRouting().getSource();
         final DestinationAddressContainer dac = interaction.getMessage().getRouting().getDestination();
 
-        if (!config.isRoutingTypeSupported(dac.getType())) {
+        if (!this.supportedRoutingAddress.getOrDefault(Pair.of(dac.getType(), AddressType.getEnum(dac.getAddress())), false)) {
             log.warn(
-                    "This V2XMessage requires a destination type ({}) currently not supported by this network simulator."
+                    "This V2XMessage requires a combination of routing scheme ({}) and address type ({})"
+                            + " currently not supported by this network simulator."
                             + " Skip this message. Sender={}, Receiver={}, V2XMessage.id={}, time={}",
-                    dac.getType().toString(),
+                    dac.getType(),
+                    AddressType.getEnum(dac.getAddress()),
                     sac.getSourceName(),
                     dac.getAddress().toString(),
                     interaction.getMessage().getId(),
@@ -636,15 +644,8 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             );
             return;
         }
-        if (!config.isAddressTypeSupported(dac.getAddress())) {
-            log.warn(
-                    "This V2XMessage requires a routing scheme currently not supported by this network simulator."
-                            + " Skip this message. V2XMessage.id={}, time={}",
-                    interaction.getMessage().getId(), TIME.format(interaction.getTime())
-            );
-            return;
-        }
-        if (!config.isProtocolSupported(dac.getProtocolType())) {
+
+        if (!this.supportedProtocols.getOrDefault(dac.getProtocolType(), false)) {
             log.warn(
                     "This V2XMessage requires a transport protocol ({})"
                             + " currently not supported by this network simulator. Skip this message. V2XMessage.id={}, time={}",
@@ -675,39 +676,24 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             // Write the message onto the channel and to the federate
             // Then wait for ack
             CommandType ack = CommandType.UNDEF;
-            if (dac.getType() == RoutingType.AD_HOC_TOPOCAST) {
-                if (dac.getAddress().isBroadcast()) {
-                    ack = ambassadorFederateChannel.writeSendWifiMessage(
-                            interaction.getTime(),
-                            sourceId,
-                            interaction.getMessage().getId(),
-                            interaction.getMessage().getPayload().getEffectiveLength(),
-                            dac
-                    );
-                } else {
-                    throw new InternalFederateException(
-                            String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
-                    );
-                }
-            } else if (dac.getType() == RoutingType.CELL_TOPOCAST) {
-                if (dac.getAddress().isUnicast()) {
-                    ack = ambassadorFederateChannel.writeSendCellMessage(
-                            interaction.getTime(),
-                            sourceId,
-                            interaction.getMessage().getId(),
-                            interaction.getMessage().getPayload().getEffectiveLength(),
-                            dac
-                    );
-                } else {
-                    throw new InternalFederateException(
-                            String.format("This V2XMessage requires an address (%s) currently not supported in the combination with the chosen routing protocol (%s).", dac.getAddress(), dac.getType())
-                    );
-                }
-            } else {
-                // Enable for fail hard and early
-                throw new InternalFederateException(
-                        String.format("This V2XMessage requires a destination type (%s) currently not supported by this network simulator.", dac.getType())
+            if (dac.getType().isAdHoc()) {
+                ack = ambassadorFederateChannel.writeSendWifiMessage(
+                        interaction.getTime(),
+                        sourceId,
+                        interaction.getMessage().getId(),
+                        interaction.getMessage().getPayload().getEffectiveLength(),
+                        dac
                 );
+            } else if (dac.getType().isCell()) {
+                ack = ambassadorFederateChannel.writeSendCellMessage(
+                        interaction.getTime(),
+                        sourceId,
+                        interaction.getMessage().getId(),
+                        interaction.getMessage().getPayload().getEffectiveLength(),
+                        dac
+                );
+            } else {
+                throw new InternalFederateException("Illegal state.");
             }
 
             if (CommandType.SUCCESS != ack) {

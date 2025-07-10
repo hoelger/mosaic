@@ -1,21 +1,3 @@
 {
-    "regionConfigurationFile": "regions.json",
-    "messages": {
-        "routingType": {
-            "AD_HOC_GEOCAST": false,
-            "AD_HOC_TOPOCAST": true,
-            "CELL_GEOCAST": false,
-            "CELL_GEOCAST_MBMS": false,
-            "CELL_TOPOCAST": true
-        },
-        "destinationAddress": {
-            "ipv4UnicastAddress": true,
-            "ipv4BroadcastAddress": true,
-            "ipv4AnycastAddress" : false
-        },
-        "protocolType": {
-            "UDP": true,
-            "TCP": false
-        }
-    }
+    "regionConfigurationFile": "regions.json"
 }
