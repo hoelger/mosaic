@@ -20,6 +20,9 @@ import org.eclipse.mosaic.fed.ns3.ambassador.config.CNodeB;
 import org.eclipse.mosaic.interactions.communication.AdHocCommunicationConfiguration;
 import org.eclipse.mosaic.lib.coupling.AbstractNetworkAmbassador;
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
+import org.eclipse.mosaic.lib.enums.AddressType;
+import org.eclipse.mosaic.lib.enums.ProtocolType;
+import org.eclipse.mosaic.lib.enums.RoutingType;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration;
 import org.eclipse.mosaic.lib.objects.communication.AdHocConfiguration.RadioMode;
 import org.eclipse.mosaic.lib.objects.communication.InterfaceConfiguration;
@@ -32,6 +35,7 @@ import org.eclipse.mosaic.rti.api.parameters.AmbassadorParameter;
 import org.eclipse.mosaic.rti.config.CLocalHost.OperatingSystem;
 
 import com.google.gson.JsonParseException;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -50,6 +54,10 @@ public class Ns3Ambassador extends AbstractNetworkAmbassador {
      */
     public Ns3Ambassador(AmbassadorParameter ambassadorParameter) {
         super(ambassadorParameter, "NS-3 Ambassador", "NS-3 Federate");
+
+        supportedRoutingAddress.put(Pair.of(RoutingType.AD_HOC_TOPOCAST, AddressType.IPV4_BROADCAST), true);
+        supportedRoutingAddress.put(Pair.of(RoutingType.CELL_TOPOCAST, AddressType.IPV4_UNICAST), true);
+        supportedProtocols.put(ProtocolType.UDP, true);
     }
 
     @Nonnull
