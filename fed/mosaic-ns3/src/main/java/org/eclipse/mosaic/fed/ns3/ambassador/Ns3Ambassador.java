@@ -55,9 +55,9 @@ public class Ns3Ambassador extends AbstractNetworkAmbassador {
     public Ns3Ambassador(AmbassadorParameter ambassadorParameter) {
         super(ambassadorParameter, "NS-3 Ambassador", "NS-3 Federate");
 
-        supportedRoutingAddress.put(Pair.of(RoutingType.AD_HOC_TOPOCAST, AddressType.IPV4_BROADCAST), true);
-        supportedRoutingAddress.put(Pair.of(RoutingType.CELL_TOPOCAST, AddressType.IPV4_UNICAST), true);
-        supportedProtocols.put(ProtocolType.UDP, true);
+        supportedRoutingAddress.add(Pair.of(RoutingType.AD_HOC_TOPOCAST, AddressType.IPV4_BROADCAST));
+        supportedRoutingAddress.add(Pair.of(RoutingType.CELL_TOPOCAST, AddressType.IPV4_UNICAST));
+        supportedProtocols.add(ProtocolType.UDP);
     }
 
     @Nonnull

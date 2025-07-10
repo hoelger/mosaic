@@ -16,6 +16,7 @@
 package org.eclipse.mosaic.lib.objects.addressing;
 
 import org.eclipse.mosaic.lib.enums.AdHocChannel;
+import org.eclipse.mosaic.lib.enums.AddressType;
 import org.eclipse.mosaic.lib.enums.RoutingType;
 import org.eclipse.mosaic.lib.enums.ProtocolType;
 import org.eclipse.mosaic.lib.geo.GeoArea;
@@ -88,6 +89,10 @@ public class DestinationAddressContainer implements Serializable {
     @Nonnull
     public NetworkAddress getAddress() {
         return destinationAddress;
+    }
+
+    public AddressType getAddressType() {
+        return AddressType.getEnum(destinationAddress);
     }
 
     @Nonnull
