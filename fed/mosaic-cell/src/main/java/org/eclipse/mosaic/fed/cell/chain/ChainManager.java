@@ -141,7 +141,7 @@ public class ChainManager implements EventManager {
      * @param v2xMessageTransmission sendV2XMessage from MOSAIC (typically send by the applications).
      */
     public void startEvent(V2xMessageTransmission v2xMessageTransmission) {
-        RoutingType dstType = v2xMessageTransmission.getMessage().getRouting().getDestination().getType();
+        RoutingType dstType = v2xMessageTransmission.getMessage().getRouting().getDestination().getRoutingType();
         if (dstType.isCell()) {
             log.trace("CellMessageType: {}", dstType);
             // Introduce V2XMessage to first module in the chain (which is the UpstreamModule)

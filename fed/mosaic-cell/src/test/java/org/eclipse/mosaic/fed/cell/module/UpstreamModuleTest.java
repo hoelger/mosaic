@@ -640,7 +640,7 @@ public class UpstreamModuleTest {
         Inet4Address inet4Address = (Inet4Address) Inet4Address.getByName("10.2.0.0");
         when(destinationAddressContainer.getAddress()).thenReturn(mock(NetworkAddress.class));
         when(destinationAddressContainer.getAddress().getIPv4Address()).thenReturn(inet4Address);
-        when(destinationAddressContainer.getType()).thenReturn(RoutingType.CELL_TOPOCAST);
+        when(destinationAddressContainer.getRoutingType()).thenReturn(RoutingType.CELL_TOPOCAST);
 
         routing.set(new MessageRouting(destinationAddressContainer, sourceAddressContainerMock));
 

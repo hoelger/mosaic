@@ -91,7 +91,7 @@ public class DestinationAddressContainer implements Serializable {
     }
 
     @Nonnull
-    public RoutingType getType() {
+    public RoutingType getRoutingType() {
         return type;
     }
     
