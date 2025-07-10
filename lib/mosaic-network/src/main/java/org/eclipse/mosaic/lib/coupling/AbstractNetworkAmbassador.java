@@ -70,10 +70,12 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -147,9 +149,15 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
      */
     protected CAbstractNetworkAmbassador config;
 
-    protected Map<Pair<RoutingType, AddressType>, Boolean> supportedRoutingAddress = new HashMap<>();
+    /**
+     * A Set that contains all supported combinations of routing and address types that the federate supports
+     */
+    protected Set<Pair<RoutingType, AddressType>> supportedRoutingAddress = new HashSet<>();
 
-    protected Map<ProtocolType, Boolean> supportedProtocols = new HashMap<>();
+    /**
+     * A Set that contains all Protocol Types that the federate supports
+     */
+    protected Set<ProtocolType> supportedProtocols = new HashSet<>();
 
     /**
      * Number of tries to establish a ClientServerConnection
@@ -630,13 +638,13 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         final SourceAddressContainer sac = interaction.getMessage().getRouting().getSource();
         final DestinationAddressContainer dac = interaction.getMessage().getRouting().getDestination();
 
-        if (!this.supportedRoutingAddress.getOrDefault(Pair.of(dac.getRoutingType(), AddressType.getEnum(dac.getAddress())), false)) {
+        if (!this.supportedRoutingAddress.contains(Pair.of(dac.getRoutingType(), dac.getAddressType()))) {
             log.warn(
                     "This V2XMessage requires a combination of routing scheme ({}) and address type ({})"
                             + " currently not supported by this network simulator."
                             + " Skip this message. Sender={}, Receiver={}, V2XMessage.id={}, time={}",
                     dac.getRoutingType(),
-                    AddressType.getEnum(dac.getAddress()),
+                    dac.getAddressType(),
                     sac.getSourceName(),
                     dac.getAddress().toString(),
                     interaction.getMessage().getId(),
@@ -645,7 +653,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             return;
         }
 
-        if (!this.supportedProtocols.getOrDefault(dac.getProtocolType(), false)) {
+        if (!this.supportedProtocols.contains(dac.getProtocolType())) {
             log.warn(
                     "This V2XMessage requires a transport protocol ({})"
                             + " currently not supported by this network simulator. Skip this message. V2XMessage.id={}, time={}",
@@ -668,15 +676,20 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                 return;
             }
 
-            log.debug(
-                    "sendV2XMessage: id={} from node ID[int={} , ext={}] channel:{} type:{} time={}",
-                    interaction.getMessageId(),
-                    sac.getSourceName(), sourceId, dac.getAdhocChannelId(), dac.getRoutingType(), TIME.format(interaction.getTime())
-            );
             // Write the message onto the channel and to the federate
             // Then wait for ack
             CommandType ack = CommandType.UNDEF;
             if (dac.getRoutingType().isAdHoc()) {
+                log.debug(
+                        "Send {} V2XMessage id={} from node ID[int={} , ext={}] on channel {} to {} (time={})",
+                        dac.getRoutingType(),
+                        interaction.getMessageId(),
+                        sac.getSourceName(),
+                        sourceId,
+                        dac.getAdhocChannelId(),
+                        dac.getAddress(),
+                        TIME.format(interaction.getTime())
+                );
                 ack = ambassadorFederateChannel.writeSendWifiMessage(
                         interaction.getTime(),
                         sourceId,
@@ -685,6 +698,15 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         dac
                 );
             } else if (dac.getRoutingType().isCell()) {
+                log.debug(
+                        "Send {} V2XMessage id={} from node ID[int={} , ext={}] to {} (time={})",
+                        dac.getRoutingType(),
+                        interaction.getMessageId(),
+                        sac.getSourceName(),
+                        sourceId,
+                        dac.getAddress(),
+                        TIME.format(interaction.getTime())
+                );
                 ack = ambassadorFederateChannel.writeSendCellMessage(
                         interaction.getTime(),
                         sourceId,
