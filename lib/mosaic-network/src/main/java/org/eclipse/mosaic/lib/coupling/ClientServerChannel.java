@@ -63,6 +63,8 @@ import java.util.List;
  */
 public class ClientServerChannel {
 
+    final static int PROTOCOL_VERSION = 2;
+
     /**
      * Socket connected to the network federate.
      */
@@ -179,11 +181,13 @@ public class ClientServerChannel {
      * @return command returned by the federate
      */
     public CommandType writeInitBody(long startTime, long endTime) throws IOException {
-        writeCommand(CommandType.INIT);                                     //Announce INIT message
-        InitMessage.Builder initMessage = InitMessage.newBuilder(); //Builder for the protobuf message
-        initMessage.setStartTime(startTime).setEndTime(endTime);    //Hand times to builder
-        initMessage.build().writeDelimitedTo(out);                  //Build object and write it (delimited!) to stream
-        return readCommand();                                       //Return the command that the federate sent as ack
+        writeCommand(CommandType.INIT);
+        InitMessage.Builder initMessage = InitMessage.newBuilder();
+        initMessage.setSimulationStartTime(startTime);
+        initMessage.setSimulationEndTime(endTime);
+        initMessage.setProtocolVersion(PROTOCOL_VERSION);
+        initMessage.build().writeDelimitedTo(out);
+        return readCommand();
     }
 
     /**
