@@ -191,21 +191,55 @@ public final class IpResolver implements Serializable {
     }
 
     /**
+     * Converts a IPv4 address array to an integer.
+     *
+     * @param address the address as a byte array
+     * @return the corresponding integer
+     */
+    int translateAddressArrayToFlat(byte[] address) {
+        if (address.length != 4) {
+            throw new RuntimeException("Given address array is not 32 bit wide");
+        }
+        // convert signed byte to unsigned byte with: byte & 0xFF
+        int result = 0;
+        result += (address[0] & 0xFF) * 256 * 256 * 256;
+        result += (address[1] & 0xFF) * 256 * 256;
+        result += (address[2] & 0xFF) * 256;
+        result += (address[3] & 0xFF);
+
+        return result;
+    }
+
+    /**
+     * Converts an integer to an byte array.
+     *
+     * @param address the address as integer
+     * @return the byte array
+     */
+    byte[] translateAddressFlatToArray(int address) {
+        byte[] result = new byte[4];
+        result[0] = (byte) (address / 256 / 256 / 256);
+        result[1] = (byte) (address / 256 / 256 );
+        result[2] = (byte) (address / 256);
+        result[3] = (byte) (address % 256);
+        return result;
+    }
+
+    /**
      * Converts an IPv4 address to a hostname.
      *
      * @param address address that shall be converted to a hostname
      * @return hostname
      */
     public String ipToName(@Nonnull Inet4Address address) {
-        int ip = addressArrayToFlat(address.getAddress());
-        int netPart = addressArrayToFlat(netMask.getAddress());
-        int client = ip & ~netPart;
-        netPart = netPart & ip;
-        int index = client - 1;
+        int ip = translateAddressArrayToFlat(address.getAddress());
+        int mask = addressArrayToFlat(netMask.getAddress());
+        int clientPart = ip & ~mask;
+        int netPart = ip & mask;
 
         for (Map.Entry<UnitType, Inet4Address> unitNetworkEntry : unitNetworks.entrySet()) {
             if (netPart == addressArrayToFlat(unitNetworkEntry.getValue().getAddress())) {
-                return unitNetworkEntry.getKey().prefix + "_" + index;
+                return unitNetworkEntry.getKey().prefix + "_" + clientPart;
             }
         }
         throw new RuntimeException("Unresolvable address " + address);
@@ -227,11 +261,14 @@ public final class IpResolver implements Serializable {
         String unitPrefix = name.substring(0, firstUnderscorePosition);
         for (Map.Entry<UnitType, Inet4Address> unitNetworkEntry : unitNetworks.entrySet()) {
             if (unitNetworkEntry.getKey().prefix.equals(unitPrefix)) {
-                int network = addressArrayToFlat(unitNetworkEntry.getValue().getAddress());
+                int netPart = addressArrayToFlat(unitNetworkEntry.getValue().getAddress());
+                int clientPart = addressArrayToFlat(translateAddressFlatToArray(unitNumber));
+                // this looks complicated, but for adding the netPart we convert the clientPart back to int
+                byte [] ipBytes = addressFlatToArray(netPart | clientPart);
 
                 final Inet4Address ipResult;
                 try {
-                    ipResult = (Inet4Address) Inet4Address.getByAddress(addressFlatToArray(network | (unitNumber + 1)));
+                    ipResult = (Inet4Address) Inet4Address.getByAddress(ipBytes);
                 } catch (UnknownHostException ex) {
                     throw new RuntimeException("Error converting hostname to IP, address is not IPv4");
                 }

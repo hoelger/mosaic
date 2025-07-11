@@ -117,6 +117,30 @@ public class IpResolverTest {
     }
 
     @Test
+    public void testAddressHelperFunctions() {
+        byte[] array1 = {10, 1, 0, 7};
+        byte[] array2 = {10, 2, 0, 0};
+        byte[] array3 = {10, 3, 0, 100};
+        byte[] array4 = {10, 4, (byte) 3, (byte) 232};
+        byte[] array5 = {10, 3, (byte) 255, (byte) 254};
+        byte[] array6 = {10, 10, (byte) 5, (byte) 57};
+
+        Assert.assertArrayEquals(array1, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array1)));
+        Assert.assertArrayEquals(array2, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array2)));
+        Assert.assertArrayEquals(array3, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array3)));
+        Assert.assertArrayEquals(array4, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array4)));
+        Assert.assertArrayEquals(array5, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array5)));
+        Assert.assertArrayEquals(array6, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array6)));
+
+        Assert.assertArrayEquals(array1, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array1)));
+        Assert.assertArrayEquals(array2, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array2)));
+        Assert.assertArrayEquals(array3, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array3)));
+        Assert.assertArrayEquals(array4, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array4)));
+        Assert.assertArrayEquals(array5, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array5)));
+        Assert.assertArrayEquals(array6, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array6)));
+    }
+
+    @Test
     public void testAddressAssignment() {
         Inet4Address ad1, ad2, ad3, ad4, ad5, ad6;
         ad1 = IpResolver.getSingleton().registerHost("veh_7");
@@ -133,12 +157,12 @@ public class IpResolverTest {
         ad6 = IpResolver.getSingleton().registerHost("agent_1337");
 
         Assert.assertTrue(exceptionThrown);
-        byte[] array1 = {10, 1, 0, 8};
-        byte[] array2 = {10, 2, 0, 1};
-        byte[] array3 = {10, 3, 0, 101};
-        byte[] array4 = {10, 4, (byte) 3, (byte) 233};
-        byte[] array5 = {10, 3, (byte) 255, (byte) 255};
-        byte[] array6 = {10, 10, (byte) 5, (byte) 58};
+        byte[] array1 = {10, 1, 0, 7};
+        byte[] array2 = {10, 2, 0, 0};
+        byte[] array3 = {10, 3, 0, 100};
+        byte[] array4 = {10, 4, (byte) 3, (byte) 232};
+        byte[] array5 = {10, 3, (byte) 255, (byte) 254};
+        byte[] array6 = {10, 10, (byte) 5, (byte) 57};
         Assert.assertArrayEquals(array1, ad1.getAddress());
         Assert.assertArrayEquals(array2, ad2.getAddress());
         Assert.assertArrayEquals(array3, ad3.getAddress());
