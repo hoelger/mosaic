@@ -334,6 +334,10 @@ extract_premake() {
 
 build_ns3()
 {
+    log "Patch ns3"
+    cp "${ns3_installation_path}/federate/patched-files/lte-enb-rrc.h" "${ns3_installation_path}/${ns3_long_affix}/${ns3_short_affix}/src/lte/model"
+    cp "${ns3_installation_path}/federate/patched-files/no-backhaul-epc-helper.cc" "${ns3_installation_path}/${ns3_long_affix}/${ns3_short_affix}/src/lte/helper"
+
     log "Build ns3 version ${ns3_version}"
     cd "${ns3_installation_path}/ns-allinone-${ns3_version}"
     # ns-3 prior to 3.28.1 does not compile without warnings using g++ 10.2.0
