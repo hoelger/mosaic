@@ -261,7 +261,7 @@ public class SimulationFacade {
     }
 
     /**
-     * Adds an vehicle to the simulation.
+     * Adds a vehicle to the simulation.
      *
      * @param vehicleId   the id of the vehicle. Must not be assigned to another vehicle
      * @param vehicleType the vehicle type. Must be existing
