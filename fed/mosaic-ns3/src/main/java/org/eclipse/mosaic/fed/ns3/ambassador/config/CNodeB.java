@@ -28,8 +28,10 @@ import java.util.List;
  */
 public final class CNodeB {
 
-    // Configured eNodeBs
-    // use same wording 'regions' as in cell ambassador...
+    /**
+     * List of eNodeBs and their properties.
+     * (we use same wording 'regions' as in cell ambassador)
+     */
     public List<CNodeBProperties> regions = new ArrayList<>();
 
     @Override
