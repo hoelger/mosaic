@@ -15,6 +15,7 @@
 
 package org.eclipse.mosaic.lib.coupling;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
@@ -91,8 +92,11 @@ public class AbstractNetworkAmbassadorTest {
         networkAmbassador.connectToFederate(null, -1);
 
         when(ambassadorFederateChannelMock.writeInitBody(anyLong(), anyLong())).thenReturn(CommandType.SUCCESS);
-        when(ambassadorFederateChannelMock.writeAddNodeMessage(anyLong(), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())))).thenReturn(CommandType.SUCCESS);
-        when(ambassadorFederateChannelMock.writeAddNodeMessage(anyLong(), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())))).thenReturn(CommandType.SUCCESS);
+        when(ambassadorFederateChannelMock.writeAddNodeMessage(
+                anyLong(),
+                eq(NodeType.RADIO_NODE),
+                isA(ClientServerChannel.NodeDataContainer.class))
+        ).thenReturn(CommandType.SUCCESS);
         when(ambassadorFederateChannelMock.writeConfigureWifiRadio(
                 anyLong(),
                 anyInt(),
@@ -135,7 +139,7 @@ public class AbstractNetworkAmbassadorTest {
         // Assert
         // even though processMessage(VehicleUpdates message) has been called,
         // they can only be called when an ad hoc configuration is configured, which we haven't done yet
-        verify(ambassadorFederateChannelMock, never()).writeAddNodeMessage(anyLong(), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));
+        verify(ambassadorFederateChannelMock, never()).writeAddNodeMessage(anyLong(), eq(NodeType.RADIO_NODE), isA(ClientServerChannel.NodeDataContainer.class));
         verify(ambassadorFederateChannelMock, never()).writeConfigureWifiRadio(anyLong(), anyInt(), anyInt(), isA(AdHocConfiguration.class));
     }
 
@@ -162,7 +166,7 @@ public class AbstractNetworkAmbassadorTest {
         networkAmbassador.processInteraction(adHocCommunicationConfiguration);
 
         // Assert
-        verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));
+        verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), eq(NodeType.RADIO_NODE), isA(ClientServerChannel.NodeDataContainer.class));
         verify(ambassadorFederateChannelMock, times(1)).writeConfigureWifiRadio(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
     }
 
@@ -188,7 +192,7 @@ public class AbstractNetworkAmbassadorTest {
         networkAmbassador.processInteraction(vehicleUpdates); // Move vehicle
 
         // Assert
-        verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));
+        verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), eq(NodeType.RADIO_NODE), isA(ClientServerChannel.NodeDataContainer.class));
         verify(ambassadorFederateChannelMock, times(1)).writeConfigureWifiRadio(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
     }
 
@@ -208,7 +212,7 @@ public class AbstractNetworkAmbassadorTest {
         networkAmbassador.processInteraction(rsuRegistration);
 
         // Assert
-        verify(ambassadorFederateChannelMock, never()).writeAddNodeMessage(anyLong(), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));
+        verify(ambassadorFederateChannelMock, never()).writeAddNodeMessage(anyLong(), eq(NodeType.RADIO_NODE), isA(ClientServerChannel.NodeDataContainer.class));
         verify(ambassadorFederateChannelMock, never()).writeConfigureWifiRadio(anyLong(), anyInt(), anyInt(), isA(AdHocConfiguration.class));
     }
 
@@ -229,7 +233,7 @@ public class AbstractNetworkAmbassadorTest {
         networkAmbassador.processInteraction(adHocCommunicationConfiguration);
 
         // Assert
-        verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), NodeType.RADIO_NODE, new ClientServerChannel.NodeDataContainer(anyInt(), new MutableCartesianPoint(anyInt(), anyInt(), anyInt())));;
+        verify(ambassadorFederateChannelMock, times(1)).writeAddNodeMessage(eq(2 * TIME.SECOND), eq(NodeType.RADIO_NODE), isA(ClientServerChannel.NodeDataContainer.class));
         verify(ambassadorFederateChannelMock, times(1)).writeConfigureWifiRadio(eq(2 * TIME.SECOND), anyInt(), anyInt(), eq(adHocConfiguration));
     }
 
