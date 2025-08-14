@@ -10,10 +10,10 @@
         <component name="*" value="error|prefix_level|prefix_time|prefix_func"/>
 
         <component name="MainClass"             value="error|warn|info|debug"/>
-        <component name="ExtendedSimulatorImpl" value="error|warn|info|debug"/>
+        <component name="MosaicSimulatorImpl"   value="error|warn|info|debug"/>
         <component name="MosaicNs3Bridge"       value="error|warn|info|debug"/>
-        <component name="NodeManager"           value="error|warn|info|debug"/>
-        <component name="ProxyApp"              value="error|warn|info|debug|prefix_node"/>
+        <component name="MosaicNodeManager"     value="error|warn|info|debug"/>
+        <component name="MosaicProxyApp"        value="error|warn|info|debug|prefix_node"/>
         <component name="ClientServerChannel"   value="error|warn|info"/>
 
         <component name="UdpSocketImpl"        value="error|warn|prefix_node"/>
@@ -24,11 +24,6 @@
         <component name="Ipv4GlobalRouting"    value="error|warn|prefix_node"/>
         <component name="Ipv4StaticRouting"    value="error|warn|prefix_node"/>
         <component name="ArpL3Protocol"        value="error|warn|prefix_node"/>
-
-     <component name="PropagationLossModel" value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-     <component name="WifiPhy"              value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-     <component name="YansWifiPhy"          value="warn|error"/>                  <!-- value="warn|error|debug"           -->
-     <component name="WaveNetDevice"        value="warn|error"/>                  <!-- value="warn|error|debug"           -->
 
         <component name="OcbWifiMac"           value="error|warn"/>
 
@@ -45,8 +40,8 @@
     <global name="RngSeed" value="1"/>
 
     <!-- Federate settings -->
-    <default name="ns3::ProxyApp::Port" value="8010"/>
-    <default name="ns3::NodeManager::numExtraRadioNodes" value="5"/>
+    <default name="ns3::MosaicProxyApp::Port" value="8010"/>
+    <default name="ns3::MosaicNodeManager::numExtraRadioNodes" value="5"/>
 
 
     <!-- Network settings -->
