@@ -44,7 +44,7 @@ public class IpResolverTest {
 
     @Test
     public void testCorrectSetup() {
-        assertEquals(65534, IpResolver.getSingleton().getMaxRange());
+        assertEquals(65023, IpResolver.getSingleton().getMaxRange());
     }
 
     @Test
@@ -134,6 +134,7 @@ public class IpResolverTest {
         byte[] array5 = {10, 3, (byte) 255, (byte) 254};
         byte[] array6 = {10, 10, (byte) 5, (byte) 57};
 
+        // addressFlatToArray and addressArrayToFlat do correct back and forth conversion
         Assert.assertArrayEquals(array1, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array1)));
         Assert.assertArrayEquals(array2, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array2)));
         Assert.assertArrayEquals(array3, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array3)));
@@ -141,6 +142,7 @@ public class IpResolverTest {
         Assert.assertArrayEquals(array5, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array5)));
         Assert.assertArrayEquals(array6, IpResolver.getSingleton().addressFlatToArray(IpResolver.getSingleton().addressArrayToFlat(array6)));
 
+        // translateAddressFlatToArray and translateAddressArrayToFlat do correct back and forth conversion
         Assert.assertArrayEquals(array1, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array1)));
         Assert.assertArrayEquals(array2, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array2)));
         Assert.assertArrayEquals(array3, IpResolver.getSingleton().translateAddressFlatToArray(IpResolver.getSingleton().translateAddressArrayToFlat(array3)));
@@ -151,7 +153,8 @@ public class IpResolverTest {
 
     @Test
     public void testAddressAssignment() {
-        /* test random ips in all given networks */
+        /* test that .registerHost() will produce expected byte array */
+        // test random ips in all given networks
         Assert.assertArrayEquals(
                 IpResolver.getSingleton().registerHost("veh_7").getAddress(),
                 new byte[]{10, 1, 0, 8}
@@ -189,7 +192,7 @@ public class IpResolverTest {
                 IpResolver.getSingleton().registerHost("cs_508").getAddress(),
                 new byte[]{10, 4, 2, 1}
         );
-        /* Test elements where default config applies */
+        // Test elements where default config applies
         Assert.assertArrayEquals(
                 IpResolver.getSingleton().registerHost("server_254").getAddress(),
                 new byte[]{14, 0, 1, 1}
@@ -198,7 +201,7 @@ public class IpResolverTest {
                 IpResolver.getSingleton().registerHost("tmc_254").getAddress(),
                 new byte[]{15, 0, 1, 1}
         );
-        /* test when the subnet is exhausted */
+        // test when the subnet is exhausted
         Assert.assertArrayEquals(
                 IpResolver.getSingleton().registerHost("tl_65023").getAddress(),
                 new byte[]{10, 3, (byte) 255, (byte) 254}
@@ -207,6 +210,7 @@ public class IpResolverTest {
             IpResolver.getSingleton().registerHost("tl_65024");
         });
 
+        /* test .lookup() function */
         Inet4Address ad1 = IpResolver.getSingleton().registerHost("veh_7");
         byte[] array1 = {10, 1, 0, 8};
         Assert.assertArrayEquals(array1, ad1.getAddress());

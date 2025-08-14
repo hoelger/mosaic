@@ -242,14 +242,19 @@ public final class IpResolver implements Serializable {
      * @return hostname
      */
     public String ipToName(@Nonnull Inet4Address address) {
-        int ip = translateAddressArrayToFlat(address.getAddress());
+        // convert IP to flat number, extract different parts
+        int ip = addressArrayToFlat(address.getAddress());
         int mask = addressArrayToFlat(netMask.getAddress());
         int clientPart = ip & ~mask;
         int netPart = ip & mask;
 
+        // convert clientPart to mosaic ID
+        byte[] clientArr = addressFlatToArray(clientPart); // translate client to IP-ish format
+        int id = translateAddressArrayToFlat(clientArr); // now do the translation from IP to ID (excluding .0 and .255 endings)
+
         for (Map.Entry<UnitType, Inet4Address> unitNetworkEntry : unitNetworks.entrySet()) {
             if (netPart == addressArrayToFlat(unitNetworkEntry.getValue().getAddress())) {
-                return unitNetworkEntry.getKey().prefix + "_" + clientPart;
+                return unitNetworkEntry.getKey().prefix + "_" + id;
             }
         }
         throw new RuntimeException("Unresolvable address " + address);
