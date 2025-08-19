@@ -15,10 +15,55 @@
 
 package org.eclipse.mosaic.lib.coupling;
 
+import org.eclipse.mosaic.lib.geo.CartesianPoint;
+import org.eclipse.mosaic.lib.geo.GeoPoint;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public final class CAbstractNetworkAmbassador {
 
     public String federateConfigurationFile;
 
     public String regionConfigurationFile;
+
+    /**
+     * List of base stations and their properties.
+     */
+    public List<CBaseStationProperties> baseStations = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        for (CBaseStationProperties bs : baseStations) {
+            builder.append(bs.toString()).append("\n");
+        }
+        return builder.toString();
+    }
+
+    /**
+     * Configuration structure of one single base station.
+     */
+    public static class CBaseStationProperties implements Serializable {
+        /**
+         * The base stations geo position.
+         */
+        public GeoPoint geoPosition;
+
+        /**
+         * The base stations cartesian position. GeoPosition will take precedence.
+         */
+        public CartesianPoint cartesianPosition;
+
+        @Override
+        public String toString() {
+            String s = "";
+            s += " geoPosition: " + ((geoPosition != null) ? geoPosition.toString() : "null");
+            s += " cartesianPosition: " + ((cartesianPosition != null) ? cartesianPosition.toString() : "null");
+            return s;
+        }
+    }
+
 
 }

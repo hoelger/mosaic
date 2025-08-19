@@ -335,6 +335,18 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         } catch (IOException e) {
             throw new RuntimeException("Could not initialize " + ambassadorName, e);
         }
+
+        for (CAbstractNetworkAmbassador.CBaseStationProperties bs : this.config.baseStations) {
+            if (bs.geoPosition != null) {
+                addNodeBToSimulation(bs.geoPosition.toCartesian());
+            } else if (bs.cartesianPosition != null) {
+                addNodeBToSimulation(bs.cartesianPosition);
+            } else {
+                throw new InternalFederateException("NodeB has neither GeoPosition nor CartesianPosition set.");
+            }
+        }
+
+        log.info("Finished Initialization, waiting for Interactions...");
     }
 
     @Override
