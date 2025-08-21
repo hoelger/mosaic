@@ -378,6 +378,22 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     }
 
     @Override
+    public synchronized boolean advanceTime(long time) throws InternalFederateException {
+        Interaction nextInteraction = super.interactionQueue.getNextInteraction(time);
+        while (nextInteraction != null) {
+            rti.getMonitor().onProcessInteraction(getId(), nextInteraction);
+            processInteraction(nextInteraction);
+            if (!processTimeAdvanceGrant(nextInteraction.getTime())) {
+                // preemptive
+                return false;
+            }
+            nextInteraction = super.interactionQueue.getNextInteraction(time);
+        }
+        processTimeAdvanceGrant(time);
+        return true;
+    }
+
+    @Override
     protected boolean processTimeAdvanceGrant(long time) throws InternalFederateException {
         log.trace("ProcessTimeAdvanceGrant at time={}", TIME.format(time));
         try {

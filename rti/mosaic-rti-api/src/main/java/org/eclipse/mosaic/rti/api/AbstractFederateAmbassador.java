@@ -101,15 +101,11 @@ public abstract class AbstractFederateAmbassador implements FederateAmbassador {
      * @throws InternalFederateException an exception inside of a joined federate occurs
      */
     @Override
-    public final synchronized boolean advanceTime(long time) throws InternalFederateException {
+    public synchronized boolean advanceTime(long time) throws InternalFederateException {
         Interaction nextInteraction = interactionQueue.getNextInteraction(time);
         while (nextInteraction != null) {
             rti.getMonitor().onProcessInteraction(getId(), nextInteraction);
             processInteraction(nextInteraction);
-            if (!processTimeAdvanceGrant(nextInteraction.getTime())) {
-                // preemptive
-                return false;
-            }
             nextInteraction = interactionQueue.getNextInteraction(time);
         }
         processTimeAdvanceGrant(time);
@@ -295,7 +291,7 @@ public abstract class AbstractFederateAmbassador implements FederateAmbassador {
          *
          * @param time time in [ns]
          */
-        protected Interaction getNextInteraction(long time) {
+        public Interaction getNextInteraction(long time) {
             if (this.peek() != null && this.peek().getTime() <= time) {
                 return this.poll();
             }
