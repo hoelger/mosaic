@@ -90,17 +90,6 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
                 long startTime = System.currentTimeMillis();
                 ambassador.advanceTime(event.getRequestedTime());
                 federation.getMonitor().onEndActivity(event, System.currentTimeMillis() - startTime);
-
-                // check, if event queue is empty after the last time advance.
-                // If no more events are in the list, the simulation can be skipped to the endTime.
-                if (this.events.isEmpty()) {
-                    logger.debug("No events anymore, skipping to end time: {}", getEndTime());
-
-                    federation.getMonitor().onBeginActivity(event);
-                    startTime = System.currentTimeMillis();
-                    ambassador.advanceTime(getEndTime());
-                    federation.getMonitor().onEndActivity(event, System.currentTimeMillis() - startTime);
-                }
             }
             currentRealtimeNs = System.nanoTime();
 
