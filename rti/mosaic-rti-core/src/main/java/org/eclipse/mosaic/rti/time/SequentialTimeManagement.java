@@ -23,6 +23,8 @@ import org.eclipse.mosaic.rti.api.InternalFederateException;
 import org.eclipse.mosaic.rti.api.TimeManagement;
 import org.eclipse.mosaic.rti.api.time.FederateEvent;
 
+import java.util.Objects;
+
 /**
  * This class is a sequential implementation of the <code>TimeManagement</code>
  * interface.
@@ -64,6 +66,9 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
         FederateEvent event;
         FederateAmbassador ambassador;
 
+        long lastNs3Timestamp = 0;
+        FederateAmbassador ns3Ambassador = federation.getFederationManagement().getAmbassador("ns3");
+
         while (this.time <= getEndTime()) {
             // the end time is inclusive, in order to schedule events in the last simulation time step
 
@@ -78,21 +83,28 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
                 event = this.events.poll();
             }
 
+            // always let run ns3 first, then all others (yea, double execution for new-time ns3 events)
+            if (event.getRequestedTime() > lastNs3Timestamp) {
+                success = ns3Ambassador.advanceTime(event.getRequestedTime());
+                if (success) {
+                    lastNs3Timestamp = event.getRequestedTime();
+                } else {
+                    this.events.add(event);
+                    continue;
+                }
+            }
+
             // call ambassador associated with the scheduled event
             ambassador = federation.getFederationManagement().getAmbassador(event.getFederateId());
             if (ambassador != null) {
                 federation.getMonitor().onBeginActivity(event);
                 long startTime = System.currentTimeMillis();
-                success = ambassador.advanceTime(event.getRequestedTime());
+                ambassador.advanceTime(event.getRequestedTime());
                 federation.getMonitor().onEndActivity(event, System.currentTimeMillis() - startTime);
             }
 
-            // advance global time, if no exception came up
-            if (success) {
-                this.time = event.getRequestedTime();
-            } else {
-                // FIXME: somehow put event back in queue?
-            }
+            // advance global time
+            this.time = event.getRequestedTime();
 
             currentRealtimeNs = System.nanoTime();
             final PerformanceInformation performanceInformation =
