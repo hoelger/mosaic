@@ -443,7 +443,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     case END:       // The federate has terminated the current time advance -> we are done here
                         long termTime = federateAmbassadorChannel.readTimeBody();
                         log.info("End ProcessTimeAdvanceGrant at: {}", termTime);
-                        if (termTime != time) {
+                        if (termTime != time && termTime == 0) {
                             // preemptive
                             // federate did not proceed all time-grant
                             return false;
