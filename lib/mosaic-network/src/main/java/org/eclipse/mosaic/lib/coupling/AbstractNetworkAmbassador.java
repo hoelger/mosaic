@@ -15,6 +15,8 @@
 
 package org.eclipse.mosaic.lib.coupling;
 
+import org.eclipse.mosaic.rti.api.parameters.FederatePriority;
+
 import org.eclipse.mosaic.interactions.communication.AdHocCommunicationConfiguration;
 import org.eclipse.mosaic.interactions.communication.CellularCommunicationConfiguration;
 import org.eclipse.mosaic.interactions.communication.CommunicationConfiguration;
@@ -409,7 +411,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     case NEXT_EVENT: // The federate has scheduled an event
                         long nextTime = federateAmbassadorChannel.readTimeBody();
                         log.trace("Requested next_event at {} ", nextTime);
-                        this.rti.requestAdvanceTime(nextTime);
+                        this.rti.requestAdvanceTime(nextTime, 0, FederatePriority.HIGHEST); // FIXME: do not use static priority value
                         break;
                     case RECV_WIFI_MSG:
                         ReceiveWifiMessageRecord wifiRec = federateAmbassadorChannel.readReceiveWifiMessage(simulatedNodes);
