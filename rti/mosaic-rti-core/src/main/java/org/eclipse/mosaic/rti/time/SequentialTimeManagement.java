@@ -67,6 +67,7 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
         FederateAmbassador ambassador;
 
         long lastNs3Timestamp = 0;
+        boolean lastRunDidAbort = false;
         FederateAmbassador ns3Ambassador = federation.getFederationManagement().getAmbassador("ns3");
 
         while (this.time <= getEndTime()) {
@@ -88,7 +89,12 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
                 success = ns3Ambassador.advanceTime(event.getRequestedTime());
                 if (success) {
                     lastNs3Timestamp = event.getRequestedTime();
+                    lastRunDidAbort = false;
                 } else {
+                    if (lastRunDidAbort) {
+                        throw new InternalFederateException("Discovered dead-lock: ns3 preempts without scheduling a new event");
+                    }
+                    lastRunDidAbort = true;
                     this.events.add(event);
                     continue;
                 }
