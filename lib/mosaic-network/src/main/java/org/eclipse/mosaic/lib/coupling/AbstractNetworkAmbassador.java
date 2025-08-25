@@ -386,12 +386,16 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             rti.getMonitor().onProcessInteraction(getId(), nextInteraction);
             processInteraction(nextInteraction);
             if (!processTimeAdvanceGrant(nextInteraction.getTime())) {
-                // preemptive
+                // was preempted
                 return false;
             }
             nextInteraction = super.interactionQueue.getNextInteraction(time);
         }
-        processTimeAdvanceGrant(time);
+        // how to dedup these two same processTimeAdvanceGrant calls?
+        if (!processTimeAdvanceGrant(time)) {
+            // was preempted
+            return false;
+        }
         return true;
     }
 
