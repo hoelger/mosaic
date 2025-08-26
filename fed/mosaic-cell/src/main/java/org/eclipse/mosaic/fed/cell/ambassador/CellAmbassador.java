@@ -592,7 +592,7 @@ public class CellAmbassador extends AbstractFederateAmbassador {
 
     private void registerStationaryNode(String nodeId, CellConfiguration cellConfiguration,
                                         long interactionTime, CNetworkProperties properties) {
-        simData.setRegionOfNode(nodeId, properties);
+        simData.setNetworkPropertiesOfNode(nodeId, properties);
         simData.setSpeedOfNode(nodeId, 0);
         simData.setCellConfigurationOfNode(nodeId, cellConfiguration);
 
@@ -605,7 +605,7 @@ public class CellAmbassador extends AbstractFederateAmbassador {
     }
 
     private void registerServer(String serverName, String serverGroup) {
-        CNetworkProperties serverProperties = ConfigurationData.INSTANCE.getServerRegionFromConfiguration(serverGroup);
+        CNetworkProperties serverProperties = ConfigurationData.INSTANCE.getNetworkPropertiesForServer(serverGroup);
         if (serverProperties != null) {
             registeredServers.put(serverName, serverProperties);
         } else {
