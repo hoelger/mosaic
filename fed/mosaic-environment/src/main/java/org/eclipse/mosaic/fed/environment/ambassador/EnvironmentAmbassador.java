@@ -106,7 +106,7 @@ public class EnvironmentAmbassador extends AbstractFederateAmbassador {
             Validate.notNull(event.value, "No event value given for event");
 
             if (event.time == null || isInTimeFrame(event.time, time)) {
-                if (event.location.area != null) {
+                if (event.location != null && event.location.area != null) {
                     currentEvents.add(new EnvironmentEventLocation(event.location.area, event.type));
                 }
             }

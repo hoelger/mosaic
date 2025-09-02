@@ -29,12 +29,12 @@ public class CEvent implements Serializable {
      * {@link org.eclipse.mosaic.lib.geo.GeoArea} or
      * a {@link String} representing a specific road segment.
      */
-    public CEventLocation location = new CEventLocation();
+    public CEventLocation location = null;
 
     /**
      * Time of the event.
      */
-    public CEventTime time = new CEventTime();
+    public CEventTime time = null;
 
     /**
      * This represents the type of the in that area, e.g. Ice, or Snow.
