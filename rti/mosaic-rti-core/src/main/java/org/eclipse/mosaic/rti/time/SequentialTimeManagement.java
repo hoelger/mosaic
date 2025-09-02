@@ -60,6 +60,7 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
         final RealtimeSynchronisation realtimeSync = new RealtimeSynchronisation(realtimeBrake);
 
         long currentRealtimeNs;
+        boolean success = false;
         FederateEvent event;
         FederateAmbassador ambassador;
 
@@ -71,16 +72,10 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
                 realtimeSync.sync(this.time);
             }
 
-            // remove all events at the head of the queue that are created by the same federate
+            // read the next event
             synchronized (this.events) {
+                if (this.events.isEmpty()) break;
                 event = this.events.poll();
-                // advance global time
-                if (event == null || event.getRequestedTime() > getEndTime()) {
-                    this.time = getEndTime();
-                    break;
-                } else {
-                    this.time = event.getRequestedTime();
-                }
             }
 
             // call ambassador associated with the scheduled event
@@ -88,14 +83,20 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
             if (ambassador != null) {
                 federation.getMonitor().onBeginActivity(event);
                 long startTime = System.currentTimeMillis();
-                ambassador.advanceTime(event.getRequestedTime());
+                success = ambassador.advanceTime(event.getRequestedTime());
                 federation.getMonitor().onEndActivity(event, System.currentTimeMillis() - startTime);
             }
-            currentRealtimeNs = System.nanoTime();
 
+            // advance global time, if no exception came up
+            if (success) {
+                this.time = event.getRequestedTime();
+            } else {
+                // FIXME: somehow put event back in queue?
+            }
+
+            currentRealtimeNs = System.nanoTime();
             final PerformanceInformation performanceInformation =
                     performanceCalculator.update(time, getEndTime(), currentRealtimeNs);
-
             printProgress(currentRealtimeNs, performanceInformation);
             updateWatchDog();
         }

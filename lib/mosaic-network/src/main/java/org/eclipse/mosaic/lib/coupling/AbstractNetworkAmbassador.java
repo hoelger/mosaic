@@ -378,7 +378,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     }
 
     @Override
-    protected void processTimeAdvanceGrant(long time) throws InternalFederateException {
+    protected boolean processTimeAdvanceGrant(long time) throws InternalFederateException {
         log.trace("ProcessTimeAdvanceGrant at time={}", TIME.format(time));
         try {
             // 3rd and last step of cycle: Allow events up to current time in network simulator scheduler
@@ -393,10 +393,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     case NEXT_EVENT: // The federate has scheduled an event
                         long nextTime = federateAmbassadorChannel.readTimeBody();
                         log.trace("Requested next_event at {} ", nextTime);
-                        // If the federates event is beyond our allowed time we have to request time advance from the RTI
-                        if (nextTime > time) {
-                            this.rti.requestAdvanceTime(nextTime);
-                        }
+                        this.rti.requestAdvanceTime(nextTime);
                         break;
                     case RECV_WIFI_MSG:
                         ReceiveWifiMessageRecord wifiRec = federateAmbassadorChannel.readReceiveWifiMessage(simulatedNodes);
@@ -428,7 +425,12 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         break;
                     case END:       // The federate has terminated the current time advance -> we are done here
                         long termTime = federateAmbassadorChannel.readTimeBody();
-                        log.trace("End ProcessTimeAdvanceGrant at: {}", termTime);
+                        log.info("End ProcessTimeAdvanceGrant at: {}", termTime);
+                        if (termTime != time) {
+                            // preemptive
+                            // federate did not proceed all time-grant
+                            return false;
+                        }
                         break command_loop; // break out of the infinite loop
                     default:
                         throw new InternalFederateException("Unknown command from federate at processTimeAdvanceGrant");
@@ -437,6 +439,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         } catch (IOException | IllegalValueException | InternalFederateException e) {
             throw new InternalFederateException(e);
         }
+        return true;
     }
 
     @Override
