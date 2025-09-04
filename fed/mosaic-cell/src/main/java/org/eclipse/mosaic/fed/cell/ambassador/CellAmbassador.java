@@ -433,9 +433,9 @@ public class CellAmbassador extends AbstractFederateAmbassador {
         simData.setPositionOfNode(unit.getName(), projectedPosition);
         simData.setSpeedOfNode(unit.getName(), speed);
 
-        CNetworkProperties currentRegion = RegionUtility.getRegionForPosition(projectedPosition);
+        CNetworkProperties currentRegion = RegionUtility.getNetworkPropertiesForRegionAt(projectedPosition);
         if (HandoverUtility.isAfterHandover(currentRegion.id, previousRegion)) {
-            simData.setRegionOfNode(unit.getName(), currentRegion);
+            simData.setNetworkPropertiesOfNode(unit.getName(), currentRegion);
             return Optional.of(new HandoverInfo(unit.getName(), currentRegion.id, previousRegion));
         }
         return Optional.empty();
@@ -451,18 +451,7 @@ public class CellAmbassador extends AbstractFederateAmbassador {
     private void process(CellularCommunicationConfiguration interaction) throws InternalFederateException {
         Validate.notNull(interaction.getConfiguration(), "CellConfiguration is null");
         long interactionTime = interaction.getTime();
-        CellConfiguration cellConfiguration = interaction.getConfiguration();
-
-        cellConfiguration.setBitrates(
-                ObjectUtils.defaultIfNull(
-                        cellConfiguration.getMaxDownlinkBitrate(),
-                        ConfigurationData.INSTANCE.getNetworkConfig().defaultDownlinkCapacity
-                ),
-                ObjectUtils.defaultIfNull(
-                        cellConfiguration.getMaxUplinkBitrate(),
-                        ConfigurationData.INSTANCE.getNetworkConfig().defaultUplinkCapacity
-                )
-        );
+        CellConfiguration cellConfiguration = getCellConfiguration(interaction);
 
         final String nodeId = cellConfiguration.getNodeId();
         final boolean isMobileNode = UnitNameGenerator.isVehicle(nodeId) || UnitNameGenerator.isAgent(nodeId);
@@ -496,6 +485,22 @@ public class CellAmbassador extends AbstractFederateAmbassador {
             CellularHandoverUpdates handoverUpdatesInteraction = new CellularHandoverUpdates(interactionTime, handoverInfos);
             chainManager.sendInteractionToRti(handoverUpdatesInteraction);
         });
+    }
+
+    private static CellConfiguration getCellConfiguration(CellularCommunicationConfiguration interaction) {
+        CellConfiguration cellConfiguration = interaction.getConfiguration();
+
+        cellConfiguration.setBitrates(
+                ObjectUtils.defaultIfNull(
+                        cellConfiguration.getMaxDownlinkBitrate(),
+                        ConfigurationData.INSTANCE.getNetworkConfig().defaultDownlinkCapacity
+                ),
+                ObjectUtils.defaultIfNull(
+                        cellConfiguration.getMaxUplinkBitrate(),
+                        ConfigurationData.INSTANCE.getNetworkConfig().defaultUplinkCapacity
+                )
+        );
+        return cellConfiguration;
     }
 
     /**
