@@ -87,7 +87,7 @@ public class RegionUtility {
         CNetworkProperties region = SimulationData.INSTANCE.getNetworkPropertiesOfNode(node);
 
         if (region == null) {
-            region = getRegionForPosition(SimulationData.INSTANCE.getPositionOfNode(node));
+            region = getNetworkPropertiesForRegionAt(SimulationData.INSTANCE.getPositionOfNode(node));
             SimulationData.INSTANCE.setNetworkPropertiesOfNode(node, region);
         }
         log.trace("Getting region for node {} at region {}", node, region.id);
@@ -119,7 +119,7 @@ public class RegionUtility {
      * @param position Position to find region for.
      * @return Base region.
      */
-    public static CNetworkProperties getRegionForPosition(CartesianPoint position) {
+    public static CNetworkProperties getNetworkPropertiesForRegionAt(CartesianPoint position) {
         if (position == null) {
             return ConfigurationData.INSTANCE.getNetworkConfig().globalNetwork;
         }

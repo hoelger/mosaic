@@ -580,7 +580,7 @@ public class CellAmbassador extends AbstractFederateAmbassador {
     }
 
     private void handleEntityCellConfiguration(String nodeId, CellConfiguration cellConfiguration, long interactionTime) {
-        CNetworkProperties regionProperties = RegionUtility.getRegionForPosition(registeredEntities.get(nodeId));
+        CNetworkProperties regionProperties = RegionUtility.getNetworkPropertiesForRegionAt(registeredEntities.get(nodeId));
         registerStationaryNode(nodeId, cellConfiguration, interactionTime, regionProperties);
         simData.setPositionOfNode(nodeId, registeredEntities.get(nodeId));
     }
