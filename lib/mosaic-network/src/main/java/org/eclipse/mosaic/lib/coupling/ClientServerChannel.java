@@ -94,7 +94,7 @@ public class ClientServerChannel {
         // Buffer the socket stream to reduce tiny reads and allocations
         BufferedInputStream bin = new BufferedInputStream(socket.getInputStream(), 64 * 1024);
         this.cin = CodedInputStream.newInstance(bin);
-        this.cin.setSizeLimit(4 * 1024 * 1024); // guardrail: 4MB per message, adjust as needed
+        this.cin.setSizeLimit(1 * 1024 * 1024); // guardrail: 1MB per message, adjust as needed
         this.out = new DataOutputStream(socket.getOutputStream());
         // TODO: use logger
     }
@@ -120,6 +120,7 @@ public class ClientServerChannel {
             return parser.parseFrom(cin);
         } finally {
             cin.popLimit(oldLimit);
+            cin.resetSizeCounter(); // avoids cumulative sizeLimit hits
         }
     }
 
