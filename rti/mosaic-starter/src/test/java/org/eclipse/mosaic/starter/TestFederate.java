@@ -69,13 +69,13 @@ public class TestFederate implements FederateAmbassador {
     }
 
     @Override
-    public void advanceTime(long time) throws InternalFederateException {
-        // nop
+    public boolean advanceTime(long time) throws InternalFederateException {
+        return true;
     }
 
     @Override
     public void receiveInteraction(@Nonnull Interaction interaction) throws InternalFederateException {
-// nop
+        // nop
     }
 
     @Override
