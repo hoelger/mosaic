@@ -63,7 +63,7 @@ import java.util.List;
  */
 public class ClientServerChannel {
 
-    final static int PROTOCOL_VERSION = 2;
+    final static int PROTOCOL_VERSION = 3;
 
     /**
      * Socket connected to the network federate.
@@ -203,6 +203,7 @@ public class ClientServerChannel {
         initMessage.setSimulationStartTime(startTime);
         initMessage.setSimulationEndTime(endTime);
         initMessage.setProtocolVersion(PROTOCOL_VERSION);
+        initMessage.setPreemptiveExecution(true);
         initMessage.build().writeDelimitedTo(out);
         return readCommand();
     }
