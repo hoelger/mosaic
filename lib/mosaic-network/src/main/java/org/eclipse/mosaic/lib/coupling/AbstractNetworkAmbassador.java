@@ -328,7 +328,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         super.initialize(startTime, endTime);   // Set times in the super class
         try {
             // 1st Handshake: (1) Ambassador sends INIT (2) Ambassador sends times, (3) Federate sends SUCCESS
-            if (CommandType.SUCCESS != ambassadorFederateChannel.writeInitBody(startTime, endTime)) {
+            if (CommandType.SUCCESS != ambassadorFederateChannel.writeInitBody(startTime, endTime, getPriority() == FederatePriority.HIGHEST)) {
                 log.error("Could not initialize.");
                 throw new InternalFederateException(
                         "Error in " + federateName + ": Could not initialize"

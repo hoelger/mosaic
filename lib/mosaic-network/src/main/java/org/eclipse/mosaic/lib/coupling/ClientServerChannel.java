@@ -197,13 +197,13 @@ public class ClientServerChannel {
      * @param endTime   the last timestep simulated by the simulator
      * @return command returned by the federate
      */
-    public CommandType writeInitBody(long startTime, long endTime) throws IOException {
+    public CommandType writeInitBody(long startTime, long endTime, boolean preemptiveExecution) throws IOException {
         writeCommand(CommandType.INIT);
         InitMessage.Builder initMessage = InitMessage.newBuilder();
         initMessage.setSimulationStartTime(startTime);
         initMessage.setSimulationEndTime(endTime);
         initMessage.setProtocolVersion(PROTOCOL_VERSION);
-        initMessage.setPreemptiveExecution(true);
+        initMessage.setPreemptiveExecution(preemptiveExecution);
         initMessage.build().writeDelimitedTo(out);
         return readCommand();
     }

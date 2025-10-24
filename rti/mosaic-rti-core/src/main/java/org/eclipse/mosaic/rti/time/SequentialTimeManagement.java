@@ -21,9 +21,11 @@ import org.eclipse.mosaic.rti.api.FederateAmbassador;
 import org.eclipse.mosaic.rti.api.IllegalValueException;
 import org.eclipse.mosaic.rti.api.InternalFederateException;
 import org.eclipse.mosaic.rti.api.TimeManagement;
+import org.eclipse.mosaic.rti.api.parameters.FederatePriority;
 import org.eclipse.mosaic.rti.api.time.FederateEvent;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * This class is a sequential implementation of the <code>TimeManagement</code>
@@ -66,9 +68,22 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
         FederateEvent event;
         FederateAmbassador ambassador;
 
-        long lastNs3Timestamp = 0;
+        // privileged federate w/ preemptive execution
+        long lastTimestamp = 0;
         boolean lastRunDidAbort = false;
-        FederateAmbassador ns3Ambassador = federation.getFederationManagement().getAmbassador("ns3");
+        Optional<FederateAmbassador> privilegedAmbassador = Optional.empty();
+
+        int countHighestPriority = 0;
+        for (FederateAmbassador amb : federation.getFederationManagement().getAmbassadors()) {
+            if (amb.getPriority() == FederatePriority.HIGHEST) {
+                countHighestPriority++;
+            }
+        }
+        if (countHighestPriority > 1) {
+            throw new InternalFederateException("Cannot have multiple priority-zero ambassadors. Priority-zero implicitly encodes preemptive execution.");
+        } else if (countHighestPriority == 1) {
+            privilegedAmbassador = federation.getFederationManagement().getAmbassadors().stream().filter(amb -> amb.getPriority() == FederatePriority.HIGHEST).findFirst();
+        }
 
         while (this.time <= getEndTime()) {
             // the end time is inclusive, in order to schedule events in the last simulation time step
@@ -84,19 +99,21 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
                 event = this.events.poll();
             }
 
-            // always let run ns3 first, then all others (yea, double execution for new-time ns3 events)
-            if (event.getRequestedTime() > lastNs3Timestamp) {
-                success = ns3Ambassador.advanceTime(event.getRequestedTime());
-                if (success) {
-                    lastNs3Timestamp = event.getRequestedTime();
-                    lastRunDidAbort = false;
-                } else {
-                    if (lastRunDidAbort) {
-                        throw new InternalFederateException("Discovered dead-lock: ns3 preempts without scheduling a new event");
+            // always let run privileged federate first, then all others (yea, double execution for new-time privileged-federate events)
+            if (privilegedAmbassador.isPresent()) {
+                if (event.getRequestedTime() > lastTimestamp) {
+                    success = privilegedAmbassador.get().advanceTime(event.getRequestedTime());
+                    if (success) {
+                        lastTimestamp = event.getRequestedTime();
+                        lastRunDidAbort = false;
+                    } else {
+                        if (lastRunDidAbort) {
+                            throw new InternalFederateException("Discovered dead-lock: privileged federate preempts without scheduling a new event");
+                        }
+                        lastRunDidAbort = true;
+                        this.events.add(event);
+                        continue;
                     }
-                    lastRunDidAbort = true;
-                    this.events.add(event);
-                    continue;
                 }
             }
 

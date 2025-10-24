@@ -120,7 +120,7 @@
             "classname": "org.eclipse.mosaic.fed.ns3.ambassador.Ns3Ambassador",
             "configuration": "ns3_config.json",
             "configurationDeployPath": "ns3config",
-            "priority": 0,
+            "priority": 50,
             "dockerImage": "",
             "host": "local",
             "port": 5011,
