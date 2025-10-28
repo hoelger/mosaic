@@ -97,6 +97,10 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
             synchronized (this.events) {
                 if (this.events.isEmpty()) break;
                 event = this.events.poll();
+                if (event == null || event.getRequestedTime() > getEndTime()) {
+                    this.time = getEndTime();
+                    break;
+                }
             }
 
             // always let run privileged federate first, then all others (yea, double execution for new-time privileged-federate events)
