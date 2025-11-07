@@ -100,7 +100,7 @@ public abstract class AbstractFederateAmbassador implements FederateAmbassador {
      * @throws InternalFederateException an exception inside of a joined federate occurs
      */
     @Override
-    public synchronized void advanceTime(long time) throws InternalFederateException {
+    public final synchronized void advanceTime(long time) throws InternalFederateException {
         Interaction nextInteraction = interactionQueue.getNextInteraction(time);
         while (nextInteraction != null) {
             rti.getMonitor().onProcessInteraction(getId(), nextInteraction);

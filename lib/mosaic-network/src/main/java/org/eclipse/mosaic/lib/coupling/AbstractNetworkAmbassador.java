@@ -15,6 +15,7 @@
 
 package org.eclipse.mosaic.lib.coupling;
 
+import org.eclipse.mosaic.rti.api.PreemptableFederateAmbassador;
 import org.eclipse.mosaic.rti.api.parameters.FederatePriority;
 
 import org.eclipse.mosaic.interactions.communication.AdHocCommunicationConfiguration;
@@ -83,7 +84,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * The Ambassador for coupling a network simulator to MOSAIC RTI.
  */
-public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassador {
+public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassador implements PreemptableFederateAmbassador {
 
     private final static class RegisteredNode {
 
@@ -380,14 +381,14 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     }
 
     @Override
-    public synchronized boolean advanceTime(long time) throws InternalFederateException {
+    public synchronized boolean advanceTimePreemptable(long time) throws InternalFederateException {
         Interaction nextInteraction = super.interactionQueue.getNextInteraction(time);
         while (nextInteraction != null) {
             rti.getMonitor().onProcessInteraction(getId(), nextInteraction);
             processInteraction(nextInteraction);
             nextInteraction = super.interactionQueue.getNextInteraction(time);
         }
-        if (!processTimeAdvanceGrant(time)) {
+        if (!processTimeAdvanceGrantPreemptable(time)) {
             // was preempted
             return false;
         }
@@ -395,7 +396,21 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     }
 
     @Override
-    protected boolean processTimeAdvanceGrant(long time) throws InternalFederateException {
+    protected void processTimeAdvanceGrant(long time) throws InternalFederateException {
+        boolean r = processTimeAdvanceGrantPreemptable(time);
+        if (time == 0 || time == 1) {
+            // We cannot correctly detect preemption at these stages. This is because
+            // (1) how the value "I did preempt" is encoded via the time value
+            // (2) ns3 generates a "fake event" at time 1 (for the final setup, see MosaicNodeManager::OnStart())
+            return;
+        }
+        if (!r) {
+            throw new InternalFederateException("Did preempt when not expected to preempt");
+        }
+    }
+
+    @Override
+    public boolean processTimeAdvanceGrantPreemptable(long time) throws InternalFederateException {
         log.trace("ProcessTimeAdvanceGrant at time={}", TIME.format(time));
         try {
             // 3rd and last step of cycle: Allow events up to current time in network simulator scheduler

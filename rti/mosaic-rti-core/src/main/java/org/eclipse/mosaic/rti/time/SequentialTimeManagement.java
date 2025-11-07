@@ -20,11 +20,11 @@ import org.eclipse.mosaic.rti.api.ComponentProvider;
 import org.eclipse.mosaic.rti.api.FederateAmbassador;
 import org.eclipse.mosaic.rti.api.IllegalValueException;
 import org.eclipse.mosaic.rti.api.InternalFederateException;
+import org.eclipse.mosaic.rti.api.PreemptableFederateAmbassador;
 import org.eclipse.mosaic.rti.api.TimeManagement;
 import org.eclipse.mosaic.rti.api.parameters.FederatePriority;
 import org.eclipse.mosaic.rti.api.time.FederateEvent;
 
-import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -71,7 +71,7 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
         // privileged federate w/ preemptive execution
         long lastTimestamp = 0;
         boolean lastRunDidAbort = false;
-        Optional<FederateAmbassador> privilegedAmbassador = Optional.empty();
+        PreemptableFederateAmbassador privilegedAmbassador = null;
 
         int countHighestPriority = 0;
         for (FederateAmbassador amb : federation.getFederationManagement().getAmbassadors()) {
@@ -82,7 +82,12 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
         if (countHighestPriority > 1) {
             throw new InternalFederateException("Cannot have multiple priority-zero ambassadors. Priority-zero implicitly encodes preemptive execution.");
         } else if (countHighestPriority == 1) {
-            privilegedAmbassador = federation.getFederationManagement().getAmbassadors().stream().filter(amb -> amb.getPriority() == FederatePriority.HIGHEST).findFirst();
+            Optional<FederateAmbassador> res = federation.getFederationManagement().getAmbassadors().stream().filter(amb -> amb.getPriority() == FederatePriority.HIGHEST).findFirst();
+            if (res.isPresent() && res.get() instanceof PreemptableFederateAmbassador preempt) {
+                privilegedAmbassador = preempt;
+            } else {
+                throw new InternalFederateException("The priority-zero ambassador has to implement the PreemptableFederateAmbassador interface.");
+            }
         }
 
         while (this.time <= getEndTime()) {
@@ -104,9 +109,9 @@ public class SequentialTimeManagement extends AbstractTimeManagement {
             }
 
             // always let run privileged federate first, then all others (yea, double execution for new-time privileged-federate events)
-            if (privilegedAmbassador.isPresent()) {
+            if (privilegedAmbassador != null) {
                 if (event.getRequestedTime() > lastTimestamp) {
-                    success = privilegedAmbassador.get().advanceTime(event.getRequestedTime());
+                    success = privilegedAmbassador.advanceTimePreemptable(event.getRequestedTime());
                     if (success) {
                         lastTimestamp = event.getRequestedTime();
                         lastRunDidAbort = false;
