@@ -20,6 +20,7 @@ import org.eclipse.mosaic.rti.api.ComponentProvider;
 import org.eclipse.mosaic.rti.api.FederateAmbassador;
 import org.eclipse.mosaic.rti.api.IllegalValueException;
 import org.eclipse.mosaic.rti.api.InternalFederateException;
+import org.eclipse.mosaic.rti.api.parameters.FederatePriority;
 import org.eclipse.mosaic.rti.api.time.FederateEvent;
 
 import java.util.concurrent.Semaphore;
@@ -72,6 +73,12 @@ public class MultiThreadedTimeManagement extends AbstractTimeManagement {
         FederateAmbassador ambassador;
         FederateEvent event;
         byte priority;
+
+        for (FederateAmbassador amb : federation.getFederationManagement().getAmbassadors()) {
+            if (amb.getPriority() == FederatePriority.HIGHEST) {
+                throw new InternalFederateException("Cannot have priority-zero ambassadors in a multi-threaded execution.");
+            }
+        }
 
         // run while events are available
         while (this.events.size() > 0 && this.time < getEndTime()) {
