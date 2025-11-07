@@ -146,7 +146,7 @@ public abstract class AbstractFederateAmbassador implements FederateAmbassador {
     /*
      * Helper method to request time advance
      */
-    protected void requestAdvanceTime(long time) throws InternalFederateException, IllegalValueException {
+    private void requestAdvanceTime(long time) throws InternalFederateException, IllegalValueException {
         final long lookahead;
         if (isTimeRegulating()) {
             lookahead = this.lookahead;
