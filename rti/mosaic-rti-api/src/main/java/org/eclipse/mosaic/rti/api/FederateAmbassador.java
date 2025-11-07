@@ -106,7 +106,7 @@ public interface FederateAmbassador extends Comparable<FederateAmbassador> {
      * @throws InternalFederateException This exception is to be thrown when a federation specific
      *                                   error occurs.
      */
-    boolean advanceTime(long time) throws InternalFederateException;
+    void advanceTime(long time) throws InternalFederateException;
 
     /**
      * The receiveMessage method is called by the time management service

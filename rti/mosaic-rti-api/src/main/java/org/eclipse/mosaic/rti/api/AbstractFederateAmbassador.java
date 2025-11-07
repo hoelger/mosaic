@@ -86,9 +86,8 @@ public abstract class AbstractFederateAmbassador implements FederateAmbassador {
      *
      * @param time The timestamp towards which the federate can advance it local time.
      */
-    protected boolean processTimeAdvanceGrant(long time) throws InternalFederateException {
+    protected void processTimeAdvanceGrant(long time) throws InternalFederateException {
         log.trace("processTimeAdvanceGrant(time); time: {}", time);
-        return true;
     }
 
     /**
@@ -101,7 +100,7 @@ public abstract class AbstractFederateAmbassador implements FederateAmbassador {
      * @throws InternalFederateException an exception inside of a joined federate occurs
      */
     @Override
-    public synchronized boolean advanceTime(long time) throws InternalFederateException {
+    public synchronized void advanceTime(long time) throws InternalFederateException {
         Interaction nextInteraction = interactionQueue.getNextInteraction(time);
         while (nextInteraction != null) {
             rti.getMonitor().onProcessInteraction(getId(), nextInteraction);
@@ -109,7 +108,6 @@ public abstract class AbstractFederateAmbassador implements FederateAmbassador {
             nextInteraction = interactionQueue.getNextInteraction(time);
         }
         processTimeAdvanceGrant(time);
-        return true;
     }
 
     /**

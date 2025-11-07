@@ -69,8 +69,8 @@ public class TestFederate implements FederateAmbassador {
     }
 
     @Override
-    public boolean advanceTime(long time) throws InternalFederateException {
-        return true;
+    public void advanceTime(long time) throws InternalFederateException {
+        // nop
     }
 
     @Override
