@@ -388,11 +388,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
             processInteraction(nextInteraction);
             nextInteraction = super.interactionQueue.getNextInteraction(time);
         }
-        if (!processTimeAdvanceGrantPreemptable(time)) {
-            // was preempted
-            return false;
-        }
-        return true;
+        return processTimeAdvanceGrantPreemptable(time);
     }
 
     @Override
