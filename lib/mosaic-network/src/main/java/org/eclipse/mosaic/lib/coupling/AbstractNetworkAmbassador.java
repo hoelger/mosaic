@@ -398,12 +398,6 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
     @Override
     protected void processTimeAdvanceGrant(long time) throws InternalFederateException {
         boolean r = processTimeAdvanceGrantPreemptable(time);
-        if (time == 0 || time == 1) {
-            // We cannot correctly detect preemption at these stages. This is because
-            // (1) how the value "I did preempt" is encoded via the time value
-            // (2) ns3 generates a "fake event" at time 1 (for the final setup, see MosaicNodeManager::OnStart())
-            return;
-        }
         if (!r) {
             throw new InternalFederateException("Did preempt when not expected to preempt");
         }
@@ -457,13 +451,13 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                         break;
                     case END:       // The federate has terminated the current time advance -> we are done here
                         long termTime = federateAmbassadorChannel.readTimeBody();
-                        log.info("End ProcessTimeAdvanceGrant at: {}", termTime);
-                        if (termTime != time && termTime == 0) {
-                            // preemptive
-                            // federate did not proceed all time-grant
-                            return false;
-                        }
+                        log.trace("End ProcessTimeAdvanceGrant at: {}", termTime);
                         break command_loop; // break out of the infinite loop
+                    case PREEMPTED:
+                        // federate did not proceed all time-grant
+                        long t = federateAmbassadorChannel.readTimeBody();
+                        log.trace("Preempt ProcessTimeAdvanceGrant at: {}", t);
+                        return false;
                     default:
                         throw new InternalFederateException("Unknown command from federate at processTimeAdvanceGrant");
                 }
