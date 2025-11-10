@@ -17,8 +17,10 @@ package org.eclipse.mosaic.rti.api;
 
 public interface PreemptableFederateAmbassador {
 
+    /*
+     * Same as advanceTime (see {@link org.eclipse.mosaic.rti.api.FederateAmbassador}) but with the ability to signal preemption via the return value.
+     * @return did complete execution successful (without preemption)
+     */
     boolean advanceTimePreemptable(long time) throws InternalFederateException;
-
-    boolean processTimeAdvanceGrantPreemptable(long time) throws InternalFederateException;
 
 }

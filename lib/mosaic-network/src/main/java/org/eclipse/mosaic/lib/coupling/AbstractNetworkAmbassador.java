@@ -399,7 +399,10 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
         }
     }
 
-    @Override
+    /*
+     * This method just extends the processTimeAdvanceGrant method signature by a boolean return value,
+     * in order to be used by advanceTimePreemptable function.
+     */
     public boolean processTimeAdvanceGrantPreemptable(long time) throws InternalFederateException {
         log.trace("ProcessTimeAdvanceGrant at time={}", TIME.format(time));
         try {
