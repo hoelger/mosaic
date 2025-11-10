@@ -418,7 +418,7 @@ public abstract class AbstractNetworkAmbassador extends AbstractFederateAmbassad
                     case NEXT_EVENT: // The federate has scheduled an event
                         long nextTime = federateAmbassadorChannel.readTimeBody();
                         log.trace("Requested next_event at {} ", nextTime);
-                        this.rti.requestAdvanceTime(nextTime, 0, FederatePriority.HIGHEST); // FIXME: do not use static priority value
+                        this.rti.requestAdvanceTime(nextTime, 0, getPriority());
                         break;
                     case RECV_WIFI_MSG:
                         ReceiveWifiMessageRecord wifiRec = federateAmbassadorChannel.readReceiveWifiMessage(simulatedNodes);
