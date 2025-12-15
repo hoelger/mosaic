@@ -17,6 +17,7 @@ package org.eclipse.mosaic.fed.application.ambassador;
 
 import org.eclipse.mosaic.fed.application.ambassador.eventresources.RemoveUnits;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.AbstractSimulationUnit;
+import org.eclipse.mosaic.fed.application.ambassador.simulation.ServerUnit;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.TrafficLightGroupUnit;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.TrafficManagementCenterUnit;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.communication.ReceivedV2xMessage;
@@ -26,6 +27,7 @@ import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.Centr
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.DefaultLidarSensorModule;
 import org.eclipse.mosaic.fed.application.ambassador.simulation.perception.EnvironmentBasicSensorModule;
 import org.eclipse.mosaic.fed.application.ambassador.util.EventNicenessPriorityRegister;
+import org.eclipse.mosaic.fed.application.app.api.FleetServiceApplication;
 import org.eclipse.mosaic.fed.application.app.api.MosaicApplication;
 import org.eclipse.mosaic.fed.application.app.api.TrafficSignAwareApplication;
 import org.eclipse.mosaic.fed.application.app.api.os.modules.Perceptive;
@@ -50,6 +52,7 @@ import org.eclipse.mosaic.interactions.mapping.TrafficLightRegistration;
 import org.eclipse.mosaic.interactions.mapping.VehicleRegistration;
 import org.eclipse.mosaic.interactions.mapping.advanced.RoutelessVehicleRegistration;
 import org.eclipse.mosaic.interactions.mapping.advanced.ScenarioVehicleRegistration;
+import org.eclipse.mosaic.interactions.traffic.FleetServiceUpdates;
 import org.eclipse.mosaic.interactions.traffic.TrafficDetectorUpdates;
 import org.eclipse.mosaic.interactions.traffic.TrafficLightUpdates;
 import org.eclipse.mosaic.interactions.traffic.VehicleRoutesInitialization;
@@ -306,6 +309,8 @@ public class ApplicationAmbassador extends AbstractFederateAmbassador implements
                 this.process((TrafficDetectorUpdates) interaction);
             } else if (interaction.getTypeId().equals(VehicleSeenTrafficSignsUpdate.TYPE_ID)) {
                 this.process((VehicleSeenTrafficSignsUpdate) interaction);
+            } else if (interaction.getTypeId().equals(FleetServiceUpdates.TYPE_ID)) {
+                this.process((FleetServiceUpdates) interaction);
             } else if (interaction.getTypeId().equals(SumoTraciResponse.TYPE_ID)) {
                 this.process((SumoTraciResponse) interaction);
             } else if (interaction.getTypeId().equals(V2xMessageAcknowledgement.TYPE_ID)) {
@@ -454,6 +459,18 @@ public class ApplicationAmbassador extends AbstractFederateAmbassador implements
                             EventNicenessPriorityRegister.UPDATE_SEEN_TRAFFIC_SIGN
                     ));
                 }
+            }
+        }
+    }
+
+    private void process(final FleetServiceUpdates updates) {
+        for (ServerUnit serverUnit : UnitSimulator.UnitSimulator.getServers().values()) {
+            for (FleetServiceApplication application : serverUnit.getApplicationsIterator(FleetServiceApplication.class)) {
+                addEvent(new Event(
+                        updates.getTime(),
+                        e -> application.onServiceUpdates(updates.getFleetVehicles(), updates.getReservations()),
+                        EventNicenessPriorityRegister.UPDATE_FLEET_SERVICES
+                ));
             }
         }
     }

@@ -28,6 +28,7 @@ import org.eclipse.mosaic.fed.sumo.util.SumoVehicleTypesWriter;
 import org.eclipse.mosaic.interactions.application.SumoSurroundingObjectsSubscription;
 import org.eclipse.mosaic.interactions.application.SumoTraciRequest;
 import org.eclipse.mosaic.interactions.application.SumoTraciResponse;
+import org.eclipse.mosaic.interactions.traffic.FleetVehicleAssignment;
 import org.eclipse.mosaic.interactions.mapping.AgentRegistration;
 import org.eclipse.mosaic.interactions.mapping.VehicleRegistration;
 import org.eclipse.mosaic.interactions.traffic.InductionLoopDetectorSubscription;
@@ -495,6 +496,8 @@ public class SumoAmbassador extends AbstractFederateAmbassador {
             vehicleActionsHandler.handleSpeedChange((VehicleSpeedChange) interaction);
         } else if (interaction.getTypeId().equals(SumoSurroundingObjectsSubscription.TYPE_ID)) {
             vehicleActionsHandler.handleSurroundingVehiclesSubscription((SumoSurroundingObjectsSubscription) interaction);
+        } else if (interaction.getTypeId().equals(FleetVehicleAssignment.TYPE_ID)) {
+            vehiclesHandler.handleFleetVehicleAssignment((FleetVehicleAssignment) interaction);
         } else if (interaction.getTypeId().equals(InductionLoopDetectorSubscription.TYPE_ID)) {
             infrastructureHandler.handleDetectorSubscription((InductionLoopDetectorSubscription) interaction);
         } else if (interaction.getTypeId().equals(LaneAreaDetectorSubscription.TYPE_ID)) {
@@ -641,6 +644,9 @@ public class SumoAmbassador extends AbstractFederateAmbassador {
             rti.triggerInteraction(simulationStepResult.personUpdates());
             rti.triggerInteraction(simulationStepResult.trafficDetectorUpdates());
             rti.triggerInteraction(simulationStepResult.trafficLightUpdates());
+            if (simulationStepResult.hasFleetUpdates()) {
+                rti.triggerInteraction(simulationStepResult.fleetUpdates());
+            }
 
             rti.requestAdvanceTime(nextTimeStep, 0, FederatePriority.higher(descriptor.getPriority()));
 

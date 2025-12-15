@@ -102,7 +102,7 @@ public interface Bridge {
     RouteFacade getRouteControl();
 
     /**
-     * Returns a facade which offers methods to control routes taken by vehicles in the simulation.
+     * Returns a facade which offers methods to add POIs to the SUMO GUI and change its properties.
      */
     PoiFacade getPoiControl();
 

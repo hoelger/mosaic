@@ -413,7 +413,6 @@ public class SumoVehicleActionsHandler extends AbstractHandler implements EventP
         }
     }
 
-
     /**
      * Adjusts the given value to a multiple of the configured sumo time step
      * in order to avoid bugs related to sumo timing.
